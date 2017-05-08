@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Becket & Lee LLP - @ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <meta id="Meta1" content="attorney, Attorney, ATtorNEy, ATTorney, ATTOrney, ATTORney, ATTORNey, ATTORNEy, ATTORNEY, BECKET &amp; LEE, Becket &amp; Lee, BEcket &amp; Lee, BECket &amp; Lee, BECKet &amp; Lee, BECKEt &amp; Lee, BECKET &amp; Lee, BECKET &amp; LEe, becket &amp; lee, BECKET LEE, Becket Lee, BEcket Lee, BECket Lee, BECKet Lee, BECKEt Lee, BECKET Lee, BECKET LEe, becket lee,    BECKETLEE, BecketLee, BEcketLee, BECketLee, BECKetLee, BECKEtLee, BECKETLee, BECKETLEe, becketlee, bECKETLEE, beCKETLEE, becKETLEE, beckETLEE, beckeTLEE, becketLEE, becketlEE, becketleE, bEcket &amp; lee, beCket &amp; lee, becKet &amp; lee, beckEt &amp; lee, beckeT &amp; lee, becket &amp; Lee, becket &amp; lEe, becket &amp; leE, BEcket &amp; lee, bECket &amp; lee, beCKet &amp; lee, becKEt &amp; lee, beckET &amp; lee, beckeT &amp; Lee, becket &amp; LEe, becket &amp; lEE, BEKket &amp; lee, bECKet &amp; lee, beCKEt &amp; lee, becKET &amp; lee, beckET &amp; Lee, beckeT &amp; LEe, becket &amp; LEE, BECKet &amp; lee, bECKEt &amp; lee, beCKET &amp; lee, becKET &amp; Lee, beckET &amp; LEe, beckeT &amp; LEE, BECKEt &amp; lee, bECKET &amp; lee, beCKET &amp; Lee, becKET &amp; LEe, beckET &amp; LEE, bankruptcy, Bankruptcy, BAnkruptcy, BANkruptcy, BANKruptcy, BANKRuptcy, BANKRUptcy, BANKRUPtcy, BANKRUPTcy, BANKRUPTCy, BANKRUPTCY, BAnkruptcy, bANkruptcy, baNKruptcy, banKRuptcy, bankRUptcy, bankrUPtcy, bankruPTcy, bankrupTCy, bankruptCY, BANkruptcy, bANKruptcy, baNKRuptcy, banKRUptcy, bankRUPtcy, bankrUPTcy, bankruPTCy, bankrupTCY, BANKruptcy, bANKRuptcy, baNKRUptcy, banKRUPtcy, bankRUPTcy, bankrUPTCy, bankruPTCY, Thomas Lee, Tom Lee, Alane Becket, Mickey Becket, William Becket, John Sheehan, Sandra Curtin" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/lib/bootswatch/cerulean/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+
+<body>
+
+    <div id="header">
+        <div class="slideContainer">
+            <div class="slide"><img src="~/image/B&L Firm-small2.jpg" alt="Offices" class="headerImage" /></div>
+            <div class="slide"><img src="~/image/InLibrary225.jpg" alt="Library" class="headerImage"></div>
+            <div class="slide"><img src="~/image/DSC_9999editSM.JPG" alt="Offices" class="headerImage" /></div>
+            <div class="slide"><img src="~/image/DSC_9925edit2SM.JPG" alt="Computer Room" class="headerImage" /></div>
+        </div>
+    </div>
+
+    <div id="sidebar">
+        <div><img src="~/image/headerLogo.gif" alt="Becket & Lee Logo" class="logoImage" /></div>
+        <div>
+            <ul class="nav navbar-right">
+                <li id="active"><a asp-controller="App" asp-action="Index">Home</a></li>
+                <li><a asp-controller="App" asp-action="Index">Partners</a></li>
+                <li><a asp-controller="App" asp-action="Services">Services</a></li>
+                <li><a asp-controller="App" asp-action="Index">News</a></li>
+                <li><a asp-controller="App" asp-action="Index">Events</a></li>
+                <li><a asp-controller="App" asp-action="Index">Publications</a></li>
+                <li><a asp-controller="App" asp-action="Index">Cases of Interest</a></li>
+                <li><a asp-controller="App" asp-action="FirmHistory">Firm History</a></li>
+                <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
+
+            </ul>
+        </div>
+        <div class="affiliation">
+            <table>
+                <tr>
+                    <td>
+                        <img src="~/image/WBE_color_rgb_UP25.jpg" alt="" class="affiliationImage" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div>
+            <ul class="rightAlign">
+                <li>&nbsp;</li>
+                <li>Becket & Lee LLP</li>
+                <li>16 General Warren Blvd</li>
+                <li>Malvern, PA 19355</li>
+                <li>&nbsp;</li>
+                <li>610.644.7800</li>
+
+            </ul>
+        </div>
+
+    </div>
+
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <button id="sidebarToggle" class="btn btn-xs btn-block">
+                            <i class="fa fa-chevron-left"></i>
+                        </button>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+        <div id="main" class="container-fluid">
+            @RenderBody()
+        </div>
+    </div>
+
+
+
+    <div id="footer" class="container-fluid">
+        <div class="navbar navbar-fixed-bottom navbar-inverse ">
+            <ul>
+                <li class="navbar-link">&copy; Becket & Lee LLP</li>
+                <li class="navbar-link text-muted"><a id="disclaimerLink" href="#">Disclaimer</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    @RenderSection( "scripts", false )
+    <script type="text/javascript" src="~/js/site.js"></script>
+
+</body>
+</html>
+
