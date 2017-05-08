@@ -1,11 +1,10 @@
-﻿@using System.IO
-@using BecketLee.ViewModels
-@model BecketLee.ViewModels.PartnerViewModel
+﻿@using BecketLee.ViewModels
+@model PartnerViewModel
 @{
     ViewBag.Title = "Edit Bio";
 }
 
-<form asp-action="EditBio" asp-controller="Edit" method="post" enctype="multipart/form-data">
+<form asp-action="EditBio" asp-controller="Partner" method="post" enctype="multipart/form-data">
     @section scripts{
         <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
         <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

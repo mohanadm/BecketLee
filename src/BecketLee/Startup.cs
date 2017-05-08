@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Serialization;
 
 namespace BecketLee
 {
@@ -29,13 +30,18 @@ namespace BecketLee
         {
             //services.AddTransient<IService>(IService, Service) // creates new each call
             //services.AddScoped<IService>(IService, Service) // creates one within scope for reuse
-
             services.AddSingleton(_config);
-
             services.AddDbContext<BecketLeeContext>();
-            services.AddTransient<BecketLeeSeedData>();
 
-            services.AddMvc();
+            services.AddTransient<BecketLeeSeedData>();
+            services.AddScoped<BecketLeeRepository>();
+
+            services.AddLogging();
+
+            services.AddMvc()
+                .AddJsonOptions( config =>
+                    config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,11 +51,15 @@ namespace BecketLee
             ILoggerFactory loggerFactory, 
             BecketLeeSeedData seeder )
         {
-            loggerFactory.AddConsole();            
-
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                loggerFactory.AddConsole(LogLevel.Information);
+            }
+            else
+            {
+                loggerFactory.AddConsole( LogLevel.Error );
             }
 
 

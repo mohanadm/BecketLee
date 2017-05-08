@@ -21,7 +21,6 @@ namespace BecketLee.Data
             {
                 var bio = new PartnerBiography()
                 {
-                    PartnerId = 1,
                     PartnerName = "Alane A Becket",
                     FileUrl = "/image/BioImage/Alane2_2.8.jpg",
                     FileName = "Alane2_2.8.jpg",

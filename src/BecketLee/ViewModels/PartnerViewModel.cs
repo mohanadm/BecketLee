@@ -8,7 +8,7 @@ namespace BecketLee.ViewModels
 {
     public class PartnerViewModel
     {
-
+        [Key]
         public int PartnerId { get; set; }
 
         [Required]

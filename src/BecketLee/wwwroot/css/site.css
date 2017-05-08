@@ -31,6 +31,11 @@ table {
     padding: 8px;  
 }
 
+.header {
+    font-size: 16px;
+    font-style: italic;
+    font-weight: bold;
+}
 
 .headerImage {
     max-width: 200px;
@@ -45,8 +50,16 @@ table {
     left: 0;
 }
 
+.partnerAvatar {    
+    width: 36px;      
+    margin: auto;  
+}
+.partnerDiv {
+    text-align: center;
+    margin: auto;      
+}
 .partnerImage {
-    width: 250px;      
+    width: 600px;      
     margin: auto;  
 }
 

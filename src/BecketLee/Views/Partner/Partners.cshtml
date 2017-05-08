@@ -1,0 +1,21 @@
+﻿@using BecketLee.ViewModels
+@model IEnumerable<PartnerViewModel>
+@{
+    ViewBag.Title = "Partners";
+}
+
+<div class="col-md-8">
+    The Partners of Becket & Lee are leaders in their highly specialized area of the law. The Firm carries an AV® rating from Martindale Hubbel. An AV® certification mark is a significant rating accomplishment - a testament to the fact that a lawyer's peers rank him or her at the highest level of professional excellence.
+</div>
+<div class="col-md-4">
+    <div class="header">Partners</div>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <a asp-action="Bio" asp-controller="Partner" asp-route-id="@item.PartnerId" >@item.PartnerName</a>
+                <span><img src="@item.FileUrl" alt="@item.PartnerName" class="partnerAvatar" asp-append-version="true" /></span>
+            </li>
+        }
+    </ul>
+</div>

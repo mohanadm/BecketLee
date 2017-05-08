@@ -1,27 +1,53 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using BecketLee.Data;
 using BecketLee.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 
-public class EditController : Controller
+public class PartnerController : Controller
 {
     private readonly IHostingEnvironment _environment;
-    private BecketLeeContext _context;
+    private BecketLeeRepository _repository;
+    private readonly ILogger<PartnerController> _logger;
 
-    public EditController( IHostingEnvironment environment, BecketLeeContext context )
+    public PartnerController( IHostingEnvironment environment, 
+        BecketLeeRepository repository, 
+        ILogger<PartnerController> logger)
     {
         _environment = environment;
-        _context = context;
+        _repository = repository;
+        _logger = logger;
     }
 
-    public IActionResult EditBio()
+    public IActionResult Partners()
     {
-        var data = _context.PartnerBiographies;
-        var model = new PartnerViewModel();
-        return View( model );
+        try
+        {
+            _logger.LogInformation( "Getting all the partner information." );
+            return View( _repository.GetAllPartners() );
+        }
+        catch (Exception exception)
+        {
+            _logger.LogError( $"Failed to get partners in controller.\n" + exception.Message );
+            return Redirect( "/error.html" );
+        }
+    }
+
+
+    public IActionResult Bio( int id )
+    {    
+        var data = _repository.GetPartnerById( id );
+        return View( data );
+    }
+
+
+    public IActionResult EditBio( string id )
+    {
+        return View( _repository.GetPartnerByName( id ) );
     }
 
     [HttpPost]
