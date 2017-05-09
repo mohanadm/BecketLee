@@ -29,7 +29,8 @@ namespace BecketLee.Data
                 // delete
                 foreach (var eventType in _context.EventTypes)
                     _context.Remove( eventType );
-                await _context.SaveChangesAsync();
+                if(_context.ChangeTracker.HasChanges())
+                    await _context.SaveChangesAsync();
 
                 var eventTypeObject = new EventType() {EventTypeDescription = "News"};
                 _context.EventTypes.Add( eventTypeObject );
@@ -51,7 +52,8 @@ namespace BecketLee.Data
                 // Clear content
                 foreach (var partnerBiography in _context.PartnerBiographies)
                     _context.Remove( partnerBiography );
-                await _context.SaveChangesAsync();
+                if (_context.ChangeTracker.HasChanges())
+                    await _context.SaveChangesAsync();
 
                 // Add partners
                 var bio = new PartnerBiography()

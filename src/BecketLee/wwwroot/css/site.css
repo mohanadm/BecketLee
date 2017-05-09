@@ -68,6 +68,10 @@ table {
     margin: auto;  
 }
 
+.partnerSelection {
+    margin-bottom: 5px;
+}
+
 .partnersText {
     display: block;
     text-align: center;

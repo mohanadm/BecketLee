@@ -13,8 +13,13 @@
         @foreach (var item in Model)
         {
             <li>
-                <a asp-action="Bio" asp-controller="Partner" asp-route-id="@item.PartnerName" >@item.PartnerName</a>
-                <span><img src="@item.FileUrl" alt="@item.PartnerName" class="partnerAvatar" asp-append-version="true" /></span>
+                <div class="partnerSelection">
+                    <a asp-action="Bio" asp-controller="Partner" asp-route-id="@item.PartnerName">
+                        <img src="@item.FileUrl" alt="@item.PartnerName" class="partnerAvatar" asp-append-version="true" />
+                        @item.PartnerName
+                    </a>
+                </div>
+
             </li>
         }
     </ul>
