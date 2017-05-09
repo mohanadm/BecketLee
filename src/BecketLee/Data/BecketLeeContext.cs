@@ -15,6 +15,8 @@ namespace BecketLee.Data
         }
 
         public DbSet<PartnerBiography> PartnerBiographies { get; set; }
+        public DbSet<EventType> EventTypes { get; set; }
+        public DbSet<Event> Events { get; set; }
 
         protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
         {

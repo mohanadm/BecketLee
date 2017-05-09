@@ -37,25 +37,29 @@ public class PartnerController : Controller
         }
     }
 
-
-    public IActionResult Bio( int id )
+    [HttpGet]
+    public IActionResult Bio( string id )
     {    
-        var data = _repository.GetPartnerById( id );
+        var data = _repository.GetPartnerByName( id );
+        if (data == null)
+            data = new PartnerViewModel();
         return View( data );
     }
 
-
+    [HttpGet]
     public IActionResult EditBio( string id )
     {
-        return View( _repository.GetPartnerByName( id ) );
+        var data = _repository.GetPartnerByName( id );
+        if( data == null ) data = new PartnerViewModel();
+        return View( data );
     }
 
     [HttpPost]
     public async Task<IActionResult>EditBio(PartnerViewModel model)
     {
         await UploadFile( model );
-
-        return View(model);
+        model = _repository.UpdatePartner( model );
+        return RedirectToAction( "Partners" );
     }
 
 

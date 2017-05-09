@@ -1,26 +1,21 @@
-﻿@model BecketLee.ViewModels.PartnerViewModel
+﻿@using System.Net
+@model BecketLee.ViewModels.PartnerViewModel
 @{
     ViewBag.Title = @Model.PartnerName;
 }
 
-<div class="container">
-    <div class="col-md-8">
+<div class="container-fluid">
+    
+    <div class="col-sm-8">
+        <div><h3>@Model.PartnerName</h3></div>
         <div>
-            <label class="panel-group">Name</label>
-            <label class="panel-group">@Model.PartnerName</label>            
-        </div>
-        <div>
-            <label class="panel-group">Biography</label>
-            <label class="panel-group">@Model.BiographyHtml</label>            
+            <div><h4>Biography</h4></div>
+            <div id="BiographyHtml">@Html.Raw(Model.BiographyHtml)</div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="panel-group">
-            <img src="@Model.FileUrl" alt="@Model.PartnerName" class="partnerImage" />
+    <div class="col-sm-4">
+        <div>
+            <img src="@Model.FileUrl" alt="@Model.PartnerName" class="partnerImage"/>
         </div>
-
-@*        <div class="form-group">*@
-@*            <input type="submit" value="Save All" />*@
-@*        </div>*@
-    </div>          
+    </div>
 </div>

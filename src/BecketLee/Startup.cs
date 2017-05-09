@@ -74,7 +74,7 @@ namespace BecketLee
                     );
             });
 
-            seeder.EnsurePartnerData().Wait();
+            seeder.EnsureBecketLeeSeedData().Wait();
         }
     }
 }

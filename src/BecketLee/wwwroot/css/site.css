@@ -59,10 +59,14 @@ table {
     margin: auto;      
 }
 .partnerImage {
-    width: 600px;      
+    width: 250px;      
     margin: auto;  
 }
 
+.partnerGroupImage {
+    width: 600px;      
+    margin: auto;  
+}
 
 .partnersText {
     display: block;
@@ -75,14 +79,17 @@ table {
     border-radius: 4px 4px 0 0 ;
     height: 25px;
     font-style: oblique;
+    background-color: #04519a; /*#2fa4e7;*/
     
 }
 
 #exTab .tab-content {
     color: white;
-    background-color: #2fa4e7; /*#04519a;*/
-    padding: 5px 10px;    
+    background-color: #04519a; /*#2fa4e7;*/
+    padding: 5px;    
+    height: 450px;
 }
+
 
 /*  footer  */
 .navbar-fixed-bottom li {
