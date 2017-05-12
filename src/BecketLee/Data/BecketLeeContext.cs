@@ -1,10 +1,11 @@
 ﻿using BecketLee.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace BecketLee.Data
 {
-    public class BecketLeeContext : DbContext
+    public class BecketLeeContext : IdentityDbContext<BecketLeeUser>
     {
         private IConfigurationRoot _config;
 

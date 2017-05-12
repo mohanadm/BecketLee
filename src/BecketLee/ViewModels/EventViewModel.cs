@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using BecketLee.Models;
 
-namespace BecketLee.Models
+namespace BecketLee.ViewModels
 {
-    public class Event
+    public class EventViewModel
     {
-        [Key]
         public int EventId { get; set; }
         [Required]
         public string Title { get; set; }
@@ -15,8 +15,6 @@ namespace BecketLee.Models
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
-        
-        public int EventTypeId { get; set; }        
         public EventType EventType { get; set; }
     }
 }

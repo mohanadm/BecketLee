@@ -1,0 +1,28 @@
+﻿@model IEnumerable<BecketLee.ViewModels.EventViewModel>
+@{
+    ViewBag.Title = "News";
+}
+<div class="container-fluid">
+    <div class="col-md-8">
+        <span id="blEvent" name="blEvent"></span>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <ul>
+            <h5>More News...</h5>
+            @foreach (var item in Model)
+            {
+                <li class="list-group-item">
+                    <div class="eventText">
+                        <a asp-action="Events" asp-controller="EventApi/Event" asp-route-id="@item.EventId">
+                            <div>@item.Title</div>
+                        </a>
+                    </div>
+
+                </li>
+            }
+        </ul>
+    </div>
+</div>

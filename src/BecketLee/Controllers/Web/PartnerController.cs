@@ -3,7 +3,10 @@ using System.IO;
 using System.Threading.Tasks;
 using BecketLee.Data;
 using BecketLee.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
@@ -11,11 +14,11 @@ using Microsoft.Net.Http.Headers;
 public class PartnerController : Controller
 {
     private readonly IHostingEnvironment _environment;
-    private BecketLeeRepository _repository;
+    private IPartnerRepository _repository;
     private readonly ILogger<PartnerController> _logger;
 
     public PartnerController( IHostingEnvironment environment, 
-        BecketLeeRepository repository, 
+        IPartnerRepository repository, 
         ILogger<PartnerController> logger)
     {
         _environment = environment;
@@ -47,6 +50,7 @@ public class PartnerController : Controller
     }
 
     [HttpGet]
+    [Authorize]
     public IActionResult EditBio( string id )
     {
         var data = _repository.GetPartnerByName( id );

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole>
+@{
+    ViewBag.Title = "Roles";
+}
+@section scripts{
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h3>Roles</h3>
+        <form method="post" novalidate>
+            <div asp-validation-summary="All"></div>
+            <div class="form-group">
+                @*<label asp-for="Roles"></label>
+                <input asp-for="Roles" class="form-control" />
+                <a asp-action="Roles" asp-controller="Auth" asp-route-id="@Model.RoleId">@Model.Role</a>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input type="password" asp-for="Password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Roles" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+
+</div>

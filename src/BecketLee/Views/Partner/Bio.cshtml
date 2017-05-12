@@ -1,19 +1,18 @@
-﻿@using System.Net
-@model BecketLee.ViewModels.PartnerViewModel
+﻿@model BecketLee.ViewModels.PartnerViewModel
 @{
     ViewBag.Title = @Model.PartnerName;
 }
 
 <div class="container-fluid">
     
-    <div class="col-sm-8">
+    <div class="col-md-8">
         <div><h3>@Model.PartnerName</h3></div>
         <div>
             <div><h4>Biography</h4></div>
             <div id="BiographyHtml">@Html.Raw(Model.BiographyHtml)</div>
         </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-md-4">
         <div>
             <img src="@Model.FileUrl" alt="@Model.PartnerName" class="partnerImage"/>
         </div>

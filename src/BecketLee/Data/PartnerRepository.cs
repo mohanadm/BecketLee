@@ -7,23 +7,11 @@ using BecketLee.ViewModels;
 
 namespace BecketLee.Data
 {
-
-    public interface IBecketLeeContextRepository
+    public class PartnerRepository : RepostitoryDataBase<PartnerViewModel>, IPartnerRepository
     {
-        IEnumerable<PartnerViewModel> GetAllPartners();
-        PartnerViewModel GetPartnerByName( string name );
-        PartnerViewModel UpdatePartner( PartnerViewModel model );
-    }
-
-
-
-    public class BecketLeeRepository : IBecketLeeContextRepository
-    {
-        private BecketLeeContext _context;
-
-        public BecketLeeRepository(BecketLeeContext context)
+        public PartnerRepository( BecketLeeContext context ) 
+            : base( context )
         {
-            _context = context;
         }
 
         public IEnumerable<PartnerViewModel> GetAllPartners()
@@ -43,29 +31,36 @@ namespace BecketLee.Data
         public PartnerViewModel GetPartnerByName( string name )
         {
             var data = GetAllPartners()
-                .FirstOrDefault( p => 
-                    p.PartnerName.Equals(name, StringComparison.CurrentCultureIgnoreCase) 
+                .FirstOrDefault( p =>
+                    p.PartnerName.Equals( name, StringComparison.CurrentCultureIgnoreCase )
                 );
             return data;
+        }
+
+        public void RemovePartner( PartnerViewModel model )
+        {
+            var partner = _context.PartnerBiographies.FirstOrDefault( p => p.PartnerId == model.PartnerId );
+            _context.Remove( partner );
+            _context.SaveChanges();
         }
 
         public PartnerViewModel UpdatePartner( PartnerViewModel model )
         {
             PartnerBiography partner = new PartnerBiography();
-            if( model.PartnerId > 0 )
-                partner = _context.PartnerBiographies.FirstOrDefault( p => p.PartnerId == model.PartnerId );                
+            if (model.PartnerId > 0)
+                partner = _context.PartnerBiographies.FirstOrDefault( p => p.PartnerId == model.PartnerId );
 
             partner.PartnerName = model.PartnerName;
             partner.BiographyHtml = WebUtility.HtmlEncode( model.BiographyHtml );
             partner.FileName = model.FileName;
             partner.FileUrl = model.FileUrl;
 
-            if ( partner.PartnerId > 0 )
+            if (partner.PartnerId > 0)
                 _context.Update( partner );
             else
                 _context.Add( partner );
 
-            _context.SaveChanges(true);
+            _context.SaveChanges( true );
 
             var newModel = new PartnerViewModel()
             {
@@ -73,9 +68,10 @@ namespace BecketLee.Data
                 PartnerName = partner.PartnerName,
                 BiographyHtml = WebUtility.HtmlDecode( partner.BiographyHtml ),
                 FileName = partner.FileName,
-                FileUrl =  partner.FileUrl
+                FileUrl = partner.FileUrl
             };
             return newModel;
         }
+
     }
 }

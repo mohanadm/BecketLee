@@ -3,24 +3,33 @@
 @{
     ViewBag.Title = "Partners";
 }
+<div class="container-fluid">
+    <div class="col-lg-12">
+        <h3>Becket & Lee Partners</h3>
+        <p style="text-align:justify">
+            The Partners of Becket & Lee are leaders in their highly specialized area of the law. The Firm carries an AV® rating from Martindale Hubbel. An AV® certification mark is a significant rating accomplishment - a testament to the fact that a lawyer's peers rank him or her at the highest level of professional excellence.
+        </p>
+        @*</div>
+    <div class="col-md-4 center-block">*@
+        <br/><br />
+        <ul class="list-group-horizontal">
+            @foreach (var item in Model)
+            {
+                <li class="list-group-item">
+                    <div class="partnerSelection">
+                        <a asp-action="Bio" asp-controller="Partner" asp-route-id="@item.PartnerName">
+                            <div style="text-align: center;" >
+                                <img src="@item.FileUrl" alt="@item.PartnerName" class="partnerAvatar" asp-append-version="true" />
+                                <br/>
+                                @item.PartnerName
+                            </div>
 
-<div class="col-md-8">
-    The Partners of Becket & Lee are leaders in their highly specialized area of the law. The Firm carries an AV® rating from Martindale Hubbel. An AV® certification mark is a significant rating accomplishment - a testament to the fact that a lawyer's peers rank him or her at the highest level of professional excellence.
-</div>
-<div class="col-md-4">
-    <div class="header">Partners</div>
-    <ul>
-        @foreach (var item in Model)
-        {
-            <li>
-                <div class="partnerSelection">
-                    <a asp-action="Bio" asp-controller="Partner" asp-route-id="@item.PartnerName">
-                        <img src="@item.FileUrl" alt="@item.PartnerName" class="partnerAvatar" asp-append-version="true" />
-                        @item.PartnerName
-                    </a>
-                </div>
+                        </a>
+                    </div>
 
-            </li>
-        }
-    </ul>
+                </li>
+            }
+        </ul>
+    </div>
 </div>
+

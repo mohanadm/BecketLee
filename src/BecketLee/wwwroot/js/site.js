@@ -3,18 +3,20 @@
 
     var $sidebarAndWrapper = $("#sidebar, #wrapper, #header, #disclaimerLink");
     var $icon = $("#sidebarToggle i.fa");
+    var $navbarBrandDiv = $("#navbarBrand");
 
     $("#sidebarToggle").on("click",
-        function() {
-
+        function() {            
             $sidebarAndWrapper.toggleClass("hide-sidebar");
 
             if ($sidebarAndWrapper.hasClass("hide-sidebar")) {
                 $icon.removeClass("fa fa-chevron-left");
                 $icon.addClass("fa fa-chevron-right");
+                $navbarBrandDiv.show();
             } else {
                 $icon.removeClass("fa fa-chevron-right");
-                $icon.addClass("fa fa-chevron-left");
+                $icon.addClass("fa fa-chevron-left");                
+                $navbarBrandDiv.hide();
             }
         });
 

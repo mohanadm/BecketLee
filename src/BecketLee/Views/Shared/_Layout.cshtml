@@ -12,7 +12,7 @@
 
 <body>
 
-    <div id="header">
+    <div id="header" class="JustifyCenter">
         <div class="slideContainer">
             <div class="slide"><img src="~/image/B&L Firm-small2.jpg" alt="Offices" class="headerImage" /></div>
             <div class="slide"><img src="~/image/InLibrary225.jpg" alt="Library" class="headerImage"></div>
@@ -23,14 +23,32 @@
 
     <div id="sidebar">
         <div><img src="~/image/headerLogo.gif" alt="Becket & Lee Logo" class="logoImage" /></div>
+
         <div>
+
             <ul class="nav navbar-right">
                 <li id="active"><a asp-controller="App" asp-action="Index">Home</a></li>
-                <li><a asp-controller="Partner" asp-action="Partners">Partners</a></li>
+                @*<li><a asp-controller="Partner" asp-action="Partners">Partners</a></li>*@
+                <li class="dropdown">
+                    <div>
+                        <a asp-action="Partners" asp-controller="Partner" style="margin-left: 58px;">Partners</a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="link"
+                           aria-haspopup="true" aria-expanded="False" style="margin-left: -16px;"><span class="caret"></span></a>
+
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a asp-controller="Partner" asp-action="Bio" asp-route-id="Alane A Becket">Alane A Becket</a></li>
+                            <li><a asp-controller="Partner" asp-action="Bio" asp-route-id="Thomas A Lee III">Thomas A Lee</a></li>
+                            <li><a asp-controller="Partner" asp-action="Bio" asp-route-id="Sandra K Curtin">Sandra K Curtin</a></li>
+                            <li><a asp-controller="Partner" asp-action="Bio" asp-route-id="William J Becket">William J Becket</a></li>
+                            <li><a asp-controller="Partner" asp-action="Bio" asp-route-id="John D Sheehan">John D Sheehan</a></li>
+                            <li><a asp-controller="Partner" asp-action="Bio" asp-route-id="Gilbert B Weisman">Gilbert B Weisman</a></li>
+                        </ul>
+                    </div>
+                </li>
                 <li><a asp-controller="App" asp-action="OurServices">Services</a></li>
-                <li><a asp-controller="App" asp-action="Index">News</a></li>
-                <li><a asp-controller="App" asp-action="Index">Events</a></li>
-                <li><a asp-controller="App" asp-action="Index">Publications</a></li>
+                <li><a asp-controller="Event" asp-action="News">News</a></li>
+                <li><a asp-controller="Event" asp-action="Events">Events</a></li>
+                <li><a asp-controller="Event" asp-action="Pubs">Publications</a></li>
                 <li><a asp-controller="App" asp-action="Index">Cases of Interest</a></li>
                 <li><a asp-controller="App" asp-action="FirmHistory">Firm History</a></li>
                 <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
@@ -63,19 +81,23 @@
 
     <div id="wrapper">
         <nav class="navbar navbar-inverse">
+            <div id="navbarBrand" class="navbar navbar-brand navbar-inverse" hidden>
+                <a asp-action="index" asp-controller="App" >Becket & Lee LLP</a>
+            </div>
             <div class="container-fluid">
-                <ul class="nav navbar-nav navbar-left">
-                    <li>
-                        <button id="sidebarToggle" class="btn btn-xs btn-block">
+                <ul class="list-group-across">
+                    <li class="list-group-thing">
+                        <button id="sidebarToggle" class="btn btn-xs btn-primary">
                             <i class="fa fa-chevron-left"></i>
                         </button>
                     </li>
-
                 </ul>
             </div>
         </nav>
+        
+
         <div id="main" class="container-fluid">
-            @RenderBody()
+                @RenderBody()
         </div>
     </div>
 

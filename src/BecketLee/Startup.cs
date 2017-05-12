@@ -1,6 +1,13 @@
-﻿using BecketLee.Data;
+﻿using System.Threading.Tasks;
+using AutoMapper;
+using BecketLee.Data;
+using BecketLee.Models;
+using BecketLee.ViewModels;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -34,25 +41,55 @@ namespace BecketLee
             services.AddDbContext<BecketLeeContext>();
 
             services.AddTransient<BecketLeeSeedData>();
-            services.AddScoped<BecketLeeRepository>();
+            services.AddScoped<IPartnerRepository, PartnerRepository>();
+            services.AddScoped<IEventRepository, EventRepository>();
 
             services.AddLogging();
 
-            services.AddMvc()
+            services.AddMvc( config =>
+                {
+                    if( _environment.IsProduction() )
+                    {
+                        config.Filters.Add( new RequireHttpsAttribute() );
+                    }
+                })
                 .AddJsonOptions( config =>
                     config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
+
+            services.AddIdentity<BecketLeeUser, IdentityRole>( config =>
+            {
+                config.User.RequireUniqueEmail = true;
+                config.Password.RequiredLength = 8;
+                config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
+                config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents
+                {
+                    OnRedirectToLogin = async ctx =>
+                    {
+                        if( ctx.Request.Path.StartsWithSegments( "/api" ) &&
+                            ctx.Response.StatusCode == 200 )
+                        {
+                            ctx.Response.StatusCode = 401;
+                        }
+                        else
+                        {
+                            ctx.Response.Redirect(ctx.RedirectUri);
+                        }
+                        await Task.Yield();
+                    }
+                };
+            } )
+            .AddEntityFrameworkStores<BecketLeeContext>();
 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(
             IApplicationBuilder app, 
-            IHostingEnvironment env, 
             ILoggerFactory loggerFactory, 
             BecketLeeSeedData seeder )
         {
-            
-            if (env.IsDevelopment())
+
+            if (_environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 loggerFactory.AddConsole(LogLevel.Information);
@@ -65,6 +102,14 @@ namespace BecketLee
 
             //app.UseDefaultFiles();
             app.UseStaticFiles();
+            app.UseIdentity();
+
+            Mapper.Initialize( config =>
+            {
+                config.CreateMap<Event, EventViewModel>().ReverseMap();
+                config.CreateMap<PartnerBiography, PartnerViewModel>().ReverseMap();
+            } );
+
             app.UseMvc( config =>
             {
                 config.MapRoute( 
@@ -74,7 +119,10 @@ namespace BecketLee
                     );
             });
 
-            seeder.EnsureBecketLeeSeedData().Wait();
+            seeder.EnsureSeedData().Wait();
         }
+           
+
     }
+
 }

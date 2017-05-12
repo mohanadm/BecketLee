@@ -30,6 +30,10 @@ table {
     max-width: 170px;
     padding: 8px;  
 }
+.eventText {
+    font-size: smaller;
+    margin: -5px;
+}
 
 .header {
     font-size: 16px;
@@ -43,15 +47,36 @@ table {
     padding: 20px 2px 15px;
 }
 
+.list-group-horizontal {
+    margin-left: -30px;
+}
+.list-group-horizontal .list-group-item {
+    display: inline-block;
+    margin-bottom: 0;
+    margin-left:-4px;
+    margin-right: 0;
+    border-right-width: 1px;    
+}
+.list-group-horizontal .list-group-item:first-child {
+    border-top-right-radius:0;
+    border-bottom-left-radius:4px;
+}
+.list-group-horizontal .list-group-item:last-child {
+    border-top-right-radius:4px;
+    border-bottom-left-radius:0;
+    border-right-width: 1px;
+}
 
 .logoImage {
     max-width: 230px;
     padding: 10px;
+    padding-bottom: 20px;
     left: 0;
 }
 
+
 .partnerAvatar {    
-    width: 36px;      
+    height: 64px;
     margin: auto;  
 }
 .partnerDiv {
@@ -69,7 +94,10 @@ table {
 }
 
 .partnerSelection {
-    margin-bottom: 5px;
+    background-color: #eee;
+    padding-top: 6px;
+    width: 130px;
+
 }
 
 .partnersText {
@@ -80,27 +108,52 @@ table {
 
 
 #exTab .nav-pills > li > a {
-    border-radius: 4px 4px 0 0 ;
+    border-radius: 4px 4px 0 0;
     height: 25px;
     font-style: oblique;
-    background-color: #04519a; /*#2fa4e7;*/
-    
-}
+    background-color: #04519a; /*#04519a;   #2fa4e7;*/
+} 
+
 
 #exTab .tab-content {
-    color: white;
-    background-color: #04519a; /*#2fa4e7;*/
-    padding: 5px;    
+    color: whitesmoke;
+    background-color: #2471ba;  /*#04519a;  #2fa4e7;*/
+    padding: 20px;    
     height: 450px;
 }
 
+.navbar-nav > a, .navbar-brand {
+    padding-top: 1px !important; 
+    /*padding-bottom: 0 !important;*/
+    height: 20px;
+    max-height: 24px;
+}
+
+
+.navbar .list-group-across {
+    margin-left: -55px;
+}
+.navbar .list-group-across .list-group-thing {
+    display: inline-block;
+    color: antiquewhite;
+    font-size: small;
+    font-style: italic;
+    min-height:24px !important;
+    max-height:26px !important;
+}
+
+.list-group-horizontal .list-group-thing:last-child {
+    min-width: 80%;
+}
 
 /*  footer  */
 .navbar-fixed-bottom li {
     text-align: center;
     list-style: none;
 }
-
+.nav .dropdown-toggle li a {
+    margin-right: -16px;
+}
 /* menu */
 .nav li a {  
     line-height: 20px;
@@ -112,8 +165,7 @@ table {
 
 .rightAlign li {
     list-style-type: none;
-    font-size: 14px;
-    
+    font-size: 14px;    
     text-align: right;
     margin: 0 15px 0 0;   
 }
@@ -183,3 +235,8 @@ table {
     transition: margin-left ease .25s;
 }
 
+/*   TOP NAVBAR    */
+#wrapper .navbar {
+    min-height:24px !important;
+    max-height:26px !important;
+}
