@@ -11,16 +11,17 @@ namespace BecketLee.Controllers.Web
     public class AuthController : Controller
     {
         private readonly SignInManager<BecketLeeUser> _signInManager;
-//        private readonly RoleManager<BecketLeeUser> _roleManager;
+        //private readonly RoleManager<BecketLeeUser> _roleManager;
         private readonly IHostingEnvironment _environment;
 
         public AuthController(
-            IHostingEnvironment environment,
-            SignInManager<BecketLeeUser> signInManager )
-//            ,RoleManager<BecketLeeUser> roleManager )
+            IHostingEnvironment environment
+            , SignInManager<BecketLeeUser> signInManager 
+            //, RoleManager<BecketLeeUser> roleManager 
+            )
         {
             _signInManager = signInManager;
-//            _roleManager = roleManager;
+            //_roleManager = roleManager;
             _environment = environment;
         }
 
@@ -39,14 +40,16 @@ namespace BecketLee.Controllers.Web
         public async Task<ActionResult> Login( LoginViewModel vm, string returnUrl )
         {
             if (ModelState.IsValid)
-            {
-                bool persist = !_environment.IsProduction();
-
-                var signInResult = await _signInManager.PasswordSignInAsync( vm.Username, vm.Password, persist, false );
+            {                
+                var signInResult = await _signInManager.PasswordSignInAsync( vm.Username, vm.Password, vm.PersistLogin, false );
                 if( signInResult.Succeeded )
-                {
+                {                    
                     if( returnUrl != null)
                         return Redirect( returnUrl );
+                }
+                if (signInResult.IsLockedOut)
+                {
+                    // Todo Create locked out redirect
                 }
                 else
                 {

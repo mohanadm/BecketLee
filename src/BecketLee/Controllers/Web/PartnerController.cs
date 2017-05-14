@@ -53,9 +53,15 @@ public class PartnerController : Controller
     [Authorize]
     public IActionResult EditBio( string id )
     {
+        if (!User.IsInRole("Webmaster") &&
+            !User.IsInRole("BioEditor"))
+        {
+            RedirectToAction( "Unauthorized", "App" );
+        }
         var data = _repository.GetPartnerByName( id );
-        if( data == null ) data = new PartnerViewModel();
-        return View( data );
+        if (data == null)
+            data = new PartnerViewModel();
+        return View( data );        
     }
 
     [HttpPost]

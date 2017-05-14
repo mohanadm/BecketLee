@@ -52,7 +52,9 @@
                 <li><a asp-controller="App" asp-action="Index">Cases of Interest</a></li>
                 <li><a asp-controller="App" asp-action="FirmHistory">Firm History</a></li>
                 <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
-
+                @if(User.Identity.IsAuthenticated){
+                    <li><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
+                }
             </ul>
         </div>
         <div class="affiliation">
