@@ -7,7 +7,6 @@ using BecketLee.ViewModels;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -100,17 +99,20 @@ namespace BecketLee
 
         private static void ConfigureIdentityService( IServiceCollection services )
         {
-            services.AddIdentity<BecketLeeUser, IdentityRole>( config =>
+            services.AddIdentity<BecketLeeUser, BecketLeeRole>( config =>
                 {
                     config.User.RequireUniqueEmail = true;
                     config.Password.RequiredLength = 8;
+                    config.Password.RequireLowercase = true;
+                    config.Password.RequireUppercase = true;
+                    config.Password.RequireNonAlphanumeric = true;
                     config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
                     config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents
                     {
                         OnRedirectToLogin = async ctx =>
                         {
-                            if (ctx.Request.Path.StartsWithSegments( "/api" ) &&
-                                ctx.Response.StatusCode == 200)
+                            if( ctx.Request.Path.StartsWithSegments( "/api" ) &&
+                                ctx.Response.StatusCode == 200 )
                             {
                                 ctx.Response.StatusCode = 401;
                             }
@@ -122,7 +124,9 @@ namespace BecketLee
                         }
                     };
                 } )
-                .AddEntityFrameworkStores<BecketLeeContext>();
+                .AddEntityFrameworkStores<BecketLeeContext>()
+                .AddDefaultTokenProviders();
+
         }
 
         private void ConfigureDependencyInjection( IServiceCollection services )

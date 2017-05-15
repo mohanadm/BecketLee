@@ -1,10 +1,11 @@
 ﻿using System;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
-namespace BecketLee.Models
+namespace BecketLee.ViewModels
 {
-    public class BecketLeeUser : IdentityUser
+    public class UserViewModel
     {
+        [Display(Name = "Full Name")]
         public string FullName { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
         public bool VerifiedUser { get; set; }

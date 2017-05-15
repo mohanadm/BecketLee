@@ -5,8 +5,6 @@ using BecketLee.Data;
 using BecketLee.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
@@ -43,9 +41,7 @@ public class PartnerController : Controller
     [HttpGet]
     public IActionResult Bio( string id )
     {    
-        var data = _repository.GetPartnerByName( id );
-        if (data == null)
-            data = new PartnerViewModel();
+        var data = _repository.GetPartnerByName( id ) ?? new PartnerViewModel();
         return View( data );
     }
 
@@ -56,11 +52,9 @@ public class PartnerController : Controller
         if (!User.IsInRole("Webmaster") &&
             !User.IsInRole("BioEditor"))
         {
-            RedirectToAction( "Unauthorized", "App" );
+            return RedirectToAction( "UnauthorizedView", "App" );
         }
-        var data = _repository.GetPartnerByName( id );
-        if (data == null)
-            data = new PartnerViewModel();
+        var data = _repository.GetPartnerByName( id ) ?? new PartnerViewModel();
         return View( data );        
     }
 
@@ -68,7 +62,7 @@ public class PartnerController : Controller
     public async Task<IActionResult>EditBio(PartnerViewModel model)
     {
         await UploadFile( model );
-        model = _repository.UpdatePartner( model );
+        _repository.UpdatePartner( model );
         return RedirectToAction( "Partners" );
     }
 

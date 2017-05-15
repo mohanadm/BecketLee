@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BecketLee.Models;
 using BecketLee.ViewModels;
@@ -11,18 +12,23 @@ namespace BecketLee.Controllers.Web
     public class AuthController : Controller
     {
         private readonly SignInManager<BecketLeeUser> _signInManager;
-        //private readonly RoleManager<BecketLeeUser> _roleManager;
+        private readonly RoleManager<BecketLeeRole> _roleManager;
         private readonly IHostingEnvironment _environment;
 
         public AuthController(
             IHostingEnvironment environment
             , SignInManager<BecketLeeUser> signInManager 
-            //, RoleManager<BecketLeeUser> roleManager 
+            , RoleManager<BecketLeeRole> roleManager 
             )
         {
             _signInManager = signInManager;
-            //_roleManager = roleManager;
+            _roleManager = roleManager;
             _environment = environment;
+        }
+
+        public IActionResult Index()
+        {
+            return View();
         }
 
         public IActionResult Login(string returnUrl)
@@ -66,18 +72,8 @@ namespace BecketLee.Controllers.Web
 
             return RedirectToAction( "Index", "App" );
         }
+        
 
-//        public IActionResult Roles()
-//        {
-//            if( !User.IsInRole( "Administrator" ) )
-//            {
-//                RedirectToAction( "Index", "App" );
-//            }
-//
-//            var roles = _roleManager.Roles.ToList();
-//            return View( roles );
-//
-//        }
 
 
     }

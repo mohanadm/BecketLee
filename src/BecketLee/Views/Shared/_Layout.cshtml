@@ -81,27 +81,40 @@
 
     </div>
 
-    <div id="wrapper">
-        <nav class="navbar navbar-inverse">
+<div id="wrapper">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
             <div id="navbarBrand" class="navbar navbar-brand navbar-inverse" hidden>
-                <a asp-action="index" asp-controller="App" >Becket & Lee LLP</a>
+                <a asp-action="index" asp-controller="App">Becket & Lee LLP</a>
             </div>
-            <div class="container-fluid">
-                <ul class="list-group-across">
-                    <li class="list-group-thing">
-                        <button id="sidebarToggle" class="btn btn-xs btn-primary">
-                            <i class="fa fa-chevron-left"></i>
-                        </button>
+            <ul class="nav navbar-nav navbar-left">
+                <li class="list-group-thing list-group-left">
+                    <button id="sidebarToggle" class="btn btn-xs btn-primary">
+                        <i class="fa fa-chevron-left"></i>
+                    </button>
+                </li>
+            </ul>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <ul class="nav navbar-nav navbar-right ">
+                    <li class="list-group-thing list-group-right">
+                        <label>-- &nbsp;&nbsp;&nbsp;Welcome: @User.Identity.Name</label>
                     </li>
                 </ul>
-            </div>
-        </nav>
-        
+            }
+            <ul class="nav navbar-nav navbar-right">
+                <li class="list-group-thing list-group-right">
+                    <label>Your Proven Partner in Bankruptcy Management</label>
+                </li>
+            </ul>
 
-        <div id="main" class="container-fluid">
-                @RenderBody()
         </div>
+    </nav>
+
+    <div id="main" class="container-fluid">
+        @RenderBody()
     </div>
+</div>
 
 
 

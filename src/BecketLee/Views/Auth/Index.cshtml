@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Management";
+}
+
+@if( !User.Identity.IsAuthenticated )
+{
+    // redirect to unauthorized;
+}
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        
+        <ul>
+            @if( User.IsInRole( "Webmaster" ) ||
+                 User.IsInRole( "BioEditor" ) )
+            {
+                <li><a asp-action="EditBio" asp-controller="Partner">New Bio</a></li>
+            }
+            @if (User.IsInRole( "Webmaster" ) ||
+                 User.IsInRole( "EventEditor" ))
+            {
+                <li><a asp-action="EditEvent" asp-controller="Event">New Event</a></li>
+            }
+            @if( User.IsInRole( "Webmaster" ) )
+            {
+                <li><a asp-action="Roles" asp-controller="Auth">Add/Edit Roles</a></li>
+                <li><a asp-action="UserRoles" asp-controller="Auth">Edit User Roles</a></li>
+                <li><a asp-action="ManageEditor" asp-controller="Auth">Manage Web Editors</a></li>
+            }            
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
+            }
+        </ul>
+
+    </div>    
+
+</div>
+
+
+
+

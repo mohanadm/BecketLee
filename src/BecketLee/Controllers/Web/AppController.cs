@@ -38,7 +38,7 @@ namespace BecketLee.Controllers.Web
         }
 
 
-        public IActionResult Unauthorized()
+        public IActionResult UnauthorizedView()
         {
             return View();
         }

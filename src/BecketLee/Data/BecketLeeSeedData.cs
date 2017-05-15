@@ -10,12 +10,12 @@ namespace BecketLee.Data
     {
         protected BecketLeeContext _context;
         private readonly UserManager<BecketLeeUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly RoleManager<BecketLeeRole> _roleManager;
 
         public BecketLeeSeedData(
             BecketLeeContext context, 
             UserManager<BecketLeeUser> userManager,
-            RoleManager<IdentityRole> roleManager )
+            RoleManager<BecketLeeRole> roleManager )
         {
             _context = context;
             _userManager = userManager;
@@ -53,6 +53,48 @@ namespace BecketLee.Data
             {                
                 await AddToAllRoles( webUser );
             }
+
+            var webBioUser = await _userManager.FindByNameAsync( "BioEditor" );
+            if (webBioUser == null)
+            {
+                var bioEditor = new BecketLeeUser()
+                {
+                    UserName = "BioEditor",
+                    Email = "bioEditor@becket-lee.com",
+                    CreatedDate = DateTime.UtcNow
+                };
+
+                var userCheck = await _userManager.CreateAsync( bioEditor, "P@ssw0rd!" );
+                if( userCheck.Succeeded )
+                {
+                    var roles = new[] { "BioEditor" };
+                    await _userManager.AddToRolesAsync( bioEditor, roles );
+                }
+                else
+                    throw new Exception( "Unable to create default bio user." );
+            }
+
+            var webEventUser = await _userManager.FindByNameAsync( "EventEditor" );
+            if (webEventUser == null)
+            {
+                var eventEditor = new BecketLeeUser()
+                {
+                    UserName = "EventEditor",
+                    Email = "eventEditor@becket-lee.com",
+                    CreatedDate = DateTime.UtcNow
+                };
+
+                var userCheck = await _userManager.CreateAsync( eventEditor, "P@ssw0rd!" );
+                if( userCheck.Succeeded )
+                {
+                    var roles = new[] { "EventEditor" };
+                    await _userManager.AddToRolesAsync( eventEditor, roles );
+                }
+                else
+                    throw new Exception( "Unable to create default event user." );
+            }
+
+
         }
 
         private async Task AddToAllRoles( BecketLeeUser webMaster )
@@ -66,22 +108,25 @@ namespace BecketLee.Data
         {
             if( !await _roleManager.RoleExistsAsync( "Administrator" ) )
             {
-                var role = new IdentityRole();
+                var role = new BecketLeeRole();
                 role.Name = "Administrator";
+                role.Description = "The magic key to all things.";
                 await _roleManager.CreateAsync( role );
             }
 
             if (!await _roleManager.RoleExistsAsync( "BioEditor" ))
             {
-                var role = new IdentityRole();
+                var role = new BecketLeeRole();
                 role.Name = "BioEditor";
+                role.Description = "Allows editing on partner controller.";
                 await _roleManager.CreateAsync( role );
             }
 
             if (!await _roleManager.RoleExistsAsync( "EventEditor" ))
             {
-                var role = new IdentityRole();
+                var role = new BecketLeeRole();
                 role.Name = "EventEditor";
+                role.Description = "Allows editing on event controller.";
                 await _roleManager.CreateAsync( role );
             }
 

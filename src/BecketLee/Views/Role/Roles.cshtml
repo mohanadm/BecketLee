@@ -1,0 +1,58 @@
+﻿@model IEnumerable<BecketLee.ViewModels.RolesViewModel>
+@{
+    ViewBag.Title = "Roles";
+}
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>    
+    <script src="~/js/applicationRole.js" asp-append-version="true"></script>
+}
+
+
+<div class="top-buffer"></div>
+<div class="panel panel-primary">
+    <div class="panel-heading panel-head"><h3>Becket & Lee Roles</h3></div>
+    <div class="panel-body">
+        <div class="btn-group">
+            <a id="createRoleModal" data-toggle="modal" asp-action="AddEditRole" asp-controller="Role" data-target="#modal-action-application-role" class="btn btn-primary">
+                <i class="fa fa-plus"></i> Add Role
+            </a>
+        </div>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>Role</th>
+                    <th>Description</th>
+                    <th>Users</th>
+                    <th>Created</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    @foreach (var item in Model)
+                    {
+                        <td>@item.RoleName</td>
+                        <td>@item.Description</td>
+                        <td>@item.NumberOfUsers</td>
+                        <td>@item.CreatedDate</td>
+                        <td>
+                            <a id="editRoleModal" asp-action="AddEditRole" asp-controller="Role" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-application-role" class="btn btn-info">
+                                <i class="fa fa-pencil"></i>Edit
+                            </a>
+                            @if (item.NumberOfUsers == 0)
+                            {
+                                <a id="deleteRoleModal" data-toggle="modal" asp-action="DeleteRole" asp-controller="Role" asp-route-id="@item.Id" data-target="#modal-action-application-role" class="btn btn-danger">
+                                    <i class="fa fa-trash"></i>Delete
+                                </a>
+                            }
+
+                        </td>
+                    }
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
