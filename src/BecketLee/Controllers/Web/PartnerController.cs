@@ -41,8 +41,7 @@ public class PartnerController : Controller
     [HttpGet]
     public IActionResult Bio( string id )
     {    
-        var data = _repository.GetPartnerByName( id ) ?? new PartnerViewModel();
-        return View( data );
+        return View( _repository.GetPartnerByName( id ) ?? new PartnerViewModel() );
     }
 
     [HttpGet]
@@ -54,8 +53,7 @@ public class PartnerController : Controller
         {
             return RedirectToAction( "UnauthorizedView", "App" );
         }
-        var data = _repository.GetPartnerByName( id ) ?? new PartnerViewModel();
-        return View( data );        
+        return View( _repository.GetPartnerByName( id ) ?? new PartnerViewModel() );        
     }
 
     [HttpPost]
@@ -63,7 +61,7 @@ public class PartnerController : Controller
     {
         await UploadFile( model );
         _repository.UpdatePartner( model );
-        return RedirectToAction( "Partners" );
+        return RedirectToAction( "Partners", "Partner" );
     }
 
 

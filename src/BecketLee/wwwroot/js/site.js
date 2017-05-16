@@ -1,5 +1,6 @@
 ﻿// ********************** site.js ************************//
-(function() {
+(function () {
+    
 
     var $sidebarAndWrapper = $("#sidebar, #wrapper, #header, #disclaimerLink");
     var $icon = $("#sidebarToggle i.fa");

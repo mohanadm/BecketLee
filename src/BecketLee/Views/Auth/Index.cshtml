@@ -8,7 +8,7 @@
 }
 
 <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-sm-6 col-sm-offset-6 col-md-6 col-md-offset-3">
         
         <ul>
             @if( User.IsInRole( "Webmaster" ) ||
@@ -23,7 +23,7 @@
             }
             @if( User.IsInRole( "Webmaster" ) )
             {
-                <li><a asp-action="Roles" asp-controller="Auth">Add/Edit Roles</a></li>
+                <li><a asp-action="Roles" asp-controller="Auth">Edit Roles</a></li>
                 <li><a asp-action="UserRoles" asp-controller="Auth">Edit User Roles</a></li>
                 <li><a asp-action="ManageEditor" asp-controller="Auth">Manage Web Editors</a></li>
             }            

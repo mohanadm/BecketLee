@@ -21,7 +21,7 @@ namespace BecketLee.Controllers.Web
         {
             if (!User.IsInRole( "Administrator" ))
             {
-                RedirectToAction( "Index", "App" );
+                RedirectToAction( "UnauthorizedView", "App" );
             }
             var model = new List<RolesViewModel>();
             model = _roleManager.Roles.Select( r => new RolesViewModel

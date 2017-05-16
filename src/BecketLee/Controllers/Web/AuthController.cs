@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using BecketLee.Models;
 using BecketLee.ViewModels;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,22 +9,22 @@ namespace BecketLee.Controllers.Web
     public class AuthController : Controller
     {
         private readonly SignInManager<BecketLeeUser> _signInManager;
-        private readonly RoleManager<BecketLeeRole> _roleManager;
-        private readonly IHostingEnvironment _environment;
 
-        public AuthController(
-            IHostingEnvironment environment
-            , SignInManager<BecketLeeUser> signInManager 
-            , RoleManager<BecketLeeRole> roleManager 
-            )
+        public AuthController(SignInManager<BecketLeeUser> signInManager )
         {
             _signInManager = signInManager;
-            _roleManager = roleManager;
-            _environment = environment;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string returnUrl)
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (returnUrl != null)
+                    Redirect( returnUrl );
+            }        
+            if (!User.Identity.IsAuthenticated)
+                return RedirectToAction("Login", "Auth" );
+
             return View();
         }
 
