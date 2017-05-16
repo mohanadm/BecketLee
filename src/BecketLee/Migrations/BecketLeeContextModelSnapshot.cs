@@ -13,10 +13,10 @@ namespace BecketLee.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.1.1")
+                .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("BecketLee.Models.BecketLeeRole", b =>
+            modelBuilder.Entity("BecketLee.Models.ApplicationRole", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -44,7 +44,7 @@ namespace BecketLee.Migrations
                     b.ToTable("AspNetRoles");
                 });
 
-            modelBuilder.Entity("BecketLee.Models.BecketLeeUser", b =>
+            modelBuilder.Entity("BecketLee.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -60,8 +60,6 @@ namespace BecketLee.Migrations
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
-
-                    b.Property<string>("FullName");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -85,8 +83,6 @@ namespace BecketLee.Migrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
-
-                    b.Property<bool>("VerifiedUser");
 
                     b.HasKey("Id");
 
@@ -254,7 +250,7 @@ namespace BecketLee.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
-                    b.HasOne("BecketLee.Models.BecketLeeRole")
+                    b.HasOne("BecketLee.Models.ApplicationRole")
                         .WithMany("Claims")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -262,7 +258,7 @@ namespace BecketLee.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("BecketLee.Models.BecketLeeUser")
+                    b.HasOne("BecketLee.Models.ApplicationUser")
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -270,7 +266,7 @@ namespace BecketLee.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("BecketLee.Models.BecketLeeUser")
+                    b.HasOne("BecketLee.Models.ApplicationUser")
                         .WithMany("Logins")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -278,12 +274,12 @@ namespace BecketLee.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserRole<string>", b =>
                 {
-                    b.HasOne("BecketLee.Models.BecketLeeRole")
+                    b.HasOne("BecketLee.Models.ApplicationRole")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BecketLee.Models.BecketLeeUser")
+                    b.HasOne("BecketLee.Models.ApplicationUser")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
