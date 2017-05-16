@@ -1,21 +1,21 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using BecketLee.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace BecketLee.Data
 {
     public class BecketLeeSeedData
     {
         protected BecketLeeContext _context;
-        private readonly UserManager<BecketLeeUser> _userManager;
-        private readonly RoleManager<BecketLeeRole> _roleManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<ApplicationRole> _roleManager;
 
         public BecketLeeSeedData(
             BecketLeeContext context, 
-            UserManager<BecketLeeUser> userManager,
-            RoleManager<BecketLeeRole> roleManager )
+            UserManager<ApplicationUser> userManager,
+            RoleManager<ApplicationRole> roleManager )
         {
             _context = context;
             _userManager = userManager;
@@ -36,7 +36,7 @@ namespace BecketLee.Data
             var webUser = await _userManager.FindByNameAsync( "Webmaster" );
             if( webUser == null )
             {
-                var webMaster = new BecketLeeUser()
+                var webMaster = new ApplicationUser()
                 {
                     UserName = "Webmaster",
                     Email = "kgabrys@becket-lee.com",
@@ -44,20 +44,34 @@ namespace BecketLee.Data
                 };
 
                 var userCheck = await _userManager.CreateAsync( webMaster, "P@ssw0rd!" );
-                if (userCheck.Succeeded)
-                    await AddToAllRoles( webMaster );
+                if( userCheck.Succeeded )
+                {
+                    var roles = new[] { "Administrator" };
+                    await _userManager.AddToRolesAsync( webMaster, roles );
+                }                
                 else
                     throw new Exception("Unable to create default user.");
             }
             else
-            {                
-                await AddToAllRoles( webUser );
+            {
+                string existingRole = _userManager.GetRolesAsync( webUser ).Result.Single();
+                
+                if ("Administrator" != existingRole )
+                {
+                    if( webUser.Roles.Count > 0 )
+                    {
+                        var allroles = new[] {"Administrator", "BioEditor", "EventEditor"};
+                        await _userManager.RemoveFromRolesAsync( webUser, allroles );
+                    }
+                    var roles = new[] {"Administrator"};
+                    await _userManager.AddToRolesAsync( webUser, roles );
+                }
             }
 
             var webBioUser = await _userManager.FindByNameAsync( "BioEditor" );
             if (webBioUser == null)
             {
-                var bioEditor = new BecketLeeUser()
+                var bioEditor = new ApplicationUser()
                 {
                     UserName = "BioEditor",
                     Email = "bioEditor@becket-lee.com",
@@ -77,7 +91,7 @@ namespace BecketLee.Data
             var webEventUser = await _userManager.FindByNameAsync( "EventEditor" );
             if (webEventUser == null)
             {
-                var eventEditor = new BecketLeeUser()
+                var eventEditor = new ApplicationUser()
                 {
                     UserName = "EventEditor",
                     Email = "eventEditor@becket-lee.com",
@@ -97,18 +111,12 @@ namespace BecketLee.Data
 
         }
 
-        private async Task AddToAllRoles( BecketLeeUser webMaster )
-        {
-            var roles = new[] { "Administrator", "BioEditor", "EventEditor" };
-            await _userManager.AddToRolesAsync( webMaster, roles );
-        }
-
 
         private async Task EnsureRoleData()
         {
             if( !await _roleManager.RoleExistsAsync( "Administrator" ) )
             {
-                var role = new BecketLeeRole();
+                var role = new ApplicationRole();
                 role.Name = "Administrator";
                 role.Description = "The magic key to all things.";
                 await _roleManager.CreateAsync( role );
@@ -116,7 +124,7 @@ namespace BecketLee.Data
 
             if (!await _roleManager.RoleExistsAsync( "BioEditor" ))
             {
-                var role = new BecketLeeRole();
+                var role = new ApplicationRole();
                 role.Name = "BioEditor";
                 role.Description = "Allows editing on partner controller.";
                 await _roleManager.CreateAsync( role );
@@ -124,7 +132,7 @@ namespace BecketLee.Data
 
             if (!await _roleManager.RoleExistsAsync( "EventEditor" ))
             {
-                var role = new BecketLeeRole();
+                var role = new ApplicationRole();
                 role.Name = "EventEditor";
                 role.Description = "Allows editing on event controller.";
                 await _roleManager.CreateAsync( role );

@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using BecketLee.Models;
 using BecketLee.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,23 +9,17 @@ namespace BecketLee.Controllers.Web
 {
     public class AuthController : Controller
     {
-        private readonly SignInManager<BecketLeeUser> _signInManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AuthController(SignInManager<BecketLeeUser> signInManager )
+        public AuthController(SignInManager<ApplicationUser> signInManager )
         {
             _signInManager = signInManager;
         }
 
-        public IActionResult Index(string returnUrl)
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                if (returnUrl != null)
-                    Redirect( returnUrl );
-            }        
-            if (!User.Identity.IsAuthenticated)
-                return RedirectToAction("Login", "Auth" );
-
+        [HttpGet]
+        [Authorize]
+        public IActionResult Index()
+        {       
             return View();
         }
 

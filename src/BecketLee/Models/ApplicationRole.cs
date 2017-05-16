@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace BecketLee.Models
 {
-    public class BecketLeeRole : IdentityRole
+    public class ApplicationRole : IdentityRole
     {
         
         public string Description { get; set; }

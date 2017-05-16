@@ -99,7 +99,7 @@ namespace BecketLee
 
         private static void ConfigureIdentityService( IServiceCollection services )
         {
-            services.AddIdentity<BecketLeeUser, BecketLeeRole>( config =>
+            services.AddIdentity<ApplicationUser, ApplicationRole>( config =>
                 {
                     config.User.RequireUniqueEmail = true;
                     config.Password.RequiredLength = 8;

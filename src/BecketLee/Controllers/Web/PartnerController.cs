@@ -24,7 +24,7 @@ public class PartnerController : Controller
         _logger = logger;
     }
 
-    public IActionResult Partners()
+    public IActionResult Index()
     {
         try
         {
@@ -61,7 +61,7 @@ public class PartnerController : Controller
     {
         await UploadFile( model );
         _repository.UpdatePartner( model );
-        return RedirectToAction( "Partners", "Partner" );
+        return RedirectToAction( "Index", "Partner" );
     }
 
 

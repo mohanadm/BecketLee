@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace BecketLee.Data
 {
-    public class BecketLeeContext : IdentityDbContext<BecketLeeUser, BecketLeeRole, string>
+    public class BecketLeeContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         private IConfigurationRoot _config;
 

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BecketLee.ViewModels.UserViewModel>
+@using BecketLee.Code
+@using BecketLee.Models
+
+@section scripts
+{
+    <script src="~/js/applicationUser.js" asp-append-version="true"></script>
+}
+
+<div class="top-buffer"></div>
+<div class="panel panel-info">
+    <div class="panel-heading panel-head ">Becket & Lee Users</div>
+    <div class="panel-body">
+        <div class="btn-group">
+            <a id="createEditUserModal" asp-action="AddUser" asp-controller="Users" data-toggle="modal" data-target="#modal-action-user" class="btn btn-info">
+                <i class="fa fa-plus"></i>  Add User
+            </a>
+
+        </div>
+       
+        <div class="top-buffer"></div>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.UserName</td>
+                    <td>@item.Email</td>
+                    <td>
+                        <a id="editUserModal" asp-action="EditUser" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-user"
+                           class="btn btn-info">
+                            <i class="fa fa-pencil"></i>  Edit
+                        </a>
+                        <a id="deleteUserModal" asp-action="DeleteUser" asp-route-id="@item.Id" data-target="#modal-action-user" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>  Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+        <div class="btn-group btn-group-justified">
+            <a asp-action="Index" asp-controller="Auth" class="btn btn-info">
+                <i class="fa fa-gavel"></i>  Management
+            </a>
+
+        </div>
+    </div>
+</div>
+
+@Html.Partial( "_Modal", new BootstrapModel { ID = "modal-action-user", AreaLabeledId = "modal-action-user-label", Size = ModalSize.Medium } )
+

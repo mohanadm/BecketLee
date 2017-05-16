@@ -1,10 +1,10 @@
-﻿// ********************** applicationRole.js ************************//
+﻿// ********************** applicationUser.js ************************//
 (function ($) {
-    function ApplicationRole() {
+    function ApplicationUser() {
         var $this = this;
 
         function initilizeModel() {
-            $("#modal-action-application-role").on('loaded.bs.modal', function (e) {
+            $("#modal-action-user").on('loaded.bs.modal', function (e) {
 
             }).on('hidden.bs.modal', function (e) {
                 $(this).removeData('bs.modal');
@@ -16,7 +16,7 @@
     }
 
     $(function() {
-        var self = new ApplicationRole();
+        var self = new ApplicationUser();
         self.init();
     });
 })(jQuery);

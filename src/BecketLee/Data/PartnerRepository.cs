@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using BecketLee.Models;
 using BecketLee.ViewModels;
+using MailKit.Search;
 
 namespace BecketLee.Data
 {
@@ -25,7 +26,7 @@ namespace BecketLee.Data
                     BiographyHtml = WebUtility.HtmlDecode( p.BiographyHtml ),
                     FileName = p.FileName,
                     FileUrl = p.FileUrl
-                } );
+                } ).OrderBy( p => p.PartnerId );
         }
 
         public PartnerViewModel GetPartnerByName( string name )
