@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using BecketLee.Models;
 using BecketLee.ViewModels;
 using MailKit.Search;
@@ -38,13 +39,6 @@ namespace BecketLee.Data
             return data;
         }
 
-        public void RemovePartner( PartnerViewModel model )
-        {
-            var partner = _context.PartnerBiographies.FirstOrDefault( p => p.PartnerId == model.PartnerId );
-            _context.Remove( partner );
-            _context.SaveChanges();
-        }
-
         public PartnerViewModel UpdatePartner( PartnerViewModel model )
         {
             PartnerBiography partner = new PartnerBiography();
@@ -74,5 +68,11 @@ namespace BecketLee.Data
             return newModel;
         }
 
+        public void DeletePartnerBio( PartnerViewModel partnerBio )
+        {
+            var partner = _context.PartnerBiographies.FirstOrDefault( p => p.PartnerId == partnerBio.PartnerId );
+            _context.Remove( partner );
+            _context.SaveChanges();
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿// ********************** applicationUser.js ************************//
 (function ($) {
-    function ApplicationUser() {
+    function applicationUser() {
         var $this = this;
 
         function initilizeModel() {
@@ -10,13 +10,14 @@
                 $(this).removeData('bs.modal');
             });
         }
-        $this.init = function () {
+
+        $this.init = function() {
             initilizeModel();
-        }
+        };
     }
 
     $(function() {
-        var self = new ApplicationUser();
+        var self = new applicationUser();
         self.init();
     });
 })(jQuery);

@@ -9,5 +9,6 @@ namespace BecketLee.Data
         PartnerViewModel GetPartnerByName( string name );
         PartnerViewModel UpdatePartner( PartnerViewModel model );
 
+        void DeletePartnerBio( PartnerViewModel partnerBio );
     }
 }

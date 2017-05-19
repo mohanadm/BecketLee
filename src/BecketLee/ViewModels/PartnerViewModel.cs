@@ -15,6 +15,7 @@ namespace BecketLee.ViewModels
         public string PartnerName { get; set; }
 
         [Required]
+        [Display(Name = "Partner Biography")]
         public string BiographyHtml { get; set; }
 
         public IFormFile File { get; set; }

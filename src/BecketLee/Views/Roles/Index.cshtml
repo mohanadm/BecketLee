@@ -13,16 +13,16 @@
 
 <div class="top-buffer"></div>
 
-    <div class="panel panel-info">
-    <div class="panel-heading panel-head ">Becket & Lee Roles</div>
+    <div class="panel panel-default">
+        <div class="panel-heading panel-head text-center"><h3>Becket & Lee Roles</h3></div>
     <div class="panel-body">
         <div class="btn-group">
-            <a id="createRoleModal" data-toggle="modal" asp-action="AddEditRole" asp-controller="Roles" data-target="#modal-action-application-role" class="btn btn-info">
-                <i class="fa fa-plus"></i>&nbsp;&nbsp;Add Role
+            <a id="createRoleModal" data-toggle="modal" asp-action="AddEditRole" asp-controller="Roles" data-target="#modal-action-application-role" class="btn btn-sm btn-info">
+                <i class="fa fa-plus"></i>  Add Role
             </a>
         </div>
         <div class="btn-group">
-            <a asp-action="Index" asp-controller="Auth" class="btn btn-info">
+            <a asp-action="Index" asp-controller="Auth" class="btn btn-sm btn-info">
                 <i class="fa fa-gavel"></i>  Management
             </a>
 
@@ -47,12 +47,12 @@
                         <td>@item.NumberOfUsers</td>
                         <td>@item.CreatedDate.ToString( "d" )</td>
                         <td>
-                            <a id="editRoleModal" asp-action="AddEditRole" asp-controller="Roles" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-application-role" class="btn btn-info">
+                            <a id="editRoleModal" asp-action="AddEditRole" asp-controller="Roles" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-application-role" class="btn btn-sm btn-info">
                                 <i class="fa fa-pencil"></i>&nbsp;&nbsp;Edit
                             </a>
                             @if (item.NumberOfUsers == 0)
                             {
-                                <a id="deleteRoleModal" asp-action="DeleteRole" asp-controller="Roles" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-application-role" class="btn btn-danger">
+                                <a id="deleteRoleModal" asp-action="DeleteRole" asp-controller="Roles" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-application-role" class="btn btn-sm btn-danger">
                                     <i class="fa fa-trash"></i>&nbsp;&nbsp;Delete
                                 </a>
                             }

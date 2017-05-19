@@ -4,9 +4,9 @@
     <title>Becket & Lee LLP - @ViewBag.Title</title>
     <meta charset="utf-8" />
     <meta id="Meta1" content="attorney, Attorney, ATtorNEy, ATTorney, ATTOrney, ATTORney, ATTORNey, ATTORNEy, ATTORNEY, BECKET &amp; LEE, Becket &amp; Lee, BEcket &amp; Lee, BECket &amp; Lee, BECKet &amp; Lee, BECKEt &amp; Lee, BECKET &amp; Lee, BECKET &amp; LEe, becket &amp; lee, BECKET LEE, Becket Lee, BEcket Lee, BECket Lee, BECKet Lee, BECKEt Lee, BECKET Lee, BECKET LEe, becket lee,    BECKETLEE, BecketLee, BEcketLee, BECketLee, BECKetLee, BECKEtLee, BECKETLee, BECKETLEe, becketlee, bECKETLEE, beCKETLEE, becKETLEE, beckETLEE, beckeTLEE, becketLEE, becketlEE, becketleE, bEcket &amp; lee, beCket &amp; lee, becKet &amp; lee, beckEt &amp; lee, beckeT &amp; lee, becket &amp; Lee, becket &amp; lEe, becket &amp; leE, BEcket &amp; lee, bECket &amp; lee, beCKet &amp; lee, becKEt &amp; lee, beckET &amp; lee, beckeT &amp; Lee, becket &amp; LEe, becket &amp; lEE, BEKket &amp; lee, bECKet &amp; lee, beCKEt &amp; lee, becKET &amp; lee, beckET &amp; Lee, beckeT &amp; LEe, becket &amp; LEE, BECKet &amp; lee, bECKEt &amp; lee, beCKET &amp; lee, becKET &amp; Lee, beckET &amp; LEe, beckeT &amp; LEE, BECKEt &amp; lee, bECKET &amp; lee, beCKET &amp; Lee, becKET &amp; LEe, beckET &amp; LEE, bankruptcy, Bankruptcy, BAnkruptcy, BANkruptcy, BANKruptcy, BANKRuptcy, BANKRUptcy, BANKRUPtcy, BANKRUPTcy, BANKRUPTCy, BANKRUPTCY, BAnkruptcy, bANkruptcy, baNKruptcy, banKRuptcy, bankRUptcy, bankrUPtcy, bankruPTcy, bankrupTCy, bankruptCY, BANkruptcy, bANKruptcy, baNKRuptcy, banKRUptcy, bankRUPtcy, bankrUPTcy, bankruPTCy, bankrupTCY, BANKruptcy, bANKRuptcy, baNKRUptcy, banKRUPtcy, bankRUPTcy, bankrUPTCy, bankruPTCY, Thomas Lee, Tom Lee, Alane Becket, Mickey Becket, William Becket, John Sheehan, Sandra Curtin" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/lib/bootswatch/cerulean/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootswatch/cerulean/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 
@@ -28,31 +28,32 @@
 
             <ul class="nav navbar-right">
                 <li id="active"><a asp-controller="App" asp-action="Index">Home</a></li>
-                @*<li><a asp-controller="Partner" asp-action="Partners">Partners</a></li>*@
                 <li class="dropdown">
                     <div>
-                        <a asp-action="Index" asp-controller="Partner" style="margin-left: 58px;">Partners</a>
+                        <a asp-action="Index" asp-controller="Partners" style="margin-left: 58px;">Partners</a>
                         <a class="dropdown-toggle" data-toggle="dropdown" role="link"
                            aria-haspopup="true" aria-expanded="False" style="margin-left: -16px;"><span class="caret"></span></a>
 
                         <ul class="dropdown-menu dropdown-menu-right">
-                            <li><a asp-controller="Partner" asp-action="Bio" asp-route-id="Alane A Becket">Alane A Becket</a></li>
-                            <li><a asp-controller="Partner" asp-action="Bio" asp-route-id="Thomas A Lee III">Thomas A Lee</a></li>
-                            <li><a asp-controller="Partner" asp-action="Bio" asp-route-id="Sandra K Curtin">Sandra K Curtin</a></li>
-                            <li><a asp-controller="Partner" asp-action="Bio" asp-route-id="William J Becket">William J Becket</a></li>
-                            <li><a asp-controller="Partner" asp-action="Bio" asp-route-id="John D Sheehan">John D Sheehan</a></li>
-                            <li><a asp-controller="Partner" asp-action="Bio" asp-route-id="Gilbert B Weisman">Gilbert B Weisman</a></li>
+                            <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Alane A Becket">Alane A Becket</a></li>
+                            <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Thomas A Lee III">Thomas A Lee</a></li>
+                            <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Sandra K Curtin">Sandra K Curtin</a></li>
+                            <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="William J Becket">William J Becket</a></li>
+                            <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="John D Sheehan">John D Sheehan</a></li>
+                            <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Gilbert B Weisman">Gilbert B Weisman</a></li>
                         </ul>
                     </div>
                 </li>
                 <li><a asp-controller="App" asp-action="OurServices">Services</a></li>
-                <li><a asp-controller="Event" asp-action="News">News</a></li>
-                <li><a asp-controller="Event" asp-action="Events">Events</a></li>
-                <li><a asp-controller="Event" asp-action="Pubs">Publications</a></li>
+                <li><a asp-controller="Events" asp-action="News">News</a></li>
+                <li><a asp-controller="Events" asp-action="Events">Events</a></li>
+                <li><a asp-controller="Events" asp-action="Pubs">Publications</a></li>
                 <li><a asp-controller="App" asp-action="Index">Cases of Interest</a></li>
                 <li><a asp-controller="App" asp-action="FirmHistory">Firm History</a></li>
                 <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
-                @if(User.Identity.IsAuthenticated){
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li><a asp-controller="Auth" asp-action="Index">Manage Website</a></li>
                     <li><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
                 }
             </ul>
@@ -81,40 +82,40 @@
 
     </div>
 
-<div id="wrapper">
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div id="navbarBrand" class="navbar navbar-brand navbar-inverse" hidden>
-                <a asp-action="index" asp-controller="App">Becket & Lee LLP</a>
-            </div>
-            <ul class="nav navbar-nav navbar-left">
-                <li class="list-group-thing list-group-left">
-                    <button id="sidebarToggle" class="btn btn-xs btn-primary">
-                        <i class="fa fa-chevron-left"></i>
-                    </button>
-                </li>
-            </ul>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <ul class="nav navbar-nav navbar-right ">
-                    <li class="list-group-thing list-group-right">
-                        <label>-- &nbsp;&nbsp;&nbsp;Welcome: @User.Identity.Name</label>
+    <div id="wrapper">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div id="navbarBrand" class="navbar navbar-brand navbar-inverse" hidden>
+                    <a asp-action="index" asp-controller="App">Becket & Lee LLP</a>
+                </div>
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="list-group-thing list-group-left">
+                        <button id="sidebarToggle" class="btn btn-xs btn-primary">
+                            <i class="fa fa-chevron-left"></i>
+                        </button>
                     </li>
                 </ul>
-            }
-            <ul class="nav navbar-nav navbar-right">
-                <li class="list-group-thing list-group-right">
-                    <label>Your Proven Partner in Bankruptcy Management</label>
-                </li>
-            </ul>
+                @if (User.Identity.IsAuthenticated)
+            {
+                    <ul class="nav navbar-nav navbar-right ">
+                        <li class="list-group-thing list-group-right">
+                            <label>-- &nbsp;&nbsp;&nbsp;Welcome: @User.Identity.Name</label>
+                        </li>
+                    </ul>
+                }
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="list-group-thing list-group-right">
+                        <label>Your Proven Partner in Bankruptcy Management</label>
+                    </li>
+                </ul>
 
+            </div>
+        </nav>
+
+        <div id="main" class="container-fluid">
+            @RenderBody()
         </div>
-    </nav>
-
-    <div id="main" class="container-fluid">
-        @RenderBody()
     </div>
-</div>
 
 
 
@@ -130,9 +131,9 @@
 
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
     @RenderSection( "scripts", false )
     <script type="text/javascript" src="~/js/site.js"></script>
 
 </body>
 </html>
-

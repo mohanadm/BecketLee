@@ -1,0 +1,62 @@
+﻿@using BecketLee.Code
+@using BecketLee.Models
+@using BecketLee.ViewModels
+@model IEnumerable<PartnerViewModel>
+
+@section scripts{
+    <script src="~/js/applicationBio.js"  asp-append-version="true" ></script>
+}
+
+<div class="top-buffer"></div>
+<div class="col-md-6 col-md-offset-3">
+
+
+    <div class="panel panel-default">
+        <div class="panel-heading panel-head text-center"><h3>Manage Partner Biographies</h3></div>
+        <div class="panel-body">
+
+            <div class="btn-group">
+                <a id="createEditUserModal" asp-action="EditPartnerBio" asp-controller="Partners" class="btn btn-sm btn-info">
+                    <i class="fa fa-plus"></i>  Add New Partner
+                </a>
+
+            </div>
+            <div class="btn-group ">
+                <a asp-action="Index" asp-controller="Auth" class="btn btn-sm btn-info">
+                    <i class="fa fa-gavel"></i>  Management
+                </a>
+
+            </div>
+            <div class="top-buffer"></div>
+            <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th class="text-right">Avatar</th>
+                        <th class="text-center " colspan="2">Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-right"><img src="@item.FileUrl" alt="@item.PartnerName" class="partnerEditAvatar" asp-append-version="true" /></td>
+                            <td>
+
+                                <a asp-action="EditPartnerBio" asp-route-id="@item.PartnerName" class="btn btn-sm btn-info btn-group-justified">
+                                    <i class="fa fa-pencil"></i> @item.PartnerName
+                                </a>
+                            </td>
+                            <td>
+                                <a id="deletePartnerBio" asp-action="DeletePartnerBio" asp-controller="Partners" asp-route-id="@item.PartnerId" data-toggle="modal" data-target="#modal-action-bio" class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash"> </i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+@Html.Partial( "_Modal", new BootstrapModel { ID = "modal-action-bio", AreaLabeledId = "modal-action-bio-label", Size = ModalSize.Medium } )

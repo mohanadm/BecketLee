@@ -30,6 +30,10 @@ table {
     max-width: 170px;
     padding: 8px;  
 }
+
+.datePicker {
+    margin: auto;
+}
 .eventText {
     font-size: smaller;
     margin: -5px;
@@ -59,6 +63,12 @@ table {
     height: 64px;
     margin: auto;  
 }
+
+.partnerEditAvatar {
+    height: 32px;
+    margin: auto;
+}
+
 .partnerDiv {
     text-align: center;
     margin: auto;      

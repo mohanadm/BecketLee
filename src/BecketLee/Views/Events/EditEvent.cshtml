@@ -1,0 +1,78 @@
+﻿@using BecketLee.ViewModels
+@model EventViewModel
+@{
+    ViewBag.Title = "Edit Event";
+}
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>    
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="~/lib/moment/min/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="~/js/datePicker.js"></script>
+    <script language="javascript">
+        CKEDITOR.replace('EventHtml');
+    </script>
+}
+
+
+<div>
+    <link rel="stylesheet" href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" />
+</div>
+<div class="container-fluid">
+    <form asp-action="EditEvent" asp-controller="Events" method="post">
+
+        <div class="col-sm-7 col-md-8 col-lg-9">
+            <div class="form-group">
+                <label asp-for="Title">Title</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventHtml"></label>
+                <textarea type="text" asp-for="EventHtml" name="EventHtml" id="EventHtml" class="form-control"></textarea>
+                <span asp-validation-for="EventHtml"></span>
+            </div>
+            <div>
+                <input asp-for="EventId" type="hidden" />
+            </div>
+        </div>
+        <div class="col-sm-5 col-md-4 col-lg-3">
+            <div class="form-group">
+                <div>
+                    <label asp-for="StartDate">Start Date</label>
+                </div>
+                <div class="input-group date datePicker" >
+                    <input type="text" class="form-control" asp-for="StartDate" />
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                    <span asp-validation-for="StartDate"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div></div>
+                <label asp-for="EndDate">End Date</label>
+                <div class="input-group date datePicker">
+                    <input type="text" class="form-control" asp-for="EndDate" />
+                    <span class="input-group-addon">
+                        <span class="fa fa-calendar"></span>
+                    </span>
+                    <span asp-validation-for="EndDate"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EventType.EventTypeId" class="control-label">Type (Pubs, News, Events)</label>
+                <select asp-for="EventType.EventTypeId" asp-items="@Model.EventTypes" class="form-control">
+                    <option>Please select</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save All" />
+            </div>
+        </div>
+    </form>
+</div>

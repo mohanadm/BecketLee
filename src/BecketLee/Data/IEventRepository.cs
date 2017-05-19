@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BecketLee.Models;
 using BecketLee.ViewModels;
 
 namespace BecketLee.Data
@@ -9,5 +10,8 @@ namespace BecketLee.Data
         IEnumerable<EventViewModel> GetEvents();
         IEnumerable<EventViewModel> GetNews();
         IEnumerable<EventViewModel> GetPubs();
+        IEnumerable<EventViewModel> Events();
+        List<EventType> GetEventTypes();
+        EventViewModel GetEventById( string eventId );
     }
 }

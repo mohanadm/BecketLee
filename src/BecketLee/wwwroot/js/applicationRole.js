@@ -1,6 +1,6 @@
 ﻿// ********************** applicationRole.js ************************//
 (function ($) {
-    function ApplicationRole() {
+    function applicationRole() {
         var $this = this;
 
         function initilizeModel() {
@@ -10,13 +10,14 @@
                 $(this).removeData('bs.modal');
             });
         }
-        $this.init = function () {
+
+        $this.init = function() {
             initilizeModel();
-        }
+        };
     }
 
     $(function() {
-        var self = new ApplicationRole();
+        var self = new applicationRole();
         self.init();
     });
 })(jQuery);

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<BecketLee.ViewModels.EventViewModel>
+@{
+    ViewBag.Title = "Events";
+}
+<div ng-app="eventApp">
+    <div class="container-fluid">
+        <div class="col-md-8">
+            <div id="currentEvent"></div>
+
+        </div>
+
+        <div class="col-md-4">
+            <h5>More Events...</h5>
+            <ul>
+                @foreach (var item in Model)
+            {
+                    <li class="list-group-item">
+                        <div class="eventText">
+                            <a asp-action="Events" asp-controller="Api/Event" asp-route-id="@item.EventId">
+                                <div>@item.Title</div>
+                            </a>
+                        </div>
+
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

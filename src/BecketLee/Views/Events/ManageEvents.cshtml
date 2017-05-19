@@ -1,0 +1,52 @@
+﻿
+@model IEnumerable<BecketLee.ViewModels.EventViewModel>
+
+<div class="panel panel-default">
+    <div class="panel-heading panel-head text-center"><h3>Manage Events</h3></div>
+    <div class="panel-body">
+        <div class="top-buffer"></div>
+        
+        <div class="btn-group">
+            <a id="createEditUserModal" asp-action="EditEvent" asp-controller="Events" class="btn btn-sm btn-info">
+                <i class="fa fa-plus"></i>  Add New Event
+            </a>
+
+        </div>
+        <div class="btn-group ">
+            <a asp-action="Index" asp-controller="Auth" class="btn btn-sm btn-info">
+                <i class="fa fa-gavel"></i>  Management
+            </a>
+
+        </div>  
+
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th class="text-right">Event</th>
+                    <th class="text-center">Event Type</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Title
+                        </td>
+                        <td>
+                            @item.EventType.EventTypeDescription
+                        </td>
+                        <td>
+                            <a asp-action="EditEvent" asp-controller="Events" asp-route-id="@item.EventId" class="btn btn-sm btn-info btn-block">
+                                <i class="fa fa-pencil"></i>  Edit
+                            </a>
+                            
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

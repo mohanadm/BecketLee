@@ -42,5 +42,10 @@ namespace BecketLee.Controllers.Web
         {
             return View();
         }
+
+        public IActionResult Error()
+        {
+            return View();
+        }
     }
 }
