@@ -10,7 +10,7 @@ namespace BecketLee.Data
         public static async Task EnsureEventData( BecketLeeContext context )
         {
             
-            if (!context.Events.Any() || context.Events.Count() != 113)
+            if (!context.Events.Any() || context.Events.Count() != 114)
             {
                 // delete
                 context.RemoveRange( context.Events );
@@ -84,6 +84,15 @@ namespace BecketLee.Data
                     CreatedDate = Convert.ToDateTime( "2011-11-08 18:28:13.5930000" ),
                     EventTypeId = 1,
                     EventHtml = @"&lt;p&gt;On March 22, 2011, Tom shared his expertise on the recent Supreme Court decisions impacting creditor recoveries in a bankruptcy webinar presented by Visa for its members.&lt;/p&gt;
+"
+                };
+                context.Events.Add( eventObj );
+                eventObj = new Event()
+                {
+                    Title = @"Partner Alane Becket Attended NARCA 2017 Spring Conference ",
+                    CreatedDate = Convert.ToDateTime( "2017-05-24 22:14:49.8591016" ),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Alane Becket attended and spoke at the National Creditor&amp;#39;s Bar Association&amp;#39;s Spring Conference in Orlando, FL, May 17-20, 2017. Alane&amp;#39;s topic: &lt;em&gt;Bankruptcy 2017: Beyond the Basics&lt;/em&gt;, highlighting what&amp;#39;s new regarding bankruptcy. Alane discussed filing statistics, regulatory influences, major rule changes, and some of the hottest topics in bankruptcy litigation, including one of the most influential issues of the last 5 years: the intersection of the Bankruptcy Code and the FDCPA.&lt;/p&gt;
 "
                 };
                 context.Events.Add( eventObj );
