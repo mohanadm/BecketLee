@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BecketLee.Models;
 using BecketLee.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -53,6 +54,8 @@ namespace BecketLee.Controllers.Web
         }
 
         [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddUser( UserViewModel model )
         {
             if (ModelState.IsValid)
@@ -104,6 +107,8 @@ namespace BecketLee.Controllers.Web
         }
 
         [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditUser( string id, UserViewModel model )
         {
             if (ModelState.IsValid)
@@ -156,6 +161,8 @@ namespace BecketLee.Controllers.Web
         }
 
         [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteUser( string id, IFormCollection form )
         {
             if (!String.IsNullOrEmpty( id ))

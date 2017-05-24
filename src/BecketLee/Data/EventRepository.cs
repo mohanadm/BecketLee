@@ -22,8 +22,9 @@ namespace BecketLee.Data
         {
             var events = _context
                 .Events
-                .Take( 20 )
-                .OrderByDescending( e => e.CreatedDate );            
+                .Include(e => e.EventType)                
+                .OrderByDescending( e => e.CreatedDate )
+                .Take( 20 );            
 
             return events.Select( e =>
                 new EventViewModel()

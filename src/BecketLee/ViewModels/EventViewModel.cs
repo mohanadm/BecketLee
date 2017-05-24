@@ -15,14 +15,18 @@ namespace BecketLee.ViewModels
         [StringLength(8000, MinimumLength = 10)]
         [Display(Name = "Event (formatted)")]
         public string EventHtml { get; set; }
-        [Display(Name = "Event Start Date")]
+
+        [Required]
         public DateTime? StartDate { get; set; }
-        [Display( Name = "Event End Date" )]
+
         public DateTime? EndDate { get; set; }
+
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+       
         [Display(Name = "Event Type")]
         public EventType EventType { get; set; }
 
+        [Required]
         public List<SelectListItem> EventTypes { get; set; }
 
         public string Action
