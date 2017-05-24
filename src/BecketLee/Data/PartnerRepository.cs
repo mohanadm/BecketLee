@@ -32,14 +32,28 @@ namespace BecketLee.Data
 
         public PartnerViewModel GetPartnerByName( string name )
         {
-            var data = GetAllPartners()
+            return _context.PartnerBiographies
+                .Select( p =>
+                    new PartnerViewModel()
+                    {
+                        PartnerId = p.PartnerId,
+                        PartnerName = p.PartnerName,
+                        BiographyHtml = WebUtility.HtmlDecode( p.BiographyHtml ),
+                        FileName = p.FileName,
+                        FileUrl = p.FileUrl
+                    } )
                 .FirstOrDefault( p =>
-                    p.PartnerName.Equals( name, StringComparison.CurrentCultureIgnoreCase )
-                );
-            return data;
+                    p.PartnerName.Equals( name, StringComparison.CurrentCultureIgnoreCase ) );
         }
 
-        public PartnerViewModel UpdatePartner( PartnerViewModel model )
+
+        public string GetPartnerNameById( int id )
+        {
+            return _context.PartnerBiographies
+                .FirstOrDefault( p => p.PartnerId == id ).PartnerName;
+        }
+
+        public async Task<PartnerViewModel> UpdatePartnerAsync( PartnerViewModel model )
         {
             PartnerBiography partner = new PartnerBiography();
             if (model.PartnerId > 0)
@@ -55,7 +69,7 @@ namespace BecketLee.Data
             else
                 _context.Add( partner );
 
-            _context.SaveChanges( true );
+            await _context.SaveChangesAsync( true );
 
             var newModel = new PartnerViewModel()
             {

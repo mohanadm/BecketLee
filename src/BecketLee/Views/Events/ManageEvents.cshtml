@@ -1,11 +1,13 @@
 ﻿
+@using BecketLee.Code
+@using BecketLee.Models
 @model IEnumerable<BecketLee.ViewModels.EventViewModel>
 
 <div class="panel panel-default">
     <div class="panel-heading panel-head text-center"><h3>Manage Events</h3></div>
     <div class="panel-body">
         <div class="top-buffer"></div>
-        
+
         <div class="btn-group">
             <a id="createEditUserModal" asp-action="EditEvent" asp-controller="Events" class="btn btn-sm btn-info">
                 <i class="fa fa-plus"></i>  Add New Event
@@ -17,13 +19,15 @@
                 <i class="fa fa-gavel"></i>  Management
             </a>
 
-        </div>  
+        </div>
 
         <table class="table table-bordered table-striped table-condensed">
             <thead>
                 <tr>
-                    <th class="text-right">Event</th>
+                    <th class="text-center">Event</th>
                     <th class="text-center">Event Type</th>
+                    <th class="text-center">Start Date</th>
+                    <th class="text-center">End Date</th>
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
@@ -31,17 +35,28 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
+                        <td class="text-justify">
                             @item.Title
                         </td>
                         <td>
                             @item.EventType.EventTypeDescription
                         </td>
                         <td>
-                            <a asp-action="EditEvent" asp-controller="Events" asp-route-id="@item.EventId" class="btn btn-sm btn-info btn-block">
-                                <i class="fa fa-pencil"></i>  Edit
-                            </a>
-                            
+                            @item.StartDate.ToString();
+                        </td>
+                        <td>
+                            @item.EndDate.ToString();
+                        </td>
+                        <td>
+                            <div>
+                                <a asp-action="EditEvent" asp-controller="Events" asp-route-id="@item.EventId" class="btn btn-sm btn-info btn-block">
+                                    <i class="fa fa-pencil"></i> Edit
+                                </a>
+                            </div><div>
+                                <a id="deleteEventModal" data-toggle="modal" data-target="#modal-action-event" asp-action="DeleteEvent" asp-controller="Events" asp-route-id="@item.EventId" class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash"> </i> Delete
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 }
@@ -50,3 +65,5 @@
     </div>
 </div>
 
+
+@Html.Partial( "_Modal", new BootstrapModel { ID = "modal-action-event", AreaLabeledId = "modal-action-event-label", Size = ModalSize.Medium } )

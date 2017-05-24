@@ -2,23 +2,18 @@
 @using BecketLee.Code
 @using BecketLee.Models
 
-@section scripts
-{
-    <script src="~/js/applicationUser.js" asp-append-version="true"></script>
-}
-
 <div class="top-buffer"></div>
 <div class="panel panel-default">
     <div class="panel-heading panel-head text-center"><h3>Becket & Lee Users</h3></div>
     <div class="panel-body">
         <div class="btn-group">
-            <a id="createEditUserModal" asp-action="AddUser" asp-controller="Users" data-toggle="modal" data-target="#modal-action-user" class="btn btn-info">
+            <a id="createEditUserModal" asp-action="AddUser" asp-controller="Users" data-toggle="modal" data-target="#modal-action-user" class="btn btn-sm btn-info">
                 <i class="fa fa-plus"></i>  Add User
             </a>
 
         </div>
         <div class="btn-group ">
-            <a asp-action="Index" asp-controller="Auth" class="btn btn-info">
+            <a asp-action="Index" asp-controller="Auth" class="btn btn-sm btn-info">
                 <i class="fa fa-gavel"></i>  Management
             </a>
 
@@ -40,10 +35,10 @@
                     <td>@item.Email</td>
                     <td>
                         <a id="editUserModal" asp-action="EditUser" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-user"
-                           class="btn btn-info">
+                           class="btn btn-sm btn-info">
                             <i class="fa fa-pencil"></i>  Edit
                         </a>
-                        <a id="deleteUserModal" asp-action="DeleteUser" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-user" class="btn btn-danger">
+                        <a id="deleteUserModal" asp-action="DeleteUser" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-user" class="btn btn-sm btn-danger">
                             <i class="fa fa-trash"></i>  Delete
                         </a>
                     </td>

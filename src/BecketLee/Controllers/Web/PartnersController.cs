@@ -5,6 +5,8 @@ using BecketLee.Data;
 using BecketLee.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
@@ -73,10 +75,11 @@ namespace BecketLee.Controllers.Web
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult>EditPartnerBio(PartnerViewModel model)
         {
             await UploadFile( model );
-            _repository.UpdatePartner( model );
+            await _repository.UpdatePartnerAsync( model );
             return RedirectToAction( "ManagePartners", "Partners" );
         }
 
@@ -110,11 +113,20 @@ namespace BecketLee.Controllers.Web
             return true;
         }
 
-        [HttpPost]
-        public IActionResult DeletePartnerBio( string name )
+        [HttpGet]
+        public IActionResult DeletePartnerBio( string id )
         {
-            if (!string.IsNullOrEmpty( name ))
+            string name = _repository.GetPartnerNameById( Convert.ToInt32(id) );
+            return PartialView( "_DeletePartnerBio", name );
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePartnerBio( string id, IFormCollection form )
+        {
+            if (!string.IsNullOrEmpty( id))
             {
+                string name = _repository.GetPartnerNameById( Convert.ToInt32( id ) );
                 var partnerBio = _repository.GetPartnerByName( name );
                 if (partnerBio != null)
                 {
@@ -123,5 +135,6 @@ namespace BecketLee.Controllers.Web
             }
             return RedirectToAction( "ManagePartners" );
         }
+
     }
 }

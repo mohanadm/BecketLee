@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using BecketLee.ViewModels;
 
 namespace BecketLee.Data
@@ -7,7 +8,8 @@ namespace BecketLee.Data
     {
         IEnumerable<PartnerViewModel> GetAllPartners();
         PartnerViewModel GetPartnerByName( string name );
-        PartnerViewModel UpdatePartner( PartnerViewModel model );
+        string GetPartnerNameById( int id );
+        Task<PartnerViewModel> UpdatePartnerAsync( PartnerViewModel model );
 
         void DeletePartnerBio( PartnerViewModel partnerBio );
     }

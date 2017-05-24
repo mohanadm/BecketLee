@@ -22,7 +22,9 @@
             "type": "build"
         },
         "AutoMapper": "6.0.2",
-        "MailKit": "1.16.1"
+        "MailKit": "1.16.1",
+        "jQuery.AjaxForm": "1.0.8"
+
     },
 
   "tools": {

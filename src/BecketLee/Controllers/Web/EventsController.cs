@@ -1,6 +1,11 @@
-﻿using BecketLee.Data;
+﻿using System;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using BecketLee.Data;
 using BecketLee.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -37,25 +42,94 @@ namespace BecketLee.Controllers.Web
             return View( "EditEvent", eventItem );
         }
 
-
-        public IActionResult Events()
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditEvent( string id, EventViewModel model )
         {
-            var data = _repository.GetEvents();
-            return View( data );
+            await _repository.UpdateEventAsync( model );
+            return RedirectToAction( "ManageEvents", "Events" );
         }
 
-        public IActionResult News()
-        {
-            var data = _repository.GetNews();
-            return View( data );
+
+        public IActionResult Events(string id)
+        {           
+            var events = new EventsViewModel();
+            EventViewModel selectedEvent ;
+            events.Events = _repository.GetEvents();
+
+
+            if( !string.IsNullOrEmpty( id ) )
+                selectedEvent = _repository.GetEventById( id );
+            else
+                selectedEvent = events.Events.FirstOrDefault();
+
+            events.SelectedTitle = selectedEvent.Title;
+            events.SelectedEventHtml = WebUtility.HtmlDecode( selectedEvent.EventHtml );
+
+            return View( events );
         }
 
-        public IActionResult Pubs()
+        [HttpGet]
+        public IActionResult DeleteEvent( string id )
         {
-            var data = _repository.GetPubs();
-            return View( data );
+            var eventItem = _repository.GetEventById( id  );
+            return PartialView( "_DeleteEvent", eventItem.Title );
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteEvent( string id, IFormCollection form )
+        {
+            if (!string.IsNullOrEmpty( id ))
+            {
+                var partnerBio = _repository.GetEventById( id );
+                if (partnerBio != null)
+                {
+                    _repository.DeleteEvent( partnerBio );
+                }
+            }
+            return RedirectToAction( "ManageEvents" );
+        }
+
+
+
+        public IActionResult News( string id )
+        {
+            var events = new EventsViewModel();
+            EventViewModel selectedEvent;
+            events.Events = _repository.GetNews();
+
+
+            if (!string.IsNullOrEmpty( id ))
+                selectedEvent = _repository.GetEventById( id );
+            else
+                selectedEvent = events.Events.FirstOrDefault();
+
+            events.SelectedTitle = selectedEvent.Title;
+            events.SelectedEventHtml = WebUtility.HtmlDecode( selectedEvent.EventHtml );
+
+            return View( events );
+        }
+
+
+        public IActionResult Pubs( string id )
+        {
+            var events = new EventsViewModel();
+            EventViewModel selectedEvent;
+            events.Events = _repository.GetPubs();
+
+
+            if (!string.IsNullOrEmpty( id ))
+                selectedEvent = _repository.GetEventById( id );
+            else
+                selectedEvent = events.Events.FirstOrDefault();
+
+            events.SelectedTitle = selectedEvent.Title;
+            events.SelectedEventHtml = WebUtility.HtmlDecode( selectedEvent.EventHtml );
+
+            return View( events );
+        }
 
 
     }

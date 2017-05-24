@@ -1,29 +1,42 @@
-﻿@model IEnumerable<BecketLee.ViewModels.EventViewModel>
+﻿@model BecketLee.ViewModels.EventsViewModel
 @{
     ViewBag.Title = "News";
 }
-<div class="container-fluid">
-    <div class="col-md-8">
-        
-        <span id="blEvent" name="blEvent"></span>
 
+<div class="row">
+    <div class="col-sm-7 col-md-7 col-lg-7">
+
+        <div class="panel panel-default">
+            <div class="panel panel-heading text-center">
+                <h3>@Model.SelectedTitle</h3>
+            </div>
+            <div class="panel panel-body">@Html.Raw( Model.SelectedEventHtml )</div>
+
+        </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-sm-4 col-md-4 col-lg-4 ">
+        <div class="panel panel-default ">
+            <div class="panel panel-heading ">
+                <h5>More News...</h5>
+            </div>
+            <div class="panel panel-body">
+                <div class="scrollable-event">
+                    <ul>
+                        @foreach (var item in Model.Events)
+                        {
+                            <li class="list-group-item">
+                                <div class="eventText">
+                                    <a asp-action="News" asp-controller="Events" asp-route-id="@item.EventId">
+                                        <div>@item.Title</div>
+                                    </a>
+                                </div>
 
-        <ul>
-            <h5>More News...</h5>
-            @foreach (var item in Model)
-            {
-                <li class="list-group-item">
-                    <div class="eventText">
-                        <a asp-action="Events" asp-controller="EventApi/Event" asp-route-id="@item.EventId">
-                            <div>@item.Title</div>
-                        </a>
-                    </div>
-
-                </li>
-            }
-        </ul>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

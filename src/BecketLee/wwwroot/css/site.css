@@ -34,6 +34,7 @@ table {
 .datePicker {
     margin: auto;
 }
+
 .eventText {
     font-size: smaller;
     margin: -5px;
@@ -98,6 +99,13 @@ table {
     font-size: x-small;
 }
 
+.scrollable-event {
+    margin-left: -40px;
+    height: auto;
+    max-height: 450px;
+    cursor: pointer;    
+    overflow-x: hidden;    
+}
 
 #exTab .nav-pills > li > a {
     border-radius: 4px 4px 0 0;

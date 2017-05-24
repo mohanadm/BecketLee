@@ -21,7 +21,7 @@ namespace BecketLee.Controllers.Api
 
 		
 
-        [HttpGet("api/event")]
+        [HttpGet("api/events")]
         public IActionResult Get()
         {
             try

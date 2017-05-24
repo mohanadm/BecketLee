@@ -1,12 +1,12 @@
 ﻿@model string
 @using BecketLee.Models
 
-<form asp-action="DeletePartnerBio" role="form">
+<form asp-action="DeleteEvent" role="form">
     @Html.AntiForgeryToken()
-    @await Html.PartialAsync( "_ModalHeader", new ModalHeader {Heading = "Delete Partner Biography"} )
+    @await Html.PartialAsync( "_ModalHeader", new ModalHeader {Heading = "Delete Event"} )
 
     <div class="modal-body form-horizontal">
-        Are you sure you want to delete the biography for @Model?
+        Are you sure you want to delete the event for @Model?
     </div>
     @await Html.PartialAsync( "_ModalFooter", new ModalFooter {SubmitButtonText = "Delete"} )
 </form>

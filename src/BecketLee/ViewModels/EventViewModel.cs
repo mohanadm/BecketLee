@@ -24,5 +24,41 @@ namespace BecketLee.ViewModels
         public EventType EventType { get; set; }
 
         public List<SelectListItem> EventTypes { get; set; }
+
+        public string Action
+        {
+            get
+            {
+                switch (EventType.EventTypeId)
+                {
+                    case 1:
+                        return "News";
+                    case 2:
+                        return "Events";
+                    case 3:
+                        return "Pubs";
+                    default:
+                        return "Index";
+                }
+            }
+        }
+
+        public string Controller
+        {
+            get
+            {
+                switch (EventType.EventTypeId)
+                {
+                    case 1:
+                        return "Events";
+                    case 2:
+                        return "Events";
+                    case 3:
+                        return "Events";
+                    default:
+                        return "App";
+                }
+            }
+        }
     }
 }

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
+using System.Net;
+using System.Threading.Tasks;
 using BecketLee.Models;
 using BecketLee.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,6 +16,23 @@ namespace BecketLee.Data
             : base (context)
         {
             
+        }
+
+        public IEnumerable<EventViewModel> GetCurrentEvents()
+        {
+            var events = _context
+                .Events
+                .Take( 20 )
+                .OrderByDescending( e => e.CreatedDate );            
+
+            return events.Select( e =>
+                new EventViewModel()
+                {
+                    EventId = e.EventId,
+                    CreatedDate = e.CreatedDate,
+                    Title = e.Title,
+                    EventType = e.EventType
+                } );
         }
 
         public List<EventType> GetEventTypes()
@@ -31,10 +49,18 @@ namespace BecketLee.Data
 
             var result = eventItem ?? new Event();
 
-            var selection = Mapper.Map<Event, EventViewModel>( result );
-            selection.EventTypes = GetEventTypeSelectionList();
-
-            return selection;
+            return
+                new EventViewModel()
+                {
+                    EventId = result.EventId,
+                    CreatedDate = result.CreatedDate,
+                    StartDate = result.StartDate,
+                    EndDate = result.EndDate,
+                    EventHtml = WebUtility.HtmlDecode( result.EventHtml ),
+                    Title = result.Title,
+                    EventType = result.EventType,
+                    EventTypes = GetEventTypeSelectionList()
+                };            
         }
 
 
@@ -54,7 +80,7 @@ namespace BecketLee.Data
                     CreatedDate = e.CreatedDate,
                     StartDate = e.StartDate,
                     EndDate = e.EndDate,
-                    EventHtml = e.EventHtml,
+                    EventHtml = WebUtility.HtmlDecode( e.EventHtml ),
                     Title = e.Title,
                     EventType = e.EventType,
                     EventTypes = selectionList
@@ -70,6 +96,38 @@ namespace BecketLee.Data
             } ).ToList();
             return selectionList;
         }
+
+        public async Task<EventViewModel> UpdateEventAsync( EventViewModel eventModel )
+        {
+            var eventItem = new Event();
+            if (eventModel.EventId > 0)
+                eventItem = _context.Events.FirstOrDefault( p => p.EventId == eventModel.EventId );
+
+            eventItem.Title = eventModel.Title;
+            eventItem.EventHtml = WebUtility.HtmlEncode( eventModel.EventHtml );
+            eventItem.StartDate = eventModel.StartDate;
+            eventItem.EndDate = eventModel.EndDate;
+            eventItem.EventTypeId = eventModel.EventType.EventTypeId;
+            
+            if (eventItem.EventId > 0)
+                _context.Update( eventItem );
+            else
+                _context.Add( eventItem );
+
+            await _context.SaveChangesAsync( true );
+
+            var newModel = new EventViewModel()
+            {
+                EventId = eventItem.EventId,
+                Title = eventItem.Title,
+                EventHtml = WebUtility.HtmlDecode( eventItem.EventHtml ),
+                EventType = eventItem.EventType,
+                StartDate = eventItem.StartDate,
+                EndDate = eventItem.EndDate
+            };
+            return newModel;
+        }
+
 
 
         public IEnumerable<EventViewModel> GetEvents()
@@ -88,7 +146,7 @@ namespace BecketLee.Data
                     CreatedDate = e.CreatedDate,
                     StartDate = e.StartDate,
                     EndDate = e.EndDate,
-                    EventHtml = e.EventHtml,
+                    EventHtml = WebUtility.HtmlDecode( e.EventHtml ),
                     Title = e.Title,
                     EventType = e.EventType,
                     EventTypes = selectionList
@@ -113,7 +171,7 @@ namespace BecketLee.Data
                     CreatedDate = e.CreatedDate,
                     StartDate = e.StartDate,
                     EndDate = e.EndDate,
-                    EventHtml = e.EventHtml,
+                    EventHtml = WebUtility.HtmlDecode( e.EventHtml ),
                     Title = e.Title,
                     EventType = e.EventType,
                     EventTypes = selectionList
@@ -136,12 +194,18 @@ namespace BecketLee.Data
                     CreatedDate = e.CreatedDate,
                     StartDate = e.StartDate,
                     EndDate = e.EndDate,
-                    EventHtml = e.EventHtml,
+                    EventHtml = WebUtility.HtmlDecode( e.EventHtml ),
                     Title = e.Title,
                     EventType = e.EventType,
                     EventTypes = selectionList
                 } );
         }
 
+        public void DeleteEvent( EventViewModel eventViewModel )
+        {
+            var eventItem = _context.Events.First( e => e.EventId == eventViewModel.EventId );
+            _context.Events.Remove( eventItem );
+            _context.SaveChanges();
+        }
     }
 }
