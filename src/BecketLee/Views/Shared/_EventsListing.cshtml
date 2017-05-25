@@ -1,0 +1,28 @@
+﻿@model BecketLee.ViewModels.EventsViewModel
+
+
+<div class="col-sm-4 col-md-4 col-lg-4 ">
+    <div class="panel panel-default ">
+        <div class="panel panel-heading ">
+            <h5>@Model.ListCaption</h5>
+        </div>
+        <div class="panel panel-body">
+            <div class="scrollable-event">
+                <ul>
+                    @foreach (var item in Model.Events)
+                    {
+                        <li class="list-group-item">
+                            <span class="eventDate">@item.StartDate.Value.ToString( "MM-yyyy" )</span>
+                            <div class="eventText">
+                                <a active="true" asp-action="@item.Action" asp-controller="Events" asp-route-id="@item.EventId">
+                                    <div>@item.Title</div>
+                                </a>
+                            </div>
+
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

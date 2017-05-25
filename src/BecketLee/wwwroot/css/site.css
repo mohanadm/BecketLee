@@ -36,8 +36,15 @@ table {
 }
 
 .eventText {
-    font-size: smaller;
+    font-size: small;
     margin: -5px;
+}
+.eventDate {
+    font-size: x-small;
+    font-weight: bold;
+    font-style: italic;
+    margin-left: -5px;
+    color: #aaa;
 }
 
 .header {

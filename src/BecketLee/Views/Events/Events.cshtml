@@ -1,42 +1,26 @@
-﻿@model BecketLee.ViewModels.EventsViewModel
+﻿@using BecketLee.ViewModels
+@model BecketLee.ViewModels.EventsViewModel
 @{
     ViewBag.Title = "Events";
 }
 
 <div class="row">
-    <div class="col-sm-7 col-md-7 col-lg-7">
+    @await Html.PartialAsync( "_EventPanel",
+        new EventsViewModel
+        {
+            Events = @Model.Events,
+            SelectedTitle = Model.SelectedTitle,
+            SelectedEventHtml = Model.SelectedEventHtml
+        } )
 
-        <div class="panel panel-default">
-            <div class="panel panel-heading text-center">
-                <h3>@Model.SelectedTitle</h3>
-            </div>
-            <div class="panel panel-body">@Html.Raw( Model.SelectedEventHtml )</div>
+    @await Html.PartialAsync( "_EventsListing",
+    new EventsViewModel
+    {
+        Events = @Model.Events,
+        SelectedTitle = Model.SelectedTitle,
+        SelectedEventHtml = Model.SelectedEventHtml,
+        ListCaption = "More Events..."
+    } )
 
-        </div>
-    </div>
 
-    <div class="col-sm-4 col-md-4 col-lg-4 ">
-        <div class="panel panel-default ">
-            <div class="panel panel-heading ">
-                <h5>More Events...</h5>
-            </div>
-            <div class="panel panel-body">
-                <div class="scrollable-event">
-                    <ul>
-                        @foreach (var item in Model.Events)
-                        {
-                            <li class="list-group-item">
-                                <div class="eventText">
-                                    <a asp-action="Events" asp-controller="Events" asp-route-id="@item.EventId">
-                                        <div>@item.Title</div>
-                                    </a>
-                                </div>
-
-                            </li>
-                        }
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>

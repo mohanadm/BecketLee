@@ -23,7 +23,7 @@ namespace BecketLee.Data
             var events = _context
                 .Events
                 .Include(e => e.EventType)                
-                .OrderByDescending( e => e.CreatedDate )
+                .OrderByDescending( e => e.StartDate )
                 .Take( 20 );            
 
             return events.Select( e =>
@@ -31,6 +31,7 @@ namespace BecketLee.Data
                 {
                     EventId = e.EventId,
                     CreatedDate = e.CreatedDate,
+                    StartDate = e.StartDate,
                     Title = e.Title,
                     EventType = e.EventType
                 } );
@@ -70,7 +71,7 @@ namespace BecketLee.Data
             var events = _context
                 .Events
                 .Include( e => e.EventType )
-                .OrderByDescending( e => e.CreatedDate );
+                .OrderByDescending( e => e.StartDate );
 
             var selectionList = GetEventTypeSelectionList();
 
@@ -138,7 +139,7 @@ namespace BecketLee.Data
                 .Include( e=> e.EventType)
                 .Where( e => e.EventType.EventTypeDescription == "Events" &&
                     e.CreatedDate > DateTime.Now.Subtract(new TimeSpan(365 * 2, 0, 0, 0)))
-                .OrderByDescending(e => e.CreatedDate);
+                .OrderByDescending(e => e.StartDate);
             var selectionList = GetEventTypeSelectionList();
             return events.Select( e =>
                 new EventViewModel()
@@ -161,7 +162,7 @@ namespace BecketLee.Data
                 .Events
                 .Include( e => e.EventType )
                 .Where( e => e.EventType.EventTypeDescription == "News" )
-                .OrderByDescending( e => e.CreatedDate );
+                .OrderByDescending( e => e.StartDate );
 
             var selectionList = GetEventTypeSelectionList();
 
@@ -185,7 +186,7 @@ namespace BecketLee.Data
                 .Events
                 .Include( e => e.EventType )
                 .Where( e => e.EventType.EventTypeDescription == "Pubs" )
-                .OrderByDescending( e => e.CreatedDate );
+                .OrderByDescending( e => e.StartDate );
 
             var selectionList = GetEventTypeSelectionList();
             return events.Select( e =>
