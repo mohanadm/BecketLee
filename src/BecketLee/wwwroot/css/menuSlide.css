@@ -1,0 +1,52 @@
+﻿/* ******************* menuSlide.css ******************* */
+
+#header {
+    margin: 0 0 0 230px;
+    -o-transition: margin-left ease .25s;
+    -webkit-transition: margin-left ease .25s;
+    transition: margin-left ease .25s;
+}
+
+#header.hide-sidebar {
+    margin-left: 0;
+    -o-transition: margin-left ease .25s;
+    -webkit-transition: margin-left ease .25s;
+    transition: margin-left ease .25s;
+}
+
+#sidebar {
+    /*background-color: navy;
+    color: blanchedalmond;*/
+    position: fixed;
+    height: 100%;
+    width: 230px;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+    -o-transition: left ease .25s;
+    -webkit-transition: left ease .25s;
+    transition: left ease .25s;
+}
+
+#sidebar.hide-sidebar {
+    left: -230px;
+    -o-transition: left ease .25s;
+    -webkit-transition: left ease .25s;
+    transition: left ease .25s;
+}
+
+#wrapper {
+    top: 0;
+    padding-bottom: 70px;
+    margin: 0 0 0 230px;
+    -o-transition: margin-left ease .25s;
+    -webkit-transition: margin-left ease .25s;
+    transition: margin-left ease .25s;
+}
+
+#wrapper.hide-sidebar {
+    margin-left: 0;
+    -o-transition: margin-left ease .25s;
+    -webkit-transition: margin-left ease .25s;
+    transition: margin-left ease .25s;
+}
