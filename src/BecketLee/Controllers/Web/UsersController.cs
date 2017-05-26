@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace BecketLee.Controllers.Web
 {
@@ -79,6 +80,7 @@ namespace BecketLee.Controllers.Web
                     }
                 }
             }
+            //return PartialView( "_AddUser", model );
             return View( model );
         }
 
@@ -93,17 +95,36 @@ namespace BecketLee.Controllers.Web
                 Value = r.Id
             } ).ToList();
 
-            if (!String.IsNullOrEmpty( id ))
+            if (!string.IsNullOrEmpty( id ))
             {
                 ApplicationUser user = await _userManager.FindByIdAsync( id );
                 if (user != null)
                 {
                     model.UserName = user.UserName;
                     model.Email = user.Email;
+                    model.Id = user.Id;
                     model.ApplicationRoleId = _roleManager.Roles.Single( r => r.Name == _userManager.GetRolesAsync( user ).Result.Single() ).Id;
+                    var roleList = await GetUserRolesForModel( user );
+                    model.UserRoles = roleList;
                 }
             }
             return PartialView( "_EditUser", model );
+        }
+
+        private async Task<List<UserRoleViewModel>> GetUserRolesForModel( ApplicationUser user )
+        {
+            var roleList = new List<UserRoleViewModel>();
+
+            var userRoles = await _userManager.GetRolesAsync( user );
+            foreach (var userRole in userRoles)
+            {
+                var userRoleModel = new UserRoleViewModel();
+                userRoleModel.RoleId = _roleManager.Roles.Single( r => r.Name == userRole ).Id;
+                userRoleModel.RoleName = userRole;
+                userRoleModel.UserId = user.Id;
+                roleList.Add( userRoleModel );
+            }
+            return roleList;
         }
 
         [HttpPost]
@@ -118,6 +139,8 @@ namespace BecketLee.Controllers.Web
                 {
                     user.UserName = model.UserName;
                     user.Email = model.Email;
+                    //if(model.Password == model.ConfirmPassword && !string.IsNullOrEmpty(model.Password) )
+                        
                     string existingRole = _userManager.GetRolesAsync( user ).Result.Single();
                     string existingRoleId = _roleManager.Roles.Single( r => r.Name == existingRole ).Id;
                     IdentityResult result = await _userManager.UpdateAsync( user );
@@ -139,6 +162,7 @@ namespace BecketLee.Controllers.Web
                                 }
                             }
                         }
+                        
                     }
                 }
             }
@@ -158,6 +182,7 @@ namespace BecketLee.Controllers.Web
                 }
             }
             return PartialView( "_DeleteUser", name );
+            
         }
 
         [HttpPost]
@@ -177,7 +202,43 @@ namespace BecketLee.Controllers.Web
                     }
                 }
             }
+            //return PartialView( "_DeleteUser", id );
             return View();
         }
+
+
+
+        [HttpGet]
+        public IActionResult RegisterUser()
+        {
+            var user = new UserViewModel();
+            user.ApplicationRoles = _roleManager.Roles.Select( r => new SelectListItem
+            {
+                Text = r.Name,
+                Value = r.Id
+            } ).ToList();
+            user.UserRoles = new List<UserRoleViewModel>();
+            
+            return View(user);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegisterUser( UserViewModel model )
+        {
+            if( ModelState.IsValid )
+            {
+                var user = new ApplicationUser()
+                {
+                    UserName = model.UserName,
+                    Email = model.Email
+                };
+                IdentityResult result = await _userManager.CreateAsync( user, model.Password );
+                if( !result.Succeeded ) 
+                    ModelState.AddModelError("", result.Errors.FirstOrDefault().Description);
+            }
+
+            return View(model);
+        }
     }
+
 }

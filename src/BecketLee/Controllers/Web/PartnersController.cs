@@ -75,17 +75,20 @@ namespace BecketLee.Controllers.Web
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult>EditPartnerBio(PartnerViewModel model)
         {
             await UploadFile( model );
             await _repository.UpdatePartnerAsync( model );
-            return RedirectToAction( "ManagePartners", "Partners" );
+            return RedirectToAction( "ManagePartners", "Partners" );            
         }
 
 
         [HttpPost]
-        public async Task<bool> UploadFile(PartnerViewModel model)
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        private async Task<bool> UploadFile(PartnerViewModel model)
         {
             var file = model.File;
             if ( file == null ) return false;
@@ -121,6 +124,7 @@ namespace BecketLee.Controllers.Web
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePartnerBio( string id, IFormCollection form )
         {

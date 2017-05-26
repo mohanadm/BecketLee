@@ -2,6 +2,14 @@
 @using BecketLee.Code
 @using BecketLee.Models
 
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+
+
 <div class="top-buffer"></div>
 <div class="panel panel-default">
     <div class="panel-heading panel-head text-center"><h3>Becket & Lee Users</h3></div>
@@ -10,6 +18,8 @@
             <a id="createEditUserModal" asp-action="AddUser" asp-controller="Users" data-toggle="modal" data-target="#modal-action-user" class="btn btn-sm btn-info">
                 <i class="fa fa-plus"></i>  Add User
             </a>
+            @*<a asp-action="AddUser" asp-controller="Users" class="btn btn-sm btn-info"><i class="fa fa-plus"></i>  Add User</a>*@
+
 
         </div>
         <div class="btn-group ">
@@ -34,12 +44,13 @@
                     <td>@item.UserName</td>
                     <td>@item.Email</td>
                     <td>
+                        @*<a asp-action="EditUser" asp-controller="Users" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa fa-plus"></i>  Edit User</a>*@
                         <a id="editUserModal" asp-action="EditUser" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-user"
                            class="btn btn-sm btn-info">
                             <i class="fa fa-pencil"></i>  Edit
                         </a>
                         <a id="deleteUserModal" asp-action="DeleteUser" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-user" class="btn btn-sm btn-danger">
-                            <i class="fa fa-trash"></i>  Delete
+                            <i class="fa fa-trash"></i> Delete
                         </a>
                     </td>
                 </tr>

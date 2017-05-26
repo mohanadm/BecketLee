@@ -78,6 +78,7 @@ namespace BecketLee.Controllers.Web
         }
 
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteEvent( string id, IFormCollection form )
         {

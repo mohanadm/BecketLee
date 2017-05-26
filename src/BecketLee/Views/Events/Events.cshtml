@@ -5,22 +5,24 @@
 }
 
 <div class="row">
-    @await Html.PartialAsync( "_EventPanel",
-        new EventsViewModel
-        {
-            Events = @Model.Events,
-            SelectedTitle = Model.SelectedTitle,
-            SelectedEventHtml = Model.SelectedEventHtml
-        } )
+    <div class="col-sm-7 col-md-7 col-lg-7 col-md-offset-1">
+        @await Html.PartialAsync( "_EventPanel",
+            new EventsViewModel
+            {
+                Events = @Model.Events,
+                SelectedTitle = Model.SelectedTitle,
+                SelectedEventHtml = Model.SelectedEventHtml
+            } )
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3">
+        @await Html.PartialAsync( "_EventsListing",
+            new EventsViewModel
+            {
+                Events = @Model.Events,
+                SelectedTitle = Model.SelectedTitle,
+                SelectedEventHtml = Model.SelectedEventHtml,
+                ListCaption = "More " + @ViewBag.Title + "..."
+            } )
 
-    @await Html.PartialAsync( "_EventsListing",
-    new EventsViewModel
-    {
-        Events = @Model.Events,
-        SelectedTitle = Model.SelectedTitle,
-        SelectedEventHtml = Model.SelectedEventHtml,
-        ListCaption = "More Events..."
-    } )
-
-
+    </div>
 </div>

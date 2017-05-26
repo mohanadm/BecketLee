@@ -1,10 +1,5 @@
 ﻿/******************  site.css  ********************/
 
-table {
-    vertical-align: middle;
-    background-color: white;
-    right: 10px;
-}
 
 .affiliation {
     display: block;
@@ -47,7 +42,12 @@ table {
     text-align: right;
     padding-top: 0;
     margin-right: 16px;
+    color: lightskyblue
 }
+    #menu li a.hover {
+        color: lightskyblue
+    }
+
 #partnerDropDown a {
     margin-top: 25px;
 }
@@ -79,6 +79,7 @@ table {
     cursor: pointer;    
     overflow-x: hidden;    
 }
+
 
 
 .slideContainer {
@@ -119,7 +120,15 @@ table {
 
 #wrapper {
     top: 0;
+    left: 0;
     padding-bottom: 70px;
     margin: 0 0 0 230px;
 }
 
+
+@media (min-width: 768px) {
+    .navbar-right {
+        float: right !important;
+        margin-right: 0;
+    }
+}

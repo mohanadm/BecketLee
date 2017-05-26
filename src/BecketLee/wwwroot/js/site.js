@@ -30,5 +30,14 @@
         window.open(url, title, "statusbar=0,toolbar=0,menubar=0,addressbar=0 resizable=no, height=" + hight + ", width=" + width + "\"");
     }
 
+    $(".menu li a").click(function (e) {
+        var $this = $(this);
+        if (!$this.hasClass("active")) {
+            $this.addClass("active");
+        }
+        e.preventDefault();
+    });
+
+
 
 })();

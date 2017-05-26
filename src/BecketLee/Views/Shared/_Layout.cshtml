@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta id="Meta1" content="attorney, Attorney, ATtorNEy, ATTorney, ATTOrney, ATTORney, ATTORNey, ATTORNEy, ATTORNEY, BECKET &amp; LEE, Becket &amp; Lee, BEcket &amp; Lee, BECket &amp; Lee, BECKet &amp; Lee, BECKEt &amp; Lee, BECKET &amp; Lee, BECKET &amp; LEe, becket &amp; lee, BECKET LEE, Becket Lee, BEcket Lee, BECket Lee, BECKet Lee, BECKEt Lee, BECKET Lee, BECKET LEe, becket lee,    BECKETLEE, BecketLee, BEcketLee, BECketLee, BECKetLee, BECKEtLee, BECKETLee, BECKETLEe, becketlee, bECKETLEE, beCKETLEE, becKETLEE, beckETLEE, beckeTLEE, becketLEE, becketlEE, becketleE, bEcket &amp; lee, beCket &amp; lee, becKet &amp; lee, beckEt &amp; lee, beckeT &amp; lee, becket &amp; Lee, becket &amp; lEe, becket &amp; leE, BEcket &amp; lee, bECket &amp; lee, beCKet &amp; lee, becKEt &amp; lee, beckET &amp; lee, beckeT &amp; Lee, becket &amp; LEe, becket &amp; lEE, BEKket &amp; lee, bECKet &amp; lee, beCKEt &amp; lee, becKET &amp; lee, beckET &amp; Lee, beckeT &amp; LEe, becket &amp; LEE, BECKet &amp; lee, bECKEt &amp; lee, beCKET &amp; lee, becKET &amp; Lee, beckET &amp; LEe, beckeT &amp; LEE, BECKEt &amp; lee, bECKET &amp; lee, beCKET &amp; Lee, becKET &amp; LEe, beckET &amp; LEE, bankruptcy, Bankruptcy, BAnkruptcy, BANkruptcy, BANKruptcy, BANKRuptcy, BANKRUptcy, BANKRUPtcy, BANKRUPTcy, BANKRUPTCy, BANKRUPTCY, BAnkruptcy, bANkruptcy, baNKruptcy, banKRuptcy, bankRUptcy, bankrUPtcy, bankruPTcy, bankrupTCy, bankruptCY, BANkruptcy, bANKruptcy, baNKRuptcy, banKRUptcy, bankRUPtcy, bankrUPTcy, bankruPTCy, bankrupTCY, BANKruptcy, bANKRuptcy, baNKRUptcy, banKRUPtcy, bankRUPTcy, bankrUPTCy, bankruPTCY, Thomas Lee, Tom Lee, Alane Becket, Mickey Becket, William Becket, John Sheehan, Sandra Curtin" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/bootswatch/cerulean/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootswatch/spacelab/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     @*<link rel="stylesheet" href="~/css/menuSlide.css"/>*@
@@ -58,14 +58,15 @@
         <div id="menu">
             <div class="row">
                 <div class="col-md-12">
-                    <nav class="nav navbar navbar-inverse">
-                        <ul class="nav">
+                    <nav class="nav">
+                        <ul class="nav navbar-inverse">
                             <li class="active"><a asp-controller="App" asp-action="Index">Home</a></li>
-                            <li class="dropdown">
-                                <div>
-                                    <a asp-action="Index" asp-controller="Partners" class="pull-right" style="margin-right: 30px;">Partners</a>
-                                    <a id="partnerDropDown" data-toggle="collapse" data-target="#partnerMenu"><i style="margin-right: 20px;" class="pull-right fa fa-chevron-down"></i></a>
-                                </div>
+                            <li>
+                                <li>
+                                    <a asp-action="Index" asp-controller="Partners">Partners</a>
+                                        <a id="partnerDropDown" data-toggle="collapse" data-target="#partnerMenu"><i class="fa fa-chevron-down"></i></a>
+                                    
+                                </li>
                                 <ul id="partnerMenu" class="nav collapse" role="menu" aria-labelledby="partnerMenu">
                                     <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Alane A Becket"><i class="fa fa-caret-right"></i> Alane A Becket</a></li>
                                     <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Thomas A Lee III"><i class="fa fa-caret-right"></i> Thomas A Lee</a></li>

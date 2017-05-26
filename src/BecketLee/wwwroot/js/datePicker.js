@@ -11,16 +11,11 @@
             , todayBtn: "linked"
             , language: "de"
             , todayHighlight: true
-            //, container: $("#eventForm")
             , autoclose: true
             , useCurrent: true
                         
         });
     });
-
-    //$('#StartDate').change(function () {
-    //    console.log($('#StartDate').val());
-    //});
 
     $(function () {
         $("#EndDate").datepicker({
@@ -28,15 +23,11 @@
             , todayBtn: "linked"
             , language: "de"
             , todayHighlight: true
-            //, container: $("#eventForm")
             , autoclose: true
             , useCurrent: true
 
         });
     });
-    //$('#EndDate').change(function () {
-    //    console.log($('#EndDate').val());
-    //});
 
 
 })();

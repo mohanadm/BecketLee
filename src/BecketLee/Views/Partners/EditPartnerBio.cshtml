@@ -18,7 +18,7 @@
     <form asp-action="EditPartnerBio" asp-controller="Partners" method="post" enctype="multipart/form-data">
         @Html.AntiForgeryToken()
 
-        <div class="col-sm-7 col-md-8 col-lg-9">
+        <div class="col-md-8 ">
             <div class="form-group">
                 <label asp-for="PartnerName">Name</label>
                 <input asp-for="PartnerName" class="form-control"/>
@@ -35,7 +35,7 @@
                 <input asp-for="FileUrl" type="hidden"/>
             </div>
         </div>
-        <div class="col-sm-5 col-md-4 col-lg-3">
+        <div class="col-md-4 ">
             <div class="form-group">
                 <label asp-for="File">Photo Upload</label>
                 <input asp-for="File"/>
@@ -49,7 +49,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Save All"/>
+                <input type="submit" class="btn btn-sm btn-info" value="Save All"/>
                 <a asp-controller="Partners" asp-action="ManagePartners" class="btn btn-sm btn-primary">Cancel</a>
             </div>
         </div>

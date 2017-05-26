@@ -3,66 +3,68 @@
 }
 
 <div class="top-buffer"></div>
-<div class="panel col-md-8 col-md-offset-2">
-    <div class="panel-heading panel-head text-center"><h3>Manage Website</h3></div>
-    <div class="panel-body">
-        <div class="top-buffer"></div>
+<div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-default">
+        <div class="panel panel-heading"><h3>Manage Website</h3></div>
+        <div class="panel panel-body ">
+            
+            <div class="top-buffer"></div>
 
 
-        <table class="table table-bordered table-striped table-condensed container-fluid">
+            <table class="table table-bordered table-striped table-condensed container-fluid">
 
-            <tbody>
-                @if (User.IsInRole( "Administrator" ) || User.IsInRole( "BioEditor" ))
-                {
-                    <tr>
-                        <td class="center-block">
-                            <a asp-action="ManagePartners" asp-controller="Partners" class="btn btn-info btn-sm btn-block">
-                                <i class="fa fa-id-card"></i> Manage Partners
-                            </a>
-                        </td>
-                    </tr>
-                }
-                @if (User.IsInRole( "Administrator" ) || User.IsInRole( "EventEditor" ))
-                {
-                    <tr>
-                        <td>
-                            <a asp-action="ManageEvents" asp-controller="Events" class="btn btn-info btn-sm btn-block">
-                                <i class="fa fa-calendar"></i> Manage Events
-                            </a>
-                        </td>
-                    </tr>
-                }
-                @if (User.IsInRole( "Administrator" ))
-                {
-                    <tr>
-                        <td>
-                            <a asp-action="Index" asp-controller="Roles" class="btn btn-info btn-sm btn-block">
-                                <i class="fa fa-star-o"></i> Manage Roles
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a asp-action="Index" asp-controller="Users" class="btn btn-info btn-sm btn-block">
-                                <i class="fa fa-users"></i> Manage Users
-                            </a>
-                        </td>
-                    </tr>
-                }
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <tr>
-                        <td>
-                            <a asp-action="Auth" asp-controller="Logout" class="btn btn-info btn-sm btn-block">
-                                <i class="fa fa-sign-out"></i> Logout
-                            </a>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+                <tbody>
+                    @if (User.IsInRole( "Administrator" ) || User.IsInRole( "BioEditor" ) || User.IsInRole( "PowerEditor" ))
+                    {
+                        <tr>
+                            <td class="center-block">
+                                <a asp-action="ManagePartners" asp-controller="Partners" class="btn btn-warning btn-sm btn-block">
+                                    <i class="fa fa-id-card"></i> Manage Partners
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                    @if (User.IsInRole( "Administrator" ) || User.IsInRole( "EventEditor" ) || User.IsInRole( "PowerEditor" ))
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="ManageEvents" asp-controller="Events" class="btn btn-warning btn-sm btn-block">
+                                    <i class="fa fa-calendar"></i> Manage Events
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                    @if (User.IsInRole( "Administrator" ))
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="Index" asp-controller="Roles" class="btn btn-danger btn-sm btn-block">
+                                    <i class="fa fa-star-o"></i> Manage Roles
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a asp-action="Index" asp-controller="Users" class="btn btn-danger btn-sm btn-block">
+                                    <i class="fa fa-users"></i> Manage Users
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="Auth" asp-controller="Logout" class="btn btn-info btn-sm btn-block">
+                                    <i class="fa fa-sign-out"></i> Logout
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 
 

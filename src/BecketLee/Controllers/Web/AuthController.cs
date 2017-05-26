@@ -25,7 +25,6 @@ namespace BecketLee.Controllers.Web
 
         public IActionResult Login(string returnUrl)
         {
-
             if( User.Identity.IsAuthenticated )
             {
                 if (returnUrl != null)
@@ -34,7 +33,8 @@ namespace BecketLee.Controllers.Web
             return View();
         }
 
-        [HttpPost]        
+        [HttpPost]
+        [ValidateAntiForgeryToken]        
         public async Task<ActionResult> Login( LoginViewModel vm, string returnUrl )
         {
             if (ModelState.IsValid)
@@ -57,6 +57,7 @@ namespace BecketLee.Controllers.Web
             return View();
         }
 
+        [Authorize]
         public async Task<ActionResult> Logout()
         {
             if( User.Identity.IsAuthenticated )

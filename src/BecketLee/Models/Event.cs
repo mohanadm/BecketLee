@@ -8,6 +8,7 @@ namespace BecketLee.Models
         [Key]
         public int EventId { get; set; }
         [Required]
+        [StringLength(255)]
         public string Title { get; set; }
         [Required]
         [StringLength(8000, MinimumLength = 10)]

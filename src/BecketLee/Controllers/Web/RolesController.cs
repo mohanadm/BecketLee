@@ -60,6 +60,8 @@ namespace BecketLee.Controllers.Web
         }
 
         [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddEditRole( string id, RolesViewModel vm )
         {
             if (ModelState.IsValid)
@@ -100,6 +102,8 @@ namespace BecketLee.Controllers.Web
         }
 
         [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteRole( string id, IFormCollection form )
         {
             if (!string.IsNullOrEmpty( id ))
