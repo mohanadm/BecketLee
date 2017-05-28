@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="~/lib/bootswatch/spacelab/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    @*<link rel="stylesheet" href="~/css/menuSlide.css"/>*@
     <link rel="stylesheet" href="~/css/navTabs.css" />
     <link rel="stylesheet" href="~/css/partner.css" />
 </head>
@@ -24,16 +23,6 @@
         </div>
 
         <nav class="navbar navbar-inverse">
-            @*<div id="navbarBrand" class="navbar navbar-brand navtext navbar-inverse" hidden>
-                    <a asp-action="index" asp-controller="App" >Becket & Lee LLP</a>
-                </div>*@
-            @*<ul class="nav navbar-nav navbar-left">
-                    <li class="navtext">
-                        <button id="sidebarToggle" class="btn btn-xs btn-primary">
-                            <i class="fa fa-chevron-left"></i>
-                        </button>
-                    </li>
-                </ul>*@
             @if (User.Identity.IsAuthenticated)
             {
                 <ul class="nav navbar-nav navbar-right ">
@@ -55,95 +44,39 @@
     <div id="sidebar">
         <div><img src="~/image/headerLogo.gif" alt="Becket & Lee Logo" class="logoImage" /></div>
 
-        <div id="menu">
-            <div class="row">
-                <div class="col-md-12">
-                    <nav class="nav">
-                        <ul class="nav navbar-inverse">
-                            <li class="active"><a asp-controller="App" asp-action="Index">Home</a></li>
-                            <li>
-                                <li>
-                                    <a asp-action="Index" asp-controller="Partners">Partners</a>
-                                        <a id="partnerDropDown" data-toggle="collapse" data-target="#partnerMenu"><i class="fa fa-chevron-down"></i></a>
-                                    
-                                </li>
-                                <ul id="partnerMenu" class="nav collapse" role="menu" aria-labelledby="partnerMenu">
-                                    <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Alane A Becket"><i class="fa fa-caret-right"></i> Alane A Becket</a></li>
-                                    <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Thomas A Lee III"><i class="fa fa-caret-right"></i> Thomas A Lee</a></li>
-                                    <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Sandra K Curtin"><i class="fa fa-caret-right"></i> Sandra K Curtin</a></li>
-                                    <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="William J Becket"><i class="fa fa-caret-right"></i> William J Becket</a></li>
-                                    <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="John D Sheehan"><i class="fa fa-caret-right"></i> John D Sheehan</a></li>
-                                    <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Gilbert B Weisman"><i class="fa fa-caret-right"></i> Gilbert B Weisman</a></li>
-                                </ul>
-                            </li>
-                            @*<li><a asp-action="Index" asp-controller="Partners">Partners</a></li>
-                            <li>
-                                <a data-toggle="collapse" data-target="#partnerMenu"><i class="fa fa-angle-down"></i></a>
-                                <ul id="partnerMenu" class="nav collapse" role="menu" aria-labelledby="partnerMenu">
-                                    <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Alane A Becket"><i class="fa fa-caret-right"></i> Alane A Becket</a></li>
-                                    <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Thomas A Lee III"><i class="fa fa-caret-right"></i> Thomas A Lee</a></li>
-                                    <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Sandra K Curtin"><i class="fa fa-caret-right"></i> Sandra K Curtin</a></li>
-                                    <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="William J Becket"><i class="fa fa-caret-right"></i> William J Becket</a></li>
-                                    <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="John D Sheehan"><i class="fa fa-caret-right"></i> John D Sheehan</a></li>
-                                    <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Gilbert B Weisman"><i class="fa fa-caret-right"></i> Gilbert B Weisman</a></li>
-                                </ul>
-                            </li>*@
-                            <li><a asp-controller="App" asp-action="OurServices">Services</a></li>
-                            <li><a asp-controller="Events" asp-action="News">News</a></li>
-                            <li><a asp-controller="Events" asp-action="Events">Events</a></li>
-                            <li><a asp-controller="Events" asp-action="Pubs">Publications</a></li>
-                            <li><a asp-controller="App" asp-action="Index">Cases of Interest</a></li>
-                            <li><a asp-controller="App" asp-action="FirmHistory">Firm History</a></li>
-                            <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <li class="divider"></li>
-                                <li><a asp-controller="Auth" asp-action="Index">Manage Website</a></li>
-                                <li><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
-                            }
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+        <nav id="menu">
+            <ul class="nav navbar-inverse">
+                <li class="active"><a asp-controller="App" asp-action="Index">Home</a></li>
+                <li>
+                    <div id="menuGroupItem">
+                        <a asp-action="Index" asp-controller="Partners">Partners</a>
+                        <a data-toggle="collapse" data-target="#partnerMenu"><i class="fa fa-chevron-down"></i></a>
 
-
-
-
-
-
-            @*<ul class="nav navbar-right">
-                    <li ><a asp-controller="App" asp-action="Index">Home</a></li>
-                    <li class="dropdown">
-                        <div>
-                            <a asp-action="Index" asp-controller="Partners" class="partnerLinks">Partners</a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="link" aria-haspopup="true" aria-expanded="False">
-                                <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Alane A Becket">Alane A Becket</a></li>
-                                <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Thomas A Lee III">Thomas A Lee</a></li>
-                                <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Sandra K Curtin">Sandra K Curtin</a></li>
-                                <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="William J Becket">William J Becket</a></li>
-                                <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="John D Sheehan">John D Sheehan</a></li>
-                                <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Gilbert B Weisman">Gilbert B Weisman</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a asp-controller="App" asp-action="OurServices">Services</a></li>
-                    <li><a asp-controller="Events" asp-action="News">News</a></li>
-                    <li><a asp-controller="Events" asp-action="Events">Events</a></li>
-                    <li><a asp-controller="Events" asp-action="Pubs">Publications</a></li>
-                    <li><a asp-controller="App" asp-action="Index">Cases of Interest</a></li>
-                    <li><a asp-controller="App" asp-action="FirmHistory">Firm History</a></li>
-                    <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
-                    @if( User.Identity.IsAuthenticated )
-                    {
-                        <li><a asp-controller="Auth" asp-action="Index">Manage Website</a></li>
-                        <li><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
-                    }
-                </ul>*@
-        </div>
+                    </div>
+                    <ul id="partnerMenu" class="nav collapse" role="menu" aria-labelledby="partnerMenu">
+                        <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Alane A Becket"><i class="fa fa-caret-right"></i> Alane A Becket</a></li>
+                        <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Thomas A Lee III"><i class="fa fa-caret-right"></i> Thomas A Lee</a></li>
+                        <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Sandra K Curtin"><i class="fa fa-caret-right"></i> Sandra K Curtin</a></li>
+                        <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="William J Becket"><i class="fa fa-caret-right"></i> William J Becket</a></li>
+                        <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="John D Sheehan"><i class="fa fa-caret-right"></i> John D Sheehan</a></li>
+                        <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Gilbert B Weisman"><i class="fa fa-caret-right"></i> Gilbert B Weisman</a></li>
+                    </ul>
+                </li>
+                <li><a asp-controller="App" asp-action="OurServices">Services</a></li>
+                <li><a asp-controller="Events" asp-action="News">News</a></li>
+                <li><a asp-controller="Events" asp-action="Events">Events</a></li>
+                <li><a asp-controller="Events" asp-action="Pubs">Publications</a></li>
+                <li><a asp-controller="App" asp-action="Index">Cases of Interest</a></li>
+                <li><a asp-controller="App" asp-action="FirmHistory">Firm History</a></li>
+                <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="divider"></li>
+                    <li><a asp-controller="Auth" asp-action="Index">Manage Website</a></li>
+                    <li><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
+                }
+            </ul>
+        </nav>
         <div class="affiliation">
             <table>
                 <tr>

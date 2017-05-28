@@ -5,7 +5,7 @@
 }
 
 <div class="row">
-    <div class="col-sm-7 col-md-7 col-lg-7 col-md-offset-1">
+    <div class="col-md-8">
         @await Html.PartialAsync( "_EventPanel",
             new EventsViewModel
             {
@@ -14,7 +14,7 @@
                 SelectedEventHtml = Model.SelectedEventHtml
             } )
     </div>
-    <div class="col-sm-3 col-md-3 col-lg-3">
+    <div class="col-md-4">
         @await Html.PartialAsync( "_EventsListing",
             new EventsViewModel
             {

@@ -35,18 +35,22 @@
     padding-bottom: 20px;
     left: 0;
 }
+#menuGroupItem:hover {
+    background-color: #eee;
+}
 
-#menu li a {  
+#menu .active {
+    background-color: #eee;
+}
+#menuGroupItem, #menu li a {  
     line-height: 24px;
     height: 24px;
     text-align: right;
     padding-top: 0;
-    margin-right: 16px;
+    /*margin-right: 16px;*/
     color: lightskyblue
 }
-    #menu li a.hover {
-        color: lightskyblue
-    }
+
 
 #partnerDropDown a {
     margin-top: 25px;

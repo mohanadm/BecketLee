@@ -2,24 +2,24 @@
 (function () {
     
 
-    var $sidebarAndWrapper = $("#sidebar, #wrapper, #header, #disclaimerLink");
-    var $icon = $("#sidebarToggle i.fa");
-    var $navbarBrandDiv = $("#navbarBrand");
+    //var $sidebarAndWrapper = $("#sidebar, #wrapper, #header, #disclaimerLink");
+    //var $icon = $("#sidebarToggle i.fa");
+    //var $navbarBrandDiv = $("#navbarBrand");
 
-    $("#sidebarToggle").on("click",
-        function() {            
-            $sidebarAndWrapper.toggleClass("hide-sidebar");
+    //$("#sidebarToggle").on("click",
+    //    function() {            
+    //        $sidebarAndWrapper.toggleClass("hide-sidebar");
 
-            if ($sidebarAndWrapper.hasClass("hide-sidebar")) {
-                $icon.removeClass("fa fa-chevron-left");
-                $icon.addClass("fa fa-chevron-right");
-                $navbarBrandDiv.show();
-            } else {
-                $icon.removeClass("fa fa-chevron-right");
-                $icon.addClass("fa fa-chevron-left");                
-                $navbarBrandDiv.hide();
-            }
-        });
+    //        if ($sidebarAndWrapper.hasClass("hide-sidebar")) {
+    //            $icon.removeClass("fa fa-chevron-left");
+    //            $icon.addClass("fa fa-chevron-right");
+    //            $navbarBrandDiv.show();
+    //        } else {
+    //            $icon.removeClass("fa fa-chevron-right");
+    //            $icon.addClass("fa fa-chevron-left");                
+    //            $navbarBrandDiv.hide();
+    //        }
+    //    });
 
     var $disclaimer = $("#disclaimerLink");
     $disclaimer.on("click", function() {
@@ -30,14 +30,10 @@
         window.open(url, title, "statusbar=0,toolbar=0,menubar=0,addressbar=0 resizable=no, height=" + hight + ", width=" + width + "\"");
     }
 
-    $(".menu li a").click(function (e) {
-        var $this = $(this);
-        if (!$this.hasClass("active")) {
-            $this.addClass("active");
-        }
-        e.preventDefault();
+    $("nav li a").on("click", function () {
+        $("nav li").find(".active").removeClass("active");
+        $(this).find("li").addClass("active");
     });
-
 
 
 })();
