@@ -31,7 +31,7 @@
     }
 
     $("#menu li a").on("click", function (e) {
-        e.
+        
         var $li = $(".active");
         $li.removeClass("active");
         $(this).find("li").addClass("active");
