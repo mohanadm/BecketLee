@@ -30,10 +30,12 @@
         window.open(url, title, "statusbar=0,toolbar=0,menubar=0,addressbar=0 resizable=no, height=" + hight + ", width=" + width + "\"");
     }
 
-    $("nav li a").on("click", function () {
-        $("nav li").find(".active").removeClass("active");
+    $("#menu li a").on("click", function (e) {
+        e.
+        var $li = $(".active");
+        $li.removeClass("active");
         $(this).find("li").addClass("active");
-    });
+        });
 
 
 })();
