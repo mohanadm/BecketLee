@@ -39,7 +39,7 @@
     background-color: #eee;
 }
 
-#menu .current {
+#menu .active {
     background-color: #eee;
 }
 #menuGroupItem, #menu li a {  

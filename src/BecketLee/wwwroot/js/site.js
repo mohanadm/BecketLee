@@ -30,12 +30,14 @@
         window.open(url, title, "statusbar=0,toolbar=0,menubar=0,addressbar=0 resizable=no, height=" + hight + ", width=" + width + "\"");
     }
 
-    window.onload = function() {
+
+ 
+    $(window).on("load", function () {
         var url = window.location.pathname.toString();
-        var $anchor = $('#menu a[href^="' + url + '"]');
-        if ($anchor != null)
-            $anchor.find("li").addClass("current");
-    };
+        var $anchor = $('#menu a[href="' + url + '"]');
+        $anchor.parent().addClass("active");
+        
+    });
 
 //    
 //
