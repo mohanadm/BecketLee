@@ -30,12 +30,22 @@
         window.open(url, title, "statusbar=0,toolbar=0,menubar=0,addressbar=0 resizable=no, height=" + hight + ", width=" + width + "\"");
     }
 
-    $("#menu li a").on("click", function (e) {
-        
-        var $li = $(".active");
-        $li.removeClass("active");
-        $(this).find("li").addClass("active");
-        });
+    window.onload = function() {
+        var url = window.location.pathname.toString();
+        var $anchor = $('#menu a[href^="' + url + '"]');
+        if ($anchor != null)
+            $anchor.find("li").addClass("current");
+    };
+
+//    
+//
+//    $("#menu li a").on("click", function (e) {
+//        
+//        alert(href);
+//        var $li = $(".active");
+//        $li.removeClass("active");
+//        $(this).find("li").addClass("active");
+//        });
 
 
 })();
