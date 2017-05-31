@@ -1,0 +1,63 @@
+﻿@using BecketLee.Code
+@using BecketLee.Models
+@model BecketLee.ViewModels.UserRoleViewModel
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+        @using (Html.BeginForm( "UserRole", "Users", FormMethod.Post ))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor( e => e.UserId )
+            @Html.HiddenFor( e => e.UserName )
+
+            <h3>Add roles for user: <span class="text-success">@Model.UserName</span></h3>
+            <div>
+                <div class="form-group">
+                    <table class="table table-responsive">
+                        <thead>
+                            <th>Role</th>
+                            <th>Action</th>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in @Model.UserRoles)
+                            {
+                                <tr>
+                                    <td><i class="fa fa-check text-success"> </i>@item.RoleName</td>
+                                    <td>
+                                        <a id="deleteRoleModal" asp-action="DeleteUserRole"
+                                           asp-route-userid="@Model.UserId" asp-route-roleid="@item.Id"
+                                           data-toggle="modal" data-target="#modal-action-role" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-trash"></i> Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="form-group">
+                    <div class="input-group">
+                        <select asp-for="ApplicationRoleId" asp-items="@Model.ApplicationRoles" class="input-group form-control">
+                            <option>Please select</option>
+                        </select>
+
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-user"> </i> Add Selected Role </button>
+                        </span>
+                        <span asp-validation-for="ApplicationRoleId"></span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@await Html.PartialAsync( "_Modal", new BootstrapModel { ID = "modal-action-role", AreaLabeledId = "modal-action-role-label", Size = ModalSize.Medium } )
+

@@ -1,0 +1,18 @@
+﻿@model BecketLee.ViewModels.UserRoleViewModel
+@using BecketLee.Models
+
+<form asp-action="DeleteUserRole" role="form">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor( e => e.UserId )
+    @Html.HiddenFor( e => e.ApplicationRoleId );
+    
+
+    @await Html.PartialAsync( "_ModalHeader", new ModalHeader { Heading = "Delete User Role" } )
+    
+    <div class="modal-body form-horizontal">
+        Are you sure you want to delete user role @Model.DeleteMessage?
+    </div>
+    @await Html.PartialAsync( "_ModalFooter", new ModalFooter { SubmitButtonText = "Delete" } )
+</form>
+
+

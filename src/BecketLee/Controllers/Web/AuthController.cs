@@ -34,7 +34,7 @@ namespace BecketLee.Controllers.Web
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]        
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login( LoginViewModel vm, string returnUrl )
         {
             if (ModelState.IsValid)

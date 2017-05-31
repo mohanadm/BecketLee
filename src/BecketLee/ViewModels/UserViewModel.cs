@@ -36,6 +36,6 @@ namespace BecketLee.ViewModels
         public string ApplicationRoleId { get; set; }
 
         [Display( Name = "Roles" )]
-        public IEnumerable<UserRoleViewModel> UserRoles { get; set; }
+        public IEnumerable<RoleViewModel> UserRoles { get; set; }
     }
 }
