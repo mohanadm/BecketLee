@@ -15,12 +15,7 @@
     <div class="panel-heading panel-head text-center"><h3>Becket & Lee Users</h3></div>
     <div class="panel-body">
         <div class="btn-group">
-            @*<a id="createEditUserModal" asp-action="AddUser" asp-controller="Users" data-toggle="modal" data-target="#modal-action-user" class="btn btn-sm btn-info">
-                <i class="fa fa-plus"></i>  Add User
-            </a>*@
-            <a asp-action="AddEditUser" asp-controller="Users" class="btn btn-sm btn-info"><i class="fa fa-plus"></i>  Add User</a>
-
-
+            <a asp-action="AddUser" asp-controller="Users" class="btn btn-sm btn-info"><i class="fa fa-plus"></i>  Add User</a>
         </div>
         <div class="btn-group ">
             <a asp-action="Index" asp-controller="Auth" class="btn btn-sm btn-info">
@@ -45,9 +40,7 @@
                     <td>@item.Email</td>
                     <td>
 
-                        <a asp-action="AddEditUser" asp-controller="Users" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Edit User</a>
-                        @*<a id="editUserModal" asp-action="EditUser" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-user" class="btn btn-sm btn-info">
-                            <i class="fa fa-pencil"></i>  Edit    </a>*@
+                        <a asp-controller="Users" asp-action="EditUserEmail" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Edit User Email</a>
                         <a asp-controller="Users" asp-action="UserRole" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa fa-pencil"> </i> Edit User Roles</a>
                         <a id="deleteUserModal" asp-action="DeleteUser" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-user" class="btn btn-sm btn-danger">
                             <i class="fa fa-trash"></i> Delete

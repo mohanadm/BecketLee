@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using BecketLee.Models;
 using BecketLee.ViewModels;
+using MailKit.Search;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Server.Kestrel.Internal.Http;
 
 namespace BecketLee.Controllers.Web
 {
@@ -36,186 +36,17 @@ namespace BecketLee.Controllers.Web
                 UserName = u.UserName,
                 Email = u.Email
                 
-            } ).ToList();
+            } ).OrderBy(u => u.UserName).ToList();
 
             return View( model );
         }
 
-        //[HttpGet]
-        //public IActionResult AddUser()
-        //{
-        //    UserViewModel model = new UserViewModel();
-        //    model.ApplicationRoles = _roleManager.Roles.Select( r => new SelectListItem
-        //    {
-        //        Text = r.Name,
-        //        Value = r.Id
-        //    } ).ToList();
-
-        //    return PartialView( "_AddUser", model );
-        //}
-
-        //[HttpPost]
-        //[Authorize]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> AddUser( UserViewModel model )
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = new ApplicationUser()
-        //        {                    
-        //            UserName = model.UserName,
-        //            Email = model.Email
-        //        };
-        //        IdentityResult result = await _userManager.CreateAsync( user, model.Password );
-        //        if (result.Succeeded)
-        //        {
-        //            var applicationRole = await _roleManager.FindByIdAsync( model.ApplicationRoleId );
-        //            if (applicationRole != null)
-        //            {
-        //                IdentityResult roleResult = await _userManager.AddToRoleAsync( user, applicationRole.Name );
-        //                if (roleResult.Succeeded)
-        //                {
-        //                    return RedirectToAction( "Index" );
-        //                }
-        //            }
-        //        }
-        //    }
-        //    //return PartialView( "_AddUser", model );
-        //    return View( model );
-        //}
-
-
-        //[HttpGet]
-        //public async Task<IActionResult> EditUser( string id )
-        //{
-        //    UserViewModel model = new UserViewModel();
-        //    model.ApplicationRoles = _roleManager.Roles.Select( r => new SelectListItem
-        //    {
-        //        Text = r.Name,
-        //        Value = r.Id
-        //    } ).ToList();
-
-        //    if (!string.IsNullOrEmpty( id ))
-        //    {
-        //        ApplicationUser user = await _userManager.FindByIdAsync( id );
-        //        if (user != null)
-        //        {
-        //            model.UserName = user.UserName;
-        //            model.Email = user.Email;
-        //            model.Id = user.Id;
-        //            model.ApplicationRoleId = _roleManager.Roles.Single( r => r.Name == _userManager.GetRolesAsync( user ).Result.Single() ).Id;
-        //            model.UserRoles = await GetUserRolesForModel( user );
-        //        }
-        //    }
-        //    return PartialView( "_EditUser", model );
-        //}
-
-
-        //[HttpPost]
-        //[Authorize]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> EditUser( string id, UserViewModel model )
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        ApplicationUser user = await _userManager.FindByIdAsync( id );
-        //        if (user != null)
-        //        {
-        //            user.UserName = model.UserName;
-        //            user.Email = model.Email;
-        //            //if(model.Password == model.ConfirmPassword && !string.IsNullOrEmpty(model.Password) )
-                        
-        //            string existingRole = _userManager.GetRolesAsync( user ).Result.Single();
-        //            string existingRoleId = _roleManager.Roles.Single( r => r.Name == existingRole ).Id;
-        //            IdentityResult result = await _userManager.UpdateAsync( user );
-        //            if (result.Succeeded)
-        //            {
-        //                if (existingRoleId != model.ApplicationRoleId)
-        //                {
-        //                    IdentityResult roleResult = await _userManager.RemoveFromRoleAsync( user, existingRole );
-        //                    if (roleResult.Succeeded)
-        //                    {
-        //                        ApplicationRole applicationRole = await _roleManager.FindByIdAsync( model.ApplicationRoleId );
-        //                        if (applicationRole != null)
-        //                        {
-        //                            IdentityResult newRoleResult = await _userManager.AddToRoleAsync( user, applicationRole.Name );
-        //                            if (newRoleResult.Succeeded)
-        //                            {
-        //                                return RedirectToAction( "Index" );
-        //                            }
-        //                        }
-        //                    }
-        //                }
-                        
-        //            }
-        //        }
-        //    }
-        //    return PartialView( "_EditUser", model );
-        //}
 
         [HttpGet]
-        public async Task<IActionResult> DeleteUser( string id )
-        {
-            string name = string.Empty;
-            if (!string.IsNullOrEmpty( id ))
-            {
-                ApplicationUser applicationUser = await _userManager.FindByIdAsync( id );
-                if (applicationUser != null)
-                {
-                    name = applicationUser.UserName;
-                }
-            }
-            return PartialView( "_DeleteUser", name );
-            
-        }
-
-        [HttpPost]
-        [Authorize]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteUser( string id, IFormCollection form )
-        {
-            if (!String.IsNullOrEmpty( id ))
-            {
-                ApplicationUser applicationUser = await _userManager.FindByIdAsync( id );
-                if (applicationUser != null)
-                {
-                    IdentityResult result = await _userManager.DeleteAsync( applicationUser );
-                    if (result.Succeeded)
-                    {
-                        return RedirectToAction( "Index" );
-                    }
-                }
-            }
-            //return PartialView( "_DeleteUser", id );
-            return View();
-        }
-
-
-
-        //[HttpGet]
-        //public IActionResult AddEditUser()
-        //{
-        //    var user = new UserViewModel();
-        //    user.ApplicationRoles = _roleManager.Roles.Select( r => new SelectListItem
-        //    {
-        //        Text = r.Name,
-        //        Value = r.Id
-        //    } ).ToList();
-        //    user.UserRoles = new List<UserRoleViewModel>();
-            
-        //    return View(user);
-        //}
-
-        [HttpGet]
-        public async Task<IActionResult> AddEditUser( string id)
+        public async Task<IActionResult> AddUser( string id)
         {
             UserViewModel model = new UserViewModel();
-            model.ApplicationRoles = _roleManager.Roles.Select( r => new SelectListItem
-            {
-                Text = r.Name,
-                Value = r.Id
-            } ).ToList();
-
+            model.ApplicationRoles = GetRolesSelectionList();
             model.UserRoles = new List<RoleViewModel>();
 
             if ( !string.IsNullOrEmpty( id ) )
@@ -246,16 +77,17 @@ namespace BecketLee.Controllers.Web
                 userRoleModel.RoleName = userRole;
                 roleList.Add( userRoleModel );
             }
-            return roleList;
+            return roleList.OrderBy( r => r.RoleName ).ToList();
         }
 
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddEditUser( UserViewModel model )
+        public async Task<IActionResult> AddUser( UserViewModel model )
         {
             if( ModelState.IsValid )
             {
+                model.UserRoles = new List<RoleViewModel>();
                 var user = new ApplicationUser()
                 {
                     UserName = model.UserName,
@@ -268,6 +100,86 @@ namespace BecketLee.Controllers.Web
 
             return View(model);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> EditUserEmail( string id )
+        {
+            UserViewModel model = new UserViewModel();
+
+            if (!string.IsNullOrEmpty( id ))
+            {
+                ApplicationUser user = await _userManager.FindByIdAsync( id );
+                if (user != null)
+                {
+                    model.UserName = user.UserName;
+                    model.Email = user.Email;
+                    model.Id = user.Id;
+                }
+            }
+            return View( model );
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> EditUserEmail( UserViewModel model )
+        {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = await _userManager.FindByIdAsync( model.Id );
+
+                if (user != null)
+                {
+                    user.Id = model.Id;
+                    user.Email = model.Email;                                      
+
+                    IdentityResult result = await _userManager.UpdateAsync( user );
+                    if(!result.Succeeded)
+                        ModelState.AddModelError("", result.Errors.FirstOrDefault().Description );
+                }
+            }
+            return View( model );
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DeleteUser( string id )
+        {
+            string name = string.Empty;
+            if (!string.IsNullOrEmpty( id ))
+            {
+                ApplicationUser applicationUser = await _userManager.FindByIdAsync( id );
+                if (applicationUser != null)
+                {
+                    name = applicationUser.UserName;
+                }
+            }
+            return PartialView( "_DeleteUser", name );
+
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteUser( string id, IFormCollection form )
+        {
+            if (!String.IsNullOrEmpty( id ))
+            {
+                ApplicationUser applicationUser = await _userManager.FindByIdAsync( id );
+                if (applicationUser != null)
+                {
+                    IdentityResult result = await _userManager.DeleteAsync( applicationUser );
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction( "Index" );
+                    }
+                }
+            }
+            //return PartialView( "_DeleteUser", id );
+            return View();
+        }
+
+
 
 
         [HttpGet]
@@ -303,7 +215,7 @@ namespace BecketLee.Controllers.Web
             {
                 Text = r.Name,
                 Value = r.Id
-            } ).ToList();
+            } ).OrderBy( r => r.Text ).ToList();
         }
 
         [HttpPost]

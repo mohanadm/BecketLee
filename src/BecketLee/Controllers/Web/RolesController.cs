@@ -36,7 +36,7 @@ namespace BecketLee.Controllers.Web
                 , Description = r.Description
                 , NumberOfUsers = r.Users.Count
                 , CreatedDate = r.CreatedDate
-            } ).ToList();
+            } ).OrderBy(e => e.RoleName).ToList();
 
             return View( model );
 
