@@ -15,19 +15,22 @@ namespace BecketLee.ViewModels
         public string UserName { get; set; }
 
         [Required]
-        [DataType( DataType.Password )]
-        [MinLength(8)]
-        [StringLength(50)]
-        public string Password { get; set; }
+        [EmailAddress]
+        [Display( Name = "Email" )]
+        [StringLength( 512 )]
+        public string Email { get; set; }
 
         [Required]
-        [Display( Name = "Confirm Password" )]
-        [DataType( DataType.Password )]        
+        [DataType( DataType.Password )]
+        [Display( Name = "Password" )]
+        [StringLength( 100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 8 )]
+        public string Password { get; set; }
+
+        [DataType( DataType.Password )]
+        [Display( Name = "Confirm password" )]
+        [Compare( "Password", ErrorMessage = "The password and confirmation password do not match." )]
         public string ConfirmPassword { get; set; }
-        [Required]
-        [EmailAddress]
-        [StringLength(512)]
-        public string Email { get; set; }
+
         
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
 
