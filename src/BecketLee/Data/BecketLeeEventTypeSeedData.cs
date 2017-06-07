@@ -8,7 +8,7 @@ namespace BecketLee.Data
     {
         public static async Task EnsureEventTypeData( BecketLeeContext context )
         {
-            if (!context.EventTypes.Any() || context.EventTypes.Count() < 3)
+            if (!context.EventTypes.Any() || context.EventTypes.Count() < 4)
             {
                 // delete
                 foreach (var eventType in context.EventTypes)
@@ -21,6 +21,8 @@ namespace BecketLee.Data
                 eventTypeObject = new EventType() { EventTypeDescription = "Events" };
                 context.EventTypes.Add( eventTypeObject );
                 eventTypeObject = new EventType() { EventTypeDescription = "Pubs" };
+                context.EventTypes.Add( eventTypeObject );
+                eventTypeObject = new EventType() { EventTypeDescription = "Cases" };
                 context.EventTypes.Add( eventTypeObject );
 
                 await context.SaveChangesAsync();

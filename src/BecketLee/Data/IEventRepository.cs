@@ -17,5 +17,6 @@ namespace BecketLee.Data
         Task<EventViewModel> UpdateEventAsync( EventViewModel model );
         IEnumerable<EventViewModel> GetCurrentEvents();
         void DeleteEvent( EventViewModel eventViewModel );
+        IEnumerable<EventViewModel> GetCases();
     }
 }

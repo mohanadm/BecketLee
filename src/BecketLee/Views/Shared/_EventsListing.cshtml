@@ -10,8 +10,10 @@
                     @foreach (var item in Model.Events)
                     {
                         <li class="list-group-item">
-                            <div class="label eventDate">@item.StartDate.Value.ToString( "MM-dd-yyyy" )</div>
-                            
+                            @if (@item.EventType.EventTypeDescription != "Cases")
+                            {
+                                <div class="label eventDate">@item.StartDate.Value.ToString( "MM-dd-yyyy" )</div>
+                            }
                             <div class="eventText">
                                 <a active="true" asp-action="@item.Action" asp-controller="Events" asp-route-id="@item.EventId">
                                     <div>@item.Title</div>

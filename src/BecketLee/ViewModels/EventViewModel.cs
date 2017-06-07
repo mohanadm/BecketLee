@@ -16,7 +16,6 @@ namespace BecketLee.ViewModels
         [Display(Name = "Event (formatted)")]
         public string EventHtml { get; set; }
 
-        [Required]
         public DateTime? StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
@@ -41,6 +40,8 @@ namespace BecketLee.ViewModels
                         return "Events";
                     case 3:
                         return "Pubs";
+                    case 4:
+                        return "Cases";
                     default:
                         return "Index";
                 }
@@ -54,10 +55,9 @@ namespace BecketLee.ViewModels
                 switch (EventType.EventTypeId)
                 {
                     case 1:
-                        return "Events";
                     case 2:
-                        return "Events";
                     case 3:
+                    case 4:
                         return "Events";
                     default:
                         return "App";

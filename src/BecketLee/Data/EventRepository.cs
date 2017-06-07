@@ -202,6 +202,29 @@ namespace BecketLee.Data
                     EventTypes = selectionList
                 } );
         }
+        public IEnumerable<EventViewModel> GetCases()
+        {
+            var events = _context
+                .Events
+                .Include( e => e.EventType )
+                .Where( e => e.EventType.EventTypeDescription == "Cases" )
+                ;
+
+            var selectionList = GetEventTypeSelectionList();
+            return events.Select( e =>
+                new EventViewModel()
+                {
+                    EventId = e.EventId,
+                    CreatedDate = e.CreatedDate,
+                    StartDate = e.StartDate,
+                    EndDate = e.EndDate,
+                    EventHtml = WebUtility.HtmlDecode( e.EventHtml ),
+                    Title = e.Title,
+                    EventType = e.EventType,
+                    EventTypes = selectionList
+                } );
+        }
+
 
         public void DeleteEvent( EventViewModel eventViewModel )
         {
@@ -209,5 +232,6 @@ namespace BecketLee.Data
             _context.Events.Remove( eventItem );
             _context.SaveChanges();
         }
+
     }
 }

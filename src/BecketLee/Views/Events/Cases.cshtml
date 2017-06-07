@@ -1,0 +1,28 @@
+﻿@using BecketLee.ViewModels
+@model BecketLee.ViewModels.EventsViewModel
+@{
+    ViewBag.Title = "Cases of Interest";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        @await Html.PartialAsync( "_EventPanel",
+            new EventsViewModel
+            {
+                Events = @Model.Events,
+                SelectedTitle = Model.SelectedTitle,
+                SelectedEventHtml = Model.SelectedEventHtml
+            } )
+    </div>
+    <div class="col-md-4">
+        @await Html.PartialAsync( "_EventsListing",
+            new EventsViewModel
+            {
+                Events = @Model.Events,
+                SelectedTitle = Model.SelectedTitle,
+                SelectedEventHtml = Model.SelectedEventHtml,
+                ListCaption = "More " + @ViewBag.Title + "..."
+            } )
+
+    </div>
+</div>

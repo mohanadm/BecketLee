@@ -10,7 +10,7 @@ namespace BecketLee.Data
         public static async Task EnsureEventData( BecketLeeContext context )
         {
             
-            if (!context.Events.Any() || context.Events.Count() != 114)
+            if (!context.Events.Any() || context.Events.Count() != 124)
             {
                 // delete
                 context.RemoveRange( context.Events );
@@ -98,6 +98,17 @@ namespace BecketLee.Data
                     EndDate = null,
                     EventTypeId = 1,
                     EventHtml = @"&lt;p&gt;On March 22, 2011, Tom shared his expertise on the recent Supreme Court decisions impacting creditor recoveries in a bankruptcy webinar presented by Visa for its members.&lt;/p&gt;
+"
+                };
+                context.Events.Add( eventObj );
+                eventObj = new Event()
+                {
+                    Title = @"Partner Alane Becket to Speak at the 18th Biennial Judge Joe Lee Bankruptcy Institute ",
+                    CreatedDate = Convert.ToDateTime( "2017-06-07 18:43:12.8142057" ),
+                    StartDate = Convert.ToDateTime( "2017-06-08 00:00:00.0000000" ),
+                    EndDate = Convert.ToDateTime( "2017-06-09 00:00:00.0000000" ),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;The 18th Biennial Judge Joe Lee Bankruptcy Institute will be held Thursday and Friday, June 8 &amp;amp; 9, 2017, in Lexington, Kentucky. Alane&amp;#39;s topic: &lt;em&gt;The CFPB Then and Now: What Bankruptcy Practitioners Need to Know.&lt;/em&gt;&lt;/p&gt;
 "
                 };
                 context.Events.Add( eventObj );
@@ -1381,6 +1392,278 @@ namespace BecketLee.Data
 &lt;p&gt;&lt;a href=&quot;http://www.becket-lee.com/documents/Projected%20Disposable%20Income%20Captures%20Attention-Apr2011.pdf#zoom=100&quot; target=&quot;PDI&quot;&gt;Click here for full article...&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Reprinted from Norton Bankruptcy Law Adviser, (April, 2011) with permission. Copyright &amp;copy; (2011) Thomson Reuters/West. For more information about this publication please visit &lt;a href=&quot;http://www.west.thomson.com&quot; target=&quot;blank&quot;&gt; www.west.thomson.com.&lt;/a&gt;&lt;/p&gt;
+"
+                };
+                context.Events.Add( eventObj );
+                eventObj = new Event()
+                {
+                    Title = @"The \"Hanging Paragraph\" and a Secured Creditor's Surrender Dilemma ",
+                    CreatedDate = Convert.ToDateTime( "2017-06-07 18:54:35.4492057" ),
+                    StartDate = Convert.ToDateTime( "1900-01-01 00:00:00.0000000" ),
+                    EndDate = null,
+                    EventTypeId = 4,
+                    EventHtml = @"&lt;p&gt;One of the many changes made to bankruptcy practice by the Bankruptcy Abuse Prevention and Consumer Protection Act of 2005 (BAPCPA) is the treatment of a claim for a debt secured by a motor vehicle or other personal property of the debtor. New language inserted at the end of 11 U.S.C. Section 1325(a) by BAPCPA changed the pre-BAPCPA practice of bifurcating (separating) a secured claim into secured and unsecured components if the value of the collateral was less than the amount of the claim. The new statutory language, nicknamed the &amp;quot;hanging paragraph&amp;quot; because of its physical location and appearance on the printed page, appears to eliminate the bifurcation of a secured claim, allowed by 11 U.S.C. Section 506 if the debt was incurred within 910 days prior to petition and if it is collateralized by a motor vehicle, or within one year prior to petition if it is secured by other personal property.&lt;/p&gt;
+
+&lt;p&gt;Prior to BAPCPA, there were several options available for treatment of secured claims in Chapter 13. The first option was an agreement between a debtor and a secured claimant. Neither the &amp;quot;hanging paragraph&amp;quot; nor the current language of 11 U.S.C. Section 1325(a)(5)(A) alters that possibility.&lt;/p&gt;
+
+&lt;p&gt;The second option was the so-called &amp;quot;cram down.&amp;quot; Under this option, a debtor could retain the property and pay the secured claim over the life of his plan, despite the creditor&amp;#39;s objection to the contrary.&lt;/p&gt;
+
+&lt;p&gt;In Assocs. Commercial Corp. v. Rash,the United States Supreme Court explained this option:&lt;/p&gt;
+
+&lt;p style=&quot;margin-left:40px&quot;&gt;&lt;em&gt;Under the cram down option, the debtor is permitted to keep the property over the objection of the creditor; the creditor retains the lien securing the claim, see &amp;sect; 1325(a)(5)(B)(i), and the debtor is required to provide the creditor with payments, over the life of the plan, that will total the present value of the allowed secured claim, i.e., the present value of the collateral, see &amp;sect; 1325(a)(5)(B)(ii). The value of the allowed secured claim is governed by &amp;sect; 506(a) of the Code.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The last sentence was important because it effectively allowed bifurcation of the claim into secured and unsecured components.&lt;/p&gt;
+
+&lt;p&gt;BAPCPA dramatically changed this option by excepting recently incurred secured debt from bifurcation. In the words of one court, &amp;quot;Debtors must now treat the entire allowed amount of the secured creditor&amp;#39;s claim in the plan as one claim. That is what the hanging paragraph requires.&amp;quot;&lt;/p&gt;
+
+&lt;p&gt;The third option for a debtor was to surrender the collateral. Prior to BAPCPA, any deficiency still owed to the creditor, resulting from the collateral&amp;#39;s value being less than the secured claim, was treated as an unsecured claim. Treatment of claims arising from surrendered property, pursuant to the new &amp;quot;hanging paragraph&amp;quot; under BAPCPA, is not as settled. Courts are divided over whether the inapplicability of 11 U.S.C. Section 506 to secured claims described eliminates the bifurcation of a claim after a debtor has surrendered the collateral, such surrender thereby fully satisfying the claim.&lt;/p&gt;
+
+&lt;p&gt;Most courts find that the statutory language very clearly and unambiguously eliminates claim bifurcation. The wording plainly states that &amp;quot;[f]or purposes of paragraph (5), section 506 shall not apply&amp;quot; if the debt was incurred within 910 days prior to petition and if it is collateralized by a motor vehicle, or within one year prior to petition if it is secured by other personal property. A Court explained:&lt;/p&gt;
+
+&lt;p style=&quot;margin-left:40px&quot;&gt;&lt;em&gt;...[T]he language of the hanging paragraph is not ambiguous. If &amp;sect; 506 does not apply, there can be no bifurcation of the claim, whether or not the collateral is worth less than the claim and whether or not the collateral is surrendered. Thus, removing the bifurcation provisions of &amp;sect; 506 means that the 910-claim is satisfied in full by surrender of the collateral under &amp;sect; 1325(a)(5)(C).&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The court detected a fairness and balance in this approach, observing:&lt;/p&gt;
+
+&lt;p style=&quot;margin-left:40px&quot;&gt;&lt;em&gt;Ironically, the same provision that prevents the debtor from lien stripping and reducing a creditor&amp;#39;s allowed secured claim prevents the creditor from claiming a deficiency against the debtor. While this new language may not operate to hoist the 910-creditor by his own petard, surely the creditor may be said to hang by his own paragraph.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;A minority of courts do not find the language of the &amp;quot;hanging paragraph&amp;quot; to be clear. For example, one court resorted to an examination of legislative history to inform what it perceived to be ambiguous statutory language. It determined that while Congress certainly could have written into the statute clear and unambiguous language prohibiting a deficiency claim after surrender of property, it did not.&lt;/p&gt;
+
+&lt;p&gt;While the &amp;quot;hanging paragraph&amp;quot; clearly prohibits bifurcation of a claim for debt recently incurred, it does not preclude a secured claimant from pursuing any applicable state law remedy, including an unsecured claim, for a deficiency resulting from a debtor&amp;#39;s surrender of the collateral. One appellate court elaborated:&lt;/p&gt;
+
+&lt;p style=&quot;margin-left:40px&quot;&gt;&lt;em&gt;It seems extremely unlikely, given the purposes expressed in the titles of the amendments, that the intent of the amendment was to eliminate the long existing right of creditors in bankruptcy to an unsecured deficiency claim.... Even those courts that have adopted the majority position denying deficiency claims have acknowledged that the result is probably not what Congress intended, but have figuratively shrugged their shoulders and relied on the conclusion that the statute unambiguously requires a contrary result.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Thus it seems that, as so often happens, what is clear and unambiguous to one court is not so to another. While the &amp;quot;hanging paragraph&amp;quot; of 11 U.S.C. Section 1325(a) appears to eliminate the bifurcation of a secured claim pursuant to 11 U.S.C. Section 506 if the debt was incurred within 910 days pre-petition and if it is collateralized by a motor vehicle, or within one year pre-petition if it is secured by other personal property, it may not completely deny a creditor any recourse to satisfy a deficiency created by the surrender of collateral that is worth less than the amount of the creditor&amp;#39;s claim.&lt;/p&gt;
+
+&lt;p&gt;This is another issue under BAPCPA that is expected to go through the appellate process and eventually reach the Supreme Court. Until then, secured creditors are governed by the divergent opinions of how their claim will be treated. Thus, the jurisdiction of the court will determine whether a deficiency claim will be allowed after surrender.&lt;/p&gt;
+
+&lt;div&gt;
+&lt;h6 style=&quot;text-align:center&quot;&gt;&lt;em&gt;Bankruptcy Report&lt;/em&gt; is produced by Becket &amp;amp; Lee LLP, Attorneys at Law, as a service to our clients. Copyright 2007 by Becket &amp;amp; Lee LLP, except as otherwise noted. Reproduction of this newsletter is strictly prohibited without written permission from the publisher.&lt;/h6&gt;
+&lt;/div&gt;
+"
+                };
+                context.Events.Add( eventObj );
+                eventObj = new Event()
+                {
+                    Title = @"Company President Found Individually Liable for Corporate Account",
+                    CreatedDate = Convert.ToDateTime( "2017-06-07 18:51:43.2072057" ),
+                    StartDate = Convert.ToDateTime( "1900-01-01 00:00:00.0000000" ),
+                    EndDate = null,
+                    EventTypeId = 4,
+                    EventHtml = @"&lt;p style=&quot;text-align:justify&quot;&gt;The Debtor in this Chapter 11 case, filed in the Middle District of Alabama, objected to Becket &amp;amp; Lee&amp;#39;s client&amp;#39;s $20,000 claim for the Debtor&amp;#39;s business credit card, citing merely that he either did not owe the debt or did not agree with the amount of the debt listed on the claim. The lack of specificity in the objection caused Becket &amp;amp; Lee Associate Attorney Natalie McGhee to contact the Debtor&amp;#39;s Counsel, who admitted that the objection was filed in order to coerce the Creditor to reduce the amount of the claim. The Debtor (incorrectly) assumed that the Creditor would rather lower the claim amount than litigate the validity of the claim, a tactic that apparently had worked with some of the Debtor&amp;#39;s other creditors.&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;Becket &amp;amp; Lee responded to the objection, arguing that it was so lacking in detail that the Creditor was unable to formulate a response to it. Discovery requests and responses were exchanged by both parties, during which the Debtor was provided with account statements and the contract governing the account. In the Debtor&amp;#39;s discovery responses, he finally settled on the position that the debt was not his personal liability, but rather the liability of his company. Although the account agreement clearly specified the liability of both the company and the responsible company officer for the charges on the account, the Debtor alleged that the lack of a signature on the agreement precluded the Creditor from holding him liable for the debt.&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;In response to the new allegations, Becket &amp;amp; Lee filed a brief and affidavit from the Creditor, arguing that, in accordance with the terms of the account agreement, the Debtor&amp;#39;s use of the card constituted acceptance of the account agreement, and, therefore, no signature was necessary to bind the Debtor to the terms of the agreement.&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;Shortly after the Creditor&amp;#39;s brief was filed, the Debtor&amp;#39;s Counsel made an offer to resolve the objection if the Creditor reduced its claim by $10,000. The creditor declined but counter-offered to reduce the claim by a nominal amount, accounting for a few months of finance charges and late fees incurred after the Debtor&amp;#39;s last payment. The Debtor rejected this offer. With no chance of settlement, Becket &amp;amp; Lee and the Creditor prepared for the evidentiary hearing. A witness from the Creditor was prepared to testify via telephone.&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;Shortly before the evidentiary hearing, the Judge reversed his earlier decision and refused to allow the Creditors&amp;#39; witness to appear by telephone. After some persuading, the Judge returned to his previous decision to allow the telephonic witness, only to change his mind again at the hearing two days later. At that hearing, the Debtor admitted he used the card but testified that he did not remember who opened the account for the company and claimed that he never made any payments. The Debtor further testified that he did not remember ever seeing a copy of the account agreement. The Creditor&amp;#39;s records, however, indicated that the Creditor&amp;#39;s representative had spoken with the Debtor approximately one month prior to the bankruptcy.&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;The matter was set for a second hearing at which time the Creditor&amp;#39;s witness was required to appear in person.&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;In preparation for the second hearing, a supplemental brief was filed to address the contingency that the court might find that the Debtor was not &lt;em&gt;contractually&lt;/em&gt; liable for the account because he did not sign the account agreement. Although this position is not necessarily valid, Becket &amp;amp; Lee&amp;#39;s experience is that in certain areas of the country, courts have required evidence of the debtor&amp;#39;s signature on &amp;quot;something&amp;quot; in order to find liability for an individual on a corporate debt. Therefore, the supplemental brief focused on the theory of &amp;quot;unjust enrichment,&amp;quot; which is the legal principle holding that a party should not be permitted, unjustly, to enrich himself at the expense of another, but should be required to make restitution for property or benefits received where it is just and equitable that such restitution to be made. Becket &amp;amp; Lee argued that the Debtor would be unjustly enriched if he were allowed to use the credit card to obtain assets to keep his business going, keep the profits from the business for himself, and then successfully object to paying the claim in his bankruptcy case.&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;At the hearing, the Creditor&amp;#39;s witness testified that not all accounts are opened by a written application in the first instance; in fact many accounts are opened over the phone or internet, with no signature whatsoever. The witness further testified that upon approval of an application, a credit card is mailed to the responsible corporate officer, along with the account agreement. The account agreement specifies the terms of the account and the liability of both the company, and its representative, for the debt. The agreement directs the user not to use the account unless the user agrees to the terms of the agreement.&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;The Judge reserved a ruling at the hearing but later issued a decision overruling the Debtor&amp;#39;s objection and allowing the claim. In its written ruling, the Court elaborated on the question of whether the Debtor was primarily liable or a guarantor on the account. This issue is significant because in Alabama, a claim against a guarantor must be evinced by the guarantor&amp;#39;s signature, showing assent to be secondarily liable for the debt of another. Here, the court found that the provisions of the contract were unambiguous on their face, and by its terms, the Debtor was not a guarantor, but rather was primarily liable for the account. Thus, a signature was not required.&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;The court agreed with Becket &amp;amp; Lee&amp;#39;s argument that use of the card signified assent to the account agreement and that the Debtor was personally liable with the company on the account, notwithstanding the fact that he did not sign a contract. The Court noted that the account statements included the Debtor&amp;#39;s name, that the Debtor was President of the company, and that the charges on the account were for expenses for the Debtor&amp;#39;s business. Having determined that the Debtor was, in fact, responsible, the Court allowed the claim in full.&lt;br /&gt;
+&lt;em&gt;In re Adams&lt;/em&gt;, Bankruptcy No. 03-30172-WRS-11 (Bankr. M.D. of Al. 2003)&lt;/p&gt;
+
+&lt;div&gt;
+&lt;h6 style=&quot;text-align:center&quot;&gt;&lt;em&gt;Bankruptcy Report&lt;/em&gt; is produced by Becket &amp;amp; Lee LLP, Attorneys at Law, as a service to our clients. Copyright 2007 by Becket &amp;amp; Lee LLP, except as otherwise noted. Reproduction of this newsletter is strictly prohibited without written permission from the publisher.&lt;/h6&gt;
+&lt;/div&gt;
+"
+                };
+                context.Events.Add( eventObj );
+                eventObj = new Event()
+                {
+                    Title = @"Can a Debtor Really Keep an Escalade?",
+                    CreatedDate = Convert.ToDateTime( "2017-06-07 18:50:48.2362057" ),
+                    StartDate = Convert.ToDateTime( "1900-01-01 00:00:00.0000000" ),
+                    EndDate = null,
+                    EventTypeId = 4,
+                    EventHtml = @"&lt;p style=&quot;text-align:justify&quot;&gt;The intent of Congress when implementing BAPCPA in 2005 was to prevent abuse of the bankruptcy system and to ensure that those who can afford to repay some portion of their unsecured debts be required to do so. Recently, several courts have ruled on the issue of a debtor&amp;#39;s right to deduct secured obligations for luxury items from his or her Current Monthly Income (CMI) with results seemingly contradictory to the legislative intent of BAPCPA. Recently this issue came before Judge Gorman of the Central District of Illinois in&lt;em&gt; In Re Carlton&lt;/em&gt;, 370 B.R. 188, (Bankr. C.D. Ill., 2007).&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;The Trustee in&lt;em&gt; In Re Carlton&lt;/em&gt; objected to the Debtors&amp;#39; Schedule I, Official Form B22C, and confirmation of the Debtors&amp;#39; Chapter 13 plan. He asserted that the Debtors were not paying all of their projected disposable income into the plan. Projected disposable income under BAPCPA is based on CMI minus certain allowed expenses. Debtors use Official Form B22C to calculate their CMI and determine their projected disposable income. In the case of above-median debtors, such as the Carltons, income and expenses are calculated according to 1325(b)(3) which in turn, looks to the &amp;quot;means test&amp;quot; expenses found in section 707(b)(2)(A). Section 707(b)(2)(A)(iii) instructs that, for secured obligations, the allowed monthly expense is the contractual amount due over five years divided by 60. This amount is then deducted from the debtors&amp;#39; CMI in order to determine their projected disposable income. In &lt;em&gt;In Re Carlton&lt;/em&gt;, the Debtors took a monthly expense deduction for each of their three vehicles, including a 2003 Cadillac Escalade. These deductions reduced the amount of money the Debtors were required to put towards their Chapter 13 plan by reducing their projected disposable income, and ultimately reduced payments to their unsecured creditors.&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;The Trustee argued that the Debtors should not be permitted to take a deduction from their CMI for each of their three vehicles. The Trustee had specific concerns with the Carltons&amp;#39; $604.71 deduction for their Cadillac Escalade. He asserted that the Court should have denied any deduction for the Debtors&amp;#39; obligation related to this car because it was a luxury vehicle and, therefore, not a reasonable or necessary expense.&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;The Trustee further argued that if the Court ruled correctly with regard to the secured debt deductions, the Debtors&amp;#39; plan could not have been confirmed pursuant to section 1325(b). Section 1325(b)(1)(B) requires that, if the trustee or holder of a secured claim objects to the confirmation of the plan, the court may not approve the plan unless it provides that all of the debtor&amp;#39;s projected disposable income be applied for payment to the unsecured creditors under the plan. If the Debtors had not been permitted to take the secured debt deduction for their Cadillac, their projected disposable income would have been increased by the $604.71. Consequently, the Debtors&amp;#39; plan would not have been confirmed as proposed because it would not have included all of the Debtors&amp;#39; projected disposable income.&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;However, the Court did not agree with the Trustee&amp;#39;s position and held that the Debtors&amp;#39; deductions were all properly taken. The Court declined to impose its own judgment on the issues of reasonableness and necessity with regard to the Debtors&amp;#39; secured debt deductions. Judge Gorman held that the section 707(b)(2) prevented the Court from implementing a reasonable and necessary standard on secured debt deductions. She explains that, because Congress inserted the reasonable and necessary language into certain sections of BAPCPA, it can be determined that, with respect to other sections, Congress did not intend for that language to apply. The language of section 707(b)(2)(A)(iii)(I) specifically states that the deductions should include the &amp;quot;total of all amounts scheduled as contractually due&amp;quot; and does not impose a &amp;quot;reasonable and necessary&amp;quot; requirement for the collateral. Additionally, the section provides a precise formula for the calculation of the deductions allowed.&lt;/p&gt;
+
+&lt;p style=&quot;text-align:justify&quot;&gt;The Court contends that, when these inclusions are taken into consideration, Congress could not have intended to allow the secured debt deductions to be subject to a reasonable and necessary standard without including such language specifically. For that reason, the Debtors were entitled to include the secured debt deductions for all three of their vehicles. This holding may have significant consequences with regard to unsecured creditors in Chapter 13 cases. Essentially, this interpretation of section 707(b)(2)(A)(iii) and secured debt deductions allows debtors to take an unlimited number of deductions for an unlimited amount, so long as the deduction is determined by the formula set forth in the section. These deductions could reduce the amount of a debtor&amp;#39;s projected disposable income considerably, thereby also reducing the amount distributed to general unsecured creditors through the Chapter 13 Plan.&lt;/p&gt;
+
+&lt;h6 style=&quot;text-align:justify&quot;&gt;Becket &amp;amp; Lee disagrees that section 707(b)(2)(A)(iii) allows a debtor to take a monthly allowance for any collateral, frivolous or not, as is the majority interpretation of this section. See the article authored by attorneys at B&amp;amp;L in &lt;em&gt;The Quarterly&lt;/em&gt;, a National Association of Chapter Thirteen Trustees publication.&lt;/h6&gt;
+
+&lt;div&gt;
+&lt;h6 style=&quot;text-align:center&quot;&gt;&lt;span style=&quot;font-size:11px&quot;&gt;&lt;em&gt;Bankruptcy Report&lt;/em&gt; is produced by Becket &amp;amp; Lee LLP, Attorneys at Law, as a service to our clients. Copyright 2007 by Becket &amp;amp; Lee LLP, except as otherwise noted. Reproduction of this newsletter is strictly prohibited without written permission from the publisher.&lt;/span&gt;&lt;/h6&gt;
+&lt;/div&gt;
+"
+                };
+                context.Events.Add( eventObj );
+                eventObj = new Event()
+                {
+                    Title = @"\"Inc.\" Offers No Protection For Debtor",
+                    CreatedDate = Convert.ToDateTime( "2017-06-07 18:48:34.3932057" ),
+                    StartDate = Convert.ToDateTime( "1900-01-01 00:00:00.0000000" ),
+                    EndDate = null,
+                    EventTypeId = 4,
+                    EventHtml = @"&lt;p style=&quot;text-align:center&quot;&gt;&lt;strong&gt;Alane Becket, Managing Partner&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The debtor filed a Chapter 13 bankruptcy owing only $41,000 in unsecured debt, over $30,000 of which was owed to a single creditor. The debtor also owned a commercial property valued at almost $800,000 with a mortgage of only $275,000. Because the debtor had so much equity in his real property, under the &amp;quot;best interests of the creditors test&amp;quot; the debtor was required to repay his unsecured creditors in full.&lt;/p&gt;
+
+&lt;p&gt;The best interest of the creditors test is shorthand for 11 U.S.C. &amp;sect; 1325(a)(4) which requires that a Chapter 13 plan, in order to be confirmed, pay unsecured creditors no less than what they would have received in a hypothetical Chapter 7 case. Here, since a liquidation of the debtor&amp;#39;s commercial property would have yielded over $500,000 in profit to the debtor, the best interest of the creditors test mandated full payment to unsecured claims.&lt;/p&gt;
+
+&lt;p&gt;Because any money left over after the payment of all unsecured claims would be returned to the Debtor, it was not surprising when the debtor objected to the creditor&amp;#39;s claim, seeking its disallowance by alleging that the debt was incurred by his corporation and that he was not personally responsible for the obligations incurred by his corporation. The creditor, represented by Becket &amp;amp; Lee, filed a Response to the objection. The Response noted, among other things, that the debtor listed a debt to the creditor on his signed and sworn schedule of unsecured claims. The debtor did not mark the debt as &amp;quot;disputed&amp;quot;. The Response argued that the Debtor did not meet his burden of proof to overcome the evidentiary value of the proof of claim.&lt;/p&gt;
+
+&lt;p&gt;Becket &amp;amp; Lee later supplemented the creditor&amp;#39;s Response by filing an affidavit of the creditor attesting to the history of the account. Specifically, in 2002, the debtor originally opened the account with another creditor. During the life of the account, it was purchased by the current creditor. The creditor was able to retrieve the account agreement from the time the account was active with it and the account agreement from the original creditor. Both agreements clearly held the company representative responsible for all charges on the account. The creditor was also able to produce account statements for the account, as well as copies of advance checks written by the debtor in the amounts of $13,000 and $3,600.&lt;/p&gt;
+
+&lt;p&gt;A preliminary hearing was held on the Debtor&amp;#39;s objection at which time the court ordered the creditor to produce &amp;quot;something&amp;quot; evidencing the debtor&amp;#39;s assent to being held liable for the advances on the account. Because a signed application was not available, Becket &amp;amp; Lee, on behalf of its client, filed a second supplemental brief arguing that proof of a signed agreement is not the only way to show assent to liability on an account. More specifically, in accordance with the terms of many credit card agreements, acceptance of the terms of the agreement can be shown by the cardholder&amp;#39;s use of the account.&lt;/p&gt;
+
+&lt;p&gt;In addition, the account agreement contained a &amp;quot;choice of law&amp;quot; provision which stated that it was governed by the laws of Rhode Island. The second account agreement, from the current creditor, had a choice of law provision which held that the laws of Delaware were applicable to the account. Becket &amp;amp; Lee showed in its brief that regardless of whether the laws of Rhode Island, Delaware, or even New Jersey, where the bankruptcy case was pending, were applicable, all three states have law that provide that acceptance or use of a credit facility by a consumer binds the consumer to the terms of the agreement.&lt;/p&gt;
+
+&lt;p&gt;A total of eight hearings were held on this matter. It appeared that the judge was reluctant to hold the debtor liable for a debt incurred for business purposes. Becket &amp;amp; Lee provided substantial supporting documentation and legal authority to show that, regardless of how the account was used, the terms of the agreement showed the Debtor was liable on the debt.&lt;/p&gt;
+
+&lt;p&gt;Immediately prior to the last hearing on the objection, the court asked both parties for a summary of their arguments. Becket &amp;amp; Lee reiterated its position that, under the law, the debtor was responsible for the balance due on the account by virtue of the terms of the account agreement. In the alternative, it was argued that, because the corporation was owned 100 percent by the Debtor, it would be inequitable to allow the debtor to incur debt in the corporation&amp;#39;s name, take for himself all the profits of the corporation, and then refuse to pay the debts of the corporation from the sale of the property occupied by the corporation. Under the legal theory of quantum meriut, it was argued, the Debtor should be responsible for the accounts. Quantum meriut means &amp;quot;as much as he deserves&amp;quot; and is an equitable doctrine based on the concept that no one who benefits by the labor and materials of others should be unjustly enriched thereby, and that the law implies a promise to pay a reasonable amount for labor and materials furnished even absent a specific contract therefore.&lt;/p&gt;
+
+&lt;p&gt;After the eighth and final hearing, the court ruled in favor of the creditor. The court did not elaborate on its decision but cited the Debtor&amp;#39;s 100 percent interest in the corporation that obtained the benefit of the credit as weighing on its decision. The creditor&amp;#39;s claim of over $30,000 will be paid in full.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;In re Jeffrey Satkin&lt;/em&gt;, Case no. 05-23156 (Bankr. D. N.J. 2005)&lt;/p&gt;
+"
+                };
+                context.Events.Add( eventObj );
+                eventObj = new Event()
+                {
+                    Title = @"Temporary Underemployment No Basis To Discharge Student Loan Debt",
+                    CreatedDate = Convert.ToDateTime( "2017-06-07 18:47:32.3682057" ),
+                    StartDate = Convert.ToDateTime( "1900-01-01 00:00:00.0000000" ),
+                    EndDate = null,
+                    EventTypeId = 4,
+                    EventHtml = @"&lt;p style=&quot;text-align:center&quot;&gt;William J. Becket, Partner&lt;/p&gt;
+
+&lt;p&gt;The Debtor filed a Complaint against student loan creditors, seeking to discharge student loan debt totaling more than $170,000. In the Complaint, the Debtor alleged she was employed at the highest paying employment available to her, and that her monthly expenses were nearly equal to her income. Therefore, the Debtor argued, she had no ability to repay her student loans and was entitled to a discharge of the student loan debt.&lt;/p&gt;
+
+&lt;p&gt;Upon the granting of a general discharge in a bankruptcy case, a debtor receives a discharge of most unsecured debt. However, certain unsecured debts are not automatically discharged. Among debts not automatically discharged by the general discharge are educational loans made, insured or guaranteed by a governmental unit, loans made under a program funded in whole or in part by a governmental unit or nonprofit institution, and other qualified educational loans, as defined by the Internal Revenue Code.&lt;/p&gt;
+
+&lt;p&gt;In order to obtain a discharge of an otherwise nondischargeable educational loan, a debtor must file a complaint and obtain a declaratory judgment that the debtor and his/her dependants would suffer &amp;quot;undue hardship&amp;quot; if the loan(s) were not discharged. Statutory law does not define undue hardship, and courts have generally adopted one of two tests to determine whether undue hardship exists. These tests are known as the Brunner test and the &amp;quot;totality of the circumstances&amp;quot; test. In this case, the controlling standard was the Brunner test.&lt;/p&gt;
+
+&lt;p&gt;Under the Brunner test, originally described by the Second Circuit Court of Appeals, and subsequently adopted by several other Circuits, the debtor must prove: (1) that the debtor cannot maintain, based on current income and expenses, a minimal standard of living for herself and her dependents if forced to repay the loans; (2) that additional circumstances exist indicating that this state of affairs is likely to persist for a significant portion of the repayment period of the student loans; and (3) that the debtor has made good faith efforts to repay the loans.&lt;/p&gt;
+
+&lt;p&gt;In this case, the Debtor&amp;#39;s primary argument appeared to be that she was presently unable to repay the loans from available income, after deduction of monthly expenses. Facts which weighed against the Debtor in her undue hardship claim included the following: 1) the Debtor was young, only 27 years old, and had no dependants; 2) the Debtor had no physical or mental disability which might effect her ability to earn income; 3) the Debtor had earned two undergraduate B.S. degrees; 4) the Debtor had no secured creditors; 5) The Debtor admitted that her prospects were improving, and that she expected a rise in income in the near future; 6) the Debtor formerly held a position with a higher salary, indicating that she was capable of earning more than she currently earned; 7) the Debtor was newly married by the time the case went to trial, and her spouse&amp;#39;s separate income was available to contribute to household expenses; and finally, 9) the Debtor had expressed an intent to repay only student loans which her parents had co-signed as liable parties.&lt;/p&gt;
+
+&lt;p&gt;At trial, the court found that, after subtracting household expenses from net income, the Debtor did have significant excess income available in her monthly budget. The court noted that the addition of the Debtor&amp;#39;s spouse&amp;#39;s income to the household budget drastically enhanced the excess household income, thereby freeing up a significant portion of the Debtor&amp;#39;s individual income for repayment of the student loans. The court also observed that the Debtor and her new spouse had medical insurance through their employer, and both regularly contributed to their 401k plans. The court also found certain of the Debtor&amp;#39;s monthly expenses to be beyond &amp;quot;minimal&amp;quot;, as that term is used in the Brunner test, including a gym membership, a household cleaning service, and payments on prepetition dischargeable debts.&lt;/p&gt;
+
+&lt;p&gt;In ruling on application of the facts to the Brunner test for determining undue hardship, the court found that the Debtor did meet the third prong of the Brunner test, because she had made a good faith effort to repay the loans by having made a number of interest payments on the loans over a period of years. However, the Court also found that the Debtor could not meet the first prong of the Brunner test because she would still be able to maintain a minimal standard of living if forced to repay the loans. The Debtor&amp;#39;s recent marriage, and the addition of her spouse&amp;#39;s income to the household budget, were critical to the decision, as they made a difference in the excess income the Debtor had available to repay the student loans. Finally, having failed the first prong of the Brunner test, the debtor would necessarily be unable to show that any hardship she alleged would be long-lasting (failing the second prong of the test), since the court found that undue hardship was not presently evident.&lt;/p&gt;
+"
+                };
+                context.Events.Add( eventObj );
+                eventObj = new Event()
+                {
+                    Title = @"In Calculating Plan Payments, Can Debtors Deduct For A Car Payment They Don't Have?",
+                    CreatedDate = Convert.ToDateTime( "2017-06-07 18:46:51.4972057" ),
+                    StartDate = Convert.ToDateTime( "1900-01-01 00:00:00.0000000" ),
+                    EndDate = null,
+                    EventTypeId = 4,
+                    EventHtml = @"&lt;p style=&quot;text-align:center&quot;&gt;Emily Abbott, Associate Attorney&lt;/p&gt;
+
+&lt;p&gt;In the Bankruptcy Abuse Prevention and Consumer Protection Act of 2005 (BAPCPA), Congress requires that the Collection Financial Standards, established by the Internal Revenue Service, be used for certain calculations for debtors in bankruptcy.&lt;/p&gt;
+
+&lt;p&gt;Collection Financial Standards&lt;br /&gt;
+The Standards are a set of established expense limits used by the IRS to help determine a taxpayer&amp;#39;s ability to pay delinquent tax liabilities. These Standards are predetermined dollar amounts for monthly expenses for basic necessities such as a food, clothing, housing, and a vehicle. The amounts for certain items vary depending on the region in which a taxpayer lives.&lt;/p&gt;
+
+&lt;p&gt;Use of Standards in Bankruptcy&lt;br /&gt;
+In bankruptcy, these Standards for expenses are to be used in two distinct calculations: (1) in determining which debtors will be permitted to proceed with Chapter 7 bankruptcy, i.e., the means test, and (2) in determining what is reasonable for certain Chapter 13 debtors to spend and, thus, how much those debtors will have available to repay creditors. This is of critical importance to unsecured creditors because, of course, it is more likely they will be paid in a Chapter 13, and also because once in Chapter 13, the less a debtors&amp;#39; expenses, the more disposable income will be available for repayment of unsecured creditors.&lt;/p&gt;
+
+&lt;p&gt;Standard for Vehicle Ownership&lt;br /&gt;
+The Bankruptcy Code (&amp;quot;Code&amp;quot;) is clear that use of the Standards is intended because it specifically refers to them in BAPCPA-revised section 707; however, just how and when to use the Standards has been the subject of much litigation in bankruptcy courts across the country. By far, the most hotly debated issue is the application of the Standard for vehicle ownership. The Standard for vehicle ownership is currently listed on an IRS chart as $489 per car, regardless of where the taxpayer lives or whether she leases or finances.&lt;/p&gt;
+
+&lt;p&gt;The specific question that has arisen for debtors in bankruptcy is this: can a debtor who has no car payment deduct the Standard amount for vehicle ownership anyway? In other words, is this amount a fixed allowance for all debtors or is it applicable only when a debtor actually has a car payment? Debtors, in order to avoid Chapter 13, or to reduce their repayment obligation once in a Chapter 13, argue that Congress intended for application of the Standard as a fixed amount regardless of their circumstances. They argue this based on language of the Code that says their expenses &amp;quot;shall be&amp;quot; the &amp;quot;applicable monthly expense amounts specified under&amp;quot; the Standards. The word &amp;quot;applicable&amp;quot;, the debtors argue, requires them to apply the Standard according to how many cars they own. Creditors and Chapter 13 Trustees will argue that the word applicable means a debtor must have a car payment in order for that Standard to be applicable to her. Additionally, objectors will argue that it is helpful to look at how the IRS uses its own Standards because the IRS&amp;#39; method maximizes repayment.&lt;/p&gt;
+
+&lt;p&gt;How the IRS Applies Its Vehicle Ownership Standards&lt;br /&gt;
+In order to actually use the Standards, one has to go outside the Code because the numbers are set forth in charts in IRS materials, all of which can be found on the internet. The IRS has set its Standards up such that there are two separate monthly amounts applicable to transportation expenses: one for ownership (cost of acquisition, whether a lease or purchase) and the other for operation (gas, maintenance, insurance, registration). The IRS practice, as set forth in its written guidance materials, is to allow taxpayers who actually incur a car payment (lease or financing) to deduct a maximum of $489 in determining how much they can afford to pay per month to repay a tax obligation. This limit applies nationwide.&lt;/p&gt;
+
+&lt;p&gt;A single taxpayer is normally allowed one car so if that taxpayer happens to have two cars, she does not get to deduct two amounts, just the actual or Standard, whichever is less, for the one car. Married taxpayers with two car payments will, under IRS practice, be permitted use of the Standard twice, subject to the &amp;quot;actual or Standard, whichever is less&amp;quot; rule for each car. The IRS limits married taxpayers to two vehicles. For operating costs, taxpayers with a vehicle get a fixed amount depending on the region where they live. (If taxpayers do not have a car at all, they get another figure for public transportation regardless of what they spend.)&lt;/p&gt;
+
+&lt;p&gt;Case Law&lt;br /&gt;
+The bankruptcy courts faced with this issue so far are split, with decisions favoring use of the Standard regardless of whether a debtor has a payment slightly outnumbering decisions ruling against a debtor&amp;#39;s use of the Standard where there is no payment. These courts generally reason that the word &amp;quot;applicable&amp;quot; does not have the meaning creditors and Trustees assign to it and further, that Congress did not specifically adopt IRS&amp;#39; guidance materials in the language of the Code and thus, the IRS&amp;#39; method is irrelevant in the bankruptcy context.&lt;/p&gt;
+
+&lt;p&gt;The good news for creditors is that the seven appellate courts publishing opinions on this issue as of this date have ruled against a debtor&amp;#39;s use of the Standard where the debtor has no car payment.&lt;/p&gt;
+
+&lt;p&gt;Ninth Circuit BAP: In re Ransom&lt;br /&gt;
+Becket &amp;amp; Lee LLP litigated this issue in In re Ransom, 380 B.R. 799 (9th Cir. B.A.P. 2007). In Ransom, an above-median Chapter 13 debtor sought to deduct $471 (the Standard for car ownership at the time) even though he paid off his car previous to his bankruptcy filing. The BAP found the plain language of the Code, specifically the word &amp;quot;applicable&amp;quot;, meant the debtor had to actually have a car payment in order to take the expense.&lt;/p&gt;
+
+&lt;p&gt;Further, the BAP looked at the requirement to use the Standards in the context of the Code and the purpose behind BAPCPA and found, quite logically, what is important is the payments that debtors actually make, not how many cars they own, because the payments that debtors make are what actually affect their ability to make payment to their creditors.&lt;/p&gt;
+
+&lt;p&gt;Although the BAP cited with approval lower courts that had specifically followed the IRS guidelines, the decision was not specifically based on this. Mr. Ransom has appealed the decision of the 9th Circuit BAP to the Court of Appeals for the Ninth Circuit and Becket &amp;amp; Lee LLP will continue to defend its victory.&lt;/p&gt;
+
+&lt;p&gt;8th Cir BAP: In re Wilson One of the most recent appellate rulings on this issue is notable. Another Bankruptcy Appellate Panel in In re Wilson, Case No. 07-6050, 2007 Bankr. LEXIS 567 (8th Cir B.A.P. March 14, 2008), reversed the ruling of the Bankruptcy Court for the Western District of Arkansas that a debtor who owns a car outright can take the Standard expense.&lt;/p&gt;
+"
+                };
+                context.Events.Add( eventObj );
+                eventObj = new Event()
+                {
+                    Title = @"Are Balance Transfers Avoidable?",
+                    CreatedDate = Convert.ToDateTime( "2017-06-07 18:45:30.2072057" ),
+                    StartDate = Convert.ToDateTime( "1900-01-01 00:00:00.0000000" ),
+                    EndDate = null,
+                    EventTypeId = 4,
+                    EventHtml = @"&lt;p style=&quot;text-align:center&quot;&gt;Crystal Jones, Associate Attorney&lt;/p&gt;
+
+&lt;p&gt;Pre-petition, the Debtor transferred $10,000 from one credit card account to another through the use of convenience checks. The Trustee sought to force the receiving creditor (Creditor B) to pay the $10,000 over to the bankruptcy estate pursuant to 11 U.S.C.&amp;sect; 547(b), which allows a bankruptcy trustee to recover preferential payments made pre-petition for the benefit of all creditors. The Bankruptcy Court ruled in the Trustee&amp;#39;s favor. Creditor B appealed, arguing that the payment, made directly from one creditor to another by use of convenience checks, was not a transfer of &amp;quot;property of the debtor,&amp;quot; one of the required elements of a preference.&lt;/p&gt;
+
+&lt;p&gt;The preference laws were designed, as the Bankruptcy Court notes in this case, to remove the incentive of creditors of an insolvent debtor from &amp;quot;competitive last-minute grabbing&amp;quot; of a debtor&amp;#39;s assets. Importantly, a transfer is only preferential if the property transferred belongs to the debtor. The Bankruptcy Court held that a transfer directly from one creditor to another, made by use of convenience checks was in fact, a transfer of property of the debtor.&lt;/p&gt;
+
+&lt;p&gt;On appeal, Creditor B made several arguments. It contended that the Debtor had no &amp;quot;property interest&amp;quot; in the money that was transferred. Further, Creditor B argued that the &amp;quot;earmarking doctrine&amp;quot; applied to the transfer. The earmarking doctrine applies when borrowed funds are specifically earmarked by the lender to pay a particular creditor. If the earmarking doctrine applied to the transfer, argued Creditor B, the funds would never really be the Debtor&amp;#39;s property. For the preference law to apply, the property sought to be returned must have been the debtor&amp;#39;s property to begin with. Finally, Creditor B argued that, because the transfer did not cause a diminution of the estate, it wasn&amp;#39;t a preferential transfer. The Appeals Court disagreed with Creditor B and reaffirmed the Bankruptcy Court&amp;#39;s holding.&lt;/p&gt;
+
+&lt;p&gt;The Appeals Court explained that the Debtor exercised significant control over the money by choosing to pay a single creditor, rather than paying all creditors pro rata or, alternatively, keeping the money and using it to purchase property. The Appeals Court stated that if the Debtor had chosen to keep the convenience check funds or purchased property with them, the assets of the estate at the time of bankruptcy would have been greater. This could have allowed equal distribution of such assets to creditors pro rata. Instead, the Debtor chose to disburse the proceeds of these checks to a single creditor. As such, the estate was essentially &amp;quot;diminished&amp;quot; of the assets that could have otherwise been acquired.&lt;/p&gt;
+
+&lt;p&gt;Creditor B, in a related argument, contended that because the Debtor deposited the convenience checks in her bank account, the transactions involved a &amp;quot;transfer of debt&amp;quot; which would merely result in a substitution of creditors, not a depletion of the Debtor&amp;#39;s estate. The Appeals Court rejected this argument pointing to the &amp;quot;economic reality&amp;#39; of the transaction. The Court explained that a balance transfer is in the nature of a a loan from the bank. When the Debtor obtained the loan, she also obtained control of the loan proceeds, making it irrelevant that the Debtor never had cash in hand.&lt;/p&gt;
+
+&lt;p&gt;The Appeals Court also rejected Creditor B&amp;#39;s argument that earmarking doctrine applied to the transfer. In this case, it is undisputed that Creditor A, in issuing the convenience checks, did not specifically restrict the funds for payment of the Debtor&amp;#39;s debt to Creditor B. The Court held that it was the Debtor, not the lender, who exercised control of the funds and designated such payment to the creditor of his choosing. The Appeals Court acknowledged that other bankruptcy courts have viewed similar transfers differently. In&lt;em&gt; In re Parks&lt;/em&gt;, which is currently on appeal from a Kansas bankruptcy court, the court held that a transfer of credit card balances was &amp;quot;a mere substitution of creditors which had no impact on either the property of the estate or the value of the claims asserted against the estate.&amp;quot; Additionally, in a decision from Utah, the court stated that the &amp;quot;availability of credit&amp;quot; constituted only a potential wealth because creditors could not force debtors to use such credit to create liquidity for distribution.&lt;/p&gt;
+
+&lt;p&gt;The Appeals Court stated that these opinions disregard the fact that, had the Debtor retained the proceeds of these convenience checks, they would have been available to all creditors equally. As such, the Appeals Court reaffirmed the Bankruptcy Court&amp;#39;s granting of the Trustee&amp;#39;s Motion for Summary Judgment on her preference claim, and ordered Creditor B to return the $10,000 to the estate. Meoli v. MBNA Am. Bank, N.A. (&lt;em&gt;In re Wells&lt;/em&gt;) 382 B.R. 355, (B.A.P. 6th Cir. 2008)&lt;/p&gt;
+"
+                };
+                context.Events.Add( eventObj );
+                eventObj = new Event()
+                {
+                    Title = @"Supreme Court Rules on Calculation of Chapter 13 Plan Payment",
+                    CreatedDate = Convert.ToDateTime( "2017-06-07 18:44:51.4112057" ),
+                    StartDate = Convert.ToDateTime( "1900-01-01 00:00:00.0000000" ),
+                    EndDate = null,
+                    EventTypeId = 4,
+                    EventHtml = @"&lt;p&gt;On June 7, 2010, the Supreme Court decided the case of &lt;em&gt;Hamilton v. Lanning&lt;/em&gt;, 560 U.S. ___ (2010), for which the lower court decisions have been reported in detail in Becket &amp;amp; Lee&amp;#39;s newsletter, &lt;em&gt;Bankruptcy Report&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;In the six months prior to filing her petition, the debtor accepted a buyout from her employer, coincident with her termination. This financial &amp;quot;bump&amp;quot; placed her &amp;quot;current monthly income&amp;quot; above the median income for Kansas. Recognizing the transience of this income figure, the debtor proposed a chapter 13 plan payment based on her far lower income and expenses at the time of her petition and as anticipated thereafter.&lt;/p&gt;
+
+&lt;p&gt;The chapter 13 trustee objected to the confirmation of the debtor&amp;#39;s proposed plan, arguing that the Bankruptcy Code determined the plan payment to be the amount found on the &amp;quot;bottom line&amp;quot; of Official Form 22C. This bottom line is the result of subtracting the Form&amp;#39;s expenses from the debtor&amp;#39;s &amp;quot;current monthly income,&amp;quot; which is also calculated in strict compliance with the statute.&lt;/p&gt;
+
+&lt;p&gt;The Supreme Court of the United States affirmed the United States Court of Appeals for the Tenth Circuit, rejecting the so-called mechanical approach as inconsonant with the Code. It held that &amp;quot;when a bankruptcy court calculates a debtor&amp;#39;s projected disposable income, the court may account for changes in the debtor&amp;#39;s income or expenses that are known or virtually certain at the time of confirmation.&amp;quot; Echoing the appeals court&amp;#39;s analysis, the Court opined that the meaning of statutory language such as &amp;quot;projected&amp;quot; (as in &amp;quot;projected disposable income&amp;quot;), &amp;quot;to be received in the applicable commitment period,&amp;quot; and &amp;quot;as of the effective date of the plan&amp;quot; (being defined by the Court as the confirmation date), lead to a holding that &amp;quot;the &amp;#39;forward-looking approach&amp;#39; is correct.&amp;quot; Such an approach is further supported by pre-BAPCPA practice, still valid &amp;quot;&amp;#39;absent a clear indication that Congress intended such a departure.&amp;#39;&amp;quot; The Court rejected as flawed each of the trustee&amp;#39;s suggested &amp;quot;work arounds&amp;quot; to avoid or mitigate the effects of the mechanical approach he urged.&lt;/p&gt;
+
+&lt;p&gt;The dissent agreed that while &amp;quot;expenses at least arguably depend on estimations of the debtor&amp;#39;s future circumstances,&amp;quot; a debtor&amp;#39;s current monthly income is a statutorily defined fixed amount based strictly on historical data. Such result was the only proper outcome considering the strict language of the statute. If this result runs counter to that which Congress intended, it may correct it.&lt;/p&gt;
+
+&lt;p&gt;As a practical matter, &lt;em&gt;Lanning&lt;/em&gt; should drive courts to require debtors to propose chapter 13 plans that more realistically reflect their ability to pay creditors. Also, this decision should have some effect on the case of &lt;em&gt;Ransom v. MBNA, Am. Bank, N.A. (In re Ransom)&lt;/em&gt;, currently before the Supreme Court. Litigated successfully by Becket &amp;amp; Lee through the Ninth Circuit Court of Appeals, &lt;em&gt;Ransom&lt;/em&gt; denied an &amp;quot;above-median&amp;quot; chapter 13 debtor an expense for vehicle ownership for a vehicle unencumbered by a loan or lease obligation, holding that the plain language of the Bankruptcy Code prohibited the debtor from deducting the expense for a car he owns &amp;quot;free and clear.&amp;quot; It would not permit the debtor to reduce his payments to his unsecured creditors on the basis of a &amp;quot;fictitious expense.&amp;quot;&lt;/p&gt;
+
+&lt;p&gt;On June 8, 2010, Becket &amp;amp; Lee partner Alane Becket participated in a teleconference sponsored by the American Bankruptcy Institute in which she, a chapter 13 trustee and several law professors discussed &lt;em&gt;Lanning&lt;/em&gt; and its practical impact for both creditors and debtors. A recording of the teleconference is available on the ABI&amp;#39;s website (&lt;a href=&quot;http://www.abiworld.org/webinars/2010/Hamilton_Lanning_Supreme_Court/index.html&quot;&gt;&lt;span style=&quot;color:#0066cc&quot;&gt;www.abiworld.org&lt;/span&gt;&lt;/a&gt;).&lt;/p&gt;
+"
+                };
+                context.Events.Add( eventObj );
+                eventObj = new Event()
+                {
+                    Title = @"Supreme Court Rules on the Expensing of Fictional Car Payment ",
+                    CreatedDate = Convert.ToDateTime( "2017-06-07 18:44:15.7412057" ),
+                    StartDate = Convert.ToDateTime( "1900-01-01 00:00:00.0000000" ),
+                    EndDate = null,
+                    EventTypeId = 4,
+                    EventHtml = @"&lt;p&gt;On January 11, 2011, the Supreme Court decided the case of &lt;em&gt;Ransom v. FIA Card Services, N.A.&lt;/em&gt;, No. 09-907, &lt;em&gt;slip op.&lt;/em&gt; (U.S. Jan. 11, 2011). The Court determined that a debtor may not claim a car ownership allowance to reduce the amount paid into a chapter 13 plan for a car owned free and clear of any liens or leases. This ruling will provide Ransom&amp;#39;s unsecured creditors an additional $28,000.&lt;/p&gt;
+
+&lt;p&gt;The Bankruptcy Code states that a &amp;quot;debtor&amp;#39;s monthly expenses shall be the debtor&amp;#39;s &lt;em&gt;applicable &lt;/em&gt; monthly expense amounts specified under the National Standards and Local Standards&amp;quot; (emphasis added). The Court decided that an expense is &amp;quot;applicable&amp;quot; if a debtor incurs costs that correspond to it-more precisely, &amp;quot;only if the debtor will incur that kind of expense during the life of the plan.&amp;quot; Furthermore, the Court examined the statutory context of the means test, particularly its use in the calculation of a chapter 13 debtor&amp;#39;s disposable income. Chapter 13 requires a debtor&amp;#39;s expense amounts to be &amp;quot;reasonably necessary.&amp;quot; The Court reasoned that if a debtor will not pay a particular expense during the life of his plan, then an allowance for a wholly fictional expense is not reasonably necessary. Finally, the Court reminded that Congress purposed, in its 2005 amendments to the Bankruptcy Code (enacted as the Bankruptcy Abuse Prevention and Consumer Protection Act of 2005), to ensure that a debtor repays creditors the maximum affordable amount. Allowing the debtor to deduct an expense that he does not pay would, according to the Supreme Court, thwart this purpose.&lt;/p&gt;
+
+&lt;p&gt;This case, along with the &lt;em&gt;Lanning&lt;/em&gt; decision by the Supreme Court last year, provides the framework for determining how to calculate a chapter 13 debtor&amp;#39;s plan payments under BAPCPA. The combined effect is positive for unsecured creditors, and reinforces Congressional intent of having debtors repay as much as they can afford.&lt;/p&gt;
+
+&lt;p&gt;Becket &amp;amp; Lee served as counsel to FIA Card Services in this matter, briefing this case for the bankruptcy court and the Bankruptcy Appellate Panel, and briefing and arguing the matter before the Ninth Circuit Court of Appeals. At the Supreme Court, Becket &amp;amp; Lee served as co-counsel and assisted with the preparation of the brief and oral argument. Future editions of &lt;em&gt;Bankruptcy Report&lt;/em&gt; will have a more detailed analysis of the impact of both the &lt;em&gt;Ransom and Lanning&lt;/em&gt; decisions.&lt;/p&gt;
 "
                 };
                 context.Events.Add( eventObj );

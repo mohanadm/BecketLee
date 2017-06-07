@@ -132,6 +132,25 @@ namespace BecketLee.Controllers.Web
             return View( events );
         }
 
+        public IActionResult Cases( string id )
+        {
+            var events = new EventsViewModel();
+            EventViewModel selectedEvent;
+            events.Events = _repository.GetCases();
+
+
+            if (!string.IsNullOrEmpty( id ))
+                selectedEvent = _repository.GetEventById( id );
+            else
+                selectedEvent = events.Events.FirstOrDefault();
+
+            events.SelectedTitle = selectedEvent.Title;
+            events.SelectedEventHtml = WebUtility.HtmlDecode( selectedEvent.EventHtml );
+
+            return View( events );
+        }
+
+
 
     }
 }
