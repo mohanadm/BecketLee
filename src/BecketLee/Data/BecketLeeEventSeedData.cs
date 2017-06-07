@@ -1397,7 +1397,7 @@ namespace BecketLee.Data
                 context.Events.Add( eventObj );
                 eventObj = new Event()
                 {
-                    Title = @"The \"Hanging Paragraph\" and a Secured Creditor's Surrender Dilemma ",
+                    Title = "The \"Hanging Paragraph\" and a Secured Creditor's Surrender Dilemma ",
                     CreatedDate = Convert.ToDateTime( "2017-06-07 18:54:35.4492057" ),
                     StartDate = Convert.ToDateTime( "1900-01-01 00:00:00.0000000" ),
                     EndDate = null,
@@ -1505,7 +1505,7 @@ namespace BecketLee.Data
                 context.Events.Add( eventObj );
                 eventObj = new Event()
                 {
-                    Title = @"\"Inc.\" Offers No Protection For Debtor",
+                    Title = "\"Inc.\" Offers No Protection For Debtor",
                     CreatedDate = Convert.ToDateTime( "2017-06-07 18:48:34.3932057" ),
                     StartDate = Convert.ToDateTime( "1900-01-01 00:00:00.0000000" ),
                     EndDate = null,
