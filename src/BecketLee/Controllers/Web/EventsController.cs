@@ -27,9 +27,9 @@ namespace BecketLee.Controllers.Web
 
 
 
-        public IActionResult ManageEvents()
+        public IActionResult ManageEvents(string searchTerm = null, int eventTypeId = -1)
         {
-            var data = _repository.Events();
+            var data = _repository.Events( searchTerm, eventTypeId );
             return View( data );
         }
 

@@ -7,6 +7,20 @@
     <div class="panel-heading panel-head text-center"><h3>Manage Events</h3></div>
     <div class="panel-body">
         <div class="top-buffer"></div>
+        <div class="pull-right ">
+            <form method="get" class="form-horizontal form-inline">
+                <input class="form-control" type="text" name="searchTerm" />
+                <select class="form-control" name="eventTypeId" id="eventTypeId">
+                    <option>&nbsp;</option>
+                    <option value="1">News</option>
+                    <option value="2">Events</option>
+                    <option value="3">Pubs</option>
+                    <option value="4">Cases</option>
+                </select>
+                <input class="btn btn-default" type="submit" value="Search"/>
+            </form>
+        </div>
+        
 
         <div class="btn-group">
             <a id="createEditUserModal" asp-action="EditEvent" asp-controller="Events" class="btn btn-sm btn-info">
@@ -20,7 +34,7 @@
             </a>
 
         </div>
-
+        <div>&nbsp;</div>
         <table class="table table-bordered table-striped table-condensed">
             <thead>
                 <tr>

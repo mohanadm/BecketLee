@@ -11,7 +11,9 @@ namespace BecketLee.Data
         IEnumerable<EventViewModel> GetEvents();
         IEnumerable<EventViewModel> GetNews();
         IEnumerable<EventViewModel> GetPubs();
-        IEnumerable<EventViewModel> Events();
+        //IEnumerable<EventViewModel> Events();
+        IEnumerable<EventViewModel> Events(string searchTerm, int eventTypeId);
+
         List<EventType> GetEventTypes();
         EventViewModel GetEventById( string eventId );
         Task<EventViewModel> UpdateEventAsync( EventViewModel model );

@@ -66,11 +66,13 @@ namespace BecketLee.Data
         }
 
 
-        public IEnumerable<EventViewModel> Events()
+        public IEnumerable<EventViewModel> Events(string searchTerm, int eventTypeId)
         {
             var events = _context
                 .Events
                 .Include( e => e.EventType )
+                .Where( e => (searchTerm == null || e.Title.Contains(searchTerm)) && 
+                    ( eventTypeId == -1 || e.EventTypeId == eventTypeId ) )
                 .OrderByDescending( e => e.StartDate );
 
             var selectionList = GetEventTypeSelectionList();
