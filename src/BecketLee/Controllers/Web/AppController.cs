@@ -5,16 +5,16 @@ using Microsoft.Extensions.Logging;
 
 namespace BecketLee.Controllers.Web
 {
-    public class AppController : Controller
+    public class HomeController : Controller
     {
         private readonly IEventRepository _repository;
         private IConfigurationRoot _config;
         private readonly ILogger _logger;
 
-        public AppController( 
+        public HomeController( 
             IEventRepository repository,
             IConfigurationRoot config, 
-            ILogger<AppController> logger)
+            ILogger<HomeController> logger)
         {
             _repository = repository;
             _config = config;

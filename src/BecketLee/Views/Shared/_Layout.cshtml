@@ -46,11 +46,11 @@
 
         <nav id="menu">
             <ul class="nav navbar-inverse">
-                <li><a asp-controller="App" asp-action="Index">Home</a></li>
+                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
                 <li>
                     <div id="menuGroupItem">
                         <a asp-action="Index" asp-controller="Partners">Partners</a>
-                        <a data-toggle="collapse" data-target="#partnerMenu"><i class="fa fa-chevron-down"></i></a>
+                        <a data-toggle="collapse" data-target="#partnerMenu" class="subMenuSelector"><i class="fa fa-chevron-down"></i></a>
 
                     </div>
                     <ul id="partnerMenu" class="nav collapse" role="menu" aria-labelledby="partnerMenu">
@@ -62,13 +62,13 @@
                         <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Gilbert B Weisman"><i class="fa fa-caret-right"></i> Gilbert B Weisman</a></li>
                     </ul>
                 </li>
-                <li><a asp-controller="App" asp-action="OurServices">Services</a></li>
+                <li><a asp-controller="Home" asp-action="OurServices">Services</a></li>
                 <li><a asp-controller="Events" asp-action="News">News</a></li>
                 <li><a asp-controller="Events" asp-action="Events">Events</a></li>
                 <li><a asp-controller="Events" asp-action="Pubs">Publications</a></li>
                 <li><a asp-controller="Events" asp-action="Cases">Cases of Interest</a></li>
-                <li><a asp-controller="App" asp-action="FirmHistory">Firm History</a></li>
-                <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
+                <li><a asp-controller="Home" asp-action="FirmHistory">Firm History</a></li>
+                <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li class="divider"></li>

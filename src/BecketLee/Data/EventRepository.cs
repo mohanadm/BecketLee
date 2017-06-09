@@ -141,7 +141,7 @@ namespace BecketLee.Data
                 .Include( e=> e.EventType)
                 .Where( e => e.EventType.EventTypeDescription == "Events" &&
                     e.CreatedDate > DateTime.Now.Subtract(new TimeSpan(365 * 2, 0, 0, 0)))
-                .OrderByDescending(e => e.StartDate);
+                ;
             var selectionList = GetEventTypeSelectionList();
             return events.Select( e =>
                 new EventViewModel()
@@ -154,7 +154,7 @@ namespace BecketLee.Data
                     Title = e.Title,
                     EventType = e.EventType,
                     EventTypes = selectionList
-                } );
+                } ).OrderByDescending( e => e.StartDate );
         }
 
 
@@ -164,7 +164,7 @@ namespace BecketLee.Data
                 .Events
                 .Include( e => e.EventType )
                 .Where( e => e.EventType.EventTypeDescription == "News" )
-                .OrderByDescending( e => e.StartDate );
+                ;
 
             var selectionList = GetEventTypeSelectionList();
 
@@ -179,7 +179,7 @@ namespace BecketLee.Data
                     Title = e.Title,
                     EventType = e.EventType,
                     EventTypes = selectionList
-                } );
+                } ).OrderByDescending( e => e.StartDate );
         }
 
         public IEnumerable<EventViewModel> GetPubs()
@@ -188,7 +188,7 @@ namespace BecketLee.Data
                 .Events
                 .Include( e => e.EventType )
                 .Where( e => e.EventType.EventTypeDescription == "Pubs" )
-                .OrderByDescending( e => e.StartDate );
+                ;
 
             var selectionList = GetEventTypeSelectionList();
             return events.Select( e =>
@@ -202,7 +202,7 @@ namespace BecketLee.Data
                     Title = e.Title,
                     EventType = e.EventType,
                     EventTypes = selectionList
-                } );
+                } ).OrderByDescending( e => e.StartDate );
         }
         public IEnumerable<EventViewModel> GetCases()
         {
@@ -224,7 +224,7 @@ namespace BecketLee.Data
                     Title = e.Title,
                     EventType = e.EventType,
                     EventTypes = selectionList
-                } );
+                } ).OrderByDescending( e => e.StartDate );
         }
 
 
