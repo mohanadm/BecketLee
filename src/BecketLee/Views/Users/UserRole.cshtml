@@ -9,19 +9,30 @@
 
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
+        @using (Html.BeginForm( "UserRole", "Users", FormMethod.Get ))
+        {
+            @Html.AntiForgeryToken()
+            <h3>
+                Add roles for user: <span class="text-success">@Model.UserName</span>
+                <span class="pull-right">
+                    <button asp-action="Index" asp-controller="Users" class="btn btn-sm btn-default"><i class="fa fa-backward"> </i> Back</button>
+                </span>
+
+            </h3>
+
+        }
         @using (Html.BeginForm( "UserRole", "Users", FormMethod.Post ))
         {
             @Html.AntiForgeryToken()
             @Html.HiddenFor( e => e.UserId )
             @Html.HiddenFor( e => e.UserName )
 
-            <h3>Add roles for user: <span class="text-success">@Model.UserName</span></h3>
             <div>
                 <div class="form-group">
                     <table class="table table-responsive">
                         <thead>
-                            <th>Role</th>
-                            <th>Action</th>
+                        <th>Role</th>
+                        <th>Action</th>
                         </thead>
                         <tbody>
                             @foreach (var item in @Model.UserRoles)
