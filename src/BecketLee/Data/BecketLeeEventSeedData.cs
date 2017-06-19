@@ -10,7 +10,7 @@ namespace BecketLee.Data
         public static async Task EnsureEventData( BecketLeeContext context )
         {
             
-            if (!context.Events.Any() || context.Events.Count() != 135)
+            if (!context.Events.Any() || context.Events.Count() != 136)
             {
                 // delete
                 context.RemoveRange( context.Events );
@@ -98,6 +98,17 @@ namespace BecketLee.Data
 &lt;p&gt;Among other things, this revised edition covers the fundamentals of consumer bankruptcy proceedings under chapters 7 and 13 of the Code, including updated information on the changes in the law since BAPCPA. Moreover, it includes important information on today&amp;#39;s most litigated questions, such as issues surrounding applicable commitment periods in chapter 13 plans, projected disposable income, case conversion and exemptions. Finally, the book provides critical analyses of several new U.S. Supreme Court decisions, including &lt;em&gt;Lanning, Ransom, Espinosa and Milavetz.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;For more information on the publication, please visit &lt;a href=&quot;http://bookstore.abi.org/&quot;&gt;http://bookstore.abi.org/&lt;/a&gt;.&lt;/p&gt;
+"
+                };
+                context.Events.Add( eventObj );
+                eventObj = new Event()
+                {
+                    Title = @"Becket & Lee Joining NACTT's 52nd Annual Conference; Alane Becket Speaking",
+                    CreatedDate = Convert.ToDateTime( "2017-06-19 18:11:42.4660464" ),
+                    StartDate = Convert.ToDateTime( "2017-07-12 00:00:00.0000000" ),
+                    EndDate = Convert.ToDateTime( "2017-07-15 00:00:00.0000000" ),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p style=&quot;margin-left:0in; margin-right:0in&quot;&gt;&lt;span style=&quot;font-size:12pt&quot;&gt;&lt;span style=&quot;color:#000000&quot;&gt;Partners Tom Lee and Alane Becket along with Operations Manager Stu Cramer will attend the annual meeting of the National Association of Chapter 13 Trustees in Seattle from July 12-15, 2017. On July 13, Alane will join the Chapter 13 Standing Trustee for the Eastern District of Michigan, Tammy L. Terry along with attorney John Rao of Boston MA in a panel discussion: &lt;em&gt;Consumer Financial Protection Bureau &amp;ndash; Emerging issues affecting consumer bankruptcy.&lt;/em&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
 "
                 };
                 context.Events.Add( eventObj );
@@ -796,23 +807,23 @@ namespace BecketLee.Data
                 context.Events.Add( eventObj );
                 eventObj = new Event()
                 {
-                    Title = @"B&L at NARCA Spring 2013 Conference",
-                    CreatedDate = Convert.ToDateTime( "2013-05-14 16:29:48.4530000" ),
-                    StartDate = Convert.ToDateTime( "2013-05-08 00:00:00.0000000" ),
-                    EndDate = Convert.ToDateTime( "2013-05-11 00:00:00.0000000" ),
-                    EventTypeId = 2,
-                    EventHtml = @"&lt;p&gt;Partner Alane Becket attended the 2013 Spring Collection Conference of the National Association of Retail Collection Attorneys in Las Vegas. The conference ran from May 8-11, 2013.&lt;/p&gt;
-"
-                };
-                context.Events.Add( eventObj );
-                eventObj = new Event()
-                {
                     Title = @"CRS 2013: Tom Lee Presented/Firm Exhibited",
                     CreatedDate = Convert.ToDateTime( "2013-05-14 16:32:46.8200000" ),
                     StartDate = Convert.ToDateTime( "2013-05-08 00:00:00.0000000" ),
                     EndDate = Convert.ToDateTime( "2013-05-10 00:00:00.0000000" ),
                     EventTypeId = 2,
                     EventHtml = @"&lt;p&gt;From May 8-10, 2013, Partner Tom Lee and Business Operations Analyst Stu Cramer attended the annual Collections and Recovery Solutions conference in Las Vegas. On Friday, May 10th, Tom led a roundtable discussion of the proposed national new chapter 13 form plan and its potential ramifications on creditors. Becket &amp;amp; Lee also exhibited at the event.&lt;/p&gt;
+"
+                };
+                context.Events.Add( eventObj );
+                eventObj = new Event()
+                {
+                    Title = @"B&L at NARCA Spring 2013 Conference",
+                    CreatedDate = Convert.ToDateTime( "2013-05-14 16:29:48.4530000" ),
+                    StartDate = Convert.ToDateTime( "2013-05-08 00:00:00.0000000" ),
+                    EndDate = Convert.ToDateTime( "2013-05-11 00:00:00.0000000" ),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Partner Alane Becket attended the 2013 Spring Collection Conference of the National Association of Retail Collection Attorneys in Las Vegas. The conference ran from May 8-11, 2013.&lt;/p&gt;
 "
                 };
                 context.Events.Add( eventObj );
@@ -2081,7 +2092,6 @@ It definitely was NOT and that&amp;#39;s emphatic.&lt;/p&gt;
 "
                 };
                 context.Events.Add( eventObj );
-
 
                 await context.SaveChangesAsync();
 
