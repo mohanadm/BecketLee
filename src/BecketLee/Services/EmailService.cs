@@ -6,9 +6,9 @@ namespace BecketLee.Services
 {
     public class EmailService : IEmailService
     {
-        public async Task SendEmailAsync(string to, string from, string subject, string body)
+        public async Task SendEmailAsync(string to, string subject, string body)
         {
-            var message = FormMessage( to, from, subject, body );
+            var message = FormMessage( to, "doNotReply@becket-lee.com", subject, body );
 
             using (var client = new SmtpClient())
             {
@@ -27,9 +27,9 @@ namespace BecketLee.Services
 
         }
 
-        public void SendEmail(string to, string @from, string subject, string body)
+        public void SendEmail(string to, string subject, string body)
         {
-            var message = FormMessage( to, from, subject, body );
+            var message = FormMessage( to, "doNotReply@becket-lee.com", subject, body );
 
             using (var client = new SmtpClient())
             {

@@ -134,9 +134,9 @@ namespace BecketLee
             services.AddTransient<BecketLeeSeedData>();
 
             if (_environment.IsDevelopment())
-                services.AddScoped<IEmailService, EmailServiceFake>();
+                services.AddTransient<IEmailService, EmailServiceFake>();
             else
-                services.AddScoped<IEmailService, EmailService>();
+                services.AddTransient<IEmailService, EmailService>();
 
             services.AddScoped<IPartnerRepository, PartnerRepository>();
             services.AddScoped<IEventRepository, EventRepository>();
