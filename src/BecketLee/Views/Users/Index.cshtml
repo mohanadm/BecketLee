@@ -7,47 +7,42 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }
 
-
-
-
-<div class="top-buffer"></div>
+<div>&nbsp;</div>
 <div class="panel panel-default">
     <div class="panel-heading panel-head text-center"><h3>Becket & Lee Users</h3></div>
     <div class="panel-body">
         <div class="btn-group">
-            <a asp-action="AddUser" asp-controller="Users" class="btn btn-sm btn-info"><i class="fa fa-plus"></i>  Add User</a>
+            <a asp-action="Register" asp-controller="Auth" class="btn btn-info"><i class="fa fa-plus"></i>  Register New User</a>
         </div>
         <div class="btn-group ">
-            <a asp-action="Index" asp-controller="Auth" class="btn btn-sm btn-info">
+            <a asp-action="Index" asp-controller="Auth" class="btn btn-info">
                 <i class="fa fa-gavel"></i>  Management
             </a>
 
-        </div>       
-        <div class="top-buffer"></div>
+        </div>
+        <div>&nbsp;</div>
         <table class="table table-bordered table-striped table-condensed">
             <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Action</th>
-            </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
             </thead>
             <tbody>
-            @foreach (var item in Model)
+                @foreach (var item in Model)
             {
-                <tr>
-                    <td>@item.UserName</td>
-                    <td>@item.Email</td>
-                    <td>
-
-                        <a asp-controller="Users" asp-action="EditUserEmail" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Edit User Email</a>
-                        <a asp-controller="Users" asp-action="UserRole" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa fa-pencil"> </i> Edit User Roles</a>
-                        <a id="deleteUserModal" asp-action="DeleteUser" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-user" class="btn btn-sm btn-danger">
-                            <i class="fa fa-trash"></i> Delete
-                        </a>
-                    </td>
-                </tr>
-            }
+                    <tr>
+                        <td>@item.UserName</td>
+                        <td>@item.Email</td>
+                        <td>
+                            <a asp-controller="Users" asp-action="UserRole" asp-route-id="@item.Id" class="btn btn-sm btn-info"><i class="fa fa-pencil"> </i> Edit User Roles</a>
+                            <a id="deleteUserModal" asp-action="DeleteUser" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-user" class="btn btn-sm btn-danger">
+                                <i class="fa fa-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>

@@ -3,14 +3,11 @@
 }
 
 <div class="top-buffer"></div>
-<div class="col-md-6 col-md-offset-3">
+<div class="col-md-8 col-md-offset-2">
     <div class="panel panel-default">
-        <div class="panel panel-heading"><h3>Manage Website</h3></div>
+        <div class="panel panel-heading text-center"><h3>Manage Website</h3></div>
         <div class="panel panel-body ">
             
-            <div class="top-buffer"></div>
-
-
             <table class="table table-bordered table-striped table-condensed container-fluid">
 
                 <tbody>
@@ -50,6 +47,17 @@
                                 </a>
                             </td>
                         </tr>
+                    }
+                    @if (!User.IsInRole( "Administrator" ) && !User.IsInRole( "BioEditor" ) && !User.IsInRole( "PowerEditor" ))
+                    {
+                        <tr>
+                            <td class="text-center">
+                                <i class="fa fa-gavel"></i> 
+                                <span>Let the Webmaster know that your permissions are not setup.</span>
+                                <i class="fa fa-gavel fa-flip-horizontal"></i>
+                            </td>
+                        </tr>
+
                     }
                     @if (User.Identity.IsAuthenticated)
                     {

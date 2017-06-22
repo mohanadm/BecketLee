@@ -42,27 +42,46 @@ namespace BecketLee.Controllers.Web
         }
 
 
-        [HttpGet]
-        public async Task<IActionResult> AddUser( string id)
-        {
-            UserViewModel model = new UserViewModel();
-            model.ApplicationRoles = GetRolesSelectionList();
-            model.UserRoles = new List<RoleViewModel>();
-
-            if ( !string.IsNullOrEmpty( id ) )
-            {
-                ApplicationUser user = await _userManager.FindByIdAsync( id );
-                if( user != null )
-                {
-                    model.UserName = user.UserName;
-                    model.Email = user.Email;
-                    model.Id = user.Id;
-                    model.UserRoles = await GetUserRolesForModel( user );                    
-                }
-            }
-            return View( model );
-        }
-
+//        [HttpGet]
+//        public async Task<IActionResult> AddUser( string id)
+//        {
+//            UserViewModel model = new UserViewModel();
+//            model.ApplicationRoles = GetRolesSelectionList();
+//            model.UserRoles = new List<RoleViewModel>();
+//
+//            if ( !string.IsNullOrEmpty( id ) )
+//            {
+//                ApplicationUser user = await _userManager.FindByIdAsync( id );
+//                if( user != null )
+//                {
+//                    model.UserName = user.UserName;
+//                    model.Email = user.Email;
+//                    model.Id = user.Id;
+//                    model.UserRoles = await GetUserRolesForModel( user );                    
+//                }
+//            }
+//            return View( model );
+//        }
+//        [HttpPost]
+//        [Authorize]
+//        [ValidateAntiForgeryToken]
+//        public async Task<IActionResult> AddUser( UserViewModel model )
+//        {
+//            if( ModelState.IsValid )
+//            {
+//                model.UserRoles = new List<RoleViewModel>();
+//                var user = new ApplicationUser()
+//                {
+//                    UserName = model.UserName,
+//                    Email = model.Email
+//                };
+//                IdentityResult result = await _userManager.CreateAsync( user, model.Password );
+//                if( !result.Succeeded ) 
+//                    ModelState.AddModelError("", result.Errors.FirstOrDefault().Description);
+//            }
+//
+//            return View(model);
+//        }
 
         private async Task<List<RoleViewModel>> GetUserRolesForModel( ApplicationUser user )
         {
@@ -80,26 +99,6 @@ namespace BecketLee.Controllers.Web
             return roleList.OrderBy( r => r.RoleName ).ToList();
         }
 
-        [HttpPost]
-        [Authorize]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddUser( UserViewModel model )
-        {
-            if( ModelState.IsValid )
-            {
-                model.UserRoles = new List<RoleViewModel>();
-                var user = new ApplicationUser()
-                {
-                    UserName = model.UserName,
-                    Email = model.Email
-                };
-                IdentityResult result = await _userManager.CreateAsync( user, model.Password );
-                if( !result.Succeeded ) 
-                    ModelState.AddModelError("", result.Errors.FirstOrDefault().Description);
-            }
-
-            return View(model);
-        }
 
         [HttpGet]
         public async Task<IActionResult> EditUserEmail( string id )

@@ -73,6 +73,63 @@ namespace BecketLee.Controllers.Web
 
         [HttpGet]
         [AllowAnonymous]
+        public IActionResult Register( string returnUrl = null )
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        //
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register( RegisterViewModel model, string returnUrl = null )
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser { UserName = model.Username, Email = model.Email };
+                var result = await _userManager.CreateAsync( user, model.Password );
+                if (result.Succeeded)
+                {
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
+                    // Send an email with this link
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Auth", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                    await _emailService.SendEmailAsync(model.Email, "Confirm your email",
+                        $"Please confirm your email by clicking this link: <a href='{callbackUrl}'>link</a>");
+//                    await _signInManager.SignInAsync( user, isPersistent: false );
+//                    _logger.LogInformation( 3, "User created a new account with password." );
+//                    return RedirectToLocal( returnUrl );
+                    return View( "RegisterConfirmation" );
+                }
+                AddErrors( result );
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View( model );
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ConfirmEmail( string userId, string code )
+        {
+            if (userId == null || code == null)
+            {
+                return View( "Error" );
+            }
+            var user = await _userManager.FindByIdAsync( userId );
+            if (user == null)
+            {
+                return View( "Error" );
+            }
+            var result = await _userManager.ConfirmEmailAsync( user, code );
+            return View( result.Succeeded ? "ConfirmEmail" : "Error" );
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult> Logout()
         {
             if( User.Identity.IsAuthenticated )
@@ -89,8 +146,6 @@ namespace BecketLee.Controllers.Web
             return View();
         }
 
-        //
-        // POST: /Account/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]

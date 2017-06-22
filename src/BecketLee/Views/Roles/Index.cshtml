@@ -15,21 +15,21 @@
 
     <div class="panel panel-default">
         <div class="panel-heading panel-head text-center"><h3>Becket & Lee Roles</h3></div>
-    <div class="panel-body">
-        <div class="btn-group">
-            <a id="createRoleModal" data-toggle="modal" asp-action="AddEditRole" asp-controller="Roles" data-target="#modal-action-application-role" class="btn btn-sm btn-info">
-                <i class="fa fa-plus"></i>  Add Role
-            </a>
-        </div>
-        <div class="btn-group">
-            <a asp-action="Index" asp-controller="Auth" class="btn btn-sm btn-info">
-                <i class="fa fa-gavel"></i>  Management
-            </a>
-
-        </div>
-        <div class="top-buffer"></div>
-        <table class="table table-bordered table-striped table-condensed">
-            <thead>
+        <div class="panel-body">
+            <div>&nbsp;</div>
+            <div class="btn-group">
+                <a id="createRoleModal" data-toggle="modal" asp-action="AddEditRole" asp-controller="Roles" data-target="#modal-action-application-role" class="btn btn-info">
+                    <i class="fa fa-plus"></i> Add Role
+                </a>
+            </div>
+            <div class="btn-group">
+                <a asp-action="Index" asp-controller="Auth" class="btn btn-info">
+                    <i class="fa fa-gavel"></i> Management
+                </a>
+            </div>
+            <div>&nbsp;</div>
+            <table class="table table-bordered table-striped table-condensed">
+                <thead>
                 <tr>
                     <th>Role Name</th>
                     <th>Description</th>
@@ -37,15 +37,15 @@
                     <th>Created</th>
                     <th>Action</th>
                 </tr>
-            </thead>
-            <tbody>
+                </thead>
+                <tbody>
                 @foreach (var item in Model)
                 {
                     <tr>
                         <td>@item.RoleName</td>
                         <td>@item.Description</td>
                         <td>@item.NumberOfUsers</td>
-                        <td>@item.CreatedDate.ToString( "d" )</td>
+                        <td>@item.CreatedDate.ToString("d")</td>
                         <td>
                             <a id="editRoleModal" asp-action="AddEditRole" asp-controller="Roles" asp-route-id="@item.Id" data-toggle="modal" data-target="#modal-action-application-role" class="btn btn-sm btn-info">
                                 <i class="fa fa-pencil"></i>&nbsp;&nbsp;Edit
@@ -60,9 +60,9 @@
                         </td>
                     </tr>
                 }
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+        </div>
 </div>
 
 

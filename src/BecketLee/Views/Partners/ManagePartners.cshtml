@@ -16,15 +16,13 @@
                 <a id="createEditUserModal" asp-action="EditPartnerBio" asp-controller="Partners" class="btn btn-sm btn-info">
                     <i class="fa fa-plus"></i>  Add New Partner
                 </a>
-
             </div>
             <div class="btn-group ">
                 <a asp-action="Index" asp-controller="Auth" class="btn btn-sm btn-info">
                     <i class="fa fa-gavel"></i>  Management
                 </a>
-
             </div>
-            <div class="top-buffer"></div>
+            <div>&nbsp;</div>
             <table class="table table-bordered table-striped table-condensed">
                 <thead>
                 <tr>
@@ -38,7 +36,6 @@
                     <tr>
                         <td class="text-right"><img src="@item.FileUrl" alt="@item.PartnerName" class="partnerEditAvatar" asp-append-version="true" /></td>
                         <td>
-
                             <a asp-action="EditPartnerBio" asp-route-id="@item.PartnerName" class="btn btn-sm btn-info btn-group-justified">
                                 <i class="fa fa-pencil"></i> @item.PartnerName
                             </a>
