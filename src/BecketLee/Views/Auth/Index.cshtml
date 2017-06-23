@@ -11,7 +11,7 @@
             <table class="table table-bordered table-striped table-condensed container-fluid">
 
                 <tbody>
-                    @if (User.IsInRole( "Administrator" ) || User.IsInRole( "BioEditor" ) || User.IsInRole( "PowerEditor" ))
+                    @if (User.IsInRole( "Administrator" ) || User.IsInRole( "BioEditor" ) )
                     {
                         <tr>
                             <td class="center-block">
@@ -21,7 +21,7 @@
                             </td>
                         </tr>
                     }
-                    @if (User.IsInRole( "Administrator" ) || User.IsInRole( "EventEditor" ) || User.IsInRole( "PowerEditor" ))
+                    @if (User.IsInRole( "Administrator" ) || User.IsInRole( "EventEditor" ) )
                     {
                         <tr>
                             <td>
@@ -48,7 +48,7 @@
                             </td>
                         </tr>
                     }
-                    @if (!User.IsInRole( "Administrator" ) && !User.IsInRole( "BioEditor" ) && !User.IsInRole( "PowerEditor" ))
+                    @if (!User.IsInRole( "Administrator" ) && !User.IsInRole( "BioEditor" ) && !User.IsInRole( "EventEditor" ))
                     {
                         <tr>
                             <td class="text-center">
