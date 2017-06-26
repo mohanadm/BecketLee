@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BecketLee.Models
 {
@@ -15,9 +16,10 @@ namespace BecketLee.Models
         public string EventHtml { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
-        
-        public int EventTypeId { get; set; }        
-        public EventType EventType { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;        
+        public int EventTypeId { get; set; }
+
+        [NotMapped]
+        public int EventTypeDescription { get; set; }
     }
 }

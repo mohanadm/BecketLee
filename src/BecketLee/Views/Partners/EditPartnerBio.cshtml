@@ -9,13 +9,15 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/ckeditor/ckeditor.js"></script>
     <script language="javascript">
-                CKEDITOR.replace('BiographyHtml');
+        CKEDITOR.replace('BiographyHtml');
     </script>
+    <script src="~/js/ckEditorValidation.js"></script>
+
 }
 
 
 <div class="container-fluid">
-    <form asp-action="EditPartnerBio" asp-controller="Partners" method="post" enctype="multipart/form-data">
+    <form asp-action="EditPartnerBio" asp-controller="Partners" method="post" id="editPartnerBioForm" name="editPartnerBioForm" enctype="multipart/form-data">
         @Html.AntiForgeryToken()
 
         <div class="col-sm-7 col-md-8 col-lg-9">

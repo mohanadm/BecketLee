@@ -14,6 +14,7 @@
     <script language="javascript">
         CKEDITOR.replace('EventHtml');
     </script>
+    <script src="~/js/ckEditorValidation.js"></script>
 }
 
 
@@ -22,21 +23,24 @@
 </div>
 
 <div class="container-fluid">
-    <form asp-action="EditEvent" asp-controller="Events" method="post">
+    <form asp-action="EditEvent" asp-controller="Events" id="editEventForm" name="editEventForm" method="post">
         @Html.AntiForgeryToken()
         <div class="col-sm-7 col-md-8 col-lg-9">
+            <div>
+                <span class="validation-summary-errors text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Title">Title</label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title"></span>
+                <input asp-for="Title" class="form-control"/>
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="EventHtml"></label>
                 <textarea type="text" asp-for="EventHtml" name="EventHtml" id="EventHtml" class="form-control"></textarea>
-                <span asp-validation-for="EventHtml"></span>
+                <span asp-validation-for="EventHtml" class="text-danger"></span>
             </div>
             <div>
-                <input asp-for="EventId" type="hidden" />
+                <input asp-for="EventId" type="hidden"/>
             </div>
         </div>
         <div id="eventForm" class="col-sm-5 col-md-4 col-lg-3">
@@ -46,29 +50,27 @@
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
-                    @Html.TextBoxFor( d => d.StartDate, "{0:MM/dd/yyyy}" ,new {id="StartDate", name="StartDate", placeholder="MM/DD/YYYY", @class = "form-control" } )
-                    @*<input asp-for="StartDate" class="form-control" id="StartDate" name="StartDate" placeholder="MM/DD/YYYY" type="text" />*@
-                    <span asp-validation-for="StartDate"></span>
+                    <input asp-for="StartDate" class="form-control" id="StartDate" name="StartDate" placeholder="MM/DD/YYYY" value=@string.Format( "{0:MM/dd/yyyy}", @Model.StartDate ) type="text" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
                 </div>
             </div>
-            <div class="form-group">                
+            <div class="form-group">
                 <label asp-for="EndDate">End Date</label>
                 <div class="input-group">
                     <div class="input-group-addon">
                         <i class="fa fa-calendar"></i>
                     </div>
-                    @Html.TextBoxFor( d => d.EndDate, "{0:MM/dd/yyyy}", new { id = "EndDate", name = "EndDate", placeholder = "MM/DD/YYYY", @class = "form-control" } )
-                    @*<input asp-for="EndDate" class="form-control" id="EndDate" name="EndDate" placeholder="MM/DD/YYYY" type="text" />*@
-                    <span asp-validation-for="EndDate"></span>
+                    <input asp-for="EndDate" class="form-control" id="EndDate" name="EndDate" placeholder="MM/DD/YYYY" value=@string.Format( "{0:MM/dd/yyyy}", @Model.EndDate ) type="text" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="form-group">
-                <label asp-for="EventType.EventTypeId" class="control-label">Type (Pubs, News, Events)</label>
-                <select asp-for="EventType.EventTypeId" asp-items="@Model.EventTypes" class="form-control">
+                <label asp-for="EventTypeId" class="control-label">Type (Pubs, News, Events)</label>
+                <select asp-for="EventTypeId" asp-items="@Model.EventTypes" class="form-control">
                     <option>Please select</option>
                 </select>
-                <span asp-validation-for="EventType.EventTypeId"></span>
+                <span asp-validation-for="EventTypeId"  class="text-danger"></span>
             </div>
 
             <div class="form-group pull-right">

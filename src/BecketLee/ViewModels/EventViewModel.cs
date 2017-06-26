@@ -3,36 +3,44 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using BecketLee.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Extensions.FileProviders;
 
 namespace BecketLee.ViewModels
 {
     public class EventViewModel
     {
         public int EventId { get; set; }
+
         [Required]
         public string Title { get; set; }
+
         [Required]
         [StringLength(8000, MinimumLength = 10)]
         [Display(Name = "Event (formatted)")]
         public string EventHtml { get; set; }
 
+        [Required]
         public DateTime? StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
 
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
        
-        [Display(Name = "Event Type")]
-        public EventType EventType { get; set; }
+//        [Display(Name = "Event Type")]
+//        public EventType EventType { get; set; }
+
+        public List<SelectListItem> EventTypes { get; set; }
 
         [Required]
-        public List<SelectListItem> EventTypes { get; set; }
+        [Range( 1, 4, ErrorMessage = "You must select a valid Event Type.")]
+        public int EventTypeId { get; set; }
+        public string EventTypeDescription { get; set; }
 
         public string Action
         {
             get
             {
-                switch (EventType.EventTypeId)
+                switch (EventTypeId)
                 {
                     case 1:
                         return "News";
@@ -52,7 +60,7 @@ namespace BecketLee.ViewModels
         {
             get
             {
-                switch (EventType.EventTypeId)
+                switch (EventTypeId)
                 {
                     case 1:
                     case 2:

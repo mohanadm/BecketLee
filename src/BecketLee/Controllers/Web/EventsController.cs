@@ -38,6 +38,12 @@ namespace BecketLee.Controllers.Web
         [Authorize]
         public IActionResult EditEvent( string id )
         {
+            if (!User.IsInRole( "Administrator" ) &&
+                !User.IsInRole( "EventEditor" ))
+            {
+                return RedirectToAction( "UnauthorizedView", "Home" );
+            }
+
             var eventItem = _repository.GetEventById( id );                        
             return View( "EditEvent", eventItem );
         }
@@ -47,8 +53,19 @@ namespace BecketLee.Controllers.Web
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditEvent( string id, EventViewModel model )
         {
-            await _repository.UpdateEventAsync( model );
-            return RedirectToAction( "ManageEvents", "Events" );
+            if (ModelState.IsValid)
+            {
+                await _repository.UpdateEventAsync(model);
+                return RedirectToAction( "ManageEvents", "Events" );
+            }
+
+            var eventItem = _repository.GetEventById( id );
+            eventItem.Title = model.Title;
+            eventItem.EventHtml = model.EventHtml;
+            eventItem.StartDate = model.StartDate;
+            eventItem.EndDate = model.EndDate;
+            eventItem.EventTypeId = model.EventTypeId;
+            return View( "EditEvent", eventItem );
         }
 
 

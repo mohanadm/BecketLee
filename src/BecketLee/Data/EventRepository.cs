@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 using BecketLee.Models;
 using BecketLee.ViewModels;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 
 namespace BecketLee.Data
 {
     public class EventRepository : RepostitoryDataBase<EventViewModel>, IEventRepository
     {
-        public EventRepository( BecketLeeContext context) 
-            : base (context)
+        private List<EventType> _eventTypeList;
+
+        public EventRepository( BecketLeeContext context )
+            : base( context )
         {
-            
+            _eventTypeList = GetEventTypes();
         }
 
         public IEnumerable<EventViewModel> GetCurrentEvents()
         {
             var events = _context
                 .Events
-                .Include(e => e.EventType)                
                 .OrderByDescending( e => e.StartDate )
-                .Take( 20 );            
-
+                .Take( 20 );
+                 
             return events.Select( e =>
                 new EventViewModel()
                 {
@@ -33,7 +33,8 @@ namespace BecketLee.Data
                     CreatedDate = e.CreatedDate,
                     StartDate = e.StartDate,
                     Title = e.Title,
-                    EventType = e.EventType
+                    EventTypeId = e.EventTypeId,
+                    EventTypeDescription = GetEventTypeDescription( e.EventTypeId ),
                 } );
         }
 
@@ -46,7 +47,6 @@ namespace BecketLee.Data
         public EventViewModel GetEventById( string eventId )
         {
             var eventItem = _context.Events
-                .Include( e => e.EventType )
                 .FirstOrDefault( e => e.EventId.ToString() == eventId );
 
             var result = eventItem ?? new Event();
@@ -60,19 +60,19 @@ namespace BecketLee.Data
                     EndDate = result.EndDate,
                     EventHtml = WebUtility.HtmlDecode( result.EventHtml ),
                     Title = result.Title,
-                    EventType = result.EventType,
+                    EventTypeId = result.EventTypeId,
+                    EventTypeDescription = GetEventTypeDescription( result.EventTypeId ),
                     EventTypes = GetEventTypeSelectionList()
-                };            
+                };
         }
 
 
-        public IEnumerable<EventViewModel> Events(string searchTerm, int eventTypeId)
+        public IEnumerable<EventViewModel> Events( string searchTerm, int eventTypeId )
         {
             var events = _context
                 .Events
-                .Include( e => e.EventType )
-                .Where( e => (searchTerm == null || e.Title.Contains(searchTerm)) && 
-                    ( eventTypeId == -1 || e.EventTypeId == eventTypeId ) )
+                .Where( e => (searchTerm == null || e.Title.Contains( searchTerm )) &&
+                    (eventTypeId == -1 || e.EventTypeId == eventTypeId) )
                 .OrderByDescending( e => e.StartDate );
 
             var selectionList = GetEventTypeSelectionList();
@@ -86,7 +86,8 @@ namespace BecketLee.Data
                     EndDate = e.EndDate,
                     EventHtml = WebUtility.HtmlDecode( e.EventHtml ),
                     Title = e.Title,
-                    EventType = e.EventType,
+                    EventTypeId = e.EventTypeId,
+                    EventTypeDescription = GetEventTypeDescription( e.EventTypeId ),
                     EventTypes = selectionList
                 } );
         }
@@ -102,17 +103,17 @@ namespace BecketLee.Data
         }
 
         public async Task<EventViewModel> UpdateEventAsync( EventViewModel eventModel )
-        {
+        {            
             var eventItem = new Event();
             if (eventModel.EventId > 0)
-                eventItem = _context.Events.FirstOrDefault( p => p.EventId == eventModel.EventId );
+                eventItem = _context.Events.FirstOrDefault(p => p.EventId == eventModel.EventId);
 
             eventItem.Title = eventModel.Title;
             eventItem.EventHtml = WebUtility.HtmlEncode( eventModel.EventHtml );
             eventItem.StartDate = eventModel.StartDate;
             eventItem.EndDate = eventModel.EndDate;
-            eventItem.EventTypeId = eventModel.EventType.EventTypeId;
-            
+            eventItem.EventTypeId = eventModel.EventTypeId;
+
             if (eventItem.EventId > 0)
                 _context.Update( eventItem );
             else
@@ -125,7 +126,8 @@ namespace BecketLee.Data
                 EventId = eventItem.EventId,
                 Title = eventItem.Title,
                 EventHtml = WebUtility.HtmlDecode( eventItem.EventHtml ),
-                EventType = eventItem.EventType,
+                EventTypeId = eventItem.EventTypeId,
+                EventTypeDescription = GetEventTypeDescription( eventItem.EventTypeId ),
                 StartDate = eventItem.StartDate,
                 EndDate = eventItem.EndDate
             };
@@ -138,23 +140,30 @@ namespace BecketLee.Data
         {
             var events = _context
                 .Events
-                .Include( e=> e.EventType)
-                .Where( e => e.EventType.EventTypeDescription == "Events" &&
-                    e.CreatedDate > DateTime.Now.Subtract(new TimeSpan(365 * 2, 0, 0, 0)))
+                .Where( e => e.EventTypeId == (int)EventEnum.Events &&
+                    e.CreatedDate > DateTime.Now.Subtract( new TimeSpan( 365 * 2, 0, 0, 0 ) ) )
                 ;
             var selectionList = GetEventTypeSelectionList();
             return events.Select( e =>
                 new EventViewModel()
-                {                    
+                {
                     EventId = e.EventId,
                     CreatedDate = e.CreatedDate,
                     StartDate = e.StartDate,
                     EndDate = e.EndDate,
                     EventHtml = WebUtility.HtmlDecode( e.EventHtml ),
                     Title = e.Title,
-                    EventType = e.EventType,
+                    EventTypeId = e.EventTypeId,
+                    EventTypeDescription = GetEventTypeDescription( e.EventTypeId ),
                     EventTypes = selectionList
                 } ).OrderByDescending( e => e.StartDate );
+        }
+
+        private string GetEventTypeDescription(int eventTypeId)
+        {
+            var eventType = _eventTypeList
+                .FirstOrDefault(et => et.EventTypeId == eventTypeId);
+            return eventType != null ? eventType.EventTypeDescription : ""; 
         }
 
 
@@ -162,9 +171,7 @@ namespace BecketLee.Data
         {
             var events = _context
                 .Events
-                .Include( e => e.EventType )
-                .Where( e => e.EventType.EventTypeDescription == "News" )
-                ;
+                .Where( e => e.EventTypeId == (int)EventEnum.News );
 
             var selectionList = GetEventTypeSelectionList();
 
@@ -177,7 +184,8 @@ namespace BecketLee.Data
                     EndDate = e.EndDate,
                     EventHtml = WebUtility.HtmlDecode( e.EventHtml ),
                     Title = e.Title,
-                    EventType = e.EventType,
+                    EventTypeId = e.EventTypeId,
+                    EventTypeDescription = GetEventTypeDescription(e.EventTypeId),
                     EventTypes = selectionList
                 } ).OrderByDescending( e => e.StartDate );
         }
@@ -186,8 +194,7 @@ namespace BecketLee.Data
         {
             var events = _context
                 .Events
-                .Include( e => e.EventType )
-                .Where( e => e.EventType.EventTypeDescription == "Pubs" )
+                .Where( e => e.EventTypeId == (int)EventEnum.Pubs )
                 ;
 
             var selectionList = GetEventTypeSelectionList();
@@ -200,7 +207,8 @@ namespace BecketLee.Data
                     EndDate = e.EndDate,
                     EventHtml = WebUtility.HtmlDecode( e.EventHtml ),
                     Title = e.Title,
-                    EventType = e.EventType,
+                    EventTypeId = e.EventTypeId,
+                    EventTypeDescription = GetEventTypeDescription( e.EventTypeId ),
                     EventTypes = selectionList
                 } ).OrderByDescending( e => e.StartDate );
         }
@@ -208,8 +216,7 @@ namespace BecketLee.Data
         {
             var events = _context
                 .Events
-                .Include( e => e.EventType )
-                .Where( e => e.EventType.EventTypeDescription == "Cases" )
+                .Where( e => e.EventTypeId == (int)EventEnum.Cases )
                 ;
 
             var selectionList = GetEventTypeSelectionList();
@@ -222,7 +229,8 @@ namespace BecketLee.Data
                     EndDate = e.EndDate,
                     EventHtml = WebUtility.HtmlDecode( e.EventHtml ),
                     Title = e.Title,
-                    EventType = e.EventType,
+                    EventTypeId = e.EventTypeId,
+                    EventTypeDescription = GetEventTypeDescription( e.EventTypeId ),
                     EventTypes = selectionList
                 } ).OrderByDescending( e => e.StartDate );
         }
@@ -235,5 +243,13 @@ namespace BecketLee.Data
             _context.SaveChanges();
         }
 
+    }
+
+    public enum EventEnum : int
+    {
+        News = 1,
+        Events = 2,
+        Pubs = 3,
+        Cases = 4
     }
 }

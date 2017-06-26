@@ -10,7 +10,7 @@
                     @foreach (var item in Model.Events)
                     {
                         <li class="list-group-item">
-                            @if (@item.EventType.EventTypeDescription != "Cases")
+                            @if (@item.EventTypeDescription != "Cases")
                             {
                                 <div class="label eventDate">@item.StartDate.Value.ToString( "MM-dd-yyyy" )</div>
                             }

@@ -38,7 +38,7 @@ namespace BecketLee.Controllers.Web
             catch (Exception exception)
             {
                 _logger.LogError( $"Failed to get partners in controller.\n" + exception.Message );
-                return RedirectToAction( "Error", "App" );
+                return RedirectToAction( "Error", "Home" );
             }
         }
 
@@ -52,7 +52,7 @@ namespace BecketLee.Controllers.Web
             catch (Exception exception)
             {
                 _logger.LogError( $"Failed to get partners in controller.\n" + exception.Message );
-                return RedirectToAction( "Error", "App" );
+                return RedirectToAction( "Error", "Home" );
             }
         }
 
@@ -69,7 +69,7 @@ namespace BecketLee.Controllers.Web
             if (!User.IsInRole("Administrator") &&
                 !User.IsInRole("BioEditor"))
             {
-                return RedirectToAction( "UnauthorizedView", "App" );
+                return RedirectToAction( "UnauthorizedView", "Home" );
             }
             return View( _repository.GetPartnerByName( id ) ?? new PartnerViewModel() );        
         }
@@ -79,9 +79,17 @@ namespace BecketLee.Controllers.Web
         [ValidateAntiForgeryToken]
         public async Task<IActionResult>EditPartnerBio(PartnerViewModel model)
         {
-            await UploadFile( model );
-            await _repository.UpdatePartnerAsync( model );
-            return RedirectToAction( "ManagePartners", "Partners" );            
+            if (ModelState.IsValid)
+            {
+                await UploadFile(model);
+                await _repository.UpdatePartnerAsync(model);
+                return RedirectToAction("ManagePartners", "Partners");
+            }
+            var bio = _repository.GetPartnerByName( model.PartnerName ) ?? new PartnerViewModel();
+            bio.PartnerId = model.PartnerId;
+            bio.PartnerName = model.PartnerName;
+            bio.BiographyHtml = model.BiographyHtml;
+            return View( bio );
         }
 
 
