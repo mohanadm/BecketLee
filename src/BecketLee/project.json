@@ -23,7 +23,8 @@
         },
         "AutoMapper": "6.0.2",
         "MailKit": "1.16.1",
-        "jQuery.AjaxForm": "1.0.8"
+        "jQuery.AjaxForm": "1.0.8", 
+        "Autofac" : "4.2.1" 
 
     },
 
@@ -68,4 +69,6 @@
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   }
 }
+
+
 

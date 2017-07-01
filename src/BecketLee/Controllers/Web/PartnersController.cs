@@ -6,18 +6,18 @@ using BecketLee.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
 
 namespace BecketLee.Controllers.Web
 {
-    public class PartnersController : Controller
+    public class PartnersController : BaseController
     {
         private readonly IHostingEnvironment _environment;
         private IPartnerRepository _repository;
         private readonly ILogger<PartnersController> _logger;
+        private PartnerMenuViewModel _menuModel;
 
         public PartnersController( IHostingEnvironment environment, 
             IPartnerRepository repository, 
@@ -26,6 +26,7 @@ namespace BecketLee.Controllers.Web
             _environment = environment;
             _repository = repository;
             _logger = logger;
+            _menuModel = new PartnerMenuViewModel(repository);
         }
 
         public IActionResult Index()
@@ -148,5 +149,10 @@ namespace BecketLee.Controllers.Web
             return RedirectToAction( "ManagePartners" );
         }
 
+        public override PartnerMenuViewModel MenuModel
+        {
+            get { return _menuModel; }
+            set { _menuModel = value; }
+        }
     }
 }

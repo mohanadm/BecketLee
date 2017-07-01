@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using BecketLee.Data;
 using BecketLee.Models;
 using BecketLee.Services;
 using BecketLee.ViewModels;
@@ -9,20 +10,23 @@ using Microsoft.AspNetCore.Mvc;
 namespace BecketLee.Controllers.Web
 {
     
-    public class AuthController : Controller
+    public class AuthController : BaseController
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IEmailService _emailService;
+        private PartnerMenuViewModel _menuModel;
 
         public AuthController(
-            SignInManager<ApplicationUser> signInManager 
+            IPartnerRepository menuRepository
+            , SignInManager<ApplicationUser> signInManager 
             , UserManager<ApplicationUser> userManager 
             , IEmailService emailService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _emailService = emailService;
+            _menuModel = new PartnerMenuViewModel(menuRepository);
         }
 
         [HttpGet]
@@ -229,5 +233,10 @@ namespace BecketLee.Controllers.Web
             }
         }
 
+        public override PartnerMenuViewModel MenuModel
+        {
+            get { return _menuModel; }
+            set { _menuModel = value; }
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
+using Autofac;
 using AutoMapper;
+using BecketLee.Code;
 using BecketLee.Data;
 using BecketLee.Models;
 using BecketLee.Services;
@@ -23,12 +25,7 @@ namespace BecketLee
         public Startup( IHostingEnvironment env )
         {
             _environment = env;
-
-            _config = new ConfigurationBuilder()
-                .SetBasePath(_environment.ContentRootPath)
-                .AddJsonFile( "config.json" )
-                .AddEnvironmentVariables()
-                .Build();
+            _config = new ConfigRoot(_environment);
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -140,10 +137,13 @@ namespace BecketLee
 
             services.AddScoped<IPartnerRepository, PartnerRepository>();
             services.AddScoped<IEventRepository, EventRepository>();
+
+//            var builder = new ContainerBuilder();
+//            builder.RegisterType<ConfigRoot>().As<IConfigurationRoot>();
+//            builder.RegisterType<BecketLeeContext>().As<BecketLeeContext>();
+//            builder.RegisterType<PartnerRepository>().As<IPartnerRepository>();
+//            MvcBase.Container = builder.Build();
+
         }
-
-
-
     }
-
 }

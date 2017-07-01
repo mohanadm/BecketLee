@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BecketLee.Data;
 using BecketLee.Models;
 using BecketLee.ViewModels;
 using Microsoft.AspNetCore.Authorization;
@@ -11,13 +12,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BecketLee.Controllers.Web
 {
-    public class RolesController : Controller
+    public class RolesController : BaseController
     {
         private readonly RoleManager<ApplicationRole> _roleManager;
+        private PartnerMenuViewModel _menuModel;
 
-        public RolesController(RoleManager<ApplicationRole> roleManager )
+        public RolesController(
+            IPartnerRepository menuRepository,
+            RoleManager<ApplicationRole> roleManager )
         {
             _roleManager = roleManager;
+            _menuModel = new PartnerMenuViewModel(menuRepository);
         }
 
         [HttpGet]
@@ -119,6 +124,12 @@ namespace BecketLee.Controllers.Web
                 }
             }
             return View();
+        }
+
+        public override PartnerMenuViewModel MenuModel
+        {
+            get { return _menuModel; }
+            set { _menuModel = value; }
         }
     }
 }

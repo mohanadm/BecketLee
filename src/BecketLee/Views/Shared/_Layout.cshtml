@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using BecketLee.ViewModels
+<!DOCTYPE html>
 <html>
 <head>
     <title>Becket & Lee LLP - @ViewBag.Title</title>
@@ -36,9 +37,7 @@
                     <label>Your Proven Partner in Bankruptcy Management</label>
                 </li>
             </ul>
-
         </nav>
-
     </div>
 
     <div id="sidebar">
@@ -51,16 +50,12 @@
                     <div id="menuGroupItem">
                         <a asp-action="Index" asp-controller="Partners">Partners</a>
                         <a data-toggle="collapse" data-target="#partnerMenu" class="subMenuSelector"><i class="fa fa-chevron-down"></i></a>
-
                     </div>
-                    <ul id="partnerMenu" class="nav collapse" role="menu" aria-labelledby="partnerMenu">
-                        <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Alane A Becket"><i class="fa fa-caret-right"></i> Alane A Becket</a></li>
-                        <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Thomas A Lee III"><i class="fa fa-caret-right"></i> Thomas A Lee</a></li>
-                        <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Sandra K Curtin"><i class="fa fa-caret-right"></i> Sandra K Curtin</a></li>
-                        <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="William J Becket"><i class="fa fa-caret-right"></i> William J Becket</a></li>
-                        <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="John D Sheehan"><i class="fa fa-caret-right"></i> John D Sheehan</a></li>
-                        <li><a asp-controller="Partners" asp-action="PartnerBio" asp-route-id="Gilbert B Weisman"><i class="fa fa-caret-right"></i> Gilbert B Weisman</a></li>
-                    </ul>
+                    <div>
+                        <ul id="partnerMenu" class="nav collapse" role="menu" aria-labelledby="partnerMenu">
+                            @Html.Partial( "_partnerMenuView", (PartnerMenuViewModel)ViewBag.MenuModel );
+                        </ul>
+                    </div>
                 </li>
                 <li><a asp-controller="Home" asp-action="OurServices">Services</a></li>
                 <li><a asp-controller="Events" asp-action="News">News</a></li>
@@ -71,19 +66,18 @@
                 <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <li class="divider"></li>
                     <li><a asp-controller="Auth" asp-action="Index">Manage Website</a></li>
                     <li><a asp-controller="Auth" asp-action="Logout"> <i class="fa fa-sign-out"></i> Logout</a></li>
                 }
             </ul>
         </nav>
-        
+
         <div>&nbsp;</div>
         <div class="affiliation">
             <table>
                 <tr>
                     <td>
-                        <img src="~/image/WBE_color_rgb_UP25.jpg" alt="" class="affiliationImage"/>
+                        <img src="~/image/WBE_color_rgb_UP25.jpg" alt="" class="affiliationImage" />
                     </td>
                 </tr>
             </table>
@@ -120,10 +114,8 @@
         </div>
     </div>
 
-
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-
     @RenderSection( "scripts", false )
     <script type="text/javascript" src="~/js/site.js"></script>
 

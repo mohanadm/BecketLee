@@ -5,6 +5,5 @@
         Small,
         Medium,
         Large
-        
     }
 }

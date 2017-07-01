@@ -40,11 +40,11 @@
 }
 
 #menuGroupItem:hover {
-    background-color: #eee;
+    background-color: #bbb;
 }
 
 #menu .active {
-    background-color: #999;
+    background-color: #afcccc;
 }
 #menuGroupItem, #menu li a {  
     line-height: 24px;
@@ -52,7 +52,7 @@
     text-align: right;
     padding-top: 0;
     /*margin-right: 16px;*/
-    color: whitesmoke;
+    color:#eee;
 }
 
 

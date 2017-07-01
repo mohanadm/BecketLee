@@ -12,5 +12,6 @@ namespace BecketLee.Data
         Task<PartnerViewModel> UpdatePartnerAsync( PartnerViewModel model );
 
         void DeletePartnerBio( PartnerViewModel partnerBio );
+        List<string> GetPartnerNames();
     }
 }

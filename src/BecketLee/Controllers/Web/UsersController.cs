@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BecketLee.Data;
 using BecketLee.Models;
 using BecketLee.ViewModels;
-using MailKit.Search;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -13,17 +13,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BecketLee.Controllers.Web
 {
-    public class UsersController : Controller
+    public class UsersController : BaseController
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
+        private PartnerMenuViewModel _menuModel;
 
         public UsersController(
+            IPartnerRepository menuRepository,
             UserManager<ApplicationUser> userManager,
             RoleManager<ApplicationRole>  roleManager )
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _menuModel = new PartnerMenuViewModel(menuRepository);
         }
 
         [HttpGet]
@@ -286,6 +289,12 @@ namespace BecketLee.Controllers.Web
             }
 
             return RedirectToAction( "Index" );
+        }
+
+        public override PartnerMenuViewModel MenuModel
+        {
+            get { return _menuModel; }
+            set { _menuModel = value; }
         }
     }
 

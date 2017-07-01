@@ -60,8 +60,6 @@ namespace BecketLee.ViewModels
             {
                 try
                 {
-
-
                     if( !fileStream.CanRead )
                     {
                         return false;

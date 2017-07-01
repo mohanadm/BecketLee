@@ -88,5 +88,10 @@ namespace BecketLee.Data
             _context.Remove( partner );
             _context.SaveChanges();
         }
+
+        public List<string> GetPartnerNames()
+        {
+            return _context.PartnerBiographies.Select( p => p.PartnerName ).ToList();
+        }
     }
 }

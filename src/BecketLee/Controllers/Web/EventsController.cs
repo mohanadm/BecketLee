@@ -11,17 +11,20 @@ using Microsoft.Extensions.Logging;
 
 namespace BecketLee.Controllers.Web
 {
-    public class EventsController : Controller
+    public class EventsController : BaseController
     {
         private readonly IEventRepository _repository;
         private readonly ILogger<EventsController> _logger;
+        private PartnerMenuViewModel _menuModel;
 
         public EventsController( 
+            IPartnerRepository menuRepository,
             IEventRepository repository,
             ILogger<EventsController> logger)
         {
             _repository = repository;
             _logger = logger;
+            _menuModel = new PartnerMenuViewModel(menuRepository);
         }
 
 
@@ -168,6 +171,10 @@ namespace BecketLee.Controllers.Web
         }
 
 
-
+        public override PartnerMenuViewModel MenuModel
+        {
+            get { return _menuModel; }
+            set { _menuModel = value; }
+        }
     }
 }
