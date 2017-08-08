@@ -28,13 +28,13 @@
             {
                 <ul class="nav navbar-nav navbar-right ">
                     <li class="navtext">
-                        <label>-- &nbsp;&nbsp;&nbsp;Welcome: @User.Identity.Name &nbsp;&nbsp;&nbsp;</label>
+                        <label>Welcome: @User.Identity.Name </label>
                     </li>
                 </ul>
             }
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-left">
                 <li class="navtext">
-                    <label>Your Proven Partner in Bankruptcy Management</label>
+                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your Proven Partner in Bankruptcy Management</label>
                 </li>
             </ul>
         </nav>
@@ -48,7 +48,7 @@
                 <li><a asp-controller="Home" asp-action="Index">Home</a></li>
                 <li>
                     <div id="menuGroupItem">
-                        <a asp-action="Index" asp-controller="Partners">Partners</a>
+                        <a asp-action="Index" asp-controller="Partners"> Partners </a>
                         <a data-toggle="collapse" data-target="#partnerMenu" class="subMenuSelector"><i class="fa fa-chevron-down"></i></a>
                     </div>
                     <div>
@@ -57,13 +57,13 @@
                         </ul>
                     </div>
                 </li>
-                <li><a asp-controller="Home" asp-action="OurServices">Services</a></li>
-                <li><a asp-controller="Events" asp-action="News">News</a></li>
-                <li><a asp-controller="Events" asp-action="Events">Events</a></li>
-                <li><a asp-controller="Events" asp-action="Pubs">Publications</a></li>
-                <li><a asp-controller="Events" asp-action="Cases">Cases of Interest</a></li>
-                <li><a asp-controller="Home" asp-action="FirmHistory">Firm History</a></li>
-                <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                <li><a asp-controller="Home" asp-action="OurServices"> Services </a></li>
+                <li><a asp-controller="Events" asp-action="News"> News </a></li>
+                <li><a asp-controller="Events" asp-action="Events"> Events </a></li>
+                <li><a asp-controller="Events" asp-action="Pubs"> Publications </a></li>
+                <li><a asp-controller="Events" asp-action="Cases"> Cases of Interest </a></li>
+                <li><a asp-controller="Home" asp-action="FirmHistory"> Firm History </a></li>
+                <li><a asp-controller="Home" asp-action="Contact"> Contact </a></li>
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li><a asp-controller="Auth" asp-action="Index">Manage Website</a></li>

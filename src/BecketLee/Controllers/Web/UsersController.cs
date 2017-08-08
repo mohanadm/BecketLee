@@ -239,7 +239,7 @@ namespace BecketLee.Controllers.Web
                 }
                 // reload current values
                 model.UserRoles = await GetUserRolesForModel( user );
-
+                model.ApplicationRoles = GetRolesSelectionList();
             }
 
             return View( model );

@@ -1,7 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Autofac;
 using AutoMapper;
-using BecketLee.Code;
 using BecketLee.Data;
 using BecketLee.Models;
 using BecketLee.Services;
@@ -138,11 +136,6 @@ namespace BecketLee
             services.AddScoped<IPartnerRepository, PartnerRepository>();
             services.AddScoped<IEventRepository, EventRepository>();
 
-//            var builder = new ContainerBuilder();
-//            builder.RegisterType<ConfigRoot>().As<IConfigurationRoot>();
-//            builder.RegisterType<BecketLeeContext>().As<BecketLeeContext>();
-//            builder.RegisterType<PartnerRepository>().As<IPartnerRepository>();
-//            MvcBase.Container = builder.Build();
 
         }
     }

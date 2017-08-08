@@ -10,7 +10,7 @@ namespace BecketLee.Data
         public static async Task EnsureEventData( BecketLeeContext context )
         {
             
-            if (!context.Events.Any() || context.Events.Count() != 136)
+            if (!context.Events.Any() || context.Events.Count() != 137)
             {
                 // delete
                 context.RemoveRange( context.Events );
@@ -103,23 +103,34 @@ namespace BecketLee.Data
                 context.Events.Add( eventObj );
                 eventObj = new Event()
                 {
-                    Title = @"Becket & Lee Joining NACTT's 52nd Annual Conference; Alane Becket Speaking",
-                    CreatedDate = Convert.ToDateTime( "2017-06-19 18:11:42.4660464" ),
-                    StartDate = Convert.ToDateTime( "2017-07-12 00:00:00.0000000" ),
-                    EndDate = Convert.ToDateTime( "2017-07-15 00:00:00.0000000" ),
+                    Title = @"Becket & Lee to Attend the 2017 Debt Connection Symposium and Expo ",
+                    CreatedDate = Convert.ToDateTime( "2017-08-08 15:39:25.7972068" ),
+                    StartDate = Convert.ToDateTime( "2017-09-11 00:00:00.0000000" ),
+                    EndDate = Convert.ToDateTime( "2017-08-13 00:00:00.0000000" ),
                     EventTypeId = 2,
-                    EventHtml = @"&lt;p style=&quot;margin-left:0in; margin-right:0in&quot;&gt;&lt;span style=&quot;font-size:12pt&quot;&gt;&lt;span style=&quot;color:#000000&quot;&gt;Partners Tom Lee and Alane Becket along with Operations Manager Stu Cramer will attend the annual meeting of the National Association of Chapter 13 Trustees in Seattle from July 12-15, 2017. On July 13, Alane will join the Chapter 13 Standing Trustee for the Eastern District of Michigan, Tammy L. Terry along with attorney John Rao of Boston MA in a panel discussion: &lt;em&gt;Consumer Financial Protection Bureau &amp;ndash; Emerging issues affecting consumer bankruptcy.&lt;/em&gt;&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+                    EventHtml = @"&lt;p style=&quot;margin-left:0in; margin-right:0in&quot;&gt;&lt;span style=&quot;color:#000000&quot;&gt;Partner Tom Lee and Business Operations Analyst Stu Cramer will be attending the 2017 Debt Connection Symposium &amp;amp; Expo in Tucson, AZ, September 11-13, 2017. The firm will exhibit at this conference geared for collections, recovery, and debt sales professionals. Tom Lee will be speaking during the &amp;ldquo;&lt;em&gt;Fast Track Presentation&lt;/em&gt;&lt;/span&gt;&lt;span style=&quot;color:#000000&quot;&gt;&amp;rdquo; on September 12&lt;/span&gt;&lt;span style=&quot;color:#000000&quot;&gt;th&lt;/span&gt;&lt;span style=&quot;color:#000000&quot;&gt;, his topic, &lt;/span&gt;&lt;em&gt;&lt;span style=&quot;color:#000000&quot;&gt;Bankruptcy Update&lt;/span&gt;&lt;/em&gt;&lt;span style=&quot;color:#000000&quot;&gt;.&lt;/span&gt; &lt;span style=&quot;color:#000000&quot;&gt;There is no better or faster way to find out about noteworthy changes in consumer bankruptcy than this seven-minute program. Discussion points will cover, among other things, updates on Midland Funding, LLC v. Johnson (decided on May 15, 2017 by the Supreme Court of the United States) and the upcoming bankruptcy rule changes scheduled for implementation on December 1, 2017 that include shortening the time within which creditors may file proofs of claims in chapter 13 bankruptcies. With new cases being published every day, these seven minutes will be packed with actionable information critical for compliant, proactive bankruptcy programs.&lt;/span&gt;&lt;/p&gt;
 "
                 };
                 context.Events.Add( eventObj );
                 eventObj = new Event()
                 {
-                    Title = @"Partner Alane Becket to Speak at the 18th Biennial Judge Joe Lee Bankruptcy Institute ",
+                    Title = @"Becket & Lee joined NACTT's 52nd Annual Conference",
+                    CreatedDate = Convert.ToDateTime( "2017-06-19 18:11:42.4660464" ),
+                    StartDate = Convert.ToDateTime( "2017-07-12 00:00:00.0000000" ),
+                    EndDate = Convert.ToDateTime( "2017-07-15 00:00:00.0000000" ),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p style=&quot;margin-left:0in; margin-right:0in&quot;&gt;&lt;span style=&quot;color:#000000&quot;&gt;Partners Tom Lee and Alane Becket along with Operations Manager Stu Cramer attended the annual meeting of the National Association of Chapter 13 Trustees in Seattle from July 12-15, 2017. On July 13, Alane joined the Chapter 13 Standing Trustee for the Eastern District of Michigan, Tammy L. Terry along with attorney John Rao of Boston MA in a panel discussion: &lt;em&gt;Consumer Financial Protection Bureau &amp;ndash; Emerging issues affecting consumer bankruptcy. &lt;/em&gt;&lt;/span&gt;&lt;/p&gt;
+"
+                };
+                context.Events.Add( eventObj );
+                eventObj = new Event()
+                {
+                    Title = @"Partner Alane Becket Spoke at the 18th Biennial Judge Joe Lee Bankruptcy Institute",
                     CreatedDate = Convert.ToDateTime( "2017-06-07 18:43:12.8142057" ),
                     StartDate = Convert.ToDateTime( "2017-06-08 00:00:00.0000000" ),
                     EndDate = Convert.ToDateTime( "2017-06-09 00:00:00.0000000" ),
                     EventTypeId = 2,
-                    EventHtml = @"&lt;p&gt;The 18th Biennial Judge Joe Lee Bankruptcy Institute will be held Thursday and Friday, June 8 &amp;amp; 9, 2017, in Lexington, Kentucky. Alane&amp;#39;s topic: &lt;em&gt;The CFPB Then and Now: What Bankruptcy Practitioners Need to Know.&lt;/em&gt;&lt;/p&gt;
+                    EventHtml = @"&lt;p&gt;&lt;span style=&quot;color:#000000&quot;&gt;The 18th Biennial Judge Joe Lee Bankruptcy Institute was held Thursday and Friday, June 8 &amp;amp; 9, 2017, in Lexington, Kentucky. Alane&amp;#39;s topic: &lt;em&gt;The CFPB Then and Now: What Bankruptcy Practitioners Need to Know.&lt;/em&gt;&lt;/span&gt;&lt;/p&gt;
 "
                 };
                 context.Events.Add( eventObj );
