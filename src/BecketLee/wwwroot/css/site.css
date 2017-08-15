@@ -44,8 +44,13 @@
 }
 
 #menu .active {
-    background-color: #afcccc;
+    background-color: #7bc9f0;    
 }
+
+#menu li a:hover {
+        background-color: #bbb;
+}
+
 #menuGroupItem, #menu li a {  
     line-height: 24px;
     height: 24px;
