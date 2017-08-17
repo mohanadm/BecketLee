@@ -67,9 +67,11 @@ namespace BecketLee
                 loggerFactory.AddConsole( LogLevel.Error );
             }
             
+            
             //app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseIdentity();                       
+            app.UseIdentity();
+                        
 
             Mapper.Initialize( config =>
             {
