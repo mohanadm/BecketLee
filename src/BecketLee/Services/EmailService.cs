@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using MimeKit;
 
@@ -13,19 +12,20 @@ namespace BecketLee.Services
 
             using (var client = new SmtpClient())
             {
-                client.Connect( "mail.host4asp.net", 465 );
+                client.Connect("smtp.gmail.com", 587 );
 
                 // Note: since we don't have an OAuth2 token, disable
                 // the XOAUTH2 authentication mechanism.
                 client.AuthenticationMechanisms.Remove( "XOAUTH2" );
 
                 // Note: only needed if the SMTP server requires authentication
-                //client.Authenticate( "Do_Not_Reply@becket-lee.com", "" );
-                client.Authenticate( "", "" );
+                client.Authenticate("becket.lee.out@gmail.com", "Se8zr5@6");
 
                 await client.SendAsync( message );
                 client.Disconnect( true );
             }
+
+
 
         }
 
@@ -35,13 +35,13 @@ namespace BecketLee.Services
 
             using (var client = new SmtpClient())
             {
-                client.Connect( "mail.host4asp.net", 465 );
+                client.Connect("smtp.gmail.com", 587);
                 // Note: since we don't have an OAuth2 token, disable
                 // the XOAUTH2 authentication mechanism.
                 client.AuthenticationMechanisms.Remove( "XOAUTH2" );
 
                 // Note: only needed if the SMTP server requires authentication
-                client.Authenticate( "Do_Not_Reply@becket-lee.com", "" );
+                client.Authenticate("becket.lee.out@gmail.com", "Se8zr5@6");
 
                 client.SendAsync( message );
                 client.Disconnect( true );
@@ -55,10 +55,11 @@ namespace BecketLee.Services
             message.To.Add( new MailboxAddress( to, to ) );
             message.Subject = subject;
 
-            message.Body = new TextPart( "plain" )
+            message.Body = new TextPart( "html" )
             {
                 Text = body
             };
+            
             return message;
         }
     }
