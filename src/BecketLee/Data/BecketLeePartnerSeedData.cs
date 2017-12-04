@@ -176,7 +176,7 @@ Pennsylvania Bar Association&lt;br /&gt;
 Pennsylvania (1990); New Jersey (1990)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Other Professional Affiliations:&lt;/strong&gt;&lt;br /&gt;
-Pennsylvania Bar Association; American Bankruptcy Institute (ABI); INSOL International&lt;br /&gt;
+American Bankruptcy Institute (ABI); INSOL International&lt;br /&gt;
 &amp;nbsp;&lt;/p&gt;
 
 &lt;p&gt;Mr. Sheehan joined Becket &amp;amp; Lee in June 1990, where he spent his first years litigating all areas of consumer bankruptcy law on behalf of the firm&amp;rsquo;s creditor clients. John&amp;rsquo;s responsibilities as a lead liaison to one of Becket &amp;amp; Lee&amp;rsquo;s large national clients include managing all aspects of the relationship, including operational processes, litigation strategy, and compliance. Specializing in the claim sale and transfer process, John has overseen the implementation of new technology to streamline and automate the process while retaining the exceptional accuracy that Becket &amp;amp; Lee&amp;rsquo;s clients demand.&lt;/p&gt;
