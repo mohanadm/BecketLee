@@ -10,7 +10,7 @@ namespace BecketLee.Data
         public static async Task EnsureEventData( BecketLeeContext context )
         {
             
-            if (!context.Events.Any() || context.Events.Count() != 139)
+            if (!context.Events.Any() || context.Events.Count() != 140)
             {
                 // delete
                 context.RemoveRange( context.Events );
@@ -92,6 +92,16 @@ namespace BecketLee.Data
 &lt;p&gt;Among other things, this revised edition covers the fundamentals of consumer bankruptcy proceedings under chapters 7 and 13 of the Code, including updated information on the changes in the law since BAPCPA. Moreover, it includes important information on today&amp;#39;s most litigated questions, such as issues surrounding applicable commitment periods in chapter 13 plans, projected disposable income, case conversion and exemptions. Finally, the book provides critical analyses of several new U.S. Supreme Court decisions, including &lt;em&gt;Lanning, Ransom, Espinosa and Milavetz.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;For more information on the publication, please visit &lt;a href=&quot;http://bookstore.abi.org/&quot;&gt;http://bookstore.abi.org/&lt;/a&gt;.&lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
+                {
+                    Title = @"Becket & Lee to attend the 2018 RMA Conference",
+                    CreatedDate = Convert.ToDateTime("2018-01-17 12:28:25.6843445"),
+                    StartDate = Convert.ToDateTime("2018-02-06 00:00:00.0000000"),
+                    EndDate = Convert.ToDateTime("2018-02-08 00:00:00.0000000"),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Partner Tom Lee and Business Operations Analyst Stu Cramer with represent the firm at the 21st Annual Receivables Management Association Conference at the Aria Resort in Las Vegas from February 6-8, 2018. In addition to attending the conference, Becket &amp;amp; Lee will also exhibit at the event. Debt buyers, originating creditors, collection agencies, law firms, brokers, and affiliates gather for three days of industry education and regulatory updates, networking, and business opportunities.&lt;/p&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
@@ -1987,7 +1997,6 @@ It definitely was NOT and that&amp;#39;s emphatic.&lt;/p&gt;
 &lt;/div&gt;
 "
                 }; context.Events.Add(eventObj);
-
 
 
                 await context.SaveChangesAsync();
