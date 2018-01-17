@@ -101,7 +101,7 @@ namespace BecketLee.Data
                     StartDate = Convert.ToDateTime("2018-02-06 00:00:00.0000000"),
                     EndDate = Convert.ToDateTime("2018-02-08 00:00:00.0000000"),
                     EventTypeId = 2,
-                    EventHtml = @"&lt;p&gt;Partner Tom Lee and Business Operations Analyst Stu Cramer with represent the firm at the 21st Annual Receivables Management Association Conference at the Aria Resort in Las Vegas from February 6-8, 2018. In addition to attending the conference, Becket &amp;amp; Lee will also exhibit at the event. Debt buyers, originating creditors, collection agencies, law firms, brokers, and affiliates gather for three days of industry education and regulatory updates, networking, and business opportunities.&lt;/p&gt;
+                    EventHtml = @"&lt;p&gt;Partner Tom Lee and Business Operations Analyst Stu Cramer will represent the firm at the 21st Annual Receivables Management Association Conference at the Aria Resort in Las Vegas from February 6-8, 2018. In addition to attending the conference, Becket &amp;amp; Lee will also exhibit at the event. Debt buyers, originating creditors, collection agencies, law firms, brokers, and affiliates gather for three days of industry education and regulatory updates, networking, and business opportunities.&lt;/p&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
@@ -1997,7 +1997,6 @@ It definitely was NOT and that&amp;#39;s emphatic.&lt;/p&gt;
 &lt;/div&gt;
 "
                 }; context.Events.Add(eventObj);
-
 
                 await context.SaveChangesAsync();
 
