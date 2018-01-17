@@ -96,7 +96,7 @@ namespace BecketLee.Data
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
                 {
-                    Title = @"Becket & Lee to attend the 2018 RMA Conference",
+                    Title = @"Becket & Lee Exhibiting at 2018 RMA Conference",
                     CreatedDate = Convert.ToDateTime("2018-01-17 12:28:25.6843445"),
                     StartDate = Convert.ToDateTime("2018-02-06 00:00:00.0000000"),
                     EndDate = Convert.ToDateTime("2018-02-08 00:00:00.0000000"),
