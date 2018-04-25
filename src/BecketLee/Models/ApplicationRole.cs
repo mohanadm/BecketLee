@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace BecketLee.Models

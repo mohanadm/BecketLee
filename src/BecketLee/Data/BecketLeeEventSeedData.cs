@@ -10,7 +10,7 @@ namespace BecketLee.Data
         public static async Task EnsureEventData( BecketLeeContext context )
         {
             
-            if (!context.Events.Any() || context.Events.Count() != 140)
+            if (!context.Events.Any() || context.Events.Count() != 143)
             {
                 // delete
                 context.RemoveRange( context.Events );
@@ -96,12 +96,55 @@ namespace BecketLee.Data
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
                 {
-                    Title = @"Becket & Lee Exhibiting at 2018 RMA Conference",
+                    Title = @"Becket & Lee to Attend the 2018 CRS Conference",
+                    CreatedDate = Convert.ToDateTime("2018-04-25 18:26:33.7396417"),
+                    StartDate = Convert.ToDateTime("2018-05-09 00:00:00.0000000"),
+                    EndDate = Convert.ToDateTime("2018-05-11 00:00:00.0000000"),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Partner Tom Lee and Business Operations Analyst Stu Cramer will attend and exhibit at the annual Collections and Recovery Solutions Conference in Las Vegas, May 9-11. The conference offers B&amp;amp;L the opportunity to network at an exclusive gathering of industry professionals. This content rich educational conference gives the techniques, strategies and resources for maximizing collection and recovery outcomes.&lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
+                {
+                    Title = @"Alane Becket Attended the 2018 ABI Spring Conference",
+                    CreatedDate = Convert.ToDateTime("2018-04-25 18:21:37.9222385"),
+                    StartDate = Convert.ToDateTime("2018-04-19 00:00:00.0000000"),
+                    EndDate = Convert.ToDateTime("2018-04-22 00:00:00.0000000"),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Partner Alane Becket attended the American Bankruptcy Institute&amp;#39;s Capital
+Connection 36th Annual Spring Meeting from April 19-22. For 35 years, ABI&amp;#39;s
+Annual Spring Meeting has been THE bankruptcy industry event of the year.
+The conference includes inspiring keynote sessions, important networking
+events, and a variety of targeted educational sessions.&lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
+                {
+                    Title = @"Tom Lee Attended LendIt USA 2018",
+                    CreatedDate = Convert.ToDateTime("2018-04-25 18:23:45.4028919"),
+                    StartDate = Convert.ToDateTime("2018-04-09 00:00:00.0000000"),
+                    EndDate = Convert.ToDateTime("2018-04-11 00:00:00.0000000"),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Partner Tom Lee attended LendIt USA 2018 in San Francisco
+from April 9-11. This conference is labeled the leading event
+for financial services innovation, covering topics including Fintech,
+Digital Banking, Blockchain and Lending. &lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
+                {
+                    Title = @"Becket & Lee Exhibited at 2018 RMA Conference",
                     CreatedDate = Convert.ToDateTime("2018-01-17 12:28:25.6843445"),
                     StartDate = Convert.ToDateTime("2018-02-06 00:00:00.0000000"),
                     EndDate = Convert.ToDateTime("2018-02-08 00:00:00.0000000"),
                     EventTypeId = 2,
-                    EventHtml = @"&lt;p&gt;Partner Tom Lee and Business Operations Analyst Stu Cramer will represent the firm at the 21st Annual Receivables Management Association Conference at the Aria Resort in Las Vegas from February 6-8, 2018. In addition to attending the conference, Becket &amp;amp; Lee will also exhibit at the event. Debt buyers, originating creditors, collection agencies, law firms, brokers, and affiliates gather for three days of industry education and regulatory updates, networking, and business opportunities.&lt;/p&gt;
+                    EventHtml = @"&lt;p&gt;Partner Tom Lee and Business Operations Analyst Stu Cramer represented
+the firm at the 21st Annual Receivables Management Association Conference
+at the Aria Resort in Las Vegas from February 6-8, 2018. In addition to
+attending the conference, Becket &amp;amp; Lee exhibited at the event. Debt buyers,
+originating creditors, collection agencies, law firms, brokers, and affiliates
+gather for three days of industry education and regulatory updates, networking,
+and business opportunities.&lt;/p&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
@@ -111,18 +154,25 @@ namespace BecketLee.Data
                     StartDate = Convert.ToDateTime("2017-10-11 00:00:00.0000000"),
                     EndDate = Convert.ToDateTime("2017-10-14 00:00:00.0000000"),
                     EventTypeId = 2,
-                    EventHtml = @"&lt;p&gt;Partner Alane Becket will be attending the National Association of Retail Collection Attorneys annual conference in Washington, DC from Oct. 11-14, 2017. Alane, along with Thomas L. Canary, Jr. (Reimer Law Co.), will hold a discussion on Thursday, Oct.12.&amp;nbsp; Their topic:&amp;nbsp;&lt;em&gt; New Bankruptcy Rules are Here &amp;ndash; What Creditors Need to Know Now About the New Chapter 13 Plan Form and Rules&lt;/em&gt;. New bankruptcy rules and an official form for Chapter 13 plans go into effect on December 1, 2017, which will drastically alter creditors&amp;rsquo; rights and responsibilities in bankruptcy cases. As experts, they will discuss these very important rule changes in detail and suggest best practices creditors and their counsel should be prepared to implement on Day 1.&lt;br /&gt;
-&amp;nbsp;&lt;/p&gt;
+                    EventHtml = @"&lt;p&gt;Partner Alane Becket attended the National Association of Retail Collection
+Attorneys annual conference in Washington, DC from Oct. 11-14, 2017. Alane,
+along with Thomas L. Canary, Jr. (Reimer Law Co.), held a discussion on Thursday,
+Oct.12. Their topic: New Bankruptcy Rules are Here - What Creditors Need to Know Now
+About the New Chapter 13 Plan Form and Rules. New bankruptcy rules and an official
+form for Chapter 13 plans went into effect on December 1, 2017, which drastically
+alter creditors&amp;#39; rights and responsibilities in bankruptcy cases. As experts, they
+discussed these very important rule changes in detail and suggested best practices
+creditors and their counsel should be prepared to implement.&lt;/p&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
                 {
-                    Title = @"Partners to Attend the 91st Annual NCBJ Conference",
+                    Title = @"Partners Attended the 91st Annual NCBJ Conference",
                     CreatedDate = Convert.ToDateTime("2017-10-03 21:34:35.7082825"),
                     StartDate = Convert.ToDateTime("2017-10-08 00:00:00.0000000"),
                     EndDate = Convert.ToDateTime("2017-10-11 00:00:00.0000000"),
                     EventTypeId = 2,
-                    EventHtml = @"&lt;p&gt;Partners Alane Becket and Tom Lee will be attending the National Conference of Bankruptcy Judges from October 8-11, 2017 in Las Vegas, NV. The National Conference of Bankruptcy Judges is an association of the bankruptcy judges of the United States which provides continuing legal education to judges, lawyers and other involved professionals, promotes cooperation among the Bankruptcy Judges to secure a greater degree of quality and uniformity in the administration of the bankruptcy system and to improve the practice of law in the Bankruptcy Courts of the United States.&lt;/p&gt;
+                    EventHtml = @"&lt;p&gt;Partners Alane Becket and Tom Lee attended the National Conference of Bankruptcy Judges from October 8-11, 2017 in Las Vegas, NV. The National Conference of Bankruptcy Judges is an association of the bankruptcy judges of the United States which provides continuing legal education to judges, lawyers and other involved professionals, promotes cooperation among the Bankruptcy Judges to secure a greater degree of quality and uniformity in the administration of the bankruptcy system and to improve the practice of law in the Bankruptcy Courts of the United States.&lt;/p&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
@@ -142,7 +192,7 @@ namespace BecketLee.Data
                     StartDate = Convert.ToDateTime("2017-07-12 00:00:00.0000000"),
                     EndDate = Convert.ToDateTime("2017-07-15 00:00:00.0000000"),
                     EventTypeId = 2,
-                    EventHtml = @"&lt;p style=&quot;margin-left:0in; margin-right:0in&quot;&gt;&lt;span style=&quot;color:#000000&quot;&gt;Partners Tom Lee and Alane Becket along with Operations Manager Stu Cramer attended the annual meeting of the National Association of Chapter 13 Trustees in Seattle from July 12-15, 2017. On July 13, Alane joined the Chapter 13 Standing Trustee for the Eastern District of Michigan, Tammy L. Terry along with attorney John Rao of Boston MA in a panel discussion: &lt;em&gt;Consumer Financial Protection Bureau &amp;ndash; Emerging issues affecting consumer bankruptcy. &lt;/em&gt;&lt;/span&gt;&lt;/p&gt;
+                    EventHtml = @"&lt;p&gt;&lt;span&gt;Partners Tom Lee and Alane Becket along with Operations Manager Stu Cramer attended the annual meeting of the National Association of Chapter 13 Trustees in Seattle from July 12-15, 2017. On July 13, Alane joined the Chapter 13 Standing Trustee for the Eastern District of Michigan, Tammy L. Terry along with attorney John Rao of Boston MA in a panel discussion: &lt;em&gt;Consumer Financial Protection Bureau &amp;ndash; Emerging issues affecting consumer bankruptcy. &lt;/em&gt;&lt;/span&gt;&lt;/p&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()

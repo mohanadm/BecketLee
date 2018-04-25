@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using BecketLee.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BecketLee.ViewModels

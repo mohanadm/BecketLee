@@ -5,7 +5,6 @@ using System.Net;
 using System.Threading.Tasks;
 using BecketLee.Models;
 using BecketLee.ViewModels;
-using MailKit.Search;
 
 namespace BecketLee.Data
 {
