@@ -10,13 +10,31 @@ namespace BecketLee.Data
         public static async Task EnsureEventData( BecketLeeContext context )
         {
             
-            if (!context.Events.Any() || context.Events.Count() != 143)
+            if (!context.Events.Any() || context.Events.Count() != 144)
             {
                 // delete
                 context.RemoveRange( context.Events );
                 await context.SaveChangesAsync();
 
                 var eventObj = new Event()
+                {
+                    Title = @"Alane Becket Named President-Elect of the American Bankruptcy Institute ",
+                    CreatedDate = Convert.ToDateTime("2018-06-26 21:07:26.4539782"),
+                    StartDate = Convert.ToDateTime("2018-06-27 00:00:00.0000000"),
+                    EndDate = null,
+                    EventTypeId = 1,
+                    EventHtml = @"&lt;p&gt;The Partners at Becket &amp;amp; Lee are proud to announce Alane Becket&amp;#39;s appointment as President-Elect of the American Bankruptcy Institute. Alane was elected to the position at the ABI&amp;#39;s Annual Spring Meeting, which took place in Washington D.C. this past April. Effective April 2019, Alane will transition to President.&lt;/p&gt;
+
+&lt;p&gt;Having served in a variety of capacities at the ABI, most recently as Vice President of Publications, this appointment is a culmination of her dedication to both the organization and the industry. Alane&amp;#39;s expertise and decades of experience are unquestionable assets to the ABI, our firm, and our clients.&lt;/p&gt;
+
+&lt;h3 style=&quot;text-align:center&quot;&gt;&lt;span style=&quot;color:#2980b9&quot;&gt;&lt;em&gt;We congratulate Alane on this prestigious and well-deserved honor!&lt;/em&gt;&lt;/span&gt;&lt;/h3&gt;
+
+&lt;h3&gt;&amp;nbsp;&lt;/h3&gt;
+
+&lt;div style=&quot;text-align:center&quot;&gt;&lt;input alt=&quot;Alane ABI Announcement&quot; src=&quot;..\IMAGE\alaneabiannouncement.png&quot; style=&quot;width: 663px; height: 296px;&quot; type=&quot;image&quot; /&gt;&lt;/div&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
                 {
                     Title = "Alane Becket Named Among \"25 Most Influential Women in Collections\"",
                     CreatedDate = Convert.ToDateTime("2016-11-04 07:58:00.5970000"),
@@ -361,22 +379,22 @@ creditors and their counsel should be prepared to implement.&lt;/p&gt;
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
                 {
-                    Title = @"B&L Attended CBA Live 2016",
-                    CreatedDate = Convert.ToDateTime("2016-03-30 13:49:52.4370000"),
-                    StartDate = Convert.ToDateTime("2016-05-07 00:00:00.0000000"),
-                    EndDate = Convert.ToDateTime("2016-05-09 00:00:00.0000000"),
-                    EventTypeId = 2,
-                    EventHtml = @"&lt;p&gt;Partner Tom Lee and Business Operations Analyst Stu Cramer attended CBA LIVE 2016 in Phoenix, AZ from Mar. 7-9, 2016. CBA LIVE is an annual three-day conference organized by the Consumer Bankers Association, which provides information across nine areas of retail banking. Becket &amp;amp; Lee also exhibited at the conference.&lt;/p&gt;
-"
-                }; context.Events.Add(eventObj);
-                eventObj = new Event()
-                {
                     Title = @"Partner Alane Becket Chaired NARCA's 2016 Spring Litigation Boot Camp",
                     CreatedDate = Convert.ToDateTime("2016-05-17 16:55:29.0370000"),
                     StartDate = Convert.ToDateTime("2016-05-07 00:00:00.0000000"),
                     EndDate = null,
                     EventTypeId = 2,
                     EventHtml = @"&lt;p&gt;On May 7, 2016, partner Alane Becket chaired the inaugural litigation Boot Camp at the Spring Conference of the National Creditors Bar Association (NARCA) in Chicago. The Boot Camp featured six segments designed to introduce young attorneys or those new to collection practice to various aspects of collections litigation. In addition to chairing this successful event, Alane presented the &amp;quot;Evidence Overview&amp;quot; block.&lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
+                {
+                    Title = @"B&L Attended CBA Live 2016",
+                    CreatedDate = Convert.ToDateTime("2016-03-30 13:49:52.4370000"),
+                    StartDate = Convert.ToDateTime("2016-05-07 00:00:00.0000000"),
+                    EndDate = Convert.ToDateTime("2016-05-09 00:00:00.0000000"),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Partner Tom Lee and Business Operations Analyst Stu Cramer attended CBA LIVE 2016 in Phoenix, AZ from Mar. 7-9, 2016. CBA LIVE is an annual three-day conference organized by the Consumer Bankers Association, which provides information across nine areas of retail banking. Becket &amp;amp; Lee also exhibited at the conference.&lt;/p&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
@@ -525,22 +543,22 @@ creditors and their counsel should be prepared to implement.&lt;/p&gt;
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
                 {
-                    Title = @"Alane Becket Presented at NARCA Spring Conference",
-                    CreatedDate = Convert.ToDateTime("2015-05-19 14:03:07.7830000"),
-                    StartDate = Convert.ToDateTime("2015-05-06 00:00:00.0000000"),
-                    EndDate = Convert.ToDateTime("2015-05-09 00:00:00.0000000"),
-                    EventTypeId = 2,
-                    EventHtml = @"&lt;p&gt;Partner Alane Becket spoke at the National Association of Retail Collection Attorneys 2015 Spring Collection Conference in Nashville, TN (May 6-9, 2015). Alane&amp;#39;s Topic: &lt;em&gt;Determining Statute of Limitations; There is No &amp;quot;Easy Button&amp;quot;.&lt;/em&gt; Alane was joined by Joann Needleman, Esquire, Maurice &amp;amp; Needleman, P.C. and Barbara A. Sinsley, Esquire, Hudson Cook, LLP.&lt;/p&gt;
-"
-                }; context.Events.Add(eventObj);
-                eventObj = new Event()
-                {
                     Title = @"B&L Exhibited at CRS Conference",
                     CreatedDate = Convert.ToDateTime("2015-05-19 14:02:23.2470000"),
                     StartDate = Convert.ToDateTime("2015-05-06 00:00:00.0000000"),
                     EndDate = Convert.ToDateTime("2015-05-08 00:00:00.0000000"),
                     EventTypeId = 2,
                     EventHtml = @"&lt;p&gt;Partner Tom Lee and Business Operations Analyst Stu Cramer attended and exhibit at the annual Collections and Recovery Solutions conference in Las Vegas, May 6-8, 2015.&lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
+                {
+                    Title = @"Alane Becket Presented at NARCA Spring Conference",
+                    CreatedDate = Convert.ToDateTime("2015-05-19 14:03:07.7830000"),
+                    StartDate = Convert.ToDateTime("2015-05-06 00:00:00.0000000"),
+                    EndDate = Convert.ToDateTime("2015-05-09 00:00:00.0000000"),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Partner Alane Becket spoke at the National Association of Retail Collection Attorneys 2015 Spring Collection Conference in Nashville, TN (May 6-9, 2015). Alane&amp;#39;s Topic: &lt;em&gt;Determining Statute of Limitations; There is No &amp;quot;Easy Button&amp;quot;.&lt;/em&gt; Alane was joined by Joann Needleman, Esquire, Maurice &amp;amp; Needleman, P.C. and Barbara A. Sinsley, Esquire, Hudson Cook, LLP.&lt;/p&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
@@ -705,22 +723,22 @@ creditors and their counsel should be prepared to implement.&lt;/p&gt;
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
                 {
-                    Title = @"Managing Partner Attended Commercial Law League Event",
-                    CreatedDate = Convert.ToDateTime("2014-05-02 10:12:22.5070000"),
-                    StartDate = Convert.ToDateTime("2014-04-24 00:00:00.0000000"),
-                    EndDate = Convert.ToDateTime("2014-04-26 00:00:00.0000000"),
-                    EventTypeId = 2,
-                    EventHtml = @"&lt;p&gt;Managing Partner Tom Lee attended the Commercial Law League of America Annual Convention and Midwest Meeting. The event was held in Chicago April 24-26, 2014.&lt;/p&gt;
-"
-                }; context.Events.Add(eventObj);
-                eventObj = new Event()
-                {
                     Title = @"ABI Spring Meeting 2014",
                     CreatedDate = Convert.ToDateTime("2014-05-02 10:10:03.1300000"),
                     StartDate = Convert.ToDateTime("2014-04-24 00:00:00.0000000"),
                     EndDate = Convert.ToDateTime("2014-04-27 00:00:00.0000000"),
                     EventTypeId = 2,
                     EventHtml = @"&lt;p&gt;Managing Partner Alane Becket attended the 32nd Annual ABI Spring Meeting in Washington, D.C., which ran from April 24-27, 2014.&lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
+                {
+                    Title = @"Managing Partner Attended Commercial Law League Event",
+                    CreatedDate = Convert.ToDateTime("2014-05-02 10:12:22.5070000"),
+                    StartDate = Convert.ToDateTime("2014-04-24 00:00:00.0000000"),
+                    EndDate = Convert.ToDateTime("2014-04-26 00:00:00.0000000"),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Managing Partner Tom Lee attended the Commercial Law League of America Annual Convention and Midwest Meeting. The event was held in Chicago April 24-26, 2014.&lt;/p&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
@@ -829,22 +847,22 @@ creditors and their counsel should be prepared to implement.&lt;/p&gt;
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
                 {
-                    Title = @"B&L at NARCA Spring 2013 Conference",
-                    CreatedDate = Convert.ToDateTime("2013-05-14 16:29:48.4530000"),
-                    StartDate = Convert.ToDateTime("2013-05-08 00:00:00.0000000"),
-                    EndDate = Convert.ToDateTime("2013-05-11 00:00:00.0000000"),
-                    EventTypeId = 2,
-                    EventHtml = @"&lt;p&gt;Partner Alane Becket attended the 2013 Spring Collection Conference of the National Association of Retail Collection Attorneys in Las Vegas. The conference ran from May 8-11, 2013.&lt;/p&gt;
-"
-                }; context.Events.Add(eventObj);
-                eventObj = new Event()
-                {
                     Title = @"CRS 2013: Tom Lee Presented/Firm Exhibited",
                     CreatedDate = Convert.ToDateTime("2013-05-14 16:32:46.8200000"),
                     StartDate = Convert.ToDateTime("2013-05-08 00:00:00.0000000"),
                     EndDate = Convert.ToDateTime("2013-05-10 00:00:00.0000000"),
                     EventTypeId = 2,
                     EventHtml = @"&lt;p&gt;From May 8-10, 2013, Partner Tom Lee and Business Operations Analyst Stu Cramer attended the annual Collections and Recovery Solutions conference in Las Vegas. On Friday, May 10th, Tom led a roundtable discussion of the proposed national new chapter 13 form plan and its potential ramifications on creditors. Becket &amp;amp; Lee also exhibited at the event.&lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
+                {
+                    Title = @"B&L at NARCA Spring 2013 Conference",
+                    CreatedDate = Convert.ToDateTime("2013-05-14 16:29:48.4530000"),
+                    StartDate = Convert.ToDateTime("2013-05-08 00:00:00.0000000"),
+                    EndDate = Convert.ToDateTime("2013-05-11 00:00:00.0000000"),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Partner Alane Becket attended the 2013 Spring Collection Conference of the National Association of Retail Collection Attorneys in Las Vegas. The conference ran from May 8-11, 2013.&lt;/p&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
@@ -899,22 +917,22 @@ creditors and their counsel should be prepared to implement.&lt;/p&gt;
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
                 {
-                    Title = @"Becket & Lee Exhibited at FSCC 2012",
-                    CreatedDate = Convert.ToDateTime("2012-11-30 12:54:05.6200000"),
-                    StartDate = Convert.ToDateTime("2012-10-24 00:00:00.0000000"),
-                    EndDate = Convert.ToDateTime("2012-10-26 00:00:00.0000000"),
-                    EventTypeId = 2,
-                    EventHtml = @"&lt;p&gt;Partner Tom Lee and Business Operations Analyst Stu Cramer attended the 20th Annual Financial Services Collections &amp;amp; Credit Risk Conference in Scottsdale, AZ. Tom also chaired the pre-conference Future Leaders Forum. The conference ran from October 24-26 and Becket &amp;amp; Lee exhibited at the event. For more information on FSCC 2012, please visit the official website at &lt;a href=&quot;http://www.collectionscreditrisk.com&quot; target=&quot;Parent&quot;&gt; http://www.collectionscreditrisk.com.&lt;/a&gt;&lt;/p&gt;
-"
-                }; context.Events.Add(eventObj);
-                eventObj = new Event()
-                {
                     Title = @"Alane Becket Invited to Speak at 2012 Annual Judges' Conference",
                     CreatedDate = Convert.ToDateTime("2012-11-30 12:53:35.6370000"),
                     StartDate = Convert.ToDateTime("2012-10-24 00:00:00.0000000"),
                     EndDate = null,
                     EventTypeId = 2,
                     EventHtml = @"&lt;p&gt;Beginning on October 24, 2012, Alane Becket represented the firm at the National Conference of Bankruptcy Judges in San Diego, CA. At the conference, Alane participated in a panel discussion of &amp;quot;Unresolved Issues in Chapter 13&amp;quot;. Her fellow panelists included U.S. Bankruptcy Court Judge Steven Rhodes, Chapter 13 Trustee Jan Hamilton, and attorney Jenny Doling.&lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
+                {
+                    Title = @"Becket & Lee Exhibited at FSCC 2012",
+                    CreatedDate = Convert.ToDateTime("2012-11-30 12:54:05.6200000"),
+                    StartDate = Convert.ToDateTime("2012-10-24 00:00:00.0000000"),
+                    EndDate = Convert.ToDateTime("2012-10-26 00:00:00.0000000"),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Partner Tom Lee and Business Operations Analyst Stu Cramer attended the 20th Annual Financial Services Collections &amp;amp; Credit Risk Conference in Scottsdale, AZ. Tom also chaired the pre-conference Future Leaders Forum. The conference ran from October 24-26 and Becket &amp;amp; Lee exhibited at the event. For more information on FSCC 2012, please visit the official website at &lt;a href=&quot;http://www.collectionscreditrisk.com&quot; target=&quot;Parent&quot;&gt; http://www.collectionscreditrisk.com.&lt;/a&gt;&lt;/p&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()

@@ -1,16 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1EA0AE4C-E7C0-448F-93B1-74FD72ED4382}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6E1F9D30-0181-461B-8877-4367DB9C3E87}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "BecketLee", "src\BecketLee\BecketLee.xproj", "{7C56D1E9-10B3-4396-9932-445FB530BD01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BecketLee", "src\BecketLee\BecketLee.csproj", "{7C56D1E9-10B3-4396-9932-445FB530BD01}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BecketLeeTests", "BecketLeeTests\BecketLeeTests.csproj", "{D87C7225-3409-43B0-945A-1D7BCC4344FD}"
 EndProject
@@ -34,5 +31,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{7C56D1E9-10B3-4396-9932-445FB530BD01} = {1EA0AE4C-E7C0-448F-93B1-74FD72ED4382}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8954C04-1623-4CDC-992A-EF8192A49301}
 	EndGlobalSection
 EndGlobal

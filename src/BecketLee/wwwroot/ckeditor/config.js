@@ -21,7 +21,7 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'about', groups: [ 'about' ] }
 	];
 
-	config.removeButtons = 'Print,Preview,NewPage,Save,Templates,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,CopyFormatting,RemoveFormat,BidiLtr,BidiRtl,Language,Anchor,Flash,Smiley,PageBreak,About,Superscript,Strike,Subscript,Blockquote,CreateDiv,Image,SpecialChar,Iframe,ShowBlocks,Font,BGColor,Undo,Redo,Styles';
+	config.removeButtons = 'Print,Preview,NewPage,Save,Templates,Form,Checkbox,Radio,TextField,Textarea,Select,Button,HiddenField,CopyFormatting,RemoveFormat,BidiLtr,BidiRtl,Language,Anchor,Flash,Smiley,PageBreak,About,Superscript,Strike,Subscript,Blockquote,CreateDiv,Image,SpecialChar,Iframe,ShowBlocks,Font,BGColor,Undo,Redo,Styles';
 };
 
 // The toolbar groups arrangement, optimized for two toolbar rows.
@@ -44,7 +44,7 @@ CKEDITOR.editorConfig = function( config ) {
 
 // Remove some buttons provided by the standard plugins, which are
 // not needed in the Standard(s) toolbar.
-//config.removeButtons = 'Underline,Subscript,Superscript';
+//config.removeButtons = 'Underline,Subscript,Superscript,ImageButton,';
 
 // Set the most common block elements.
 //config.format_tags = 'p;h1;h2;h3;pre';
