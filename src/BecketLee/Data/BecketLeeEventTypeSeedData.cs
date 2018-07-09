@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using BecketLee.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace BecketLee.Data
 {
@@ -32,7 +34,22 @@ namespace BecketLee.Data
                 }
             }
 
-            await context.SaveChangesAsync();
+            try
+            {
+                context.Database.OpenConnection();
+                context.Database.ExecuteSqlCommand( "set identity_insert dbo.EventTypes on" );
+                context.SaveChanges();
+                context.Database.ExecuteSqlCommand( "set identity_insert dbo.EventTypes off" );
+            }
+            catch (DbUpdateException exception)
+            {
+                var x = exception.ToString();
+            }
+            finally
+            {
+                context.Database.CloseConnection();
+            }
+
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BecketLee.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 
 namespace BecketLee.Data
 {
@@ -11,11 +12,13 @@ namespace BecketLee.Data
         protected BecketLeeContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
+        private ILogger _logger;
 
         public BecketLeeSeedData(
             BecketLeeContext context, 
             UserManager<ApplicationUser> userManager,
-            RoleManager<ApplicationRole> roleManager )
+            RoleManager<ApplicationRole> roleManager
+            )
         {
             _context = context;
             _userManager = userManager;
@@ -24,11 +27,11 @@ namespace BecketLee.Data
 
         public async Task EnsureSeedData()
         {
-            await EnsureRoleData();
-            await EnsureUserData();
-            await BecketLeePartnerSeedData.EnsurePartnerData( _context );
-            await BecketLeeEventTypeSeedData.EnsureEventTypeData( _context );
-            await BecketLeeEventSeedData.EnsureEventData( _context );
+                await EnsureRoleData();
+                await EnsureUserData();
+                await BecketLeePartnerSeedData.EnsurePartnerData( _context );
+                await BecketLeeEventTypeSeedData.EnsureEventTypeData( _context );
+                await BecketLeeEventSeedData.EnsureEventData( _context );
         }
 
         private async Task EnsureUserData()
@@ -58,11 +61,11 @@ namespace BecketLee.Data
                 
                 if ("Administrator" != existingRole )
                 {
-                    if( webUser.Roles.Count > 0 )
-                    {
+                    //if( webUser.Roles.Count > 0 )
+                    //{
                         var allroles = new[] {"Administrator", "BioEditor", "EventEditor"};
                         await _userManager.RemoveFromRolesAsync( webUser, allroles );
-                    }
+                    //}
                     var roles = new[] {"Administrator"};
                     await _userManager.AddToRolesAsync( webUser, roles );
                 }

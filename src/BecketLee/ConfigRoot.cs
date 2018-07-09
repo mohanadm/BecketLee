@@ -42,5 +42,7 @@ namespace BecketLee
         {
             _config.Reload();
         }
+
+        public IEnumerable<IConfigurationProvider> Providers { get; }
     }
 }

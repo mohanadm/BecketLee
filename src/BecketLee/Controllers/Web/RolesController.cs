@@ -39,7 +39,7 @@ namespace BecketLee.Controllers.Web
                 RoleName = r.Name
                 , Id = r.Id
                 , Description = r.Description
-                , NumberOfUsers = r.Users.Count
+                //, NumberOfUsers = r.Users.Count
                 , CreatedDate = r.CreatedDate
             } ).OrderBy(e => e.RoleName).ToList();
 

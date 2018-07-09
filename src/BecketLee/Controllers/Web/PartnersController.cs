@@ -104,7 +104,7 @@ namespace BecketLee.Controllers.Web
         
             if ( file.Length > 0 )
             {
-                var uploadName = ContentDispositionHeaderValue.Parse( file.ContentDisposition ).FileName.Trim( '"' );
+                var uploadName = ContentDispositionHeaderValue.Parse( file.ContentDisposition ).FileName.Trim();
                 var fileName = uploadName.Substring( uploadName.LastIndexOf( '\\' ) + 1 );
                 var streamName = Path.Combine( _environment.WebRootPath, "image\\BioImage", fileName );
                 using (var filestream = System.IO.File.Create(streamName))

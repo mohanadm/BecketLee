@@ -36,6 +36,32 @@ namespace BecketLee
 
             ConfigureDependencyInjection(services);
 
+
+            services.ConfigureApplicationCookie( options =>
+            {
+                options.LoginPath = "/Auth/Login"; 
+                options.Events = new CookieAuthenticationEvents
+                {
+                    OnRedirectToLogin = async ctx =>
+                    {
+                        if (ctx.Request.Path.StartsWithSegments("/api") &&
+                            ctx.Response.StatusCode == 200)
+                        {
+                            ctx.Response.StatusCode = 401;
+                        }
+                        else
+                        {
+                            ctx.Response.Redirect(ctx.RedirectUri);
+                        }
+                        await Task.Yield();
+                    }
+                };
+            } );
+            
+
+
+
+
             services.AddMvc( config =>
                 {
                     if( _environment.IsProduction() )
@@ -53,8 +79,7 @@ namespace BecketLee
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(
             IApplicationBuilder app, 
-            ILoggerFactory loggerFactory, 
-            BecketLeeSeedData seeder )
+            ILoggerFactory loggerFactory )
         {
 
             if (_environment.IsDevelopment())
@@ -70,8 +95,10 @@ namespace BecketLee
             
             //app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.UseIdentity();
-                        
+
+            //app.UseIdentity();
+            //services.AddDefaultTokenProviders();
+            app.UseAuthentication();
 
             Mapper.Initialize( config =>
             {
@@ -87,8 +114,7 @@ namespace BecketLee
                     defaults: new { controller = "Home", action = "Index"} 
                     );
             });
-
-            seeder.EnsureSeedData().Wait();
+            
         }
 
 
@@ -101,27 +127,10 @@ namespace BecketLee
                     config.Password.RequireLowercase = true;
                     config.Password.RequireUppercase = true;
                     config.Password.RequireNonAlphanumeric = true;
-                    config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
-                    config.Cookies.ApplicationCookie.Events = new CookieAuthenticationEvents
-                    {
-                        OnRedirectToLogin = async ctx =>
-                        {
-                            if( ctx.Request.Path.StartsWithSegments( "/api" ) &&
-                                ctx.Response.StatusCode == 200 )
-                            {
-                                ctx.Response.StatusCode = 401;
-                            }
-                            else
-                            {
-                                ctx.Response.Redirect( ctx.RedirectUri );
-                            }
-                            await Task.Yield();
-                        }
-                    };
                 } )
-                .AddEntityFrameworkStores<BecketLeeContext>()
-                .AddDefaultTokenProviders();
+                .AddEntityFrameworkStores<BecketLeeContext>();
 
+            
         }
 
         private void ConfigureDependencyInjection( IServiceCollection services )
