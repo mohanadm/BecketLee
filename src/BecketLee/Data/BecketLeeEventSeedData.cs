@@ -1039,21 +1039,21 @@ creditors and their counsel should be prepared to implement.&lt;/p&gt;
                     EventHtml = @"&lt;p&gt;Alane Becket was a speaker at the 38th Annual Southeastern Bankruptcy Law Institute in Atlanta. On Thursday, March 22, 2012, her presentation entitled &amp;quot;Hardship Discharge for Chapter 13 Debtors and Discharge of Student Loans&amp;quot; included the following topics:&lt;/p&gt;
 
 &lt;ul&gt;
-	&lt;li&gt;Whether student loans are ever dischargeable in a chapter 7 or 13;&lt;/li&gt;
-	&lt;li&gt;Service issues;&lt;/li&gt;
-	&lt;li&gt;Requirements for filing adversary proceedings;&lt;/li&gt;
-	&lt;li&gt;Explanation and application of the William C. Ford program; and&lt;/li&gt;
-	&lt;li&gt;Effect of the timing of the filing of the complaint for hardship discharge.&lt;/li&gt;
+    &lt;li&gt;Whether student loans are ever dischargeable in a chapter 7 or 13;&lt;/li&gt;
+    &lt;li&gt;Service issues;&lt;/li&gt;
+    &lt;li&gt;Requirements for filing adversary proceedings;&lt;/li&gt;
+    &lt;li&gt;Explanation and application of the William C. Ford program; and&lt;/li&gt;
+    &lt;li&gt;Effect of the timing of the filing of the complaint for hardship discharge.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Then, on Friday, March 23, 2012, Alane discussed &amp;quot;Asserting Claims in Chapter 7&amp;#39;s and Chapter 13&amp;#39;s&amp;quot;. This presentation addressed germane issues such as:&lt;/p&gt;
 
 &lt;ul&gt;
-	&lt;li&gt;Requirements of a properly filed claim;&lt;/li&gt;
-	&lt;li&gt;Standing to file;&lt;/li&gt;
-	&lt;li&gt;Attachments necessary to file with the court;&lt;/li&gt;
-	&lt;li&gt;Effect of Federal Rule of Bankruptcy Procedure 3001(f); and&lt;/li&gt;
-	&lt;li&gt;What is necessary to prove debt in the face of objections to claim.&lt;/li&gt;
+    &lt;li&gt;Requirements of a properly filed claim;&lt;/li&gt;
+    &lt;li&gt;Standing to file;&lt;/li&gt;
+    &lt;li&gt;Attachments necessary to file with the court;&lt;/li&gt;
+    &lt;li&gt;Effect of Federal Rule of Bankruptcy Procedure 3001(f); and&lt;/li&gt;
+    &lt;li&gt;What is necessary to prove debt in the face of objections to claim.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p style=&quot;text-align:center&quot;&gt;For more information on the event, please visit the official website at &lt;a href=&quot;http://sbli-inc.org/schedule.html&quot;&gt;sbli-inc.org/schedule.html&lt;/a&gt;.&lt;/p&gt;
