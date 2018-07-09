@@ -10,7 +10,7 @@ namespace BecketLee.Data
         public static async Task EnsureEventData( BecketLeeContext context )
         {
             
-            if (!context.Events.Any() || context.Events.Count() != 144)
+            if (!context.Events.Any() || context.Events.Count() != 145)
             {
                 // delete
                 context.RemoveRange( context.Events );
@@ -27,11 +27,11 @@ namespace BecketLee.Data
 
 &lt;p&gt;Having served in a variety of capacities at the ABI, most recently as Vice President of Publications, this appointment is a culmination of her dedication to both the organization and the industry. Alane&amp;#39;s expertise and decades of experience are unquestionable assets to the ABI, our firm, and our clients.&lt;/p&gt;
 
-&lt;h3 style=&quot;text-align:center&quot;&gt;&lt;span style=&quot;color:#2980b9&quot;&gt;&lt;em&gt;We congratulate Alane on this prestigious and well-deserved honor!&lt;/em&gt;&lt;/span&gt;&lt;/h3&gt;
+&lt;h4 style=&quot;text-align:center&quot;&gt;&lt;span style=&quot;color:#2980b9&quot;&gt;&lt;em&gt;We congratulate Alane on this prestigious and well-deserved honor!&lt;/em&gt;&lt;/span&gt;&lt;/h4&gt;
 
 &lt;h3&gt;&amp;nbsp;&lt;/h3&gt;
 
-&lt;div style=&quot;text-align:center&quot;&gt;&lt;input alt=&quot;Alane ABI Announcement&quot; src=&quot;..\IMAGE\alaneabiannouncement.png&quot; style=&quot;width: 663px; height: 296px;&quot; type=&quot;image&quot; /&gt;&lt;/div&gt;
+&lt;div style=&quot;text-align:center&quot;&gt;&lt;input alt=&quot;Alane ABI Announcement&quot; class=&quot;alaneNewsImage&quot; src=&quot;..\IMAGE\alaneabiannouncement.png&quot; type=&quot;image&quot; /&gt;&lt;/div&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
@@ -114,12 +114,22 @@ namespace BecketLee.Data
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
                 {
-                    Title = @"Becket & Lee to Attend the 2018 CRS Conference",
+                    Title = @"Becket & Lee Joining NACTT's 53rd Annual Conference",
+                    CreatedDate = Convert.ToDateTime("2018-07-09 21:43:10.6698880"),
+                    StartDate = Convert.ToDateTime("2018-06-27 00:00:00.0000000"),
+                    EndDate = Convert.ToDateTime("2018-06-30 00:00:00.0000000"),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Partners Tom Lee, Alane Becket and Gil Weisman will attend the annual meeting of the National Association of Chapter 13 Trustees in Miami from June 27-30, 2018. The NACTT strives to be a nationwide leader in consumer bankruptcy law education and the 2018 annual seminar presents many opportunities to improve knowledge and expertise in the industry.&lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
+                {
+                    Title = @"Becket & Lee Attended the 2018 CRS Conference",
                     CreatedDate = Convert.ToDateTime("2018-04-25 18:26:33.7396417"),
                     StartDate = Convert.ToDateTime("2018-05-09 00:00:00.0000000"),
                     EndDate = Convert.ToDateTime("2018-05-11 00:00:00.0000000"),
                     EventTypeId = 2,
-                    EventHtml = @"&lt;p&gt;Partner Tom Lee and Business Operations Analyst Stu Cramer will attend and exhibit at the annual Collections and Recovery Solutions Conference in Las Vegas, May 9-11. The conference offers B&amp;amp;L the opportunity to network at an exclusive gathering of industry professionals. This content rich educational conference gives the techniques, strategies and resources for maximizing collection and recovery outcomes.&lt;/p&gt;
+                    EventHtml = @"&lt;p&gt;Partner Tom Lee and Business Operations Analyst Stu Cramer attended and exhibited at the annual Collections and Recovery Solutions Conference in Las Vegas, May 9-11, 2018. The conference offered B&amp;amp;L the opportunity to network at an exclusive gathering of industry professionals. This content rich educational conference gives the techniques, strategies and resources for maximizing collection and recovery outcomes.&lt;/p&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
@@ -2065,6 +2075,7 @@ It definitely was NOT and that&amp;#39;s emphatic.&lt;/p&gt;
 &lt;/div&gt;
 "
                 }; context.Events.Add(eventObj);
+
 
                 await context.SaveChangesAsync();
 

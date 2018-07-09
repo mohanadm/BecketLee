@@ -4,5 +4,16 @@
     },
     "Data": {
         "BecketLeeConnection": "Server=CS700239;Database=becketLeeDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
+    },
+    "Logging": {
+        "LogLevel": {
+            "Default": "Debug",
+            "System": "Information",
+            "Microsoft": "Information"
+        },
+        "Console": {
+            "IncludeScopes": "true"
+        }
     }
+
 }

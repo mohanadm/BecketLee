@@ -10,14 +10,14 @@ namespace BecketLee
     {
         public static void Main(string[] args)
         {
-            var host = BuildWebHost( args );
+            var host = BuildWebHost(args);
 
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
                 try
                 {
-                    SeedData.Initialize( services );
+                    SeedData.Initialize(services);
                 }
                 catch (Exception exception)
                 {
@@ -28,9 +28,15 @@ namespace BecketLee
             host.Run();
         }
 
-        private static IWebHost BuildWebHost( string[] args ) =>
-            WebHost.CreateDefaultBuilder( args )
+        private static IWebHost BuildWebHost(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                //.ConfigureLogging((hostingContext, logging) =>
+                //{
+                //    logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                //    logging.AddConsole();
+                //    logging.AddDebug();
+                //})
                 .Build();
 
     }
