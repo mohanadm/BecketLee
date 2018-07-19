@@ -53,7 +53,7 @@
                     </div>
                     <div>
                         <ul id="partnerMenu" class="nav collapse" role="menu" aria-labelledby="partnerMenu">
-                            @Html.Partial( "_partnerMenuView", (PartnerMenuViewModel)ViewBag.MenuModel );
+                            @Html.PartialAsync( "_partnerMenuView", (PartnerMenuViewModel)ViewBag.MenuModel );
                         </ul>
                     </div>
                 </li>
