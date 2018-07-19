@@ -9,10 +9,10 @@ namespace BecketLee.Data
 {
     public class BecketLeeSeedData
     {
-        protected BecketLeeContext _context;
+        private BecketLeeContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
-        private ILogger _logger;
+        //private ILogger _logger;
 
         public BecketLeeSeedData(
             BecketLeeContext context, 

@@ -7,6 +7,7 @@ using BecketLee.ViewModels;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -120,6 +121,7 @@ namespace BecketLee
 
         private static void ConfigureIdentityService( IServiceCollection services )
         {
+
             services.AddIdentity<ApplicationUser, ApplicationRole>( config =>
                 {
                     config.User.RequireUniqueEmail = true;
@@ -128,7 +130,9 @@ namespace BecketLee
                     config.Password.RequireUppercase = true;
                     config.Password.RequireNonAlphanumeric = true;
                 } )
-                .AddEntityFrameworkStores<BecketLeeContext>();
+                .AddEntityFrameworkStores<BecketLeeContext>()
+                .AddDefaultTokenProviders();
+                
 
             
         }
