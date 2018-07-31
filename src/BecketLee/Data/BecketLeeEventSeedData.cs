@@ -114,12 +114,12 @@ namespace BecketLee.Data
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
                 {
-                    Title = @"Becket & Lee Joining NACTT's 53rd Annual Conference",
+                    Title = @"Becket & Lee Joined NACTT's 53rd Annual Conference",
                     CreatedDate = Convert.ToDateTime("2018-07-09 21:43:10.6698880"),
                     StartDate = Convert.ToDateTime("2018-06-27 00:00:00.0000000"),
                     EndDate = Convert.ToDateTime("2018-06-30 00:00:00.0000000"),
                     EventTypeId = 2,
-                    EventHtml = @"&lt;p&gt;Partners Tom Lee, Alane Becket and Gil Weisman will attend the annual meeting of the National Association of Chapter 13 Trustees in Miami from June 27-30, 2018. The NACTT strives to be a nationwide leader in consumer bankruptcy law education and the 2018 annual seminar presents many opportunities to improve knowledge and expertise in the industry.&lt;/p&gt;
+                    EventHtml = @"&lt;p&gt;Partners Tom Lee, Alane Becket and Gil Weisman attended the annual meeting of the National Association of Chapter 13 Trustees in Miami from June 27-30, 2018. The NACTT strives to be a nationwide leader in consumer bankruptcy law education and the 2018 annual seminar presents many opportunities to improve knowledge and expertise in the industry.&lt;/p&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
@@ -2075,7 +2075,6 @@ It definitely was NOT and that&amp;#39;s emphatic.&lt;/p&gt;
 &lt;/div&gt;
 "
                 }; context.Events.Add(eventObj);
-
 
                 await context.SaveChangesAsync();
 
