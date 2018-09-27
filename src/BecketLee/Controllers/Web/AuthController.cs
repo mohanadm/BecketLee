@@ -162,16 +162,16 @@ namespace BecketLee.Controllers.Web
                 if (user == null || !(await _userManager.IsEmailConfirmedAsync( user )))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
-                    return View( "ForgotPasswordConfirmation" );
+                    return View( $"ForgotPasswordConfirmation" );
                 }
 
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                 // Send an email with this link
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
-                var callbackUrl = Url.Action("ResetPassword", "Auth", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                var callbackUrl = Url.Action( "ResetPassword", $"Auth", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
                 await _emailService.SendEmailAsync(model.Email, "Reset Password",
                    $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
-                return View("ForgotPasswordConfirmation");
+                return View( $"ForgotPasswordConfirmation" );
             }
 
             // If we got this far, something failed, redisplay form
@@ -190,7 +190,7 @@ namespace BecketLee.Controllers.Web
         [AllowAnonymous]
         public IActionResult ResetPassword( string code = null )
         {
-            return code == null ? View( "Error" ) : View();
+            return code == null ? View( $"Error", "Home" ) : View();
         }
 
         [HttpPost]
@@ -206,12 +206,12 @@ namespace BecketLee.Controllers.Web
             if (user == null)
             {
                 // Don't reveal that the user does not exist
-                return RedirectToAction( nameof( AuthController.ResetPasswordConfirmation ), "Auth" );
+                return RedirectToAction( nameof( ResetPasswordConfirmation ), $"Auth" );
             }
             var result = await _userManager.ResetPasswordAsync( user, model.Code, model.Password );
             if (result.Succeeded)
             {
-                return RedirectToAction( nameof( AuthController.ResetPasswordConfirmation ), "Auth" );
+                return RedirectToAction( nameof( ResetPasswordConfirmation ), $"Auth" );
             }
             AddErrors( result );
             return View();

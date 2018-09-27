@@ -31,7 +31,7 @@ namespace BecketLee.Controllers.Web
         {
             if (!User.IsInRole( "Administrator" ))
             {
-                return RedirectToAction( "UnauthorizedView", "App" );
+                return RedirectToAction( "UnauthorizedView", $"Home" );
             }
             var model = new List<RolesViewModel>();            
             model = _roleManager.Roles.Select( r => new RolesViewModel
@@ -61,7 +61,7 @@ namespace BecketLee.Controllers.Web
                     model.Description = appRole.Description;
                 }
             }
-            return PartialView( "_AddEditRole", model );
+            return PartialView( $"_AddEditRole", model );
         }
 
         [HttpPost]
@@ -85,10 +85,10 @@ namespace BecketLee.Controllers.Web
                                                     : await _roleManager.CreateAsync( applicationRole );
                 if (roleRuslt.Succeeded)
                 {
-                    return RedirectToAction( "Index" );
+                    return RedirectToAction( "Index", $"Auth" );
                 }
             }
-            return View( vm );
+            return PartialView($"_AddEditRole", vm); 
         }
 
         [HttpGet]
@@ -103,7 +103,7 @@ namespace BecketLee.Controllers.Web
                     name = applicationRole.Name;
                 }
             }
-            return PartialView( "_DeleteRole", name );
+            return PartialView( $"_DeleteRole", name );
         }
 
         [HttpPost]
@@ -119,11 +119,11 @@ namespace BecketLee.Controllers.Web
                     IdentityResult roleRuslt = _roleManager.DeleteAsync( applicationRole ).Result;
                     if (roleRuslt.Succeeded)
                     {
-                        return RedirectToAction( "Index" );
+                        return RedirectToAction( "Index", $"Auth" );
                     }
                 }
             }
-            return View();
+            return PartialView( $"_DeleteRole", null );
         }
 
         public override PartnerMenuViewModel MenuModel

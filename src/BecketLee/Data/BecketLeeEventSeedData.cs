@@ -10,13 +10,35 @@ namespace BecketLee.Data
         public static async Task EnsureEventData( BecketLeeContext context )
         {
             
-            if (!context.Events.Any() || context.Events.Count() != 145)
+            if (!context.Events.Any() || context.Events.Count() != 146)
             {
                 // delete
                 context.RemoveRange( context.Events );
                 await context.SaveChangesAsync();
 
                 var eventObj = new Event()
+                {
+                    Title = "Alane Becket Recognized Among \"20 Most Powerful Women in Collections\"",
+                    CreatedDate = Convert.ToDateTime("2018-09-27 21:07:16.7933616"),
+                    StartDate = Convert.ToDateTime("2018-09-27 00:00:00.0000000"),
+                    EndDate = null,
+                    EventTypeId = 1,
+                    EventHtml = @"&lt;p&gt;&lt;span style=&quot;font-size:12.0pt&quot;&gt;&lt;span style=&quot;color:black&quot;&gt;Becket &amp;amp; Lee is proud to announce that &lt;em&gt;Collection Advisor &lt;/em&gt;magazine recently named Alane Becket as one of the &amp;quot;20 Most Powerful Women in Collections&amp;quot;.&amp;nbsp; The September/October cover story notes that &amp;ldquo;o&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;font-size:12.0pt&quot;&gt;&lt;span style=&quot;color:black&quot;&gt;f the 140,000 professionals in collections, nearly 70% are women.&amp;rdquo; The publisher spoke with Alane and 19 other successful women recognized as driving &amp;ldquo;positive waves of change that ripple through the industry.&amp;rdquo;&amp;nbsp; Each of the 20 was asked two questions:&amp;nbsp; &lt;/span&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;&lt;span style=&quot;font-size:12.0pt&quot;&gt;&lt;span style=&quot;color:black&quot;&gt;What would you like people to get involved with to improve the collection industry? &lt;/span&gt;&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span style=&quot;font-size:12.0pt&quot;&gt;&lt;span style=&quot;color:black&quot;&gt;What new technology helped improve the collection industry in the past year?&lt;/span&gt;&lt;/span&gt;&lt;br /&gt;
+    &amp;nbsp;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;span style=&quot;font-size:12.0pt&quot;&gt;&lt;span style=&quot;color:black&quot;&gt;The full article, including Alane&amp;rsquo;s responses to the these questions, is available via &lt;em&gt;Collection Advisor&lt;/em&gt;&amp;#39;s website at:&lt;/span&gt;&lt;/span&gt;&lt;span style=&quot;font-size:12.0pt&quot;&gt; &lt;strong&gt;&lt;a href=&quot;https://www.collectionadvisor.com/may-june-2018/1473-20-most-powerful-women-in-collections&quot;&gt;https://www.collectionadvisor.com/may-june-2018/1473-20-most-powerful-women-in-collections&lt;/a&gt;&lt;/strong&gt;&lt;strong&gt; &lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
                 {
                     Title = @"Alane Becket Named President-Elect of the American Bankruptcy Institute ",
                     CreatedDate = Convert.ToDateTime("2018-06-26 21:07:26.4539782"),

@@ -2,14 +2,15 @@
 @using BecketLee.Models
 
 <form asp-action="DeleteUser" role="form">
+
     @Html.AntiForgeryToken()
-    @Html.PartialAsync( "_ModalHeader", new ModalHeader { Heading = "Delete User" } )
+    @await Html.PartialAsync( "_ModalHeader", new ModalHeader {Heading = "Delete User"} )
 
 
     <div class="modal-body form-horizontal">
         Are you sure you want to delete @Model?
 
     </div>
-    @Html.PartialAsync( "_ModalFooter", new ModalFooter { SubmitButtonText = "Delete" } )
+    @await Html.PartialAsync( "_ModalFooter", new ModalFooter {SubmitButtonText = "Delete"} )
 
 </form>

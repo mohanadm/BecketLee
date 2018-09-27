@@ -173,7 +173,7 @@ namespace BecketLee.Controllers.Web
                     IdentityResult result = await _userManager.DeleteAsync( applicationUser );
                     if (result.Succeeded)
                     {
-                        return RedirectToAction( "Index" );
+                        return RedirectToAction( "Index", $"Users" );
                     }
                 }
             }
