@@ -3,7 +3,7 @@
         "ToAddress": "kgabrys@becket-lee.com"
     },
     "Data": {
-        "BecketLeeConnection": "Server=CS700239;Database=becketLeeDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
+        "BecketLeeConnection": "Server=.;Database=becketLeeDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
     },
     "Logging": {
         "LogLevel": {
