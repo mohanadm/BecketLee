@@ -10,7 +10,7 @@ namespace BecketLee.Data
         public static async Task EnsureEventData( BecketLeeContext context )
         {
             
-            if (!context.Events.Any() || context.Events.Count() != 146)
+            if (!context.Events.Any() || context.Events.Count() != 150)
             {
                 // delete
                 context.RemoveRange( context.Events );
@@ -53,7 +53,7 @@ namespace BecketLee.Data
 
 &lt;h3&gt;&amp;nbsp;&lt;/h3&gt;
 
-&lt;div style=&quot;text-align:center&quot;&gt;&lt;input alt=&quot;Alane ABI Announcement&quot; class=&quot;alaneNewsImage&quot; src=&quot;..\IMAGE\alaneabiannouncement.png&quot; type=&quot;image&quot; /&gt;&lt;/div&gt;
+&lt;div style=&quot;text-align:center&quot;&gt;&lt;input alt=&quot;Alane ABI Announcement&quot; src=&quot;..\..\\image\AlaneABIAnnouncement.png&quot; type=&quot;image&quot; /&gt;&lt;/div&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
@@ -132,6 +132,46 @@ namespace BecketLee.Data
 &lt;p&gt;Among other things, this revised edition covers the fundamentals of consumer bankruptcy proceedings under chapters 7 and 13 of the Code, including updated information on the changes in the law since BAPCPA. Moreover, it includes important information on today&amp;#39;s most litigated questions, such as issues surrounding applicable commitment periods in chapter 13 plans, projected disposable income, case conversion and exemptions. Finally, the book provides critical analyses of several new U.S. Supreme Court decisions, including &lt;em&gt;Lanning, Ransom, Espinosa and Milavetz.&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;For more information on the publication, please visit &lt;a href=&quot;http://bookstore.abi.org/&quot;&gt;http://bookstore.abi.org/&lt;/a&gt;.&lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
+                {
+                    Title = @"Alane Becket to Attend the ABI 2018 Winter Leadership Conference",
+                    CreatedDate = Convert.ToDateTime("2018-11-05 18:57:42.8029657"),
+                    StartDate = Convert.ToDateTime("2018-12-06 00:00:00.0000000"),
+                    EndDate = Convert.ToDateTime("2018-12-08 00:00:00.0000000"),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Partner Alane Becket will be attending the American Bankruptcy Institute Winter Leadership Conference December 6-8, 2018 in Scottsdale, AZ.&amp;nbsp;&amp;nbsp; The ABI is the nation&amp;rsquo;s largest association of bankruptcy professionals, made up of over 12,000 members in multi-disciplinary roles, including attorneys, auctioneers, bankers, judges, lenders, professors, turnaround specialists, accountants and others. ABI is committed to serving members with high-quality conferences, comprehensive continuing education, effective legal research, and networking opportunities.&amp;nbsp; Alane is currently President Elect of the ABI, and will become President in April, 2019.&lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
+                {
+                    Title = @"Becket & Lee Joins Judges at the NCBJ 2018 Annual Conference",
+                    CreatedDate = Convert.ToDateTime("2018-11-05 18:56:54.5769657"),
+                    StartDate = Convert.ToDateTime("2018-10-28 00:00:00.0000000"),
+                    EndDate = Convert.ToDateTime("2018-10-31 00:00:00.0000000"),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Alane Becket attended the 2018 National Conference of Bankruptcy Judges in San Antonio, TX.&amp;nbsp;&amp;nbsp; &amp;nbsp;Held October 28-31, the conference has several purposes: to provide continuing legal education to judges, lawyers and other involved professionals, to promote cooperation among the Bankruptcy Judges, to secure a greater degree of quality and uniformity in the administration of the Bankruptcy system and to improve the practice of law in the Bankruptcy Courts of the United States.&amp;nbsp;&lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
+                {
+                    Title = @"Partner Alane Becket Represented Firm at NCBA 2018 Fall Conference ",
+                    CreatedDate = Convert.ToDateTime("2018-11-05 18:55:56.3369657"),
+                    StartDate = Convert.ToDateTime("2018-10-03 00:00:00.0000000"),
+                    EndDate = Convert.ToDateTime("2018-10-06 00:00:00.0000000"),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Alane Becket attended the National Creditors Bar Association 2018 Fall Conference &amp;amp; 25th Anniversary Celebration in Nashville, TN October 3-6, 2018. &lt;span style=&quot;color:#333333&quot;&gt;National Creditors Bar Association Conferences offer great opportunities to network, earn CLE credits, meet vendors and stay current with cutting-edge educational content.&amp;nbsp; Alane is Co-chair of the newly created Bankruptcy Section and presented panels on &amp;ldquo;coerced debt&amp;rdquo; with Professor Angela Littwin of the University of Texas and a &amp;ldquo;13 update&amp;rdquo; with Chapter 13 Trustee from Nashville, Henry (&amp;ldquo;Hank&amp;rdquo;) Hildebrand.&amp;nbsp; &lt;/span&gt;&lt;/p&gt;
+"
+                }; context.Events.Add(eventObj);
+                eventObj = new Event()
+                {
+                    Title = @"B&L at DCS 2018 Conference",
+                    CreatedDate = Convert.ToDateTime("2018-11-05 18:54:50.6219657"),
+                    StartDate = Convert.ToDateTime("2018-09-05 00:00:00.0000000"),
+                    EndDate = Convert.ToDateTime("2018-09-07 00:00:00.0000000"),
+                    EventTypeId = 2,
+                    EventHtml = @"&lt;p&gt;Tom Lee represented the firm at Debt Connection Symposium and Expo in Austin, Texas, September 5-7, 2018.&amp;nbsp; The conference focuses on networking and connecting clients, service providers, product suppliers, agencies and attorneys. In addition to hearing presentations from a high-caliber faculty, a key ingredient of the Debt Connection Symposium and Expo concept is to have an opportunity to meet peers and other industry professionals, as well as finding new products and services that might make business better, more efficient, and more productive.&lt;/p&gt;
 "
                 }; context.Events.Add(eventObj);
                 eventObj = new Event()
@@ -2097,7 +2137,6 @@ It definitely was NOT and that&amp;#39;s emphatic.&lt;/p&gt;
 &lt;/div&gt;
 "
                 }; context.Events.Add(eventObj);
-
                 await context.SaveChangesAsync();
 
             }

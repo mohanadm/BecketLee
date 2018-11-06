@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
 using AutoMapper;
 using BecketLee.Data;
 using BecketLee.Models;
@@ -7,10 +8,12 @@ using BecketLee.ViewModels;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 
@@ -96,6 +99,16 @@ namespace BecketLee
             
             //app.UseDefaultFiles();
             app.UseStaticFiles();
+            if( _environment.IsDevelopment() )
+            {
+                var currentDir = Directory.GetCurrentDirectory();
+                app.UseStaticFiles(new StaticFileOptions()
+                {
+                    FileProvider = new PhysicalFileProvider(
+                        Path.Combine(currentDir, @"node_modules")),
+                    RequestPath = new PathString("/lib")
+                });
+            }
 
             //app.UseIdentity();
             //services.AddDefaultTokenProviders();
