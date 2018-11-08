@@ -38,12 +38,11 @@ namespace BecketLee
             services.AddLogging();
             services.AddDbContext<BecketLeeContext>();
 
-            ConfigureDependencyInjection(services);
-
+            ConfigureIdentityService(services);
 
             services.ConfigureApplicationCookie( options =>
             {
-                options.LoginPath = "/Auth/Login"; 
+                options.LoginPath = new PathString( "/Auth/Login" ); 
                 options.Events = new CookieAuthenticationEvents
                 {
                     OnRedirectToLogin = async ctx =>
@@ -61,10 +60,8 @@ namespace BecketLee
                     }
                 };
             } );
-            
 
-
-
+            ConfigureDependencyInjection(services);
 
             services.AddMvc( config =>
                 {
@@ -75,8 +72,6 @@ namespace BecketLee
                 })
                 .AddJsonOptions( config =>
                     config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
-
-            ConfigureIdentityService(services);
 
         }
 
@@ -113,6 +108,7 @@ namespace BecketLee
             //app.UseIdentity();
             //services.AddDefaultTokenProviders();
             app.UseAuthentication();
+           
 
             Mapper.Initialize( config =>
             {

@@ -3,128 +3,123 @@
 <html lang="en">
 <head>
     <title>Becket & Lee LLP - @ViewBag.Title</title>
-    
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <meta id="LegalMeta" content="attorney, Attorney, ATtorNEy, ATTorney, ATTOrney, ATTORney, ATTORNey, ATTORNEy, ATTORNEY, BECKET &amp; LEE, Becket &amp; Lee, BEcket &amp; Lee, BECket &amp; Lee, BECKet &amp; Lee, BECKEt &amp; Lee, BECKET &amp; Lee, BECKET &amp; LEe, becket &amp; lee, BECKET LEE, Becket Lee, BEcket Lee, BECket Lee, BECKet Lee, BECKEt Lee, BECKET Lee, BECKET LEe, becket lee,    BECKETLEE, BecketLee, BEcketLee, BECketLee, BECKetLee, BECKEtLee, BECKETLee, BECKETLEe, becketlee, bECKETLEE, beCKETLEE, becKETLEE, beckETLEE, beckeTLEE, becketLEE, becketlEE, becketleE, bEcket &amp; lee, beCket &amp; lee, becKet &amp; lee, beckEt &amp; lee, beckeT &amp; lee, becket &amp; Lee, becket &amp; lEe, becket &amp; leE, BEcket &amp; lee, bECket &amp; lee, beCKet &amp; lee, becKEt &amp; lee, beckET &amp; lee, beckeT &amp; Lee, becket &amp; LEe, becket &amp; lEE, BEKket &amp; lee, bECKet &amp; lee, beCKEt &amp; lee, becKET &amp; lee, beckET &amp; Lee, beckeT &amp; LEe, becket &amp; LEE, BECKet &amp; lee, bECKEt &amp; lee, beCKET &amp; lee, becKET &amp; Lee, beckET &amp; LEe, beckeT &amp; LEE, BECKEt &amp; lee, bECKET &amp; lee, beCKET &amp; Lee, becKET &amp; LEe, beckET &amp; LEE, bankruptcy, Bankruptcy, BAnkruptcy, BANkruptcy, BANKruptcy, BANKRuptcy, BANKRUptcy, BANKRUPtcy, BANKRUPTcy, BANKRUPTCy, BANKRUPTCY, BAnkruptcy, bANkruptcy, baNKruptcy, banKRuptcy, bankRUptcy, bankrUPtcy, bankruPTcy, bankrupTCy, bankruptCY, BANkruptcy, bANKruptcy, baNKRuptcy, banKRUptcy, bankRUPtcy, bankrUPTcy, bankruPTCy, bankrupTCY, BANKruptcy, bANKRuptcy, baNKRUptcy, banKRUPtcy, bankRUPTcy, bankrUPTCy, bankruPTCY, Thomas Lee, Tom Lee, Alane Becket, Mickey Becket, William Becket, John Sheehan, Sandra Curtin" />
-    
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/bootswatch/spacelab/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootswatch/dist/cerulean/bootstrap.min.css" />
 
     <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/navTabs.css" />
+    @*<link rel="stylesheet" href="~/css/navTabs.css" />*@
     <link rel="stylesheet" href="~/css/partner.css" />
 </head>
 
 <body>
+    <div id="full-content">
+        <div id="main-window">
+            <div id="header">
 
-    <div id="header">
-        <div class="slideContainer">
-            <div class="slide"><img src="~/image/B&L Firm-small2.jpg" alt="Offices" class="headerImage" /></div>
-            <div class="slide"><img src="~/image/InLibrary225.jpg" alt="Library" class="headerImage"></div>
-            <div class="slide"><img src="~/image/DSC_9999editSM.JPG" alt="Offices" class="headerImage" /></div>
-            <div class="slide"><img src="~/image/DSC_9925edit2SM.JPG" alt="Computer Room" class="headerImage" /></div>
+                <div class="image-container">
+                    <div class="image-item"><img src="~/image/headerLogo.gif" alt="Becket & Lee Logo" class="logoImage" /></div>
+                    <div class="image-item"><img src="~/image/B&L Firm-small2.jpg" alt="Offices" class="headerImage" /></div>
+                    <div class="image-item"><img src="~/image/InLibrary225.jpg" alt="Library" class="headerImage"></div>
+                    <div class="image-item"><img src="~/image/DSC_9999editSM.JPG" alt="Offices" class="headerImage" /></div>
+                    <div class="image-item"><img src="~/image/DSC_9925edit2SM.JPG" alt="Computer Room" class="headerImage" /></div>
+                </div>
+
+                <nav class="navbar navbar-default bg-dark">
+                    <ul class="navbar navbar-nav mx-auto">
+                        <li class="navtext">
+                            Your Proven Partner in Bankruptcy Management
+                        </li>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="navtext">
+                                &nbsp;-&nbsp;Welcome: @User.Identity.Name
+                            </li>
+                            @*<ul class="navbar navbar-nav ml-auto"></ul>*@
+                        }
+
+                    </ul>
+                </nav>
+            </div>
+            <div id="sidebar">
+
+                <nav class="navbar navbar-dark bg-dark" id="menu">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" asp-action="Index" asp-controller="Partners" data-toggle="dropdown" aria-haspopup="True" aria-expanded="False">
+                                Partners
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                @await Html.PartialAsync("_partnerMenuView", (PartnerMenuViewModel)ViewBag.MenuModel)
+                            </div>
+                        </li>
+
+                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="OurServices"> Services </a></li>
+                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="News"> News </a></li>
+                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Events"> Events </a></li>
+                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Pubs"> Publications </a></li>
+                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Cases"> Cases of Interest </a></li>
+                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="FirmHistory"> Firm History </a></li>
+                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="Contact"> Contact </a></li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="Auth" asp-action="Index">Manage Website</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Auth" asp-action="Logout"> <i class="fa fa-sign-out"></i> Logout</a></li>
+                        }
+                    </ul>
+                </nav>
+
+                <div>&nbsp;</div>
+                <div class="affiliation">
+                    <table>
+                        <tr>
+                            <td>
+                                <img src="~/image/WBE_color_rgb_UP25.jpg" alt="" class="affiliationImage" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div>
+                    <ul class="businessAddress">
+                        <li>&nbsp;</li>
+                        <li>Becket & Lee LLP</li>
+                        <li>16 General Warren Blvd</li>
+                        <li>Malvern, PA 19355</li>
+                        <li>&nbsp;</li>
+                        <li>610.644.7800</li>
+
+                    </ul>
+                </div>
+
+            </div>
+            <div id="content-wrapper">
+                <div id="main" class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
         </div>
-
-        <nav class="navbar navbar-inverse">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <ul class="nav navbar-nav navbar-right ">
-                    <li class="navtext">
-                        <label>Welcome: @User.Identity.Name </label>
-                    </li>
+        <div id="footer">
+            <nav class="navbar navbar-fixed-bottom navbar-dark bg-dark">
+                <ul class="navbar-nav mx-auto text-center">
+                    <li class="navtext">&copy; Becket & Lee LLP</li>
+                    <li><a id="disclaimerLink" href="#">Disclaimer</a></li>
                 </ul>
-            }
-            <ul class="nav navbar-nav navbar-left">
-                <li class="navtext">
-                    <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Your Proven Partner in Bankruptcy Management</label>
-                </li>
-            </ul>
-        </nav>
-    </div>
-
-    <div id="sidebar">
-        <div><img src="~/image/headerLogo.gif" alt="Becket & Lee Logo" class="logoImage" /></div>
-
-        <nav id="menu">
-            <ul class="nav navbar-inverse">
-                <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                <li>
-                    <div id="menuGroupItem">
-                        <a asp-action="Index" asp-controller="Partners"> Partners </a>
-                        <a data-toggle="collapse" data-target="#partnerMenu" class="subMenuSelector"><i class="fa fa-chevron-down"></i></a>
-                    </div>
-                    <div>
-                        <ul id="partnerMenu" class="nav collapse" role="menu" aria-labelledby="partnerMenu">
-                            @await Html.PartialAsync("_partnerMenuView", (PartnerMenuViewModel)ViewBag.MenuModel);
-                        </ul>
-                    </div>
-                </li>
-                <li><a asp-controller="Home" asp-action="OurServices"> Services </a></li>
-                <li><a asp-controller="Events" asp-action="News"> News </a></li>
-                <li><a asp-controller="Events" asp-action="Events"> Events </a></li>
-                <li><a asp-controller="Events" asp-action="Pubs"> Publications </a></li>
-                <li><a asp-controller="Events" asp-action="Cases"> Cases of Interest </a></li>
-                <li><a asp-controller="Home" asp-action="FirmHistory"> Firm History </a></li>
-                <li><a asp-controller="Home" asp-action="Contact"> Contact </a></li>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <li><a asp-controller="Auth" asp-action="Index">Manage Website</a></li>
-                    <li><a asp-controller="Auth" asp-action="Logout"> <i class="fa fa-sign-out"></i> Logout</a></li>
-                }
-            </ul>
-        </nav>
-
-        <div>&nbsp;</div>
-        <div class="affiliation">
-            <table>
-                <tr>
-                    <td>
-                        <img src="~/image/WBE_color_rgb_UP25.jpg" alt="" class="affiliationImage" />
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <div>
-            <ul class="rightAlign">
-                <li>&nbsp;</li>
-                <li>Becket & Lee LLP</li>
-                <li>16 General Warren Blvd</li>
-                <li>Malvern, PA 19355</li>
-                <li>&nbsp;</li>
-                <li>610.644.7800</li>
-
-            </ul>
-        </div>
-
-    </div>
-
-    <div id="wrapper">
-        <div id="main" class="container-fluid">
-            @RenderBody()
-        </div>
-    </div>
-
-
-
-    <div id="footer" class="container-fluid">
-        <div class="navbar navbar-fixed-bottom navbar-inverse ">
-            <ul>
-                <li class="navbar-link">&copy; Becket & Lee LLP</li>
-                <li class="navbar-link text-muted"><a id="disclaimerLink" href="#">Disclaimer</a></li>
-            </ul>
+            </nav>
         </div>
     </div>
 
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    @*<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>*@
     @RenderSection("scripts", false)
     <script type="text/javascript" src="~/js/site.js"></script>
 

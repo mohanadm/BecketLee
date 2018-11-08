@@ -1587,6 +1587,11 @@ find-package-json@^1.0.0:
   resolved "https://registry.yarnpkg.com/find-package-json/-/find-package-json-1.1.0.tgz#269b0c148bbe389f027e2c1e0c72fa108eadb348"
   integrity sha512-ldihxiIFpewACALK0tUByf3GmOaTBjI5OcvwJ3mExgERUZBsSOBV8QM6vVb0/ZqylpzY6Od6SsP8bjFv7fKiTw==
 
+font-awesome@^4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
+  integrity sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=
+
 fontawesome@4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/fontawesome/-/fontawesome-4.7.0.tgz#039a48639219f0905e890f97af7efa70c4700404"
@@ -2616,6 +2621,11 @@ module-deps@^4.0.2, module-deps@^4.0.8:
     subarg "^1.0.0"
     through2 "^2.0.0"
     xtend "^4.0.0"
+
+moment@^2.22.2:
+  version "2.22.2"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
+  integrity sha1-PCV/mDn8DpP/UxSWMiOeuQeD/2Y=
 
 ms@2.0.0:
   version "2.0.0"
