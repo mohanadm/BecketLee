@@ -6,23 +6,23 @@
     <div class="col-md-12">
         <div class="card">
             <div class="with-nav-tabs">
-                <div class="card-heading">
+                <div class="card-header">
                     <h2 >&nbsp;&nbsp;Our Services</h2>
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#claims" data-toggle="tab" role="tab">
+                            <a class="nav-link" href="#claims" data-toggle="tab" role="tab" aria-controls="claims" aria-selected="True">
                                 @* aria-controls="claims" aria-selected="True"*@
                                 Claims Filing and Case Administration
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#litigation" data-toggle="tab" role="tab">
+                            <a class="nav-link" href="#litigation" data-toggle="tab" role="tab" aria-controls="litigation" aria-selected="False">
                                 @*aria-controls="litigation" aria-selected="False"*@
                                 Litigation Services
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#system7" data-toggle="tab" role="tab">
+                            <a class="nav-link" href="#system7" data-toggle="tab" role="tab" aria-controls="system7"  aria-selected="False">
                                 @*aria-controls="system7"  aria-selected="False"*@
                                 System 7<span class="SuperScript">SM</span>
                             </a>
@@ -96,3 +96,15 @@
         <div>For more information call Tom Lee or Alane Becket at 610.644.7800. </div>
     </div>
 </div>
+
+@section scripts{ 
+    <script>
+        @* forces first tab to be selected when entering page *@
+        $(document).ready(
+            function initTab()
+            {
+                $('[href="#claims"]').tab('show');
+            }
+        );
+    </script>
+}
