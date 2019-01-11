@@ -9,7 +9,8 @@ namespace BecketLeeTests
         [Test]
         public void TestUser()
         {
-
+//            BecketLee.Controllers.Web.AuthController controller = 
+//                new BecketLee.Controllers.Web.AuthController();
         }
     }
 }
