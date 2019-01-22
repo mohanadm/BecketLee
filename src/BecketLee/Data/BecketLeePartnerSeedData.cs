@@ -112,7 +112,7 @@ New Jersey (1986); Pennsylvania (1986); and Florida (1991)&lt;/p&gt;
 American Bankruptcy Institute (past Vice Chair of its Consumer Bankruptcy Committee); National Association of Bankruptcy Trustees; National Association of Chapter 13 Trustees; National Conference of Bankruptcy Clerks; Pennsylvania Bar Association&lt;br /&gt;
 &amp;nbsp;&lt;/p&gt;
 
-&lt;p&gt;After law school, Mr. Lee spent two years practicing in the area of workers&amp;rsquo; compensation and other general practice matters in New Jersey. In 1988, he joined Milton Becket &amp;amp; Associates, which later became Becket &amp;amp; Lee. As a Managing Partner, Tom focuses on client and industry relations, internal operations, and analytics. Having represented creditors for over 29 years, Tom is a frequently requested speaker at bankruptcy seminars and conferences for bankruptcy professionals, as well as for bankers and collectors. He also works extensively with trustees and other industry professionals, providing his expertise on bankruptcy related projects of national significance.&lt;/p&gt;
+&lt;p&gt;After law school, Mr. Lee spent two years practicing in the area of workers&amp;rsquo; compensation and other general practice matters in New Jersey. In 1988, he joined Milton Becket &amp;amp; Associates, which later became Becket &amp;amp; Lee. As a Managing Partner, Tom focuses on client and industry relations, internal operations, and analytics. Having represented creditors for over&amp;nbsp;30&amp;nbsp;years, Tom is a frequently requested speaker at bankruptcy seminars and conferences for bankruptcy professionals, as well as for bankers and collectors. He also works extensively with trustees and other industry professionals, providing his expertise on bankruptcy related projects of national significance.&lt;/p&gt;
 ";
         }
 
@@ -127,8 +127,7 @@ American Bankruptcy Institute (past Vice Chair of its Consumer Bankruptcy Commit
 Pennsylvania (1995)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Other Professional Affiliations:&lt;/strong&gt;&lt;br /&gt;
-American Bankruptcy Institute&lt;br /&gt;
-&amp;nbsp;&lt;/p&gt;
+American Bankruptcy Institute; National Association of Chapter 13 Trustees (NACTT)&lt;/p&gt;
 
 &lt;p&gt;Beginning in 1995, Mr. Becket has represented Becket &amp;amp; Lee&amp;rsquo;s clients in a variety of bankruptcy related litigation. His specialties include preference defense, automatic stay violation defense, student loan discharge defense, and representation of secured creditors in all aspects of consumer bankruptcy. Some of his significant cases include:&lt;/p&gt;
 
@@ -157,8 +156,7 @@ American Bankruptcy Institute&lt;br /&gt;
 Pennsylvania (1988); New Jersey (1988)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Other Professional Affiliations:&lt;/strong&gt;&lt;br /&gt;
-Pennsylvania Bar Association&lt;br /&gt;
-&amp;nbsp;&lt;/p&gt;
+American Bankruptcy Institute; National Association of Chapter 13 Trustees (NACTT)&lt;/p&gt;
 
 &lt;p&gt;Ms. Curtin joined Becket &amp;amp; Lee in March 1989. She is AV rated by Martindale-Hubbell, the highest distinction available. After several years litigating non-dischargeability, preference, and automatic stay actions, Sandy became the lead liaison to one of Becket &amp;amp; Lee&amp;rsquo;s largest clients, overseeing all aspects of the relationship, including security, operational processes, audit and compliance, and litigation strategy. Sandy&amp;rsquo;s longstanding tenure with the firm and her thorough understanding of the minute details of both Becket &amp;amp; Lee&amp;rsquo;s process and the client&amp;rsquo;s internal systems have been instrumental in meeting the client&amp;rsquo;s expectations for highest standards of representation.&lt;/p&gt;
 ";
@@ -174,8 +172,7 @@ Pennsylvania Bar Association&lt;br /&gt;
 Pennsylvania (1990); New Jersey (1990)&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Other Professional Affiliations:&lt;/strong&gt;&lt;br /&gt;
-American Bankruptcy Institute (ABI); INSOL International&lt;br /&gt;
-&amp;nbsp;&lt;/p&gt;
+Pennsylvania Bar Association; American Bankruptcy Institute (ABI); INSOL International; National Association of Chapter 13 Trustees (NACTT)&lt;/p&gt;
 
 &lt;p&gt;Mr. Sheehan joined Becket &amp;amp; Lee in June 1990, where he spent his first years litigating all areas of consumer bankruptcy law on behalf of the firm&amp;rsquo;s creditor clients. John&amp;rsquo;s responsibilities as a lead liaison to one of Becket &amp;amp; Lee&amp;rsquo;s large national clients include managing all aspects of the relationship, including operational processes, litigation strategy, and compliance. Specializing in the claim sale and transfer process, John has overseen the implementation of new technology to streamline and automate the process while retaining the exceptional accuracy that Becket &amp;amp; Lee&amp;rsquo;s clients demand.&lt;/p&gt;
 
