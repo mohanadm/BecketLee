@@ -10,7 +10,7 @@ namespace BecketLee.Data
         {            
 
             if (!context.PartnerBiographies.Any() ||
-                 context.PartnerBiographies.Count() < 5)
+                 context.PartnerBiographies.Count() < 6)
             {
                 // Clear content
                 foreach (var partnerBiography in context.PartnerBiographies)
