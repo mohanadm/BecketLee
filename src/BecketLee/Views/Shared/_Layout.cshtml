@@ -21,7 +21,8 @@
 
 <body>
     <div class="container body-content" id="full-content">
-        <div id="main-window">
+        <div id="main-windowX">
+
             <div id="header">
 
                 <div class="image-container">
@@ -32,86 +33,88 @@
                     <div class="image-item"><img src="~/image/DSC_9925edit2SM.JPG" alt="Computer Room" class="headerImage" /></div>
                 </div>
 
-                <nav class="navbar navbar-default bg-dark">
-                    <ul class="navbar navbar-nav mx-auto">
-                        <li class="navtext">
-                            Your Proven Partner in Bankruptcy Management
-                        </li>
+                <nav class="navbar navbar-default bg-dark ">
 
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="navtext">
-                                &nbsp;-&nbsp;Welcome: @User.Identity.Name
-                            </li>
-                            @*<ul class="navbar navbar-nav ml-auto"></ul>*@
-                        }
+                    <div class="navtext ml-auto">Your Proven Partner in Bankruptcy Management</div>
 
-                    </ul>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="navtext mr-auto">&nbsp;-&nbsp;Welcome: @User.Identity.Name</div>
+                    }
+
+
                 </nav>
-            </div>
-            <div id="sidebar">
-
-                <nav class="navbar navbar-dark bg-dark" id="menu">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" asp-action="Index" asp-controller="Partners" data-toggle="dropdown" aria-haspopup="True" aria-expanded="False">
-                                Partners
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                @await Html.PartialAsync("_partnerMenuView", (PartnerMenuViewModel)ViewBag.MenuModel)
-                            </div>
-                        </li>
-
-                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="OurServices"> Services </a></li>
-                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="News"> News </a></li>
-                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Events"> Events </a></li>
-                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Pubs"> Publications </a></li>
-                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Cases"> Cases of Interest </a></li>
-                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="FirmHistory"> Firm History </a></li>
-                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="Contact"> Contact </a></li>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <li class="nav-item"><a class="nav-link" asp-controller="Auth" asp-action="Index">Manage Website</a></li>
-                            <li class="nav-item"><a class="nav-link" asp-controller="Auth" asp-action="Logout"> <i class="fa fa-sign-out"></i> Logout</a></li>
-                        }
-                    </ul>
-                </nav>
-
-                <div>&nbsp;</div>
-                <div class="affiliation">
-                    <table>
-                        <tr>
-                            <td>
-                                <img src="~/image/WBE_color_rgb_UP25.jpg" alt="" class="affiliationImage" />
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div>
-                    <ul class="businessAddress">
-                        <li>&nbsp;</li>
-                        <li>Becket & Lee LLP</li>
-                        <li>16 General Warren Blvd</li>
-                        <li>Malvern, PA 19355</li>
-                        <li>&nbsp;</li>
-                        <li>610.644.7800</li>
-
-                    </ul>
-                </div>
-
             </div>
             <div id="content-wrapper">
-                <div id="main" class="container-fluid">
-                    @RenderBody()
+                <div class="row">
+                    <div id="sidebar" class="col-3">
+
+                        <nav class="navbar navbar-dark bg-dark" id="menu">
+                            <ul class="navbar-nav ml-auto">
+                                <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" asp-action="Index" asp-controller="Partners" data-toggle="dropdown" aria-haspopup="True" aria-expanded="False">
+                                        Partners
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        @await Html.PartialAsync("_partnerMenuView", (PartnerMenuViewModel)ViewBag.MenuModel)
+                                    </div>
+                                </li>
+
+                                <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="OurServices"> Services </a></li>
+                                <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="News"> News </a></li>
+                                <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Events"> Events </a></li>
+                                <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Pubs"> Publications </a></li>
+                                <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Cases"> Cases of Interest </a></li>
+                                <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="FirmHistory"> Firm History </a></li>
+                                <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="Contact"> Contact </a></li>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <li class="nav-item"><a class="nav-link" asp-controller="Auth" asp-action="Index">Manage Website</a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-controller="Auth" asp-action="Logout"> <i class="fa fa-sign-out"></i> Logout</a></li>
+                                }
+                            </ul>
+                        </nav>
+
+                        <div>&nbsp;</div>
+                        <div class="affiliation">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img src="~/image/WBE_color_rgb_UP25.jpg" alt="" class="affiliationImage" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div>
+                            <ul class="businessAddress">
+                                <li>&nbsp;</li>
+                                <li>Becket & Lee LLP</li>
+                                <li>16 General Warren Blvd</li>
+                                <li>Malvern, PA 19355</li>
+                                <li>&nbsp;</li>
+                                <li>610.644.7800</li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <div class="col">
+                        @RenderBody()
+                    </div>
                 </div>
+                <footer>
+                    <br/>
+                    <nav class="navbar navbar-default bg-dark ">
+                        <p class="navtext mx-auto">&copy; 2019 - Becket & Lee LLP</p>
+                    </nav>
+                </footer>
             </div>
         </div>
 
-        <footer>
-            <p>&copy; 2019 - Becket & Lee LLP</p>
-        </footer>
+
     </div>
 
     <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>

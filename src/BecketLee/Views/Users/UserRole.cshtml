@@ -7,8 +7,8 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 }
 
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
+<div class="card col-8 offset-2">
+    <div class="card-header">
         @using (Html.BeginForm( "UserRole", "Users", FormMethod.Get ))
         {
             @Html.AntiForgeryToken()
@@ -21,13 +21,15 @@
             </h3>
 
         }
+    </div>
+    <div class="card-body">
         @using (Html.BeginForm( "UserRole", "Users", FormMethod.Post ))
         {
             @Html.AntiForgeryToken()
             @Html.HiddenFor( e => e.UserId )
             @Html.HiddenFor( e => e.UserName )
 
-            <div>
+            <div class="card-body">
                 <div class="form-group">
                     <table class="table table-responsive">
                         <thead>

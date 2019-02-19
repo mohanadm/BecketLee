@@ -61,19 +61,16 @@
 }
 
 
-#menu li a {
-    line-height: 24px;
-    height: 24px;
-    text-align: right;
-    color: #eee;
-}
-
 #menu .active {
     background-color: #356fa9;
 }
 
 #menu .nav .ul .li {
     max-height: 20px;
+}
+
+#menu li :hover {
+    background-color: #777777
 }
 
 #menu li a {
@@ -121,7 +118,7 @@
 
 .navtext {
     color: antiquewhite;
-    font-style: italic;
+    font-style: italic;    
 }
 
 .businessAddress li {
@@ -147,41 +144,7 @@
     top: -3.5pt;
 }
 
-#header .navbar {
-    max-height: 35px !important;
-    max-height: 35px !important;
-}
 
-#sidebar {
-    margin-top: 200px;
-    position: absolute;
-    height: 100%;
-    width: 230px;
-    overflow: hidden;
-    left: 0;
-    top: 0;
-}
-
-#content-wrapper {
-    top: 0;
-    left: 0;
-    height: 100%;    
-    margin: 0 0 0 230px;
-}
-
-#full-content {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-#main-window {
-    margin-bottom: 20px;
-}
-
-#full-content #main-window {
-    flex-grow: 1;
-}
 
 
 @media (min-width: 768px) {

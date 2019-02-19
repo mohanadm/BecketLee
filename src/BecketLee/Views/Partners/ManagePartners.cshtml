@@ -5,11 +5,13 @@
 
 
 <div class="top-buffer"></div>
-<div class="col-md-6 col-md-offset-3">
+<div class="col-9 offset-1">
 
 
     <div class="card">
-        <div class="card-header card-head text-center"><h3>Manage Partner Biographies</h3></div>
+        <div class="card-header">
+            <h3 class="text-center">Manage Partner Biographies</h3>
+        </div>
         <div class="card-body">
 
             <div class="btn-group">
@@ -22,36 +24,34 @@
                     <i class="fa fa-gavel"></i>  Management
                 </a>
             </div>
-            <div>&nbsp;</div>
-            <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                <tr>
-                    <th class="text-right">Avatar</th>
-                    <th class="text-center " colspan="2">Name</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td class="text-right"><img src="@item.FileUrl" alt="@item.PartnerName" class="partnerEditAvatar" asp-append-version="true" /></td>
-                        <td>
-                            <a asp-action="EditPartnerBio" asp-route-id="@item.PartnerName" class="btn btn-sm btn-info btn-group-justified">
-                                <i class="fa fa-pencil"></i> @item.PartnerName
-                            </a>
-                        </td>
-                        <td>
-                            <a id="deletePartnerModal" data-toggle="modal" data-target="#modal-action-biography" asp-action="DeletePartnerBio" asp-controller="Partners" asp-route-id="@item.PartnerId" class="btn btn-sm btn-danger">
-                                <i class="fa fa-trash"> </i> Delete
-                            </a>
-                        </td>
-                    </tr>
-                }
-                </tbody>
-            </table>
+            <div class="row">
+                <div class="col">&nbsp;</div>
+                <div class="col">Edit</div>
+                <div class="col">Delete</div>
+            </div>
 
+            @foreach (var item in Model)
+            {
+                <div class="row">
+
+                    <div class="col" style="width: 10%">
+                        <img src="@item.FileUrl" alt="@item.PartnerName" class="partnerEditAvatar" asp-append-version="true"/>
+                    </div>
+                    <div class="col">
+                        <a asp-action="EditPartnerBio" asp-route-id="@item.PartnerName" class="btn btn-info">
+                            <i class="fa fa-pencil"></i> @item.PartnerName
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a id="deletePartnerModal" data-toggle="modal" data-target="#modal-action-biography" asp-action="DeletePartnerBio" asp-controller="Partners" asp-route-id="@item.PartnerId" class="btn btn-danger">
+                            <i class="fa fa-trash"> </i> Delete
+                        </a>
+                    </div>
+                </div>
+            }
         </div>
     </div>
+
 </div>
 
-@await Html.PartialAsync( "_Modal", new BootstrapModel { ID = "modal-action-biography", AreaLabeledId = "modal-action-biography-label", Size = ModalSize.Medium } )
+@await Html.PartialAsync("_Modal", new BootstrapModel { ID = "modal-action-biography", AreaLabeledId = "modal-action-biography-label", Size = ModalSize.Medium })
