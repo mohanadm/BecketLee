@@ -19,7 +19,7 @@
         /// <summary>
         /// The content at the top of the dialog
         /// </summary>
-        public string Heading { get; set; }
+        public string Heading { get; set; } = "Confirm Deletion";
 
         /// <summary>
         /// The id of the item being deleted
