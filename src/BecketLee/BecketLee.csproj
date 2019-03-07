@@ -67,11 +67,9 @@
     <Compile Include="Migrations\BecketLeeContextModelSnapshot.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\BootstrapModel.cs" />
+    <Compile Include="Models\DeletionModel.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\EventType.cs" />
-    <Compile Include="Models\ModalFooter.cs" />
-    <Compile Include="Models\ModalHeader.cs" />
     <Compile Include="Models\PartnerBiography.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Services\EmailService.cs" />
@@ -84,12 +82,15 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\PanelViewModel.cs" />
     <Compile Include="ViewModels\PartnerMenuViewModel.cs" />
+    <Compile Include="ViewModels\PartnersViewModel.cs" />
     <Compile Include="ViewModels\PartnerViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\RolesViewModel.cs" />
     <Compile Include="ViewModels\RoleViewModel.cs" />
+    <Compile Include="ViewModels\UserRolesViewModel.cs" />
     <Compile Include="ViewModels\UserRoleViewModel.cs" />
+    <Compile Include="ViewModels\UsersViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
   </ItemGroup>
 
@@ -112,7 +113,7 @@
     <Content Include="Views\Events\ManageEvents.cshtml" />
     <Content Include="Views\Events\News.cshtml" />
     <Content Include="Views\Events\Pubs.cshtml" />
-    <Content Include="Views\Events\_DeleteEvent.cshtml" />
+    <Content Include="Views\Shared\_DeleteConfirmation.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Home\FirmHistory.cshtml" />
@@ -123,23 +124,16 @@
     <Content Include="Views\Partners\Index.cshtml" />
     <Content Include="Views\Partners\ManagePartners.cshtml" />
     <Content Include="Views\Partners\PartnerBio.cshtml" />
-    <Content Include="Views\Partners\_DeletePartnerBio.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\_AddEditRole.cshtml" />
-    <Content Include="Views\Roles\_DeleteRole.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_EventPanel.cshtml" />
     <Content Include="Views\Shared\_EventsListing.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\_Modal.cshtml" />
-    <Content Include="Views\Shared\_ModalFooter.cshtml" />
-    <Content Include="Views\Shared\_ModalHeader.cshtml" />
     <Content Include="Views\Shared\_partnerMenuView.cshtml" />
     <Content Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\UserRole.cshtml" />
-    <Content Include="Views\Users\_DeleteUser.cshtml" />
-    <Content Include="Views\Users\_DeleteUserRole.cshtml" />
     <Content Include="Views\_ViewImports.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="web.config" />

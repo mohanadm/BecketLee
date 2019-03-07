@@ -15,14 +15,18 @@ namespace BecketLee.Controllers.Web
     public class RolesController : BaseController
     {
         private readonly RoleManager<ApplicationRole> _roleManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private PartnerMenuViewModel _menuModel;
 
         public RolesController(
             IPartnerRepository menuRepository,
-            RoleManager<ApplicationRole> roleManager )
+            RoleManager<ApplicationRole> roleManager,
+            UserManager<ApplicationUser> userManager)
         {
             _roleManager = roleManager;
+            _userManager = userManager;
             _menuModel = new PartnerMenuViewModel(menuRepository);
+
         }
 
         [HttpGet]
@@ -33,41 +37,66 @@ namespace BecketLee.Controllers.Web
             {
                 return RedirectToAction( "UnauthorizedView", $"Home" );
             }
-            var model = new List<RolesViewModel>();            
-            model = _roleManager.Roles.Select( r => new RolesViewModel
-            {
-                RoleName = r.Name
-                , Id = r.Id
-                , Description = r.Description
-                //, NumberOfUsers = r.Users.Count
-                , CreatedDate = r.CreatedDate
-            } ).OrderBy(e => e.RoleName).ToList();
 
+            var model = GetRolesViewModel();
             return View( model );
 
+        }
+
+        private RolesViewModel GetRolesViewModel()
+        {
+            var model = new RolesViewModel
+            {
+                RoleViewModels = _roleManager.Roles.Select( r => new RoleViewModel
+                {
+                    RoleName = r.Name,
+                    Id = r.Id,
+                    Description = r.Description,
+                    CreatedDate = r.CreatedDate
+                } ).OrderBy( e => e.RoleName ).ToList()
+            };
+            UpdateNumberOfUsersInRoleCount(model.RoleViewModels.ToList());
+
+            return model;
+        }
+
+        private void UpdateNumberOfUsersInRoleCount( List<RoleViewModel> model )
+        {
+            foreach (var user in _userManager.Users)
+            {
+                var userRoles = _userManager.GetRolesAsync( user ).Result;
+                foreach (var userRole in userRoles)
+                {
+                    var role = _roleManager.Roles.Single( r => r.Name == userRole );
+                    var foundRole = model.Single( r => r.RoleName == role.Name );
+                    if( foundRole != null ) foundRole.NumberOfUsers++;
+                }
+            }
         }
 
         [HttpGet]
         public async Task<IActionResult> AddEditRole( string id )
         {
-            var model = new RoleViewModel();
-            if( !string.IsNullOrEmpty( id ) )
+            var model = GetRolesViewModel();
+            if ( !string.IsNullOrEmpty( id ) )
             {
                 var appRole = await _roleManager.FindByIdAsync( id );
                 if( appRole != null )
                 {
-                    model.Id = appRole.Id;
-                    model.RoleName = appRole.Name;
-                    model.Description = appRole.Description;
+                    model.RoleViewModel.Id = appRole.Id;
+                    model.RoleViewModel.RoleName = appRole.Name;                    
+                    model.RoleViewModel.Description = appRole.Description;
                 }
             }
-            return PartialView( $"_AddEditRole", model );
+
+            model.OpenAddEditRoleDialog = true;
+            return View( "Index", model );
         }
 
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddEditRole( string id, RolesViewModel vm )
+        public async Task<IActionResult> AddEditRole( string id, RoleViewModel vm )
         {
             if (ModelState.IsValid)
             {
@@ -85,45 +114,53 @@ namespace BecketLee.Controllers.Web
                                                     : await _roleManager.CreateAsync( applicationRole );
                 if (roleRuslt.Succeeded)
                 {
-                    return RedirectToAction( "Index", $"Auth" );
+                    return RedirectToAction( "Index", GetRolesViewModel() );
                 }
             }
-            return PartialView($"_AddEditRole", vm); 
+            return View("Index", GetRolesViewModel()); 
         }
 
         [HttpGet]
-        public async Task<IActionResult> DeleteRole( string id )
+        public async Task<IActionResult> ConfirmDeleteRole( string id )
         {
-            string name = string.Empty;
+            var model = GetRolesViewModel();
             if (!string.IsNullOrEmpty( id ))
             {
                 ApplicationRole applicationRole = await _roleManager.FindByIdAsync( id );
                 if (applicationRole != null)
                 {
-                    name = applicationRole.Name;
+                    model.RoleDeletionModel = new DeletionModel()
+                    {
+                        Controller = "Roles",
+                        Action = "DeleteRole",
+                        Heading = "Confirm Role Deletion",
+                        Item = "role",
+                        RoleDeleteId = id,
+                        Title = applicationRole.Name
+                    };                    
                 }
             }
-            return PartialView( $"_DeleteRole", name );
+            return View( "Index", model );
         }
 
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteRole( string id, IFormCollection form )
+        public async Task<IActionResult> DeleteRole( DeletionModel model )
         {
-            if (!string.IsNullOrEmpty( id ))
+            if (!string.IsNullOrEmpty( model.RoleDeleteId ))
             {
-                var applicationRole = await _roleManager.FindByIdAsync( id );
+                var applicationRole = await _roleManager.FindByIdAsync( model.RoleDeleteId );
                 if (applicationRole != null)
                 {
                     IdentityResult roleRuslt = _roleManager.DeleteAsync( applicationRole ).Result;
                     if (roleRuslt.Succeeded)
                     {
-                        return RedirectToAction( "Index", $"Auth" );
+                        return RedirectToAction( "Index", GetRolesViewModel() );
                     }
                 }
             }
-            return PartialView( $"_DeleteRole", null );
+            return View( "Index", GetRolesViewModel() );
         }
 
         public override PartnerMenuViewModel MenuModel

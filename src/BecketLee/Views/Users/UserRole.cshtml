@@ -1,19 +1,16 @@
-﻿@using BecketLee.Code
-@using BecketLee.Models
-@model BecketLee.ViewModels.UserRoleViewModel
+﻿@model BecketLee.ViewModels.UserRolesViewModel
 
-@section scripts{
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-}
+<div>
+    @{ await Html.RenderPartialAsync("_DeleteConfirmation", Model.UserRoleDeletionModel);}
+</div>
 
 <div class="card col-8 offset-2">
     <div class="card-header">
-        @using (Html.BeginForm( "UserRole", "Users", FormMethod.Get ))
+        @using (Html.BeginForm("UserRole", "Users", FormMethod.Get))
         {
             @Html.AntiForgeryToken()
             <h3>
-                Add roles for user: <span class="text-success">@Model.UserName</span>
+                Add roles for user: <span class="text-success">@Model.UserRoleViewModel.UserName</span>
                 <span class="pull-right">
                     <button asp-action="Index" asp-controller="Users" class="btn btn-default"><i class="fa fa-backward"> </i> Back</button>
                 </span>
@@ -23,11 +20,11 @@
         }
     </div>
     <div class="card-body">
-        @using (Html.BeginForm( "UserRole", "Users", FormMethod.Post ))
+        @using (Html.BeginForm("UserRole", "Users", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
-            @Html.HiddenFor( e => e.UserId )
-            @Html.HiddenFor( e => e.UserName )
+            @Html.HiddenFor(e => e.UserRoleViewModel.UserId)
+            @Html.HiddenFor(e => e.UserRoleViewModel.UserName)
 
             <div class="card-body">
                 <div class="form-group">
@@ -37,14 +34,12 @@
                         <th>Action</th>
                         </thead>
                         <tbody>
-                            @foreach (var item in @Model.UserRoles)
+                            @foreach (var item in @Model.UserRoleViewModel.UserRoles)
                             {
                                 <tr>
                                     <td><i class="fa fa-check text-success"> </i>@item.RoleName</td>
                                     <td>
-                                        <a id="deleteRoleModal" asp-action="DeleteUserRole"
-                                           asp-route-userid="@Model.UserId" asp-route-roleid="@item.Id"
-                                           data-toggle="modal" data-target="#modal-action-role" class="btn btn-sm btn-danger">
+                                        <a href="@Url.Action( "ConfirmUserRoleDeletion", "Users", new { @userId = @Model.UserRoleViewModel.UserId, @roleId = @item.Id} )" class="btn btn-danger"> 
                                             <i class="fa fa-trash"></i> Delete
                                         </a>
                                     </td>
@@ -56,14 +51,15 @@
                 </div>
                 <div class="form-group">
                     <div class="input-group">
-                        <select asp-for="ApplicationRoleId" asp-items="@Model.ApplicationRoles" class="input-group form-control">
+                        <select asp-for="@Model.UserRoleViewModel.ApplicationRoleId" 
+                                asp-items="@Model.UserRoleViewModel.ApplicationRoles" class="input-group form-control">
                             <option>Please select</option>
                         </select>
 
                         <span class="input-group-btn">
-                            <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-user"> </i> Add Selected Role </button>
+                            <button type="submit" class="btn btn-success"><i class="fa fa-user"> </i> Add Selected Role </button>
                         </span>
-                        <span asp-validation-for="ApplicationRoleId"></span>
+                        <span asp-validation-for="@Model.UserRoleViewModel.ApplicationRoleId"></span>
                     </div>
                 </div>
             </div>
@@ -72,5 +68,19 @@
 </div>
 
 
-@await Html.PartialAsync( "_Modal", new BootstrapModel { ID = "modal-action-role", AreaLabeledId = "modal-action-role-label", Size = ModalSize.Medium } )
-
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    
+    @if (!string.IsNullOrEmpty(@Model.UserRoleDeletionModel.UserDeleteId ))
+    {
+        <script>
+            $(window).on('load', function () {
+                var delayMs = 0; // delay in milliseconds
+                setTimeout(function () {
+                    $('#confirmDeletion').modal('show');
+                }, delayMs);
+            });
+        </script>
+    }
+}

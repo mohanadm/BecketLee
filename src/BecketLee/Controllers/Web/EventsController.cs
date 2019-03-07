@@ -2,9 +2,9 @@
 using System.Net;
 using System.Threading.Tasks;
 using BecketLee.Data;
+using BecketLee.Models;
 using BecketLee.ViewModels;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -31,8 +31,40 @@ namespace BecketLee.Controllers.Web
 
         public IActionResult ManageEvents(string searchTerm = null, int eventTypeId = -1)
         {
-            var data = _repository.Events( searchTerm, eventTypeId );
-            return View( data );
+            var model = GetEventsViewModel( searchTerm, eventTypeId, -1 );
+            return View( model );
+        }
+
+        private EventsViewModel GetEventsViewModel( string searchTerm, int eventTypeId, int deleteId )
+        {
+            var model = new EventsViewModel
+            {
+                Events = _repository.Events( searchTerm, eventTypeId )
+            };
+            if( deleteId > 0 )
+            {
+                var deleteEvent = model.Events.FirstOrDefault( e => e.EventId == deleteId );
+                if( deleteEvent != null )
+                {
+                    var delModel = new DeletionModel()
+                    {
+                        Controller = "Events",
+                        Action = "DeleteEvent",
+                        DeleteId = deleteId,
+                        Heading = "Confirm Deletion",
+                        Item = "event",
+                        Title = deleteEvent.Title
+                    };
+                    model.DeletionModel = delModel;
+                }
+            }
+            return model;
+        }
+
+        public IActionResult ConfirmEventDeletion( int id )
+        {
+            var model = GetEventsViewModel( null, -1, id );
+            return View( "ManageEvents", model );
         }
 
 
@@ -89,29 +121,21 @@ namespace BecketLee.Controllers.Web
             return View( events );
         }
 
-        [HttpGet]
-        public IActionResult DeleteEvent( string id )
-        {
-            var eventItem = _repository.GetEventById( id  );
-            return PartialView( "_DeleteEvent", eventItem.Title );
-        }
-
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteEvent( string id, IFormCollection form )
+        public IActionResult DeleteEvent( string deleteId )
         {
-            if (!string.IsNullOrEmpty( id ))
+            if (!string.IsNullOrEmpty( deleteId ))
             {
-                var partnerBio = _repository.GetEventById( id );
-                if (partnerBio != null)
+                var webEvent = _repository.GetEventById( deleteId );
+                if (webEvent != null)
                 {
-                    _repository.DeleteEvent( partnerBio );
+                    _repository.DeleteEvent( webEvent );
                 }
             }
             return RedirectToAction( "ManageEvents" );
         }
-
 
 
         public IActionResult News( string id )

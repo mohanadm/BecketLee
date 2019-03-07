@@ -24,9 +24,6 @@ namespace BecketLee.ViewModels
 
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
        
-//        [Display(Name = "Event Type")]
-//        public EventType EventType { get; set; }
-
         public List<SelectListItem> EventTypes { get; set; }
 
         [Required]

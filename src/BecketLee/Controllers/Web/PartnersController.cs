@@ -1,11 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using BecketLee.Data;
+using BecketLee.Models;
 using BecketLee.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Net.Http.Headers;
@@ -48,13 +49,46 @@ namespace BecketLee.Controllers.Web
             try
             {
                 _logger.LogInformation( "Getting all the partner information." );
-                return View( _repository.GetAllPartners() );
+                return View( GetPartnersModel(-1) );
             }
             catch (Exception exception)
             {
                 _logger.LogError( $"Failed to get partners in controller.\n" + exception.Message );
                 return RedirectToAction( "Error", "Home" );
             }
+        }
+
+        public IActionResult ConfirmPartnerDeletion( int deleteId )
+        {
+            var model = GetPartnersModel( deleteId );
+            return View( "ManagePartners", model );
+        }
+
+        public PartnersViewModel GetPartnersModel( int deleteId )
+        {
+            var model = new PartnersViewModel
+            {
+                Partners = _repository.GetAllPartners()
+            };
+
+            if (deleteId > 0)
+            {
+                var deleteEvent = model.Partners.FirstOrDefault(e => e.PartnerId == deleteId);
+                if (deleteEvent != null)
+                {
+                    var delModel = new DeletionModel()
+                    {
+                        Controller = "Partners",
+                        Action = "DeletePartnerBio",
+                        DeleteId = deleteId,
+                        Heading = "Confirm Deletion",
+                        Item = "partner biography",
+                        Title = deleteEvent.PartnerName
+                    };
+                    model.DeletionModel = delModel;
+                }
+            }
+            return model;
         }
 
         [HttpGet]
@@ -125,21 +159,15 @@ namespace BecketLee.Controllers.Web
             return true;
         }
 
-        [HttpGet]
-        public IActionResult DeletePartnerBio( string id )
-        {
-            string name = _repository.GetPartnerNameById( Convert.ToInt32(id) );
-            return PartialView( "_DeletePartnerBio", name );
-        }
 
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public IActionResult DeletePartnerBio( string id, IFormCollection form )
+        public IActionResult DeletePartnerBio( string deleteId)
         {
-            if (!string.IsNullOrEmpty( id))
+            if (!string.IsNullOrEmpty( deleteId ))
             {
-                string name = _repository.GetPartnerNameById( Convert.ToInt32( id ) );
+                string name = _repository.GetPartnerNameById( Convert.ToInt32( deleteId ) );
                 var partnerBio = _repository.GetPartnerByName( name );
                 if (partnerBio != null)
                 {

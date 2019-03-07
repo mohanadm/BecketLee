@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using BecketLee.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BecketLee.ViewModels
@@ -40,5 +41,7 @@ namespace BecketLee.ViewModels
 
         [Display( Name = "Roles" )]
         public IEnumerable<RoleViewModel> UserRoles { get; set; }
+
+        public DeletionModel DeleteUserRole { get; set; } = new DeletionModel();
     }
 }

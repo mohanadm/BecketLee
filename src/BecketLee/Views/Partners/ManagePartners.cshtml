@@ -1,8 +1,9 @@
-﻿@using BecketLee.Code
-@using BecketLee.Models
-@using BecketLee.ViewModels
-@model IEnumerable<PartnerViewModel>
+﻿@using BecketLee.ViewModels
+@model PartnersViewModel
 
+<div>
+    @{ await Html.RenderPartialAsync("_DeleteConfirmation", @Model.DeletionModel);}
+</div>
 
 <div class="top-buffer"></div>
 <div class="col-9 offset-1">
@@ -30,12 +31,12 @@
                 <div class="col">Delete</div>
             </div>
 
-            @foreach (var item in Model)
+            @foreach (var item in Model.Partners)
             {
                 <div class="row">
 
                     <div class="col" style="width: 10%">
-                        <img src="@item.FileUrl" alt="@item.PartnerName" class="partnerEditAvatar" asp-append-version="true"/>
+                        <img src="@item.FileUrl" alt="@item.PartnerName" class="partnerEditAvatar" asp-append-version="true" />
                     </div>
                     <div class="col">
                         <a asp-action="EditPartnerBio" asp-route-id="@item.PartnerName" class="btn btn-info">
@@ -43,8 +44,8 @@
                         </a>
                     </div>
                     <div class="col">
-                        <a id="deletePartnerModal" data-toggle="modal" data-target="#modal-action-biography" asp-action="DeletePartnerBio" asp-controller="Partners" asp-route-id="@item.PartnerId" class="btn btn-danger">
-                            <i class="fa fa-trash"> </i> Delete
+                        <a href="@Url.Action( "ConfirmPartnerDeletion", "Partners", new {@deleteId = @item.PartnerId} )" class="btn btn-danger">
+                            <i class="fa fa-trash"></i> Delete
                         </a>
                     </div>
                 </div>
@@ -54,4 +55,17 @@
 
 </div>
 
-@await Html.PartialAsync("_Modal", new BootstrapModel { ID = "modal-action-biography", AreaLabeledId = "modal-action-biography-label", Size = ModalSize.Medium })
+@section Scripts{
+
+    @if (@Model.DeletionModel.DeleteId > 0)
+    {
+        <script>
+            $(window).on('load', function () {
+                var delayMs = 0; // delay in milliseconds
+                setTimeout(function () {
+                    $('#confirmDeletion').modal('show');
+                }, delayMs);
+            });
+        </script>
+    }
+}

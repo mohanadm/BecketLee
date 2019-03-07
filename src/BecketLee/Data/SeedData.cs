@@ -3,7 +3,6 @@ using BecketLee.Data;
 using BecketLee.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace BecketLee
 {
