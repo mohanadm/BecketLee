@@ -5,19 +5,35 @@
 }
 
 
-.affiliation {
-    display: block;
-    margin: auto;
-    width: 50%;
+.affiliation li {
+    list-style-type: none;
+    margin-left: 0;
+    /*display: block;*/
+    /*margin: 40px;*/
+    /*width: 50%;*/
 }
 
 .affiliationImage {
     max-width: 170px;
-    padding: 8px;
+    /*padding: 8px;*/
 }
+
+.businessAddress li {
+    list-style-type: none;
+    font-size: 14px;
+    text-align: right;
+    margin: 0 0px 0 0;
+    color: #eee;
+}
+
 
 .alaneNewsImage {
     max-width: 500px;
+}
+
+.dropdown-menu {
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .eventText {
@@ -33,6 +49,10 @@
     color: #aaa;
 }
 
+.fa-bars {
+    color: white;
+}
+
 .headerImage {
     max-width: 200px;
     border-width: 1px;
@@ -40,10 +60,11 @@
 }
 
 .logoImage {
-    max-width: 230px;
-    padding: 10px;
-    padding-bottom: 20px;
-    left: 0;
+    max-width: 200px;
+    /*padding: 10px;*/
+    padding: 20px 2px 15px;
+    /*padding-bottom: 20px;*/
+    /*left: 0;*/
 }
 
 .subMenuSelector {
@@ -51,7 +72,7 @@
 }
 
 
-.image-container {
+.image-container {    
     white-space: nowrap;
 }
 
@@ -60,6 +81,9 @@
     white-space: normal;
 }
 
+#menu {
+    min-width: 210px;
+}
 
 #menu .active {
     background-color: #356fa9;
@@ -74,46 +98,13 @@
 }
 
 #menu li a {
-    line-height: 24px;
-    height: 24px;
+    line-height: 22px;
+    height: 22px;
+    width: 160px;
+    background-size: auto;
     text-align: right;
-    padding-top: 0;
+    padding-top: 0px;
     color: #eee;
-}
-
-.dropdown-menu {
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-
-/*  footer  */
-.navbar-fixed-bottom li {
-    list-style-type: none;
-}
-
-
-/* tab color */
-.nav-tabs > li > a
-{
-    background-color: #033e77;
-    border-color: #777777;
-    color: antiquewhite;
-}
-
- /* active tab color */
-.nav-tabs > li.active > a
-.nav-tabs > li.active > a:focus
-/*,.nav-tabs > li.active > a:hover*/
-{
-    background-color: #fff !important;
-    color: antiquewhite;
-} 
-
-/* hover tab color */
-.nav-tabs > li > a:hover {
-    border-color: #000000;
-    background-color: #055f99 !important;    
 }
 
 .navtext {
@@ -121,17 +112,16 @@
     font-style: italic;    
 }
 
-.businessAddress li {
+/*  footer  */
+.navbar-fixed-bottom li {
     list-style-type: none;
-    font-size: 14px;
-    text-align: right;
-    margin: 0 15px 0 0;
 }
+
 
 .scrollable-event {
     margin-left: -40px;
     height: auto;
-    max-height: 450px;
+    max-height: 520px;
     cursor: pointer;
     overflow-x: hidden;
 }
@@ -145,11 +135,10 @@
 }
 
 
-
-
 @media (min-width: 768px) {
-    .navbar-right {
+    .test-shrink {
         float: right !important;
         margin-right: 0;
     }
+
 }

@@ -5,7 +5,7 @@
 }
 
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-lg-8 ">
         @await Html.PartialAsync( "_EventPanel",
             new EventsViewModel
             {
@@ -14,14 +14,14 @@
                 SelectedEventHtml = Model.SelectedEventHtml
             } )
     </div>
-    <div class="col-md-4">
+    <div class="col-lg-4 ">
         @await Html.PartialAsync( "_EventsListing",
             new EventsViewModel
             {
                 Events = @Model.Events,
                 SelectedTitle = Model.SelectedTitle,
                 SelectedEventHtml = Model.SelectedEventHtml,
-                ListCaption = "More " + @ViewBag.Title + "..."
+                ListCaption = @ViewBag.Title + "..."
             } )
 
     </div>

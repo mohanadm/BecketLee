@@ -1,0 +1,30 @@
+﻿/* .datePicker.css - styling for the bootstrap date picker control*/
+
+/* background color for the control */
+.datepicker table {
+    background: #bbccdd;
+}
+
+/*  cell width and height */
+.datepicker td, .datepicker th {
+    width: 3.4em;
+    height: 1.5em;
+}
+
+/*  hover over date colors */
+.datepicker table tr td.day:hover {
+    background: #bdb76b;
+    color: black;
+}
+
+/* hover color for month prev next footer buttons */
+.datepicker .datepicker-switch:hover, .datepicker .next:hover, .datepicker .prev:hover, .datepicker tfoot tr th:hover {
+    background: #bdb76b;
+    color: black;
+}
+
+/* daysOfTheWeekHighlight colors */
+.datepicker table tr td.highlighted {
+    background: #506070;
+    border-radius: 0;
+}
