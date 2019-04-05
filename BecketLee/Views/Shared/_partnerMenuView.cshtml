@@ -1,0 +1,7 @@
+﻿@model BecketLee.ViewModels.PartnerMenuViewModel
+@foreach (var partner in @Model.PartnerNames)
+{
+    <a class="dropdown-item bg-dark " asp-controller="Partners" asp-action="PartnerBio" asp-route-id="@partner">
+        @partner
+    </a>
+}

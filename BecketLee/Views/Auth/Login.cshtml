@@ -1,0 +1,37 @@
+﻿@model BecketLee.ViewModels.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+<div class="row">
+    <div class="col-md-12 col-lg-8">
+        <h3>Login</h3>
+        <form method="post" novalidate>
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="All"></div>
+            <div class="form-group">
+                <label asp-for="Username"></label>
+                <input asp-for="Username" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input type="password" asp-for="Password" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-success"/>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <a asp-action="ForgotPassword">Forgot Password?</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="PersistLogin">Persist Login:</label>
+                <input type="checkbox" asp-for="PersistLogin"/>
+            </div>
+        </form>
+    </div>
+
+</div>

@@ -1,0 +1,32 @@
+﻿@model BecketLee.ViewModels.PartnerViewModel
+@{
+    ViewBag.Title = @Model.PartnerName;
+    string imagePath = Url.Content("~" + @Model.FileUrl);
+}
+
+<div class="row">
+
+
+    <div class="col-lg-4 order-lg-12">
+        <div class="card">
+            <div class="card card-header"><h3 class="text-center">@Model.PartnerName</h3></div>
+            <div class="card card-body">
+
+                <div class="text-center">
+                    <img src=@imagePath alt="@Model.PartnerName" class="partnerImage" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-8 order-lg-1">
+
+        <div class="card">
+            <div class="card card-header"><h3>Biography</h3></div>
+            <div class="card card-body ">
+
+                <div id="BiographyHtml">@Html.Raw(Model.BiographyHtml)</div>
+            </div>
+        </div>
+    </div>
+</div>
