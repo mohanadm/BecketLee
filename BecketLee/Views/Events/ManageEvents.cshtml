@@ -5,31 +5,31 @@
 <div class="card">
     <div class="card-header card-head text-center"><h3>Manage Events</h3></div>
     <div class="card-body">
-        <div class="top-buffer"></div>
-        <div class="pull-right ">
-            <form method="get" class="form-horizontal form-inline">
-                <input class="form-control" type="text" name="searchTerm" />
-                <select class="form-control" name="eventTypeId" id="eventTypeId">
-                    <option>&nbsp;</option>
-                    <option value="1">News</option>
-                    <option value="2">Events</option>
-                    <option value="3">Pubs</option>
-                    <option value="4">Cases</option>
-                </select>
-                <input class="btn btn-default" type="submit" value="Search" />
-            </form>
-        </div>
 
+        <div class="container-fluid">
 
-        <div class="btn-group">
-            <a id="createEditUserModal" asp-action="EditEvent" asp-controller="Events" class="btn btn-info">
-                <i class="fa fa-plus"></i>  Add New Event
-            </a>
-        </div>
-        <div class="btn-group ">
-            <a asp-action="Index" asp-controller="Auth" class="btn btn-info">
-                <i class="fa fa-gavel"></i>  Management
-            </a>
+            <div class="float-left">
+                <a id="createEditUserModal" asp-action="EditEvent" asp-controller="Events" class="btn btn-info">
+                    <i class="fa fa-plus"></i>  Add New Event
+                </a>
+                
+                <a asp-action="Index" asp-controller="Auth" class="btn btn-info">
+                    <i class="fa fa-gavel"></i>  Management
+                </a>
+            </div>
+            <div class="float-right">
+                <form method="get" class="form-inline">
+                    <input class="form-control" type="text" name="searchTerm" />&nbsp;
+                    <select class="form-control" name="eventTypeId" id="eventTypeId">
+                        <option>&nbsp;</option>
+                        <option value="1">News</option>
+                        <option value="2">Events</option>
+                        @*<option value="3">Pubs</option>
+                        <option value="4">Cases</option>*@
+                    </select>
+                    <input class="btn btn-success" type="submit" value="Search" />
+                </form>
+            </div>
         </div>
         <div>&nbsp;</div>
         <table class="table table-bordered table-striped table-condensed">
@@ -60,11 +60,14 @@
                         </td>
                         <td>
                             <a asp-action="EditEvent" asp-controller="Events" asp-route-id="@item.EventId" class="btn btn-sm btn-info">
-                                <i class="fa fa-pencil"></i> Edit
+                                <i class="fa fa-pen"></i> Edit
                             </a>
                         </td>
                         <td>
-                            @Html.ActionLink(" Delete", "ConfirmEventDeletion", "Events", new { @id = @item.EventId }, new { @class = "btn btn-sm btn-danger fa fa - trash" })
+                            @*<a asp-action="ConfirmEventDeletion" asp-controller="Events" asp-route-id="@item.EventId" class="btn btn-sm btn-info">
+                                    <i class="fa fa-trash"></i> Delete
+                                </a>*@
+                            @Html.ActionLink(" Delete", "ConfirmEventDeletion", "Events", new { @id = @item.EventId }, new { @class = "btn btn-sm btn-danger fa fa-trash" })
                         </td>
                     </tr>
                 }
@@ -75,7 +78,7 @@
 
 
 @section scripts
-{
+    {
     @if (@Model.DeletionModel.DeleteId > 0)
     {
         <script>
