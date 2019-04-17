@@ -6,16 +6,28 @@
   "flags": [],
   "linkedModules": [],
   "topLevelPatterns": [
+    "bootstrap-datepicker@^1.8.0",
     "bootstrap@^4.3.1",
     "bootswatch@^4.3.1",
     "fontawesome@^5.6.3",
-    "jquery@^3.3.1"
+    "jquery-validation-unobtrusive@^3.2.11",
+    "jquery-validation@^1.19.0",
+    "jquery@^3.3.1",
+    "moment@^2.24.0"
   ],
   "lockfileEntries": {
+    "bootstrap-datepicker@^1.8.0": "https://registry.yarnpkg.com/bootstrap-datepicker/-/bootstrap-datepicker-1.8.0.tgz#c63513931e6f09f16ae9f11b62f32d950df3958e",
     "bootstrap@^4.3.1": "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.3.1.tgz#280ca8f610504d99d7b6b4bfc4b68cec601704ac",
     "bootswatch@^4.3.1": "https://registry.yarnpkg.com/bootswatch/-/bootswatch-4.3.1.tgz#be54748b420a1962dbcf9782605aac092f842e38",
     "fontawesome@^5.6.3": "https://registry.yarnpkg.com/fontawesome/-/fontawesome-5.6.3.tgz#73f0b865fa2b0b384e69d531c05a02c643b72f95",
-    "jquery@^3.3.1": "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
+    "jquery-validation-unobtrusive@^3.2.11": "https://registry.yarnpkg.com/jquery-validation-unobtrusive/-/jquery-validation-unobtrusive-3.2.11.tgz#175ee46380385a0e33ed320f255fad321f68f9f5",
+    "jquery-validation@>=1.16": "https://registry.yarnpkg.com/jquery-validation/-/jquery-validation-1.19.0.tgz#0fedf0c0483a030c4fff072398898ac18cfd6e40",
+    "jquery-validation@^1.19.0": "https://registry.yarnpkg.com/jquery-validation/-/jquery-validation-1.19.0.tgz#0fedf0c0483a030c4fff072398898ac18cfd6e40",
+    "jquery@>=1.7.1 <4.0.0": "https://registry.yarnpkg.com/jquery/-/jquery-3.4.0.tgz#8de513fa0fa4b2c7d2e48a530e26f0596936efdf",
+    "jquery@>=1.8": "https://registry.yarnpkg.com/jquery/-/jquery-3.4.0.tgz#8de513fa0fa4b2c7d2e48a530e26f0596936efdf",
+    "jquery@^1.7 || ^2.0 || ^3.1": "https://registry.yarnpkg.com/jquery/-/jquery-3.4.0.tgz#8de513fa0fa4b2c7d2e48a530e26f0596936efdf",
+    "jquery@^3.3.1": "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca",
+    "moment@^2.24.0": "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
   },
   "files": [],
   "artifacts": {}

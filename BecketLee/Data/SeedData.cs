@@ -12,7 +12,7 @@ namespace BecketLee
         {
             var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
             var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
-            var context = services.GetRequiredService<BecketLeeContext>();
+            var context = services.GetRequiredService<BecketLeeDbContext>();
 
             var seeder = new BecketLeeSeedData( context, userManager, roleManager );
             seeder.EnsureSeedData().Wait();

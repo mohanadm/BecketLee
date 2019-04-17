@@ -1,11 +1,14 @@
 ﻿@model BecketLee.ViewModels.PartnerViewModel
 @{
     ViewBag.Title = @Model.PartnerName;
-    string imagePath = Url.Content("~" + @Model.FileUrl);
 }
+
 
 <div class="row">
 
+    @{  
+        string imagePath = Url.Content( "~" + @Model.FileUrl );
+    }
 
     <div class="col-lg-4 order-lg-12">
         <div class="card">
@@ -14,11 +17,12 @@
 
                 <div class="text-center">
                     <img src=@imagePath alt="@Model.PartnerName" class="partnerImage" />
-                </div>
+                </div>  
+                @*<div>@imagePath</div>*@
             </div>
         </div>
     </div>
-
+    
     <div class="col-lg-8 order-lg-1">
 
         <div class="card">

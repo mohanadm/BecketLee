@@ -55,7 +55,7 @@ namespace BecketLee
                     options.Cookie.SameSite = SameSiteMode.Lax;
                 } );
 
-            services.AddDbContext<BecketLeeContext>();
+            services.AddDbContext<BecketLeeDbContext>();
 
             ConfigureIdentityService(services);
 
@@ -143,7 +143,7 @@ namespace BecketLee
                     config.Password.RequireUppercase = true;
                     config.Password.RequireNonAlphanumeric = true;
                 } )
-                .AddEntityFrameworkStores<BecketLeeContext>()
+                .AddEntityFrameworkStores<BecketLeeDbContext>()
                 .AddDefaultTokenProviders();
         }
 

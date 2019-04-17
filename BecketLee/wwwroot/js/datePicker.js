@@ -11,7 +11,7 @@
             , todayBtn: "linked"
             , language: "de"
             , todayHighlight: true
-            , autoclose: true
+            , autoClose: true
             , useCurrent: true
                         
         });
@@ -23,7 +23,7 @@
             , todayBtn: "linked"
             , language: "de"
             , todayHighlight: true
-            , autoclose: true
+            , autoClose: true
             , useCurrent: true
 
         });

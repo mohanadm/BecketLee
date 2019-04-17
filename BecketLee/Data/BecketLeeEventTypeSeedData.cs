@@ -8,16 +8,21 @@ namespace BecketLee.Data
 {
     public class BecketLeeEventTypeSeedData 
     {
-        public static async Task EnsureEventTypeData(BecketLeeContext context)
+        public static async Task EnsureEventTypeData(BecketLeeDbContext context)
         {
-            if( !context.EventTypes.Any() || context.EventTypes.Count() != 4 )
+            if( !context.EventTypes.Any() || context.EventTypes.Count() != 2 )
             {
+                foreach (var eventType in context.EventTypes)
+                    context.Remove(eventType);
+                if (context.ChangeTracker.HasChanges())
+                    await context.SaveChangesAsync();
+
                 var list = new List<EventType>()
                 {
                     new EventType() {EventTypeId = 1, EventTypeDescription = "News"},
                     new EventType() {EventTypeId = 2, EventTypeDescription = "Events"},
-                    new EventType() {EventTypeId = 3, EventTypeDescription = "Pubs"},
-                    new EventType() {EventTypeId = 4, EventTypeDescription = "Cases"}
+//                    new EventType() {EventTypeId = 3, EventTypeDescription = "Pubs"},
+//                    new EventType() {EventTypeId = 4, EventTypeDescription = "Cases"}
                 };
 
                 foreach (EventType eventType in list)

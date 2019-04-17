@@ -2,9 +2,9 @@ namespace BecketLee.Data
 {
     public abstract class RepostitoryDataBase<T> 
     {
-        protected BecketLeeContext _context;
+        protected BecketLeeDbContext _context;
 
-        public RepostitoryDataBase(BecketLeeContext context)
+        public RepostitoryDataBase(BecketLeeDbContext context)
         {
             _context = context;
         }

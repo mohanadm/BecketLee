@@ -10,7 +10,7 @@ namespace BecketLee.Data
 {
     public class PartnerRepository : RepostitoryDataBase<PartnerViewModel>, IPartnerRepository
     {
-        public PartnerRepository( BecketLeeContext context ) 
+        public PartnerRepository( BecketLeeDbContext context ) 
             : base( context )
         {
         }

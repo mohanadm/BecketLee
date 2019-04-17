@@ -1,7 +1,7 @@
 ﻿/******************  site.css  ********************/
 
 .card {
-    margin-top: 5px;
+    margin-top: 1em;
 }
 
 
@@ -50,7 +50,7 @@
 }
 
 .fa-bars {
-    color: antiquewhite;
+    color: white;
 }
 
 .headerImage {

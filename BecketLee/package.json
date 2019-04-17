@@ -3,9 +3,13 @@
     "license": "UNLICENSED",
     "dependencies": {
         "bootstrap": "^4.3.1",
+        "bootstrap-datepicker": "^1.8.0",
         "bootswatch": "^4.3.1",
         "fontawesome": "^5.6.3",
-        "jquery": "^3.3.1"
+        "jquery": "^3.3.1",
+        "jquery-validation": "^1.19.0",
+        "jquery-validation-unobtrusive": "^3.2.11",
+        "moment": "^2.24.0"
     },
     "engines": {
         "yarn": ">= 1.0.0"

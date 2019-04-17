@@ -6,7 +6,7 @@ namespace BecketLee.Data
 {
     public class BecketLeePartnerSeedData
     {
-        public static async Task EnsurePartnerData(BecketLeeContext context)
+        public static async Task EnsurePartnerData(BecketLeeDbContext context)
         {            
 
             if (!context.PartnerBiographies.Any() ||

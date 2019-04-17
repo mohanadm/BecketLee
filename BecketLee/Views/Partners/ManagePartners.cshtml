@@ -4,55 +4,57 @@
     @{ await Html.RenderPartialAsync("_DeleteConfirmation", @Model.DeletionModel);}
 </div>
 
-<div class="top-buffer"></div>
-<div class="col-9 offset-1">
+<div class="col-10 offset-1">
 
 
     <div class="card">
         <div class="card-header">
             <h3 class="text-center">Manage Partner Biographies</h3>
         </div>
-        <div class="card-body">
-
-            <div class="btn-group">
-                <a id="createEditUserModal" asp-action="EditPartnerBio" asp-controller="Partners" class="btn btn-sm btn-info">
-                    <i class="fa fa-plus"></i>  Add New Partner
-                </a>
-            </div>
-            <div class="btn-group ">
-                <a asp-action="Index" asp-controller="Auth" class="btn btn-sm btn-info">
-                    <i class="fa fa-gavel"></i>  Management
-                </a>
-            </div>
-            <div class="row">
-                <div class="col">&nbsp;</div>
-                <div class="col">Edit</div>
-                <div class="col">Delete</div>
-            </div>
-
-            @foreach (var item in Model.Partners)
-            {
-                <div class="row">
-
-                    <div class="col" style="width: 10%">
-                        <img src="@item.FileUrl" alt="@item.PartnerName" class="partnerEditAvatar" asp-append-version="true" />
-                    </div>
-                    <div class="col">
-                        <a asp-action="EditPartnerBio" asp-route-id="@item.PartnerName" class="btn btn-info">
-                            <i class="fa fa-pencil"></i> @item.PartnerName
-                        </a>
-                    </div>
-                    <div class="col">
-                        <a href="@Url.Action( "ConfirmPartnerDeletion", "Partners", new {@deleteId = @item.PartnerId} )" class="btn btn-danger">
-                            <i class="fa fa-trash"></i> Delete
-                        </a>
-                    </div>
+        <td class="card-body">
+            <br />
+            <div class="container ">
+                <div class="float-right">
+                    <a id="createEditUserModal" asp-action="EditPartnerBio" asp-controller="Partners" class="btn btn-sm btn-info">
+                        <i class="fa fa-plus"></i>  Add New Partner
+                    </a>
+                    <a asp-action="Index" asp-controller="Auth" class="btn btn-sm btn-info">
+                        <i class="fa fa-gavel"></i>  Management
+                    </a>
                 </div>
-            }
-        </div>
-    </div>
 
+            </div>
+            <br />
+            <table class="table table-info table-striped">
+                <tbody>
+                    @foreach (var item in Model.Partners)
+                    {
+                        <tr>
+
+                            <td>
+                                <img src="@item.FileUrl" alt="@item.PartnerName" class="partnerEditAvatar" asp-append-version="true" />
+                            </td>
+                            <td><h4>@item.PartnerName</h4></td>
+                            <td>
+                                <a asp-action="EditPartnerBio" asp-route-id="@item.PartnerName" class="btn btn-sm btn-info">
+                                    <i class="fa fa-pen"></i> Edit
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-action="ConfirmPartnerDeletion" asp-route-id="@item.PartnerId" class="btn btn-sm btn-danger">
+                                    <i class="fa fa-trash"></i> Delete
+                                </a>
+                                @*<a href="@Url.Action( "ConfirmPartnerDeletion", "Partners", new {@deleteId = @item.PartnerId} )" class="btn btn-sm btn-danger" />*@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+    </div>
 </div>
+
+
 
 @section Scripts{
 

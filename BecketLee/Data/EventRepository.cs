@@ -13,7 +13,7 @@ namespace BecketLee.Data
     {
         private List<EventType> _eventTypeList;
 
-        public EventRepository( BecketLeeContext context )
+        public EventRepository( BecketLeeDbContext context )
             : base( context )
         {
             _eventTypeList = GetEventTypes();

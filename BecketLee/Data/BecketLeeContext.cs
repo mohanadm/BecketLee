@@ -5,11 +5,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace BecketLee.Data
 {
-    public class BecketLeeContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+    public class BecketLeeDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         private IConfigurationRoot _config;
 
-        public BecketLeeContext(IConfigurationRoot config, DbContextOptions options)
+        public BecketLeeDbContext(IConfigurationRoot config, DbContextOptions options)
             :base(options)
         {
             _config = config;

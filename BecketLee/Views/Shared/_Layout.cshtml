@@ -6,6 +6,7 @@
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -15,16 +16,19 @@
           integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
           crossorigin="anonymous">
 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          rel="stylesheet"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous"
-          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootswatch/dist/cerulean/bootstrap.min.css" />*@
 
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cerulean/bootstrap.min.css"
-          rel="stylesheet"
-          asp-fallback-href="~/lib/bootswatch/dist/cerulean/bootstrap.min.css"
-          crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              rel="stylesheet"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+              crossorigin="anonymous"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+
+        <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cerulean/bootstrap.min.css"
+              rel="stylesheet"
+              asp-fallback-href="~/lib/bootswatch/dist/cerulean/bootstrap.min.css"
+              crossorigin="anonymous">
 
 
     <link rel="stylesheet" href="~/css/site.css" />
@@ -36,10 +40,10 @@
 
         <div id="header">
             <div class="row">
-                <div class="image-container mx-auto">
+                <div class="image-container col">
                     <div class="image-item"><img src="~/image/headerLogo.gif" alt="Becket & Lee Logo" class="logoImage" /></div>
                 </div>
-                <div class="image-container mx-auto d-none d-lg-block">
+                <div class="image-container col d-none d-lg-block">
                     <div class="image-item"><img src="~/image/B&L Firm-small2.jpg" alt="Offices" class="headerImage " /></div>
                     <div class="image-item"><img src="~/image/InLibrary225.jpg" alt="Library" class="headerImage "></div>
                     <div class="image-item"><img src="~/image/DSC_9999editSM.JPG" alt="Offices" class="headerImage" /></div>
@@ -47,9 +51,8 @@
                 </div>
             </div>
         </div>
-
         <nav class="navbar navbar-default bg-dark ">
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="True" aria-label="Toggle navigation">
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="expand" data-target="#menu" aria-controls="menu" aria-expanded="True" aria-label="Toggle navigation">
                 <span><i class="fa fa-bars"></i></span>
             </button>
 
@@ -64,47 +67,47 @@
         </nav>
         <div class="row">
             <div class="col-lg-3 ">
-                <div class="navbar-collapse" id="menu">
-                    <nav class="navbar navbar-default bg-dark ">
 
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" asp-action="Index" asp-controller="Partners" data-toggle="dropdown" aria-haspopup="True" aria-expanded="True">
-                                    Partners
-                                </a>
-                                <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-                                    @await Html.PartialAsync("_partnerMenuView", (PartnerMenuViewModel)ViewBag.MenuModel)
-                                </div>
-                            </li>
+                <nav class="navbar navbar-default bg-dark button-a-mobile-collapsed" id="menu">
 
-                            <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="OurServices"> Services </a></li>
-                            <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="News"> News </a></li>
-                            <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Events"> Events </a></li>
-                            @*<li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Pubs"> Publications </a></li>
-                                <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Cases"> Cases of Interest </a></li>*@
-                            <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="FirmHistory"> Firm History </a></li>
-                            <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="Contact"> Contact </a></li>
-                            @if (User.Identity.IsAuthenticated)
-                            {
-                                <li class="nav-item"><a class="nav-link" asp-controller="Auth" asp-action="Index">Manage Website</a></li>
-                                <li class="nav-item"><a class="nav-link" asp-controller="Auth" asp-action="Logout"> <i class="fa fa-sign-out"></i> Logout</a></li>
-                            }
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" asp-action="Index" asp-controller="Partners" data-toggle="dropdown" aria-haspopup="True" aria-expanded="True">
+                                Partners
+                            </a>
+                            <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
+                                @await Html.PartialAsync("_partnerMenuView", (PartnerMenuViewModel)ViewBag.MenuModel)
+                            </div>
+                        </li>
+
+                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="OurServices"> Services </a></li>
+                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="News"> News </a></li>
+                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Events"> Events </a></li>
+                        @*<li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Pubs"> Publications </a></li>
+                            <li class="nav-item" href="#"><a class="nav-link" asp-controller="Events" asp-action="Cases"> Cases of Interest </a></li>*@
+                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="FirmHistory"> Firm History </a></li>
+                        <li class="nav-item" href="#"><a class="nav-link" asp-controller="Home" asp-action="Contact"> Contact </a></li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item"><a class="nav-link" asp-controller="Auth" asp-action="Index">Manage Website</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Auth" asp-action="Logout"> <i class="fa fa-sign-out"></i> Logout</a></li>
+                        }
+                    </ul>
+                    <br />
+                    <div>
+                        <ul class="businessAddress d-none d-lg-block">
+                            <li>&nbsp;</li>
+                            <li>Becket & Lee LLP</li>
+                            <li>16 General Warren Blvd</li>
+                            <li>Malvern, PA 19355</li>
+                            <li>&nbsp;</li>
+                            <li>610.644.7800</li>
+
                         </ul>
-                        <br />
-                        <div>
-                            <ul class="businessAddress d-none d-lg-block">
-                                <li>&nbsp;</li>
-                                <li>Becket & Lee LLP</li>
-                                <li>16 General Warren Blvd</li>
-                                <li>Malvern, PA 19355</li>
-                                <li>&nbsp;</li>
-                                <li>610.644.7800</li>
+                    </div>
 
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
+                </nav>
                 <br />
                 <div>
                     <ul class="affiliation d-none d-lg-block">
@@ -128,16 +131,21 @@
 
     </div>
 
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
-            asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-            asp-fallback-test="window.jQuery"
-            crossorigin="anonymous"
-            integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js">
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
 
-    </script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js">
+
+        </script>
 
     @RenderSection("scripts", false)
     <script type="text/javascript" src="~/js/site.js"></script>

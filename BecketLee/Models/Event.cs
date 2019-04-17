@@ -14,8 +14,11 @@ namespace BecketLee.Models
         [Required]
         [StringLength(8000, MinimumLength = 10)]
         public string EventHtml { get; set; }
+
         public DateTime? StartDate { get; set; }
+
         public DateTime? EndDate { get; set; }
+
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;        
         public int EventTypeId { get; set; }
 
