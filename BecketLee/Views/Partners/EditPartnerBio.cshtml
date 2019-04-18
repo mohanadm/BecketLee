@@ -45,7 +45,10 @@
                 </div>
 
                 <div class="row">
-                    <img src="@Model.FileUrl" alt="@Model.PartnerName" class="partnerImage" asp-append-version="true" />
+                    @{
+                        string itemUrl = @Url.Content( "~" + @Model.FileUrl );
+                    }
+                    <img src="@itemUrl" alt="@Model.PartnerName" class="partnerImage" asp-append-version="true"/>
                 </div>
                 <div class="row">
                     <label class="mx-auto" asp-for="FileName">@Model.FileName</label>

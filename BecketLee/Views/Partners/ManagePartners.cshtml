@@ -32,7 +32,10 @@
                         <tr>
 
                             <td>
-                                <img src="@item.FileUrl" alt="@item.PartnerName" class="partnerEditAvatar" asp-append-version="true" />
+                                @{
+                                    string itemUrl = @Url.Content( "~" + @item.FileUrl );
+                                }
+                                <img src="@itemUrl" alt="@item.PartnerName" class="partnerEditAvatar" asp-append-version="true"/>
                             </td>
                             <td><h4>@item.PartnerName</h4></td>
                             <td>
