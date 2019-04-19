@@ -52,7 +52,7 @@
             </div>
         </div>
         <nav class="navbar bg-dark ">
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="False" aria-label="Toggle navigation">
+            <button class="navbar-toggler d-lg-none" type="button" id="togglerButton" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="False" aria-label="Toggle navigation">
                 <span><i class="fa fa-bars"></i></span>
             </button>
             <div class="navtext  mx-auto d-none d-sm-block">Your Proven Partner in Bankruptcy Management</div>
@@ -68,7 +68,7 @@
 
             <div class="col-lg-3 ">
 
-                <nav class="navbar bg-dark collapsed-lg" id="menu">
+                <nav class="navbar bg-dark collapse show"  style="height:auto" id="menu">
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Home</a></li>
@@ -139,16 +139,17 @@
                 asp-fallback-test="window.jQuery"
                 crossorigin="anonymous"
                 integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
-        </script>
+    </script>
 
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js">
 
-        </script>
+    </script>
 
     @RenderSection("scripts", false)
-    <script type="text/javascript" src="~/js/site.js"></script>
+<script type="text/javascript" src="~/js/site.js"></script>
+
 
 </body>
 </html>
