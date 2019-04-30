@@ -65,6 +65,7 @@
     padding: 20px 2px 15px;
     /*padding-bottom: 20px;*/
     /*left: 0;*/
+    margin: 0 20px 0 20px;
 }
 
 .subMenuSelector {
@@ -72,7 +73,7 @@
 }
 
 
-.image-container {    
+.image-container { 
     white-space: nowrap;
 }
 
