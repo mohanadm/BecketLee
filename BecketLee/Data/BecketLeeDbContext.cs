@@ -7,7 +7,8 @@ namespace BecketLee.Data
 {
     public class BecketLeeDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
-        private IConfigurationRoot _config;
+        private readonly IConfigurationRoot _config;
+
 
         public BecketLeeDbContext(IConfigurationRoot config, DbContextOptions options)
             :base(options)
@@ -19,10 +20,10 @@ namespace BecketLee.Data
         public DbSet<EventType> EventTypes { get; set; }
         public DbSet<Event> Events { get; set; }
 
-        protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
-        {
-            base.OnConfiguring( optionsBuilder );
-            optionsBuilder.UseSqlServer(_config["ConnectionStrings:BecketLeeConnection"] );
-        }
+//        protected override void OnConfiguring( DbContextOptionsBuilder optionsBuilder )
+//        {
+//            base.OnConfiguring( optionsBuilder );
+//            optionsBuilder.UseSqlServer(_config["ConnectionStrings:BecketLeeConnection"] );
+//        }
     }
 }

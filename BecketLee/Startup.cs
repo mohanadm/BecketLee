@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Rewrite;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Serialization;
@@ -55,7 +56,9 @@ namespace BecketLee
                     options.Cookie.SameSite = SameSiteMode.Lax;
                 } );
 
-            services.AddDbContext<BecketLeeDbContext>();
+            services.AddDbContext<BecketLeeDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("BecketLeeConnection"),
+                    builder => builder.MigrationsAssembly(typeof(Startup).Assembly.FullName)));
 
             ConfigureIdentityService(services);
 
