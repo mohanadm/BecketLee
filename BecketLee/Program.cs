@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -9,22 +10,33 @@ namespace BecketLee
     {
         public static void Main(string[] args)
         {
-            var host = CreateWebHost(args);
-
-            using (var scope = host.Services.CreateScope())
+            try
             {
-                var services = scope.ServiceProvider;
-                try
-                {
-                    SeedData.Initialize(services);
-                }
-                catch (Exception exception)
-                {
-                    var x = exception.ToString();
-                }
-            }
+                var host = CreateWebHost( args );
 
-            host.Run();
+                using (var scope = host.Services.CreateScope())
+                {
+                    var services = scope.ServiceProvider;
+                    try
+                    {
+                        SeedData.Initialize( services );
+                    }
+                    catch (Exception exception)
+                    {
+                        var x = exception.ToString();
+                    }
+                }
+
+                host.Run();
+            }
+            catch (Exception exception)
+            {
+                using (var sw = File.CreateText( @"C:\temp\startupError.Txt" ))
+                {
+                    sw.Write( exception.ToString() );
+                }
+                Console.WriteLine( exception.ToString() );
+            }
         }
 
         public static IWebHost CreateWebHost(string[] args) =>
