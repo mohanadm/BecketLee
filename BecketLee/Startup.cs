@@ -108,10 +108,12 @@ namespace BecketLee
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                // The default HSTS value is 30 days. You may want to change
+                // this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseAuthentication();
@@ -124,7 +126,7 @@ namespace BecketLee
 
 
             var options = new RewriteOptions()
-                .AddRedirectToHttps(StatusCodes.Status301MovedPermanently, 63423);
+                .AddRedirectToHttps(StatusCodes.Status301MovedPermanently, 9721);
             app.UseRewriter(options);
 
             app.UseMvc(routes =>
