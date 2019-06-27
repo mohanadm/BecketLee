@@ -122,7 +122,6 @@ namespace BecketLee
                 config.CreateMap<PartnerBiography, PartnerViewModel>().ReverseMap();
             } );
 
-
             var options = new RewriteOptions()
                 .AddRedirectToHttps(StatusCodes.Status301MovedPermanently, 63423);
             app.UseRewriter(options);
