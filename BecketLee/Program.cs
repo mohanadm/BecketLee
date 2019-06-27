@@ -19,7 +19,7 @@ namespace BecketLee
                     var services = scope.ServiceProvider;
                     try
                     {
-                        SeedData.Initialize( services );
+                        //SeedData.Initialize( services );
                     }
                     catch (Exception exception)
                     {
